@@ -34,6 +34,13 @@ import 'package:flutter/material.dart';
 import 'package:voo/color/index.dart';
 import 'package:voo/voo.dart';
 
+import '../bubble/index.dart';
+import '../bubble/index2.dart';
+import '../button/index2.dart';
+import '../switcher/index.dart';
+import '../tabbar/index.dart';
+import '../text/index.dart';
+
 ///首页
 class HomePage extends StatefulWidget {
   @override
@@ -77,9 +84,13 @@ class HomePageState extends State<HomePage> {
         '布局 Layout': LayoutPage(),
         '100定制图标 Icons': IconPage(),
         '按钮Button': ButtonPage(),
+        '动画按钮Button': AnimatedButtonPage(),
+        '可展开的Text': ExpandableTextPage(),
         '单元格 Cell': CellPage(),
         '头像 Avatar': AvatarPage(),
         '100操作结果': ResultPage(),
+        '气泡框 （聊天页面）': BubbleBoxPage(),
+        '气泡框 （弹框）': BubbleBoxPage2(),
       },
       '反馈组件': {
         '底部面板BottomSheet': BottomSheetPage(),
@@ -108,6 +119,8 @@ class HomePageState extends State<HomePage> {
         '搜索框 SearchBar': SearchBarPage(),
         '协议 Terms': TermsPage(),
         '蒙层引导 DemoGuide': GuidePage(),
+        '页面状态切换 StateSwitcher': StateSwitcherPage(),
+        '导航栏 指示器 TabBar indicator': TabBarPage(),
       },
     },
   ];
@@ -142,13 +155,15 @@ class HomePageState extends State<HomePage> {
         children.add(Container(
           margin: EdgeInsets.only(top: 16),
           alignment: Alignment.centerLeft,
-          child: Text(title, style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)),
+          child: Text(title,
+              style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)),
         ));
 
         map.forEach((key, value) {
           children.add(GestureDetector(
             onTap: () {
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => value));
+              Navigator.push(
+                  context, new MaterialPageRoute(builder: (context) => value));
             },
             child: Container(
               height: 40,
@@ -162,8 +177,11 @@ class HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(key, style: TextStyle(fontSize: 14, color: VooColors.titleColor)),
-                  Icon(VooIcon.arrow_right, color: VooColors.subTitleColor, size: 16),
+                  Text(key,
+                      style:
+                          TextStyle(fontSize: 14, color: VooColors.titleColor)),
+                  Icon(VooIcon.arrow_right,
+                      color: VooColors.subTitleColor, size: 16),
                 ],
               ),
             ),
