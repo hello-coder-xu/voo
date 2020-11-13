@@ -139,8 +139,7 @@ class AnimatedButton extends StatefulWidget {
   _AnimatedButtonState createState() => _AnimatedButtonState();
 }
 
-class _AnimatedButtonState extends State<AnimatedButton>
-    with TickerProviderStateMixin {
+class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStateMixin {
   AnimationController _controller;
   Animation<double> _scaleAnimation;
   Animation<double> _opacityAnimation;
@@ -164,8 +163,7 @@ class _AnimatedButtonState extends State<AnimatedButton>
       super.didUpdateWidget(oldWidget);
     }
     // 绑定控制器
-    if (widget.controller != null)
-      widget.controller._bindAnimatedButtonState(this);
+    if (widget.controller != null) widget.controller._bindAnimatedButtonState(this);
   }
 
   @override
@@ -186,8 +184,8 @@ class _AnimatedButtonState extends State<AnimatedButton>
     return AnimatedBuilder(
       animation: _controller,
       builder: (c, w) {
-        var buttonWidget = widget.buttonBuilder?.call((_switchOn ?? true)) ??
-            _defaultWidgetBuilder((_switchOn ?? true), widget.size);
+        var buttonWidget =
+            widget.buttonBuilder?.call((_switchOn ?? true)) ?? _defaultWidgetBuilder((_switchOn ?? true), widget.size);
         return Stack(
           overflow: Overflow.visible,
           children: <Widget>[
@@ -196,13 +194,9 @@ class _AnimatedButtonState extends State<AnimatedButton>
               height: widget.size,
               alignment: Alignment.center,
               child: Transform.scale(
-                scale: (_switchOn && _controller.isAnimating)
-                    ? _scaleAnimation.value
-                    : 1.0,
+                scale: (_switchOn && _controller.isAnimating) ? _scaleAnimation.value : 1.0,
                 child: Opacity(
-                  opacity: (_switchOn && _controller.isAnimating)
-                      ? _opacityAnimation.value
-                      : 1,
+                  opacity: (_switchOn && _controller.isAnimating) ? _opacityAnimation.value : 1,
                   child: SizedBox(
                     child: buttonWidget,
                     height: widget.size,
