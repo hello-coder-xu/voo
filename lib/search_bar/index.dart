@@ -73,7 +73,7 @@ class VooSearchBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.center,
       color: bgColor ?? Colors.white,
-      child: Row(children: children),
+      child: Row(children: children, crossAxisAlignment: CrossAxisAlignment.center),
     );
   }
 }

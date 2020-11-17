@@ -1,0 +1,41 @@
+name: Flutter Web
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: flutter_voo_web
+    env:
+      my_secret: ${{secrets.commit_secret}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: beta
+      - name: 项目开启web
+        run: flutter config --enable-web
+        working-directory: ./example
+      - name: 项目配置web
+        run: flutter create .
+        working-directory: ./example
+      - name: 项目更新依赖包
+        run: flutter pub get
+        working-directory: ./example
+      - name: 编译web
+        run: flutter build web --release
+        working-directory: ./example
+      - run: |
+          cd example/build/web
+          git init
+          git config --global user.email yx544806988@qq.com
+          git config --global user.name yx544806988
+          git status
+          git remote add origin https://${{secrets.commit_secret}}@github.com/yx544806988/voo.git
+          git checkout -b gh-pages
+          git add --all
+          git commit -m "update"
+          git push origin gh-pages -f
+

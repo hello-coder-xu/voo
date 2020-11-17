@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^0.1.3
+  cupertino_icons: ^1.0.1
   voo:
     path: ../
 
@@ -21,7 +21,6 @@ dev_dependencies:
 
 
 flutter:
-
   uses-material-design: true
 
   assets:

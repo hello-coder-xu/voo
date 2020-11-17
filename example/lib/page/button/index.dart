@@ -11,7 +11,7 @@ class ButtonPage extends StatelessWidget {
 
     children.add(Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('主要操作 Normal'),
         theme: VooButtonTheme.normal,
@@ -20,7 +20,7 @@ class ButtonPage extends StatelessWidget {
     ));
 
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('辅助操作 Accent'),
         theme: VooButtonTheme.accent,
@@ -29,7 +29,7 @@ class ButtonPage extends StatelessWidget {
     ));
 
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('胶囊按钮'),
         theme: VooButtonTheme.capsule,
@@ -38,7 +38,7 @@ class ButtonPage extends StatelessWidget {
     ));
 
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('文字按钮'),
         theme: VooButtonTheme.text,
@@ -50,7 +50,7 @@ class ButtonPage extends StatelessWidget {
 
     children.add(Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('主要操作 Normal'),
         theme: VooButtonTheme.normal,
@@ -58,7 +58,7 @@ class ButtonPage extends StatelessWidget {
     ));
 
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('辅助操作 Accent'),
         theme: VooButtonTheme.accent,
@@ -66,7 +66,7 @@ class ButtonPage extends StatelessWidget {
     ));
 
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('胶囊按钮'),
         theme: VooButtonTheme.capsule,
@@ -74,7 +74,7 @@ class ButtonPage extends StatelessWidget {
     ));
 
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('文字按钮'),
         theme: VooButtonTheme.text,

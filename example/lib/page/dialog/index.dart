@@ -22,10 +22,11 @@ class DialogPage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '带图弹窗'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 8),
       child: Wrap(
         runSpacing: 10,
         spacing: 10,
+        alignment: WrapAlignment.start,
         children: [
           itemView(title: '带图标弹框', onTap: () => iconDialog(context)),
           itemView(title: '图片弹框', onTap: () => imageDialog(context)),
@@ -35,7 +36,7 @@ class DialogPage extends StatelessWidget {
     ));
     children.add(UiComponent.getListTile(title: '不带图弹窗'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 8),
       child: Wrap(
         runSpacing: 10,
         spacing: 10,
@@ -50,7 +51,7 @@ class DialogPage extends StatelessWidget {
     ));
     children.add(UiComponent.getListTile(title: '运营活动弹窗'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 8),
       child: Wrap(
         runSpacing: 10,
         spacing: 10,

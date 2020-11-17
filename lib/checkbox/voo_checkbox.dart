@@ -33,7 +33,7 @@ class VooCheckBox extends StatelessWidget {
       children.add(WidgetSpan(child: checkBoxIcon));
       children.add(WidgetSpan(child: SizedBox(width: 4)));
       children.add(child);
-      currentChild = Text.rich(TextSpan(children: children, style: TextStyle(color: VooColors.titleColor)));
+      currentChild = Text.rich(TextSpan(children: children, style: TextStyle(color: VooColors.titleColor)), textAlign: TextAlign.left);
     }
     if (!enable) return Opacity(opacity: 0.5, child: currentChild);
     return GestureDetector(

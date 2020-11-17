@@ -63,6 +63,7 @@ class VooResult extends StatelessWidget {
     ));
 
     if (showCancel) {
+      children.add(SizedBox(height: 8));
       children.add(VooButton(
         child: Text(cancel ?? ''),
         theme: VooButtonTheme.accent,

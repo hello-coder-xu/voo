@@ -12,7 +12,7 @@ class ToastPage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '文字提示'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('文字提示'),
         onPressed: () {
@@ -23,7 +23,7 @@ class ToastPage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '加载提示'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('加载提示'),
         onPressed: () {
@@ -37,7 +37,7 @@ class ToastPage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '成功/失败提示'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('操作成功'),
         onPressed: () {
@@ -49,7 +49,7 @@ class ToastPage extends StatelessWidget {
       ),
     ));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('失败提示'),
         onPressed: () {
@@ -61,7 +61,7 @@ class ToastPage extends StatelessWidget {
       ),
     ));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
+      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
       child: VooButton(
         child: Text('警告信息'),
         onPressed: () {

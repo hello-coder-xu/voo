@@ -1,5 +1,8 @@
 import 'package:example/page/avatar/index.dart';
 import 'package:example/page/badge/index.dart';
+import 'package:example/page/bubble/index.dart';
+import 'package:example/page/bubble/index2.dart';
+import 'package:example/page/button/index2.dart';
 import 'package:example/page/cell_code/index.dart';
 import 'package:example/page/cell_password/index.dart';
 import 'package:example/page/collapse/index.dart';
@@ -14,7 +17,10 @@ import 'package:example/page/list/index.dart';
 import 'package:example/page/notify/index.dart';
 import 'package:example/page/result/index.dart';
 import 'package:example/page/search_bar/index.dart';
+import 'package:example/page/switcher/index.dart';
+import 'package:example/page/tabbar/index.dart';
 import 'package:example/page/terms/index.dart';
+import 'package:example/page/text/index.dart';
 import 'package:example/page/toast/index.dart';
 import 'package:example/page/bottomsheet/index.dart';
 import 'package:example/page/button/index.dart';
@@ -34,12 +40,7 @@ import 'package:flutter/material.dart';
 import 'package:voo/color/index.dart';
 import 'package:voo/voo.dart';
 
-import '../bubble/index.dart';
-import '../bubble/index2.dart';
-import '../button/index2.dart';
-import '../switcher/index.dart';
-import '../tabbar/index.dart';
-import '../text/index.dart';
+
 
 ///首页
 class HomePage extends StatefulWidget {
@@ -61,7 +62,7 @@ class HomePageState extends State<HomePage> {
         '按钮 Button': ButtonPage(),
         '表单 Form': FormPage(),
         '协议 Terms': TermsPage(),
-        '筛选 Filter': FilterPage(),
+        '下拉菜单 DropdownMenu': FilterPage(),
         '选择器 Picker': PickerPage(),
       },
       '信息展示': {
@@ -98,7 +99,7 @@ class HomePageState extends State<HomePage> {
         '加载 Loading': LoadingPage(),
         '消息通知 Notify': NotifyPage(),
         '弹出框 Dialog': DialogPage(),
-        '下拉菜单 DropdownMenu': NavBarPage(),
+        '下拉菜单 DropdownMenu': FilterPage(),
         '轻提示 Toast': ToastPage(),
         '异常 ErrorPage': ErrorPage(),
       },
@@ -115,7 +116,7 @@ class HomePageState extends State<HomePage> {
       },
       '导航组件': {
         '导航栏 NavBar': NavBarPage(),
-        '筛选 Filter': FilterPage(),
+        '下拉菜单 DropdownMenu': FilterPage(),
         '搜索框 SearchBar': SearchBarPage(),
         '协议 Terms': TermsPage(),
         '蒙层引导 DemoGuide': GuidePage(),
