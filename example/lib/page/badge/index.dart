@@ -1,9 +1,11 @@
-import 'package:example/comm/ui_component.dart';
+
 import 'package:flutter/material.dart';
 import 'package:voo/cell/index.dart';
 import 'package:voo/color/index.dart';
 import 'package:voo/icon/index.dart';
 import 'package:voo/voo.dart';
+
+import '../../comm/ui_component.dart';
 
 ///微标视图
 class BadgePage extends StatelessWidget {

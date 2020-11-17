@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:example/comm/ui_component.dart';
+import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
 import 'package:voo/voo.dart';
 
