@@ -79,15 +79,18 @@ class FormPageState extends State<FormPage> {
 
     children.add(UiComponent.getListTile(title: '多行输入框'));
     children.add(VooCellField(
-      title: Text('不错信息', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '(选填)您的个人喜好与其他更详细信息',
+      title: Text('喜欢', style: TextStyle(fontSize: 16, color: Colors.black87)),
+      child: Padding(
+        padding: EdgeInsets.only(top: 8),
+        child: VooField(
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: '(选填)您的个人喜好与其他更详细信息',
+          ),
+          style: TextStyle(fontSize: 16, color: Colors.black87),
+          minLines: 3,
+          maxLines: 10,
         ),
-        style: TextStyle(fontSize: 16, color: Colors.black87),
-        minLines: 3,
-        maxLines: 10,
       ),
       paddingWidth: 16,
     ));

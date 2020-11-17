@@ -12,13 +12,13 @@ class VooError extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case VooErrorType.empty_comment:
-        return Image.asset('assets/error_page/empty-comment.png', package: 'voo');
+        return Image.asset('assets/error_page/empty_comment.png', package: 'voo');
       case VooErrorType.empty_data:
-        return Image.asset('assets/error_page/empty-data.png', package: 'voo');
+        return Image.asset('assets/error_page/empty_data.png', package: 'voo');
       case VooErrorType.net_error:
-        return Image.asset('assets/error_page/net-error.png', package: 'voo');
+        return Image.asset('assets/error_page/net_error.png', package: 'voo');
       case VooErrorType.sys_error:
-        return Image.asset('assets/error_page/sys-error.png', package: 'voo');
+        return Image.asset('assets/error_page/sys_error.png', package: 'voo');
       default:
         return SizedBox.shrink();
     }

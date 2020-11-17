@@ -187,7 +187,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStat
         var buttonWidget =
             widget.buttonBuilder?.call((_switchOn ?? true)) ?? _defaultWidgetBuilder((_switchOn ?? true), widget.size);
         return Stack(
-          overflow: Overflow.visible,
+          clipBehavior: Clip.antiAlias,
           children: <Widget>[
             Container(
               width: widget.size,

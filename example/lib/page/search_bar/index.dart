@@ -13,6 +13,8 @@ class SearchBarPage extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: '请输入搜索内容',
+          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+          isCollapsed: true,
         ),
         showClear: true,
       ),
@@ -27,6 +29,8 @@ class SearchBarPage extends StatelessWidget {
           border: InputBorder.none,
           hintText: '请输入搜索内容',
           hintStyle: TextStyle(color: Colors.white),
+          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+          isCollapsed: true,
         ),
         style: TextStyle(color: Colors.white),
         showClear: true,
@@ -40,6 +44,8 @@ class SearchBarPage extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: '请输入搜索内容',
+          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+          isCollapsed: true,
         ),
         showClear: true,
       ),
@@ -52,6 +58,8 @@ class SearchBarPage extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: '请输入搜索内容',
+          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+          isCollapsed: true,
         ),
         showClear: true,
       ),
@@ -76,6 +84,8 @@ class SearchBarPage extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: '请输入搜索内容',
+          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+          isCollapsed: true,
         ),
         showClear: true,
       ),

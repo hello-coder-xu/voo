@@ -94,7 +94,7 @@ class _StateSwitcherState extends State<StateSwitcher> {
           },
           child: getStatePage(
             image: Image.asset(
-              "assets/error_page/empty-data.png",
+              "assets/error_page/empty_data.png",
               package: "voo",
               width: 310,
               height: 175,
@@ -114,7 +114,7 @@ class _StateSwitcherState extends State<StateSwitcher> {
           },
           child: getStatePage(
             image: Image.asset(
-              "assets/error_page/sys-error.png",
+              "assets/error_page/sys_error.png",
               package: "voo",
               width: 310,
               height: 210,

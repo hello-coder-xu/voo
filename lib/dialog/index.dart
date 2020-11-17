@@ -206,7 +206,7 @@ class _VooDialog extends StatelessWidget {
     if (tempHorizontal) {
       return Container(width: 0.5, height: 40, color: Colors.grey[200]);
     } else {
-      return Divider(height: 1, color: Colors.grey[200]);
+      return Container(width: double.infinity, height: 0.5, color: Colors.grey[200]);
     }
   }
 

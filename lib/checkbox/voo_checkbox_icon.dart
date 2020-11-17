@@ -18,9 +18,9 @@ class VooCheckBoxIcon extends StatelessWidget {
     assert(value != null);
     Widget child;
     if (value) {
-      child = selectIcon ?? Icon(Icons.check_circle, size: 16, color: VooColors.accentColor);
+      child = selectIcon ?? Icon(Icons.check_circle, size: 20, color: VooColors.accentColor);
     } else {
-      child = unSelectIcon ?? Icon(Icons.radio_button_unchecked, size: 16, color: VooColors.subTitleColor);
+      child = unSelectIcon ?? Icon(Icons.radio_button_unchecked, size: 20, color: VooColors.subTitleColor);
     }
     return child;
   }

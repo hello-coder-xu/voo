@@ -13,10 +13,6 @@ class FieldPageState extends State<FieldPage> {
   TextEditingController controller1 = TextEditingController();
   bool obscureText1 = true;
 
-  void initState() {
-    super.initState();
-  }
-
   //内容视图
   Widget contentView() {
     List<Widget> children = [];
@@ -29,6 +25,8 @@ class FieldPageState extends State<FieldPage> {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: '请输入文本',
+          contentPadding: EdgeInsets.symmetric(vertical: 4),
+          isCollapsed: true,
         ),
         style: TextStyle(fontSize: 16, color: Colors.black87),
         showClear: true,
@@ -57,7 +55,7 @@ class FieldPageState extends State<FieldPage> {
           hintText: '请输入手机号',
         ),
         keyboardType: TextInputType.number,
-        inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+        inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'\d+'))],
         style: TextStyle(fontSize: 16, color: Colors.black87),
       ),
       paddingWidth: 32,
@@ -71,7 +69,7 @@ class FieldPageState extends State<FieldPage> {
           hintText: '请输入整数',
         ),
         keyboardType: TextInputType.number,
-        inputFormatters: [WhitelistingTextInputFormatter.digitsOnly],
+        inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'\d+'))],
         style: TextStyle(fontSize: 16, color: Colors.black87),
       ),
       paddingWidth: 48,
@@ -85,7 +83,7 @@ class FieldPageState extends State<FieldPage> {
           hintText: '请输入数字(支持小数)',
         ),
         keyboardType: TextInputType.number,
-        inputFormatters: [WhitelistingTextInputFormatter(RegExp("[0-9.]"))],
+        inputFormatters: [FilteringTextInputFormatter.allow(RegExp("[0-9.]"))],
         style: TextStyle(fontSize: 16, color: Colors.black87),
       ),
       paddingWidth: 48,
@@ -215,35 +213,43 @@ class FieldPageState extends State<FieldPage> {
     children.add(UiComponent.getListTile(title: '高度自适应'));
     children.add(VooCellField(
       title: Text('留言', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '输入留言',
+      child: Padding(
+        padding: EdgeInsets.only(top: 16),
+        child: VooField(
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: '输入留言',
+            contentPadding: EdgeInsets.symmetric(vertical: 4),
+            isCollapsed: true,
+          ),
+          style: TextStyle(fontSize: 16, color: Colors.black87),
+          minLines: 3,
+          maxLines: 10,
         ),
-        style: TextStyle(fontSize: 16, color: Colors.black87),
-        minLines: 3,
-        maxLines: 10,
       ),
       paddingWidth: 48,
     ));
-
 
     children.add(UiComponent.getListTile(title: '显示字数统计'));
     children.add(VooCellField(
       title: Text('留言', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '输入留言',
+      child: Padding(
+        padding: EdgeInsets.only(top: 16),
+        child: VooField(
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            hintText: '输入留言',
+            contentPadding: EdgeInsets.symmetric(vertical: 4),
+            isCollapsed: true,
+          ),
+          style: TextStyle(fontSize: 16, color: Colors.black87),
+          minLines: 3,
+          maxLines: 10,
+          maxLength: 50,
         ),
-        style: TextStyle(fontSize: 16, color: Colors.black87),
-        minLines: 3,
-        maxLines: 10,
-        maxLength: 50,
       ),
       paddingWidth: 48,
     ));
-
 
     children.add(UiComponent.getListTile(title: '输入框内容对齐'));
     children.add(VooCellField(
