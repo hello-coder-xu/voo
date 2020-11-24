@@ -10,7 +10,7 @@ class VooAvatar extends StatelessWidget {
   final String title;
   final String subTitle;
 
-  VooAvatar({this.theme = VooAvatarTheme.mini, this.icon, this.title, this.subTitle});
+  VooAvatar({this.theme = VooAvatarTheme.mini, this.icon, this.title = '', this.subTitle});
 
   ///图标
   Widget iconView() {
