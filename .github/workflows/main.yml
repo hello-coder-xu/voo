@@ -33,9 +33,9 @@ jobs:
           git config --global user.email yx544806988@qq.com
           git config --global user.name yx544806988
           git status
-          git remote add origin https://${{secrets.commit_secret}}@github.com/yx544806988/voo.git
-          git checkout -b gh-pages
+          git remote add origin https://${{secrets.commit_secret}}@github.com/voo-flutter/voo-flutter.github.io.git
+          git checkout -b master
           git add --all
           git commit -m "update"
-          git push origin gh-pages -f
+          git push origin master -f
 
