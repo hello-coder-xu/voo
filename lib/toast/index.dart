@@ -81,8 +81,6 @@ class VooToast {
       result: result,
     );
   }
-
-
 }
 
 Function _showToast(
@@ -131,8 +129,6 @@ Function _showToast(
     _overlayEntry.remove();
   };
 }
-
-
 
 class _FToastView extends StatefulWidget {
   // 提示内容

@@ -105,11 +105,7 @@ class _TabBarPageState extends State<TabBarPage> with TickerProviderStateMixin {
     );
   }
 
-  Widget renderTabBar({
-    Color labelColor,
-    Color unselectedLabelColor,
-    Decoration indicator,
-  }) {
+  Widget renderTabBar({Color labelColor, Color unselectedLabelColor, Decoration indicator}) {
     return Container(
       height: 40,
       width: double.infinity,
@@ -122,14 +118,8 @@ class _TabBarPageState extends State<TabBarPage> with TickerProviderStateMixin {
         labelPadding: EdgeInsets.zero,
         unselectedLabelColor: unselectedLabelColor ?? Colors.black,
         isScrollable: true,
-        labelStyle: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-        ),
-        unselectedLabelStyle: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.normal,
-        ),
+        labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+        unselectedLabelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
         indicatorColor: Colors.black,
         // indicator: RoundTabIndicator(height: 3, width: 25),
         indicator: indicator,

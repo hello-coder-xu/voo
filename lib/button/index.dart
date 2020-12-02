@@ -12,7 +12,7 @@ class VooButton extends StatelessWidget {
   final bool enable;
 
   VooButton({
-    this.child,
+    @required this.child,
     this.theme = VooButtonTheme.normal,
     this.elevation = 0.0,
     this.onPressed,
@@ -28,7 +28,7 @@ class VooButton extends StatelessWidget {
         shapeBorder = RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(3.0)),
         );
-        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12));
+        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12, color: Colors.white));
         return SizedBox(
           width: double.infinity,
           child: RaisedButton(
@@ -76,7 +76,7 @@ class VooButton extends StatelessWidget {
         shapeBorder = RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(18)),
         );
-        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12));
+        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12, color: Colors.white));
         return SizedBox(
           width: double.infinity,
           child: RaisedButton(
@@ -92,7 +92,7 @@ class VooButton extends StatelessWidget {
           ),
         );
       case VooButtonTheme.text:
-        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12,color: Colors.black));
+        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12, color: Colors.black));
         return SizedBox(
           width: double.infinity,
           child: FlatButton(

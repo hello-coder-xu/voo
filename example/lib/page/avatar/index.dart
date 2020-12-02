@@ -1,6 +1,7 @@
+import 'package:voo/avatar/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
 
 ///头像
 class AvatarPage extends StatelessWidget {

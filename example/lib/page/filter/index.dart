@@ -1,3 +1,5 @@
+import 'package:example/comm/platform_utils.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
 import 'package:voo/voo.dart';
@@ -189,8 +191,12 @@ class FilterPageState extends State<FilterPage> {
       onSubmit: onFilterContentSubmit,
     );
 
+    double toTop = 56.0 + 40;
+    if (PlatformUtils.isWeb) {
+      toTop -= 16;
+    }
     return VooFilterView(
-      offset: Offset(0, 56.0 + 40),
+      offset: Offset(0, toTop),
       close: filterMaskClose1,
       child: child,
     );
@@ -205,9 +211,12 @@ class FilterPageState extends State<FilterPage> {
       type: VooFilterContentType.list,
       onSelect: onFilterContentSelect2,
     );
-
+    double toTop = 56.0 + 40 + 56 + 40;
+    if (PlatformUtils.isWeb) {
+      toTop -= 16;
+    }
     return VooFilterView(
-      offset: Offset(0, 56.0 + 40 + 56 + 40),
+      offset: Offset(0, toTop),
       close: filterMaskClose2,
       child: child,
     );

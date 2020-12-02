@@ -1,6 +1,9 @@
+import 'package:voo/color/index.dart';
+import 'package:voo/result/index.dart';
+import 'package:voo/toast/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
 
 ///结果页
 class ResultPage extends StatelessWidget {

@@ -15,7 +15,8 @@ class ButtonPage extends StatelessWidget {
       child: VooButton(
         child: Text('主要操作 Normal'),
         theme: VooButtonTheme.normal,
-        onPressed: () {},
+        onPressed: () {
+        },
       ),
     ));
 

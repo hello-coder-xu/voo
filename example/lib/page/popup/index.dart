@@ -1,7 +1,8 @@
+import 'package:voo/popup/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
 import 'package:voo/cell/index.dart';
-import 'package:voo/voo.dart';
 
 ///弹出框
 class PopupPage extends StatelessWidget {
@@ -195,7 +196,6 @@ class PopupPage extends StatelessWidget {
         break;
     }
 
-
     VooPopup.showPopup(
       context: context,
       type: vooPopupType,
@@ -203,3 +203,4 @@ class PopupPage extends StatelessWidget {
     );
   }
 }
+

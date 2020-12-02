@@ -1,6 +1,7 @@
+import 'package:voo/loading/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
 
 ///加载页面
 class LoadingPage extends StatelessWidget {

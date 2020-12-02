@@ -2,7 +2,6 @@ import 'package:example/page/home/index.dart';
 import 'package:flutter/material.dart';
 import 'package:voo/color/index.dart';
 
-
 void main() {
   runApp(MaterialApp(
     title: 'voo Demo',

@@ -17,7 +17,6 @@ class GuidePageState extends State<GuidePage> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       screenWidth = MediaQuery.of(context).size.width;
       screenHeight = MediaQuery.of(context).size.height;
-
     });
   }
 

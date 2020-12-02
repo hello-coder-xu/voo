@@ -1,7 +1,8 @@
+import 'package:voo/notify/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
 import 'package:voo/cell/index.dart';
-import 'package:voo/voo.dart';
 
 ///通知页面
 class NotifyPage extends StatelessWidget {
@@ -182,3 +183,5 @@ class NotifyPage extends StatelessWidget {
     }
   }
 }
+
+

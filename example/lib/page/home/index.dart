@@ -40,8 +40,6 @@ import 'package:flutter/material.dart';
 import 'package:voo/color/index.dart';
 import 'package:voo/voo.dart';
 
-
-
 ///首页
 class HomePage extends StatefulWidget {
   @override
@@ -156,15 +154,13 @@ class HomePageState extends State<HomePage> {
         children.add(Container(
           margin: EdgeInsets.only(top: 16),
           alignment: Alignment.centerLeft,
-          child: Text(title,
-              style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)),
+          child: Text(title, style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)),
         ));
 
         map.forEach((key, value) {
           children.add(GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context, new MaterialPageRoute(builder: (context) => value));
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => value));
             },
             child: Container(
               height: 40,
@@ -178,11 +174,8 @@ class HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(key,
-                      style:
-                          TextStyle(fontSize: 14, color: VooColors.titleColor)),
-                  Icon(VooIcon.arrow_right,
-                      color: VooColors.subTitleColor, size: 16),
+                  Text(key, style: TextStyle(fontSize: 14, color: VooColors.titleColor)),
+                  Icon(VooIcon.arrow_right, color: VooColors.subTitleColor, size: 16),
                 ],
               ),
             ),
@@ -190,7 +183,7 @@ class HomePageState extends State<HomePage> {
         });
       });
     });
-
+    
     return Column(children: children);
   }
 

@@ -1,6 +1,11 @@
+import 'package:voo/bottom_sheet/index.dart';
+import 'package:voo/cell/index.dart';
+import 'package:voo/color/index.dart';
+import 'package:voo/icon/index.dart';
+import 'package:voo/toast/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
 
 ///底部面板
 class BottomSheetPage extends StatelessWidget {

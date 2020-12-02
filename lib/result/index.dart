@@ -10,8 +10,8 @@ class VooResult extends StatelessWidget {
   final String confirm;
   final String cancel;
   final bool showCancel;
-  final Function onConfirm;
-  final Function onCancel;
+  final VoidCallback onConfirm;
+  final VoidCallback onCancel;
 
   VooResult({
     @required this.icon,
