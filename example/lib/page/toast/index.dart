@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:voo/button/index.dart';
+import 'package:voo/toast/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
 
 ///轻提示
 class ToastPage extends StatelessWidget {
@@ -12,7 +14,7 @@ class ToastPage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '文字提示'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
         child: Text('文字提示'),
         onPressed: () {
@@ -23,7 +25,7 @@ class ToastPage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '加载提示'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
         child: Text('加载提示'),
         onPressed: () {
@@ -37,7 +39,7 @@ class ToastPage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '成功/失败提示'));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
         child: Text('操作成功'),
         onPressed: () {
@@ -49,7 +51,7 @@ class ToastPage extends StatelessWidget {
       ),
     ));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
         child: Text('失败提示'),
         onPressed: () {
@@ -61,7 +63,7 @@ class ToastPage extends StatelessWidget {
       ),
     ));
     children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
         child: Text('警告信息'),
         onPressed: () {

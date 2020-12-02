@@ -1,5 +1,146 @@
 import 'package:flutter/material.dart';
 
+class VooBottomSheet {
+  //底部菜单-列表
+  static Future showListView({
+    @required BuildContext context,
+    List<String> list,
+    Color backgroundColor,
+    double elevation,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    Color barrierColor,
+    bool isScrollControlled = false,
+    bool useRootNavigator = false,
+    bool isDismissible = true,
+    bool enableDrag = true,
+    RouteSettings routeSettings,
+    bool isTopRound = false,
+    Function(String value) onSelect,
+    VoidCallback onCancel,
+  }) {
+    WidgetBuilder builder = (context) => VBottomSheetOptionView(list: list, onSelect: onSelect, onCancel: onCancel);
+    return _show(
+      context: context,
+      builder: builder,
+      backgroundColor: backgroundColor,
+      elevation: elevation,
+      shape: shape ?? isTopRound
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)))
+          : null,
+      clipBehavior: clipBehavior,
+      barrierColor: barrierColor,
+      isScrollControlled: isScrollControlled,
+      useRootNavigator: useRootNavigator,
+      isDismissible: isDismissible,
+      enableDrag: enableDrag,
+      routeSettings: routeSettings,
+    );
+  }
+
+  static Future showDescribeView({
+    @required BuildContext context,
+    @required Widget child,
+    Color backgroundColor,
+    double elevation,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    Color barrierColor,
+    bool isScrollControlled = false,
+    bool useRootNavigator = false,
+    bool isDismissible = true,
+    bool enableDrag = true,
+    RouteSettings routeSettings,
+    bool isTopRound = false,
+    VoidCallback onDelete,
+    VoidCallback onCancel,
+  }) {
+    WidgetBuilder builder = (context) => VBottomSheetTextView(child: child, onDelete: onDelete, onCancel: onCancel);
+    return _show(
+      context: context,
+      builder: builder,
+      backgroundColor: backgroundColor,
+      elevation: elevation,
+      shape: shape ?? isTopRound
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)))
+          : null,
+      clipBehavior: clipBehavior,
+      barrierColor: barrierColor,
+      isScrollControlled: isScrollControlled,
+      useRootNavigator: useRootNavigator,
+      isDismissible: isDismissible,
+      enableDrag: enableDrag,
+      routeSettings: routeSettings,
+    );
+  }
+
+  static Future showCustomView({
+    @required BuildContext context,
+    @required Widget child,
+    Color backgroundColor,
+    double elevation,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    Color barrierColor,
+    bool isScrollControlled = false,
+    bool useRootNavigator = false,
+    bool isDismissible = true,
+    bool enableDrag = true,
+    RouteSettings routeSettings,
+    bool isTopRound = false,
+    Function(String value) onSelect,
+    VoidCallback onCancel,
+  }) {
+    WidgetBuilder builder = (context) => child;
+    return _show(
+      context: context,
+      builder: builder,
+      backgroundColor: backgroundColor,
+      elevation: elevation,
+      shape: shape ?? isTopRound
+          ? RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)))
+          : null,
+      clipBehavior: clipBehavior,
+      barrierColor: barrierColor,
+      isScrollControlled: isScrollControlled,
+      useRootNavigator: useRootNavigator,
+      isDismissible: isDismissible,
+      enableDrag: enableDrag,
+      routeSettings: routeSettings,
+    );
+  }
+
+  static Future _show({
+    @required BuildContext context,
+    WidgetBuilder builder,
+    Color backgroundColor,
+    double elevation,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    Color barrierColor,
+    bool isScrollControlled = false,
+    bool useRootNavigator = false,
+    bool isDismissible = true,
+    bool enableDrag = true,
+    RouteSettings routeSettings,
+  }) {
+    return showModalBottomSheet(
+      context: context,
+      builder: builder,
+      backgroundColor: backgroundColor,
+      elevation: elevation,
+      shape: shape,
+      clipBehavior: clipBehavior,
+      barrierColor: barrierColor,
+      isScrollControlled: isScrollControlled,
+      useRootNavigator: useRootNavigator,
+      isDismissible: isDismissible,
+      enableDrag: enableDrag,
+      routeSettings: routeSettings,
+    );
+  }
+}
+
 ///列表选择视图
 class VBottomSheetOptionView extends StatelessWidget {
   final List<String> list;

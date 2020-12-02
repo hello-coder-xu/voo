@@ -1,6 +1,9 @@
+import 'package:voo/collapse/voo_collapse_bean.dart';
+import 'package:voo/collapse/voo_group_collapse.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
+
 
 ///折叠视图
 class CollapsePage extends StatefulWidget {

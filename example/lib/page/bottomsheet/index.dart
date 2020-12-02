@@ -43,46 +43,40 @@ class BottomSheetPage extends StatelessWidget {
 
   //
   void listPanel(BuildContext context) {
-    showModalBottomSheet(
+    VooBottomSheet.showListView(
       context: context,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
-      builder: (context) => VBottomSheetOptionView(
-        list: ["选项一", "选项二", "选项三"],
-        onSelect: (value) {
-          VooToast.showToast(context, msg: value);
-        },
-        onCancel: () {
-          VooToast.showToast(context, msg: '点击取消');
-        },
-      ),
+      list: ["选项一", "选项二", "选项三"],
+      onSelect: (value) {
+        VooToast.showToast(context, msg: value);
+      },
+      onCancel: () {
+        VooToast.showToast(context, msg: '点击取消');
+      },
     );
   }
 
   //
   void textOperation(BuildContext context) {
-    showModalBottomSheet(
+    VooBottomSheet.showDescribeView(
       context: context,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25.0))),
-      builder: (context) => VBottomSheetTextView(
-        child: Container(
-          padding: EdgeInsets.all(16),
-          child: Text('这是一个不可逆转的操作，用户需谨慎考虑再做出选择，这里是一个再次确认提醒。'),
-        ),
-        onDelete: () {
-          VooToast.showToast(context, msg: '点击删除');
-        },
-        onCancel: () {
-          VooToast.showToast(context, msg: '点击取消');
-        },
+      child: Container(
+        padding: EdgeInsets.all(16),
+        child: Text('这是一个不可逆转的操作，用户需谨慎考虑再做出选择，这里是一个再次确认提醒。'),
       ),
+      onDelete: () {
+        VooToast.showToast(context, msg: '点击删除');
+      },
+      onCancel: () {
+        VooToast.showToast(context, msg: '点击取消');
+      },
     );
   }
 
   //
   void customOperation(BuildContext context) {
-    showModalBottomSheet(
+    VooBottomSheet.showCustomView(
       context: context,
-      builder: (context) => Container(
+      child: Container(
         height: 300,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,9 @@
+import 'package:voo/field/index.dart';
+import 'package:voo/icon/index.dart';
+import 'package:voo/search_bar/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
 
 ///搜索栏
 class SearchBarPage extends StatelessWidget {

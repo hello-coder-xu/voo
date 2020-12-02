@@ -1,8 +1,12 @@
 import 'package:example/comm/platform_utils.dart';
+import 'package:voo/filter/index.dart';
+import 'package:voo/filter/voo_filter_bean.dart';
+import 'package:voo/filter/voo_filter_content.dart';
+import 'package:voo/filter/voo_filter_tab.dart';
 
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
+
 
 ///筛选页面
 class FilterPage extends StatefulWidget {
@@ -328,3 +332,4 @@ class FilterPageState extends State<FilterPage> {
     setState(() {});
   }
 }
+

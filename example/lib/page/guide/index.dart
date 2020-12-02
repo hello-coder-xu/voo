@@ -1,6 +1,9 @@
+import 'package:voo/button/index.dart';
+import 'package:voo/guide/voo_mask.dart';
+import 'package:voo/util/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
 
 ///蒙版页面
 class GuidePage extends StatefulWidget {

@@ -1,6 +1,7 @@
+import 'package:voo/error_page/index.dart';
+
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
 
 ///异常页面
 class ErrorPage extends StatelessWidget {
