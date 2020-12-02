@@ -77,214 +77,174 @@ class DialogPage extends StatelessWidget {
 
   //图标弹框
   void iconDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showImageDialog(
       context: context,
-      builder: (context) {
-        return VooImageDialog(
-          title: '标题',
-          fit: false,
-          icon: Icon(VooIcon.company),
-          content: Text('说明文案，言简意赅最好不超过2行'),
-          confirm: Text('主操作'),
-          onConfirm: () {
-            VooToast.showToast(context, msg: '点击主操作');
-          },
-          close: () {
-            VooToast.showToast(context, msg: '点击关闭');
-          },
-        );
+      title: '标题',
+      fit: false,
+      icon: Icon(VooIcon.company),
+      content: Text('说明文案，言简意赅最好不超过2行'),
+      confirm: Text('主操作'),
+      onConfirm: () {
+        VooToast.showToast(context, msg: '点击主操作');
+      },
+      close: () {
+        VooToast.showToast(context, msg: '点击关闭');
       },
     );
   }
 
   //图片弹框
   void imageDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showImageDialog(
       context: context,
-      builder: (context) {
-        return VooImageDialog(
-          title: '标题',
-          fit: false,
-          icon: Image.asset('assets/icon/100.png', width: 120, height: 120),
-          content: Text('说明文案，言简意赅最好不超过2行'),
-          confirm: Text('主操作'),
-          onConfirm: () {
-            VooToast.showToast(context, msg: '点击主操作');
-          },
-          close: () {
-            VooToast.showToast(context, msg: '点击关闭');
-          },
-        );
+      title: '标题',
+      fit: false,
+      icon: Image.asset('assets/icon/100.png', width: 120, height: 120),
+      content: Text('说明文案，言简意赅最好不超过2行'),
+      confirm: Text('主操作'),
+      onConfirm: () {
+        VooToast.showToast(context, msg: '点击主操作');
+      },
+      close: () {
+        VooToast.showToast(context, msg: '点击关闭');
       },
     );
   }
 
   //大图片弹框
   void largeImageDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showImageDialog(
       context: context,
-      builder: (context) {
-        return VooImageDialog(
-          title: '标题',
-          fit: true,
-          icon: Image.asset('assets/comm/banner.webp'),
-          closeIcon: Icon(Icons.close, color: Colors.white),
-          content: Text('说明文案，言简意赅最好不超过2行'),
-          confirm: Text('主操作'),
-          onConfirm: () {
-            VooToast.showToast(context, msg: '点击主操作');
-          },
-          close: () {
-            VooToast.showToast(context, msg: '点击关闭');
-          },
-        );
+      title: '标题',
+      fit: true,
+      icon: Image.asset('assets/comm/banner.webp'),
+      closeIcon: Icon(Icons.close, color: Colors.white),
+      content: Text('说明文案，言简意赅最好不超过2行'),
+      confirm: Text('主操作'),
+      onConfirm: () {
+        VooToast.showToast(context, msg: '点击主操作');
+      },
+      close: () {
+        VooToast.showToast(context, msg: '点击关闭');
       },
     );
   }
 
   //无标题
   void noTitleDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showTextDialog(
       context: context,
-      builder: (context) {
-        return VooDialog(
-          content: Text('说明文案，言简意赅最好不超过2行'),
-          cancel: Text('辅助操作'),
-          confirm: Text('主操作'),
-          onCancel: () {
-            VooToast.showToast(context, msg: '辅助操作');
-          },
-          onConfirm: () {
-            VooToast.showToast(context, msg: '主操作');
-          },
-        );
+      content: Text('说明文案，言简意赅最好不超过2行'),
+      cancel: Text('辅助操作'),
+      confirm: Text('主操作'),
+      onCancel: () {
+        VooToast.showToast(context, msg: '辅助操作');
+      },
+      onConfirm: () {
+        VooToast.showToast(context, msg: '主操作');
       },
     );
   }
 
   //单按钮
   void singleButtonDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showTextDialog(
       context: context,
-      builder: (context) {
-        return VooDialog(
-          title: '标题',
-          content: Text('说明文案，言简意赅最好不超过2行'),
-          confirm: Text('主操作'),
-          onConfirm: () {
-            VooToast.showToast(context, msg: '点击主操作');
-          },
-        );
+      title: '标题',
+      content: Text('说明文案，言简意赅最好不超过2行'),
+      confirm: Text('主操作'),
+      onConfirm: () {
+        VooToast.showToast(context, msg: '点击主操作');
       },
     );
   }
 
   //横向双按钮
   void hDoubleButtonDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showTextDialog(
       context: context,
-      builder: (context) {
-        return VooDialog(
-          title: '标题',
-          content: Text('说明文案，言简意赅最好不超过2行'),
-          cancel: Text('辅助操作'),
-          confirm: Text('主操作'),
-          onCancel: () {
-            VooToast.showToast(context, msg: '点击辅助操作');
-          },
-          onConfirm: () {
-            VooToast.showToast(context, msg: '点击主操作');
-          },
-        );
+      title: '标题',
+      content: Text('说明文案，言简意赅最好不超过2行'),
+      cancel: Text('辅助操作'),
+      confirm: Text('主操作'),
+      onCancel: () {
+        VooToast.showToast(context, msg: '点击辅助操作');
+      },
+      onConfirm: () {
+        VooToast.showToast(context, msg: '点击主操作');
       },
     );
   }
 
   //纵向双按钮
   void vDoubleButtonDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showTextDialog(
       context: context,
-      builder: (context) {
-        return VooDialog(
-          title: '标题',
-          content: Text('说明文案，言简意赅最好不超过2行'),
-          cancel: Text('辅助操作'),
-          confirm: Text('主操作'),
-          horizontal: false,
-          onCancel: () {
-            VooToast.showToast(context, msg: '点击辅助操作');
-          },
-          onConfirm: () {
-            VooToast.showToast(context, msg: '点击主操作');
-          },
-        );
+      title: '标题',
+      content: Text('说明文案，言简意赅最好不超过2行'),
+      cancel: Text('辅助操作'),
+      confirm: Text('主操作'),
+      horizontal: false,
+      onCancel: () {
+        VooToast.showToast(context, msg: '点击辅助操作');
+      },
+      onConfirm: () {
+        VooToast.showToast(context, msg: '点击主操作');
       },
     );
   }
 
   //纵向三按钮
   void vThreeButtonDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showTextDialog(
       context: context,
-      builder: (context) {
-        return VooDialog(
-          title: '标题',
-          content: Text('说明文案，言简意赅最好不超过2行'),
-          confirm: Text('主操作'),
-          middle: Text('更多'),
-          cancel: Text('辅助操作'),
-          horizontal: false,
-          onCancel: () {
-            VooToast.showToast(context, msg: '点击辅助操作');
-          },
-          onMiddle: () {
-            VooToast.showToast(context, msg: '点击更多');
-          },
-          onConfirm: () {
-            VooToast.showToast(context, msg: '点击主操作');
-          },
-        );
+      title: '标题',
+      content: Text('说明文案，言简意赅最好不超过2行'),
+      confirm: Text('主操作'),
+      middle: Text('更多'),
+      cancel: Text('辅助操作'),
+      horizontal: false,
+      onCancel: () {
+        VooToast.showToast(context, msg: '点击辅助操作');
+      },
+      onMiddle: () {
+        VooToast.showToast(context, msg: '点击更多');
+      },
+      onConfirm: () {
+        VooToast.showToast(context, msg: '点击主操作');
       },
     );
   }
 
   //运营活动弹框-小
   void smallOperatingDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showOperationDialog(
       context: context,
-      builder: (context) {
-        return VooOperatingDialog(
-          child: Image.asset(
-            'assets/comm/banner.webp',
-            width: double.infinity,
-            height: 300,
-            fit: BoxFit.cover,
-          ),
-          insetPadding: EdgeInsets.symmetric(horizontal: 32),
-          close: () {
-            VooToast.showToast(context, msg: '点击关闭');
-          },
-        );
+      child: Image.asset(
+        'assets/comm/banner.webp',
+        width: double.infinity,
+        height: 300,
+        fit: BoxFit.cover,
+      ),
+      insetPadding: EdgeInsets.symmetric(horizontal: 32),
+      close: () {
+        VooToast.showToast(context, msg: '点击关闭');
       },
     );
   }
 
   //运营活动弹框-大
   void largeOperatingDialog(BuildContext context) {
-    showDialog(
+    VooDialog.showOperationDialog(
       context: context,
-      builder: (context) {
-        return VooOperatingDialog(
-          child: Image.asset(
-            'assets/comm/banner.webp',
-            width: double.infinity,
-            height: 300,
-            fit: BoxFit.cover,
-          ),
-          close: () {
-            VooToast.showToast(context, msg: '点击关闭');
-          },
-        );
+      child: Image.asset(
+        'assets/comm/banner.webp',
+        width: double.infinity,
+        height: 300,
+        fit: BoxFit.cover,
+      ),
+      close: () {
+        VooToast.showToast(context, msg: '点击关闭');
       },
     );
   }

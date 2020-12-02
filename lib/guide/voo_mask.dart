@@ -6,10 +6,11 @@ class VooMaskView extends StatelessWidget {
   final Widget child;
 
   VooMaskView({
+    Key key,
     this.size = Size.zero,
     this.offset = Offset.zero,
     this.child,
-  });
+  }):super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,123 @@
 import 'package:flutter/material.dart';
 import 'package:voo/color/index.dart';
 
+class VooDialog {
+  static Future showTextDialog({
+    @required BuildContext context,
+    bool barrierDismissible = true,
+    Color barrierColor,
+    bool useSafeArea = true,
+    bool useRootNavigator = true,
+    RouteSettings routeSettings,
+    String title,
+    Widget content,
+    Widget confirm,
+    Widget middle,
+    Widget cancel,
+    VoidCallback onConfirm,
+    VoidCallback onMiddle,
+    VoidCallback onCancel,
+    bool horizontal = true,
+  }) {
+    WidgetBuilder builder = (context) => VooTextDialog(
+          title: title,
+          content: content,
+          middle: middle,
+          cancel: cancel,
+          confirm: confirm,
+          onMiddle: onMiddle,
+          onCancel: onCancel,
+          onConfirm: onConfirm,
+          horizontal: horizontal,
+        );
+    return showDialog(
+      context: context,
+      builder: builder,
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
+    );
+  }
+
+  static Future showImageDialog({
+    @required BuildContext context,
+    bool barrierDismissible = true,
+    Color barrierColor,
+    bool useSafeArea = true,
+    bool useRootNavigator = true,
+    RouteSettings routeSettings,
+    String title,
+    Widget content,
+    Widget confirm,
+    Widget middle,
+    Widget cancel,
+    VoidCallback onConfirm,
+    VoidCallback onMiddle,
+    VoidCallback onCancel,
+    bool horizontal = true,
+    Widget icon,
+    bool fit = false,
+    Widget closeIcon,
+    VoidCallback close,
+  }) {
+    WidgetBuilder builder = (context) => VooImageDialog(
+          title: title,
+          content: content,
+          confirm: confirm,
+          middle: middle,
+          cancel: cancel,
+          onConfirm: onConfirm,
+          onMiddle: onMiddle,
+          onCancel: onCancel,
+          horizontal: horizontal,
+          icon: icon,
+          fit: fit,
+          closeIcon: closeIcon,
+          close: close,
+        );
+    return showDialog(
+      context: context,
+      builder: builder,
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
+    );
+  }
+
+  static Future showOperationDialog({
+    @required BuildContext context,
+    bool barrierDismissible = true,
+    Color barrierColor,
+    bool useSafeArea = true,
+    bool useRootNavigator = true,
+    RouteSettings routeSettings,
+    Widget child,
+    VoidCallback close,
+    EdgeInsets insetPadding,
+  }) {
+    WidgetBuilder builder = (context) => VooOperatingDialog(
+          child: child,
+          insetPadding: insetPadding,
+          close: close,
+        );
+    return showDialog(
+      context: context,
+      builder: builder,
+      barrierDismissible: barrierDismissible,
+      barrierColor: barrierColor,
+      useSafeArea: useSafeArea,
+      useRootNavigator: useRootNavigator,
+      routeSettings: routeSettings,
+    );
+  }
+}
+
 ///文本对话框
-class VooDialog extends StatelessWidget {
+class VooTextDialog extends StatelessWidget {
   final String title;
   final Widget content;
   final Widget confirm;
@@ -13,7 +128,7 @@ class VooDialog extends StatelessWidget {
   final VoidCallback onCancel;
   final bool horizontal;
 
-  VooDialog({
+  VooTextDialog({
     this.title,
     @required this.content,
     this.confirm,
@@ -63,8 +178,9 @@ class VooImageDialog extends StatelessWidget {
   final VoidCallback close;
 
   VooImageDialog({
-    this.title,
     @required this.content,
+    @required this.icon,
+    this.title,
     this.confirm,
     this.middle,
     this.cancel,
@@ -72,7 +188,6 @@ class VooImageDialog extends StatelessWidget {
     this.onMiddle,
     this.onCancel,
     this.horizontal = true,
-    @required this.icon,
     this.fit = false,
     this.closeIcon,
     this.close,
@@ -218,12 +333,13 @@ class _VooDialog extends StatelessWidget {
       children.add(SizedBox(height: 8));
     }
 
+    children.add(SizedBox(height: 8));
     children.add(DefaultTextStyle(
       child: content,
       style: TextStyle(fontSize: 14, color: title == null ? VooColors.titleColor : VooColors.subTitleColor),
     ));
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+      padding: EdgeInsets.all(16),
       alignment: Alignment.center,
       child: Column(children: children),
     );
