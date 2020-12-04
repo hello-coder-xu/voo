@@ -1,40 +1,3 @@
-import 'package:example/page/avatar/index.dart';
-import 'package:example/page/badge/index.dart';
-import 'package:example/page/bubble/index.dart';
-import 'package:example/page/bubble/index2.dart';
-import 'package:example/page/button/index2.dart';
-import 'package:example/page/cell_code/index.dart';
-import 'package:example/page/cell_password/index.dart';
-import 'package:example/page/collapse/index.dart';
-import 'package:example/page/dialog/index.dart';
-import 'package:example/page/error/index.dart';
-import 'package:example/page/field/index.dart';
-import 'package:example/page/filter/index.dart';
-import 'package:example/page/form/index.dart';
-import 'package:example/page/guide/index.dart';
-import 'package:example/page/icon/index.dart';
-import 'package:example/page/list/index.dart';
-import 'package:example/page/notify/index.dart';
-import 'package:example/page/result/index.dart';
-import 'package:example/page/search_bar/index.dart';
-import 'package:example/page/switcher/index.dart';
-import 'package:example/page/tabbar/index.dart';
-import 'package:example/page/terms/index.dart';
-import 'package:example/page/text/index.dart';
-import 'package:example/page/toast/index.dart';
-import 'package:example/page/bottomsheet/index.dart';
-import 'package:example/page/button/index.dart';
-import 'package:example/page/cell/index.dart';
-import 'package:example/page/checkbox/index.dart';
-import 'package:example/page/color/index.dart';
-import 'package:example/page/layout/index.dart';
-import 'package:example/page/loading/index.dart';
-import 'package:example/page/picker/date_time_picker.dart';
-import 'package:example/page/nav_bar/index.dart';
-import 'package:example/page/picker/picker.dart';
-import 'package:example/page/popup/index.dart';
-import 'package:example/page/radio/index.dart';
-import 'package:example/page/style/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:voo/color/index.dart';
@@ -47,79 +10,79 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final List<Map<String, Map<String, Widget>>> list = [
+  final List<Map<String, Map<String, String>>> list = [
     {
       '设计全局': {
-        '颜色 Color': ColorPage(),
-        '图标-系统性 Icon': IconPage(),
+        '颜色 Color': '/ColorPage',
+        '图标-系统性 Icon': '/IconPage',
       },
       '导航栏': {
-        '导航栏 NavigationBar': NavBarPage(),
+        '导航栏 NavigationBar': '/NavBarPage',
       },
       '信息输入': {
-        '按钮 Button': ButtonPage(),
-        '表单 Form': FormPage(),
-        '协议 Terms': TermsPage(),
-        '下拉菜单 DropdownMenu': FilterPage(),
-        '选择器 Picker': PickerPage(),
+        '按钮 Button': '/ButtonPage',
+        '表单 Form': '/FormPage',
+        '协议 Terms': '/TermsPage',
+        '下拉菜单 DropdownMenu': '/FilterPage',
+        '选择器 Picker': '/PickerPage',
       },
       '信息展示': {
-        '列表 List': ListPage(),
-        '折叠面板 Collapse': CollapsePage(),
-        '头像 Avatar': AvatarPage(),
-        '搜索框 SearchBar': SearchBarPage(),
+        '列表 List': '/ListPage',
+        '折叠面板 Collapse': '/CollapsePage',
+        '头像 Avatar': '/AvatarPage',
+        '搜索框 SearchBar': '/SearchBarPage',
       },
       '反馈': {
-        '微标 Badge': BadgePage(),
-        '对话框 Dialog': DialogPage(),
-        '底部面板 BottomSheet': BottomSheetPage(),
-        '轻提示 Toast': ToastPage(),
-        '操作结果 Result': ResultPage(),
-        '异常 ErrorPage': ErrorPage(),
-        '蒙层引导 DemoGuide': GuidePage(),
+        '微标 Badge': '/BadgePage',
+        '对话框 Dialog': '/DialogPage',
+        '底部面板 BottomSheet': '/BottomSheetPage',
+        '轻提示 Toast': '/ToastPage',
+        '操作结果 Result': '/ResultPage',
+        '异常 ErrorPage': '/ErrorPage',
+        '蒙层引导 DemoGuide': '/GuidePage',
       },
       '基础组件': {
-        '内置样式 Style': StylePage(),
-        '布局 Layout': LayoutPage(),
-        '100定制图标 Icons': IconPage(),
-        '按钮Button': ButtonPage(),
-        '动画按钮Button': AnimatedButtonPage(),
-        '可展开的Text': ExpandableTextPage(),
-        '单元格 Cell': CellPage(),
-        '头像 Avatar': AvatarPage(),
-        '100操作结果': ResultPage(),
-        '气泡框 （聊天页面）': BubbleBoxPage(),
-        '气泡框 （弹框）': BubbleBoxPage2(),
+        '内置样式 Style': '/StylePage',
+        '布局 Layout': '/LayoutPage',
+        '100定制图标 Icons': '/IconPage',
+        '按钮Button': '/ButtonPage',
+        '动画按钮Button': '/AnimatedButtonPage',
+        '可展开的Text': '/ExpandableTextPage',
+        '单元格 Cell': '/CellPage',
+        '头像 Avatar': '/AvatarPage',
+        '100操作结果': '/ResultPage',
+        '气泡框 （聊天页面）': '/BubbleBoxPage',
+        '气泡框 （弹框）': '/BubbleBoxPage2',
       },
       '反馈组件': {
-        '底部面板BottomSheet': BottomSheetPage(),
-        '弹出层 Popup': PopupPage(),
-        '加载 Loading': LoadingPage(),
-        '消息通知 Notify': NotifyPage(),
-        '弹出框 Dialog': DialogPage(),
-        '下拉菜单 DropdownMenu': FilterPage(),
-        '轻提示 Toast': ToastPage(),
-        '异常 ErrorPage': ErrorPage(),
+        '底部面板BottomSheet': '/BottomSheetPage',
+        '弹出层 Popup': '/PopupPage',
+        '加载 Loading': '/LoadingPage',
+        '消息通知 Notify': '/NotifyPage',
+        '弹出框 Dialog': '/DialogPage',
+        '下拉菜单 DropdownMenu': '/FilterPage',
+        '轻提示 Toast': '/ToastPage',
+        '异常 ErrorPage': '/ErrorPage',
       },
       '表单组件': {
-        '复选框 Checkbox': CheckBoxPage(),
-        '时间选择 DatetimePicker': DateTimePickerPage(),
-        '输入框 Field': FieldPage(),
-        '选择器 Picker': PickerPage(),
-        '单选框 Radio': RadioPage(),
-        '密码输输入框 PasswordCell': PasswordCellPage(),
-        '验证码输入框 CodeCell': CodeCellPage(),
-        '折叠面板 Collapse': CollapsePage(),
-        '表单 From': FormPage(),
+        '复选框 Checkbox': '/CheckBoxPage',
+        '时间选择 DatetimePicker': '/DateTimePickerPage',
+        '输入框 Field': '/FieldPage',
+        '选择器 Picker': '/PickerPage',
+        '单选框 Radio': '/RadioPage',
+        '密码输输入框 PasswordCell': '/PasswordCellPage',
+        '验证码输入框 CodeCell': '/CodeCellPage',
+        '折叠面板 Collapse': '/CollapsePage',
+        '表单 From': '/FormPage',
       },
       '导航组件': {
-        '导航栏 NavBar': NavBarPage(),
-        '下拉菜单 DropdownMenu': FilterPage(),
-        '搜索框 SearchBar': SearchBarPage(),
-        '协议 Terms': TermsPage(),
-        '蒙层引导 DemoGuide': GuidePage(),
-        '页面状态切换 StateSwitcher': StateSwitcherPage(),
-        '导航栏 指示器 TabBar indicator': TabBarPage(),
+        '导航栏 NavBar': '/NavBarPage',
+        '下拉菜单 DropdownMenu': '/FilterPage',
+        '搜索框 SearchBar': '/SearchBarPage',
+        '协议 Terms': '/TermsPage',
+        '蒙层引导 DemoGuide': '/GuidePage',
+        '页面状态切换 StateSwitcher': '/StateSwitcherPage',
+        '导航栏 指示器 TabBar indicator': '/TabBarPage',
       },
     },
   ];
@@ -160,7 +123,7 @@ class HomePageState extends State<HomePage> {
         map.forEach((key, value) {
           children.add(GestureDetector(
             onTap: () {
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => value));
+              Navigator.pushNamed(context, value);
             },
             child: Container(
               height: 40,
@@ -183,7 +146,7 @@ class HomePageState extends State<HomePage> {
         });
       });
     });
-    
+
     return Column(children: children);
   }
 

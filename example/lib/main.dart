@@ -1,4 +1,4 @@
-import 'package:example/page/home/index.dart';
+import 'package:example/routes/index.dart';
 import 'package:flutter/material.dart';
 import 'package:voo/color/index.dart';
 
@@ -50,6 +50,6 @@ void main() {
       ),
     ),
     themeMode: ThemeMode.system,
-    home: HomePage(),
+    routes: routs,
   ));
 }
