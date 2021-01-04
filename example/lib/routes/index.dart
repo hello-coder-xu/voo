@@ -1,4 +1,5 @@
 import 'package:example/page/home/index.dart';
+import 'package:example/page/label/index.dart';
 import 'package:flutter/material.dart';
 import 'package:example/page/avatar/index.dart';
 import 'package:example/page/badge/index.dart';
@@ -77,4 +78,5 @@ Map<String, WidgetBuilder> routs = {
   '/CodeCellPage': (context) => CodeCellPage(),
   '/StateSwitcherPage': (context) => StateSwitcherPage(),
   '/TabBarPage': (context) => TabBarPage(),
+  '/LabelPage': (context) => LabelPage(),
 };

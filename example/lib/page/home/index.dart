@@ -31,6 +31,7 @@ class HomePageState extends State<HomePage> {
         '折叠面板 Collapse': '/CollapsePage',
         '头像 Avatar': '/AvatarPage',
         '搜索框 SearchBar': '/SearchBarPage',
+        '标签 Label': '/LabelPage',
       },
       '反馈': {
         '微标 Badge': '/BadgePage',

@@ -30,7 +30,6 @@ class BadgePage extends StatelessWidget {
     List<Widget> children = [];
     children.add(UiComponent.getListTile(title: '基础样式'));
 
-    children.add(VooLabel(value: '作品', theme: VooLabelTheme.rect));
     children.add(Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [

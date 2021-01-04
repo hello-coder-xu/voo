@@ -69,7 +69,6 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.system,
         routes: routs,
         onGenerateRoute: (settings) {
-          print('test settings=${settings.name}');
           WidgetBuilder builder = routs[settings.name];
           return MaterialPageRoute(builder: builder);
         },
