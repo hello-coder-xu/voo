@@ -1,6 +1,8 @@
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
+
 import 'package:voo/button/index.dart';
+
 
 ///按钮页面
 class ButtonPage extends StatelessWidget {
@@ -19,6 +21,12 @@ class ButtonPage extends StatelessWidget {
         },
       ),
     ));
+
+    VooButton(
+      child: Text('辅助操作 Accent'),
+      theme: VooButtonTheme.accent,
+      onPressed: () {},
+    );
 
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),

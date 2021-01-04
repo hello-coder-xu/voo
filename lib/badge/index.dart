@@ -1,45 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 ///微标
 class VooBadge extends StatelessWidget {
-  final dynamic child;
+  final String child;
+  final TextStyle style;
   final bool isPoint;
-  final Color color;
+  final Color bgColor;
 
   VooBadge({
     this.child,
     this.isPoint = true,
-    this.color = Colors.red,
-  }) : assert(child == null || child.runtimeType == String || child.runtimeType == int || child.runtimeType == Widget);
+    this.style = const TextStyle(fontSize: 10, color: Colors.white),
+    this.bgColor = Colors.red,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (isPoint) {
-      return Container(
-        width: 5,
-        height: 5,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.horizontal(left: Radius.circular(20), right: Radius.circular(20)),
-          color: color,
+      return ClipOval(
+        child: Container(
+          width: ScreenUtil().setWidth(16),
+          height: ScreenUtil().setWidth(16),
+          color: bgColor,
         ),
       );
     } else {
-      Widget tempChild;
-      if (child is String || child is int) {
-        tempChild = Text('$child');
-      } else {
-        tempChild = child;
-      }
-
-      return Container(
-        padding: EdgeInsets.symmetric(horizontal: 4),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.horizontal(left: Radius.circular(20), right: Radius.circular(20)),
-          color: color,
+      return ClipRRect(
+        borderRadius: BorderRadius.horizontal(
+          left: Radius.circular(ScreenUtil().setWidth(16)),
+          right: Radius.circular(ScreenUtil().setWidth(16)),
         ),
-        child: DefaultTextStyle(
-          style: TextStyle(fontSize: 10, color: Colors.white),
-          child: tempChild,
+        child: Container(
+          alignment: Alignment.center,
+          color: bgColor,
+          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(8)),
+          constraints: BoxConstraints(
+            minWidth: ScreenUtil().setWidth(32),
+            minHeight: ScreenUtil().setWidth(32),
+          ),
+          child: Text('$child', style: style),
         ),
       );
     }

@@ -1,5 +1,6 @@
 import 'package:voo/field/index.dart';
 import 'package:voo/icon/index.dart';
+
 import 'package:voo/search_bar/index.dart';
 
 import '../../comm/ui_component.dart';
@@ -11,6 +12,19 @@ class SearchBarPage extends StatelessWidget {
   Widget contentView() {
     List<Widget> children = [];
     children.add(UiComponent.getListTile(title: '基础样式'));
+
+    VooSearchBar(
+      child: VooField(
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: '请输入搜索内容',
+          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
+          isCollapsed: true,
+        ),
+        showClear: true,
+      ),
+    );
+
     children.add(VooSearchBar(
       child: VooField(
         decoration: InputDecoration(

@@ -34,8 +34,8 @@ class BadgePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         badgeItemView(title: '红点提醒', badge: VooBadge()),
-        badgeItemView(title: '数字提醒', badge: VooBadge(isPoint: false, child: 9)),
-        badgeItemView(title: '文字提示', badge: VooBadge(isPoint: false, child: 'new'))
+        badgeItemView(title: '数字提醒', badge: VooBadge(isPoint: false, child: '8')),
+        badgeItemView(title: '文字提示', badge: VooBadge(isPoint: false, child: '99+'))
       ],
     ));
 
