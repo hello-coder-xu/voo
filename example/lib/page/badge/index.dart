@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:voo/cell/index.dart';
 import 'package:voo/color/index.dart';
@@ -9,12 +10,15 @@ import '../../comm/ui_component.dart';
 ///微标视图
 class BadgePage extends StatelessWidget {
   //微标-item
-  Widget badgeItemView({String title, bool isPoint = true, String number}) {
+  Widget badgeItemView(
+      {String title,
+      VooBadgeTheme theme = VooBadgeTheme.point,
+      String number}) {
     List<Widget> children = [];
     children.add(VooBadgeView(
       child: Icon(Icons.mail_outline, size: 48),
       number: number,
-      isPoint: isPoint,
+      theme: theme,
       right: 0,
     ));
     children.add(Text(title, style: TextStyle(color: Colors.blue)));
@@ -26,12 +30,13 @@ class BadgePage extends StatelessWidget {
     List<Widget> children = [];
     children.add(UiComponent.getListTile(title: '基础样式'));
 
+    children.add(VooLabel(value: '作品', theme: VooLabelTheme.rect));
     children.add(Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        badgeItemView(title: '红点提醒', isPoint: true),
-        badgeItemView(title: '数字提醒', isPoint: false, number: '8'),
-        badgeItemView(title: '文字提示', isPoint: false, number: '99+')
+        badgeItemView(title: '红点提醒', theme: VooBadgeTheme.point),
+        badgeItemView(title: '数字提醒', theme: VooBadgeTheme.number, number: '8'),
+        badgeItemView(title: '文字提示', theme: VooBadgeTheme.number, number: '99+')
       ],
     ));
 
@@ -61,7 +66,7 @@ class BadgePage extends StatelessWidget {
       title: Text('我的消息'),
       value: VooBadge(
         child: '10',
-        isPoint: false,
+        theme: VooBadgeTheme.number,
       ),
       trailing:
           Icon(VooIcon.arrow_right, size: 16, color: VooColors.subTitleColor),

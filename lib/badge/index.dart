@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 
+enum VooBadgeTheme { point, number }
+
 ///微标
 class VooBadge extends StatelessWidget {
   final String child;
   final TextStyle style;
-  final bool isPoint;
+  final VooBadgeTheme theme;
   final Color bgColor;
 
   VooBadge({
     this.child,
-    this.isPoint = true,
-    this.style = const TextStyle(fontSize: 10, color: Colors.white),
-    this.bgColor = Colors.red,
-  });
+    this.theme,
+    this.style,
+    this.bgColor,
+  }) ;
 
   @override
   Widget build(BuildContext context) {
-    if (isPoint) {
+    VooBadgeTheme tempTheme = theme ?? VooBadgeTheme.point;
+    TextStyle tempTextStyle = style ??
+        TextStyle(fontSize: ScreenUtil().setSp(22), color: Colors.white);
+    Color tempBgColor = bgColor ?? Colors.red;
+    if (tempTheme == VooBadgeTheme.point) {
       return ClipOval(
         child: Container(
           width: ScreenUtil().setWidth(16),
@@ -33,13 +39,13 @@ class VooBadge extends StatelessWidget {
         ),
         child: Container(
           alignment: Alignment.center,
-          color: bgColor,
-          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(8)),
+          color: tempBgColor,
+          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(12)),
           constraints: BoxConstraints(
             minWidth: ScreenUtil().setWidth(32),
             minHeight: ScreenUtil().setWidth(32),
           ),
-          child: Text('${child ?? ''}', style: style),
+          child: Text('$child', style: tempTextStyle),
         ),
       );
     }

@@ -35,6 +35,9 @@ export 'search_bar/index.dart';
 export 'badge/index.dart';
 export 'badge/badge_view.dart';
 export 'notify/index.dart';
+export 'switch/index.dart';
+export 'instructions/index.dart';
+export 'label/index.dart';
 
 //工具类
 export 'util/index.dart';

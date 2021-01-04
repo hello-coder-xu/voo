@@ -6,7 +6,7 @@ class VooBadgeView extends StatelessWidget {
   final Widget child;
   final String number;
   final TextStyle style;
-  final bool isPoint;
+  final VooBadgeTheme theme;
   final Color bgColor;
   final double left;
   final double top;
@@ -16,9 +16,9 @@ class VooBadgeView extends StatelessWidget {
   VooBadgeView({
     this.child,
     this.number,
-    this.isPoint = true,
-    this.style = const TextStyle(fontSize: 10, color: Colors.white),
-    this.bgColor = Colors.red,
+    this.theme,
+    this.style,
+    this.bgColor,
     this.left,
     this.top,
     this.right,
@@ -36,7 +36,7 @@ class VooBadgeView extends StatelessWidget {
       bottom: bottom,
       child: VooBadge(
         child: number,
-        isPoint: isPoint,
+        theme: theme,
         style: style,
         bgColor: bgColor,
       ),

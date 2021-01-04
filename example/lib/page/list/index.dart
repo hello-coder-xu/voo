@@ -186,7 +186,7 @@ class ListPageState extends State<ListPage> {
       title: Text('我的消息'),
       value: VooBadge(
         child: '10',
-        isPoint: false,
+        theme: VooBadgeTheme.number,
       ),
       trailing: Icon(VooIcon.arrow_right, size: 16, color: VooColors.subTitleColor),
     ));
