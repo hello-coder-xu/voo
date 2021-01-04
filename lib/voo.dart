@@ -33,6 +33,7 @@ export 'filter/voo_filter_content.dart';
 export 'field/index.dart';
 export 'search_bar/index.dart';
 export 'badge/index.dart';
+export 'badge/badge_view.dart';
 export 'notify/index.dart';
 
 //工具类

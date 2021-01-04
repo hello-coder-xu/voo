@@ -39,7 +39,7 @@ class VooBadge extends StatelessWidget {
             minWidth: ScreenUtil().setWidth(32),
             minHeight: ScreenUtil().setWidth(32),
           ),
-          child: Text('$child', style: style),
+          child: Text('${child ?? ''}', style: style),
         ),
       );
     }
