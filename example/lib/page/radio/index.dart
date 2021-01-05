@@ -30,7 +30,7 @@ class RadioPageState extends State<RadioPage> {
             child: VooRadio(
               value: '1',
               group: baseValue,
-              child: TextSpan(text: '复选框 1'),
+              child: '复选框 1',
               onChanged: (value) {
                 this.baseValue = value;
                 setState(() {});
@@ -43,7 +43,7 @@ class RadioPageState extends State<RadioPage> {
             child: VooRadio(
               value: '2',
               group: baseValue,
-              child: TextSpan(text: '复选框 2'),
+              child: '复选框 2',
               onChanged: (value) {
                 this.baseValue = value;
                 setState(() {});
@@ -65,7 +65,7 @@ class RadioPageState extends State<RadioPage> {
               value: '1',
               group: banValue,
               enable: false,
-              child: TextSpan(text: '复选框 1'),
+              child: '复选框 1',
             ),
           ),
           Container(
@@ -75,7 +75,7 @@ class RadioPageState extends State<RadioPage> {
               value: '2',
               group: banValue,
               enable: false,
-              child: TextSpan(text: '复选框 2', style: TextStyle(color: VooColors.titleColor)),
+              child: '复选框 2',
             ),
           )
         ],
@@ -93,7 +93,7 @@ class RadioPageState extends State<RadioPage> {
             child: VooRadio(
               value: '1',
               group: customValue,
-              child: TextSpan(text: '复选框 1'),
+              child: '复选框 1',
               selectIcon: Icon(Icons.brightness_7, color: VooColors.accentColor),
               unSelectIcon: Icon(Icons.brightness_5, color: VooColors.subTitleColor),
               onChanged: (value) {
@@ -108,7 +108,7 @@ class RadioPageState extends State<RadioPage> {
             child: VooRadio(
               value: '2',
               group: customValue,
-              child: TextSpan(text: '复选框 2'),
+              child: '复选框 2',
               selectIcon: Icon(Icons.brightness_7, color: VooColors.accentColor),
               unSelectIcon: Icon(Icons.brightness_5, color: VooColors.subTitleColor),
               onChanged: (value) {

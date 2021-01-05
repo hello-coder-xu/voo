@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:voo/checkbox/voo_checkbox_icon.dart';
 
 ///单选框
@@ -8,7 +9,7 @@ class VooRadio extends StatelessWidget {
   final Function(dynamic value) onChanged;
   final Icon selectIcon;
   final Icon unSelectIcon;
-  final TextSpan child;
+  final String child;
   final bool enable;
 
   VooRadio({
@@ -30,10 +31,27 @@ class VooRadio extends StatelessWidget {
       currentChild = checkBoxIcon;
     } else {
       List<InlineSpan> children = [];
-      children.add(WidgetSpan(child: checkBoxIcon));
-      children.add(WidgetSpan(child: SizedBox(width: 4)));
-      children.add(child);
-      currentChild = Text.rich(TextSpan(children: children), textAlign: TextAlign.left);
+      children.add(WidgetSpan(
+        child: checkBoxIcon,
+        alignment: PlaceholderAlignment.middle,
+      ));
+      children.add(WidgetSpan(
+        child: SizedBox(width: ScreenUtil().setWidth(22)),
+      ));
+      children.add(WidgetSpan(
+        alignment: PlaceholderAlignment.middle,
+        child: Text(
+          child,
+          style: TextStyle(
+            color: Color(0xff333333),
+            fontSize: ScreenUtil().setSp(32),
+          ),
+        ),
+      ));
+      currentChild = Text.rich(
+        TextSpan(children: children),
+        textAlign: TextAlign.center,
+      );
     }
     if (!enable) return Opacity(opacity: 0.5, child: currentChild);
     return GestureDetector(

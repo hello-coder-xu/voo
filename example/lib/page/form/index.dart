@@ -107,14 +107,14 @@ class FormPageState extends State<FormPage> {
       child: Row(
         children: [
           VooRadio(
-            child: TextSpan(text: '单选框1'),
+            child: '单选框1',
             group: group,
             value: 1,
             onChanged: (value) => radioOnChanged(1),
           ),
           SizedBox(width: 16),
           VooRadio(
-            child: TextSpan(text: '单选框2'),
+            child: '单选框2',
             group: group,
             value: 2,
             onChanged: (value) => radioOnChanged(2),
