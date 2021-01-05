@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:voo/color/index.dart';
 
 enum VooButtonTheme { normal, accent, capsule }
 
