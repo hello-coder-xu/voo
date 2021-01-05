@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(750, 1080),
+      designSize: Size(750, 1334),
       allowFontScaling: false,
       child: MaterialApp(
         title: 'voo Demo',

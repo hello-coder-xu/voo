@@ -129,7 +129,7 @@ class FormPageState extends State<FormPage> {
       child: Row(
         children: [
           VooCheckBox(
-            child: TextSpan(text: '复选框1'),
+            child: '复选框1',
             value: checkBox1,
             onChanged: (value) {
               checkBox1 = value;
@@ -138,7 +138,7 @@ class FormPageState extends State<FormPage> {
           ),
           SizedBox(width: 16),
           VooCheckBox(
-            child: TextSpan(text: '复选框2'),
+            child: '复选框2',
             value: checkBox2,
             onChanged: (value) {
               checkBox2 = value;

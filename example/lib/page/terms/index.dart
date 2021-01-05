@@ -30,7 +30,7 @@ class TermsPageState extends State<TermsPage> {
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.centerLeft,
-      child: VooCheckBox(
+      child: VooCheckBoxRule(
         child: getSpanView(),
         value: checked1,
         onChanged: (value) {
@@ -55,7 +55,7 @@ class TermsPageState extends State<TermsPage> {
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.centerLeft,
-      child: VooCheckBox(
+      child: VooCheckBoxRule(
         child: getSpanView(),
         value: checked2,
         onChanged: (value) {

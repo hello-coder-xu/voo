@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voo/voo.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///复选框-图标
 class VooCheckBoxIcon extends StatelessWidget {
@@ -18,9 +18,19 @@ class VooCheckBoxIcon extends StatelessWidget {
     assert(value != null);
     Widget child;
     if (value) {
-      child = selectIcon ?? Icon(Icons.check_circle, size: 20, color: VooColors.accentColor);
+      child = selectIcon ??
+          Icon(
+            Icons.check_circle,
+            size: ScreenUtil().setWidth(44),
+            color: Color(0xff25c489),
+          );
     } else {
-      child = unSelectIcon ?? Icon(Icons.radio_button_unchecked, size: 20, color: VooColors.subTitleColor);
+      child = unSelectIcon ??
+          Icon(
+            Icons.radio_button_unchecked,
+            size: ScreenUtil().setWidth(44),
+            color: Color(0xffb6b6b6),
+          );
     }
     return child;
   }

@@ -27,7 +27,7 @@ class CheckBoxPageState extends State<CheckBoxPage> {
             alignment: Alignment.centerLeft,
             child: VooCheckBox(
               value: baseValue1,
-              child: TextSpan(text: '复选框 1'),
+              child: '复选框 1',
               onChanged: (value) {
                 this.baseValue1 = value;
                 setState(() {});
@@ -39,7 +39,7 @@ class CheckBoxPageState extends State<CheckBoxPage> {
             margin: EdgeInsets.only(top: 8),
             child: VooCheckBox(
               value: baseValue2,
-              child: TextSpan(text: '复选框 2', style: TextStyle(color: VooColors.titleColor)),
+              child: '复选框 2',
               onChanged: (value) {
                 this.baseValue2 = value;
                 setState(() {});
@@ -60,7 +60,7 @@ class CheckBoxPageState extends State<CheckBoxPage> {
             child: VooCheckBox(
               value: false,
               enable: false,
-              child: TextSpan(text: '复选框 1'),
+              child: '复选框 1',
             ),
           ),
           Container(
@@ -69,7 +69,7 @@ class CheckBoxPageState extends State<CheckBoxPage> {
             child: VooCheckBox(
               value: true,
               enable: false,
-              child: TextSpan(text: '复选框 2', style: TextStyle(color: VooColors.titleColor)),
+              child: '复选框 2',
             ),
           )
         ],
@@ -84,7 +84,7 @@ class CheckBoxPageState extends State<CheckBoxPage> {
         value: customValue,
         selectIcon: Icon(Icons.brightness_7, color: VooColors.accentColor),
         unSelectIcon: Icon(Icons.brightness_5, color: VooColors.subTitleColor),
-        child: TextSpan(text: '复选框'),
+        child: '复选框',
         onChanged: (value) {
           this.customValue = value;
           setState(() {});
@@ -95,7 +95,7 @@ class CheckBoxPageState extends State<CheckBoxPage> {
     children.add(Container(
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.symmetric(horizontal: 16),
-      child: VooCheckBox(
+      child: VooCheckBoxRule(
         value: agreementValue,
         child: TextSpan(children: [
           TextSpan(text: '我已仔细阅读并同意'),
