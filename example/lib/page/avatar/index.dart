@@ -36,7 +36,7 @@ class AvatarPage extends StatelessWidget {
       child: VooAvatar(
         icon: Image.asset('assets/icon/100.png'),
         theme: VooAvatarTheme.normal,
-        title: '描述信息',
+        title: '大标题',
         subTitle: '100室内设计组件库',
       ),
     ));
@@ -49,7 +49,7 @@ class AvatarPage extends StatelessWidget {
       child: VooAvatar(
         icon: Image.asset('assets/icon/100.png'),
         theme: VooAvatarTheme.mini,
-        title: '描述信息',
+        title: '大标题',
       ),
     ));
 
@@ -60,7 +60,7 @@ class AvatarPage extends StatelessWidget {
       child: VooAvatar(
         icon: Image.asset('assets/icon/100.png'),
         theme: VooAvatarTheme.small,
-        title: '描述信息',
+        title: '大标题',
       ),
     ));
 
@@ -70,7 +70,7 @@ class AvatarPage extends StatelessWidget {
       child: VooAvatar(
         icon: Image.asset('assets/icon/100.png'),
         theme: VooAvatarTheme.normal,
-        title: '描述信息',
+        title: '大标题',
         subTitle: '100室内设计组件库',
       ),
     ));
@@ -81,7 +81,7 @@ class AvatarPage extends StatelessWidget {
       child: VooAvatar(
         icon: Image.asset('assets/icon/100.png'),
         theme: VooAvatarTheme.large,
-        title: '描述信息',
+        title: '大标题',
         subTitle: '100室内设计组件库',
       ),
     ));
