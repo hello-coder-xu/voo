@@ -4,6 +4,7 @@ import 'package:voo/field/index.dart';
 import 'package:voo/picker/picker_bean.dart';
 import 'package:voo/picker/voo_picker.dart';
 import 'package:voo/radio/voo_radio.dart';
+import 'package:voo/switch/index.dart';
 
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
@@ -153,7 +154,7 @@ class FormPageState extends State<FormPage> {
     children.add(UiComponent.getListTile(title: '开关'));
     children.add(VooCellField(
       title: Text('推送通知'),
-      child: Switch(
+      child: VooSwitch(
         value: switchValue,
         onChanged: (value) {
           switchValue = value;

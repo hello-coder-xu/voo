@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voo/color/index.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 enum VooAvatarTheme { mini, small, normal, large }
 
@@ -10,7 +10,11 @@ class VooAvatar extends StatelessWidget {
   final String title;
   final String subTitle;
 
-  VooAvatar({this.theme = VooAvatarTheme.mini, this.icon, this.title = '', this.subTitle});
+  VooAvatar(
+      {this.theme = VooAvatarTheme.mini,
+      this.icon,
+      this.title = '',
+      this.subTitle});
 
   ///图标
   Widget iconView() {
@@ -30,7 +34,13 @@ class VooAvatar extends StatelessWidget {
     children.add(Expanded(
       child: Container(
         alignment: Alignment.centerLeft,
-        child: Text(title, style: TextStyle(color: VooColors.titleColor, fontSize: getFontSize())),
+        child: Text(
+          title,
+          style: TextStyle(
+            color: Color(0xff333333),
+            fontSize: getFontSize(),
+          ),
+        ),
       ),
     ));
 
@@ -38,7 +48,13 @@ class VooAvatar extends StatelessWidget {
       children.add(Expanded(
         child: Container(
           alignment: Alignment.centerLeft,
-          child: Text(subTitle, style: TextStyle(color: VooColors.subTitleColor, fontSize: getFontSize() - 2)),
+          child: Text(
+            subTitle,
+            style: TextStyle(
+              color: Color(0xff999999),
+              fontSize: getSubTitleFontSize(),
+            ),
+          ),
         ),
       ));
     }
@@ -71,40 +87,45 @@ class VooAvatar extends StatelessWidget {
   }
 
   double getSize() {
-    double size = 40;
+    double size = ScreenUtil().setWidth(80);
     switch (theme) {
       case VooAvatarTheme.mini:
-        size = 24;
+        size = ScreenUtil().setWidth(32);
         break;
       case VooAvatarTheme.small:
-        size = 32;
+        size = ScreenUtil().setWidth(64);
         break;
       case VooAvatarTheme.normal:
-        size = 48;
+        size = ScreenUtil().setWidth(80);
         break;
       case VooAvatarTheme.large:
-        size = 60;
+        size = ScreenUtil().setWidth(96);
         break;
     }
     return size;
   }
 
   double getFontSize() {
-    double size = 12;
+    double size = ScreenUtil().setSp(40);
     switch (theme) {
       case VooAvatarTheme.mini:
-        size = 12;
+        size = ScreenUtil().setSp(16);
         break;
       case VooAvatarTheme.small:
-        size = 14;
+        size = ScreenUtil().setSp(32);
         break;
       case VooAvatarTheme.normal:
-        size = 16;
+        size = ScreenUtil().setSp(40);
         break;
       case VooAvatarTheme.large:
-        size = 18;
+        size = ScreenUtil().setSp(48);
         break;
     }
     return size;
+  }
+
+  double getSubTitleFontSize() {
+    double size = getFontSize();
+    return size - ScreenUtil().setSp(12);
   }
 }
