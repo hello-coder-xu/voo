@@ -16,7 +16,7 @@ class ToastPage extends StatelessWidget {
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
-        child: Text('文字提示'),
+        child: '文字提示',
         onPressed: () {
           VooToast.showToast(context, msg: '文字提示');
         },
@@ -27,7 +27,7 @@ class ToastPage extends StatelessWidget {
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
-        child: Text('加载提示'),
+        child: '加载提示',
         onPressed: () {
           Function close = VooToast.showLoading(context, msg: '加载中...');
           Future.delayed(Duration(seconds: 2), () {
@@ -41,7 +41,7 @@ class ToastPage extends StatelessWidget {
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
-        child: Text('操作成功'),
+        child: '操作成功',
         onPressed: () {
           Function close = VooToast.showResult(context,
               msg: '操作成功', result: VooToastResult.success);
@@ -54,7 +54,7 @@ class ToastPage extends StatelessWidget {
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
-        child: Text('失败提示'),
+        child: '失败提示',
         onPressed: () {
           Function close = VooToast.showResult(context,
               msg: '失败提示', result: VooToastResult.fail);
@@ -67,7 +67,7 @@ class ToastPage extends StatelessWidget {
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: VooButton(
-        child: Text('警告信息'),
+        child: '警告信息',
         onPressed: () {
           Function close = VooToast.showResult(context,
               msg: '警告信息', result: VooToastResult.warn);

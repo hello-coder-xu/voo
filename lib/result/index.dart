@@ -58,14 +58,14 @@ class VooResult extends StatelessWidget {
   Widget bottomView() {
     List<Widget> children = [];
     children.add(VooButton(
-      child: Text(confirm ?? ''),
+      child: confirm ?? '',
       onPressed: onConfirm,
     ));
 
     if (showCancel) {
       children.add(SizedBox(height: 8));
       children.add(VooButton(
-        child: Text(cancel ?? ''),
+        child: cancel ?? '',
         theme: VooButtonTheme.accent,
         onPressed: onCancel,
       ));

@@ -29,7 +29,7 @@ class PasswordCellPage extends StatelessWidget {
     children.add(Container(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
       child: VooButton(
-        child: Text('获取值'),
+        child: '获取值',
         theme: VooButtonTheme.capsule,
         onPressed: () {},
       ),

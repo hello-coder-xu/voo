@@ -19,7 +19,8 @@ class TermsPageState extends State<TermsPage> {
   TextSpan getSpanView() {
     List<TextSpan> children = [];
     children.add(TextSpan(text: '我已仔細閱讀並同意'));
-    children.add(TextSpan(text: '[服務條款]', style: TextStyle(color: Colors.blue)));
+    children
+        .add(TextSpan(text: '[服務條款]', style: TextStyle(color: Colors.blue)));
     return TextSpan(children: children);
   }
 
@@ -43,11 +44,9 @@ class TermsPageState extends State<TermsPage> {
       margin: EdgeInsets.only(left: 16, right: 16, top: 8),
       alignment: Alignment.centerLeft,
       child: VooButton(
-        child: Text('确认'),
-        enable: checked1,
-        onPressed: () {
-          VooToast.showToast(context, msg: '点击确认');
-        },
+        child: '确认',
+        onPressed:
+            checked1 ? () => VooToast.showToast(context, msg: '点击确认') : null,
       ),
     ));
 
@@ -68,19 +67,16 @@ class TermsPageState extends State<TermsPage> {
       margin: EdgeInsets.only(left: 16, right: 16, top: 8),
       alignment: Alignment.centerLeft,
       child: VooButton(
-        child: Text('确认'),
-        enable: checked2,
-        onPressed: () {
-          VooToast.showToast(context, msg: '点击确认');
-        },
+        child: '确认',
+        onPressed:
+            checked2 ? () => VooToast.showToast(context, msg: '点击确认') : null,
       ),
     ));
     children.add(Container(
       margin: EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.centerLeft,
       child: VooButton(
-        child: Text('清除', style: TextStyle(color: Colors.red)),
-        theme: VooButtonTheme.text,
+        child: '清除',
         onPressed: () {
           VooToast.showToast(context, msg: '点击清除');
         },
@@ -93,7 +89,7 @@ class TermsPageState extends State<TermsPage> {
       margin: EdgeInsets.only(left: 16, right: 16, top: 8),
       alignment: Alignment.centerLeft,
       child: VooButton(
-        child: Text('确认'),
+        child: '确认',
         onPressed: () {
           VooToast.showToast(context, msg: '点击确认');
         },

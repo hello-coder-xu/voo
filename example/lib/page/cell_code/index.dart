@@ -25,7 +25,7 @@ class CodeCellPage extends StatelessWidget {
     children.add(Container(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
       child: VooButton(
-        child: Text('允许手机通过'),
+        child: '允许手机通过',
         theme: VooButtonTheme.capsule,
         onPressed: () {},
       ),

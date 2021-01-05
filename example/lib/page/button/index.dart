@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:voo/button/index.dart';
 
-
 ///按钮页面
 class ButtonPage extends StatelessWidget {
   //内容视图
@@ -11,83 +10,87 @@ class ButtonPage extends StatelessWidget {
     List<Widget> children = [];
     children.add(UiComponent.getListTile(title: '按钮展示'));
 
-    children.add(Container(
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: VooButton(
-        child: Text('主要操作 Normal'),
-        theme: VooButtonTheme.normal,
-        onPressed: () {
-        },
-      ),
+    children.add(VooButton(
+      child: '大按钮-可用',
+      theme: VooButtonTheme.normal,
+      onPressed: () {},
     ));
 
-    VooButton(
-      child: Text('辅助操作 Accent'),
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '大按钮-不可用',
+      theme: VooButtonTheme.normal,
+      onPressed: null,
+    ));
+
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '边框按钮-可用',
       theme: VooButtonTheme.accent,
       onPressed: () {},
-    );
-
-    children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: VooButton(
-        child: Text('辅助操作 Accent'),
-        theme: VooButtonTheme.accent,
-        onPressed: () {},
-      ),
     ));
 
-    children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: VooButton(
-        child: Text('胶囊按钮'),
-        theme: VooButtonTheme.capsule,
-        onPressed: () {},
-      ),
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '边框按钮-不可用',
+      theme: VooButtonTheme.accent,
     ));
 
-    children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: VooButton(
-        child: Text('文字按钮'),
-        theme: VooButtonTheme.text,
-        onPressed: () {},
-      ),
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '胶囊按钮-可用',
+      theme: VooButtonTheme.capsule,
+      onPressed: () {},
     ));
 
-    children.add(UiComponent.getListTile(title: '不可点击'));
-
-    children.add(Container(
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: VooButton(
-        child: Text('主要操作 Normal'),
-        theme: VooButtonTheme.normal,
-      ),
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '胶囊按钮-不可用',
+      theme: VooButtonTheme.capsule,
     ));
 
-    children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: VooButton(
-        child: Text('辅助操作 Accent'),
-        theme: VooButtonTheme.accent,
-      ),
+    children.add(SizedBox(height: 16));
+    children.add(Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        VooButton(
+          child: '辅助按钮',
+          theme: VooButtonTheme.accent,
+          size: VooButtonSize.small,
+          onPressed: () {},
+        ),
+        VooButton(
+          child: '辅助按钮',
+          theme: VooButtonTheme.normal,
+          size: VooButtonSize.small,
+          onPressed: () {},
+        )
+      ],
     ));
 
-    children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: VooButton(
-        child: Text('胶囊按钮'),
-        theme: VooButtonTheme.capsule,
-      ),
-    ));
-
-    children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: VooButton(
-        child: Text('文字按钮'),
-        theme: VooButtonTheme.text,
-      ),
+    children.add(SizedBox(height: 16));
+    children.add(Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        VooButton(
+          child: '小按钮',
+          theme: VooButtonTheme.normal,
+          size: VooButtonSize.mini,
+          onPressed: (){},
+        ),
+        VooButton(
+          child: '小按钮',
+          theme: VooButtonTheme.accent,
+          size: VooButtonSize.mini,
+          onPressed: (){},
+        ),
+        VooButton(
+          child: '小按钮',
+          theme: VooButtonTheme.capsule,
+          size: VooButtonSize.mini,
+          onPressed: (){},
+        )
+      ],
     ));
 
     return SingleChildScrollView(

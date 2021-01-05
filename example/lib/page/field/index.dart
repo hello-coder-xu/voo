@@ -206,7 +206,8 @@ class FieldPageState extends State<FieldPage> {
         width: 100,
         height: 30,
         child: VooButton(
-          child: Text('发送验证码'),
+          child: '发送验证码',
+          size: VooButtonSize.mini,
           onPressed: () {
             VooToast.showToast(context, msg: '发送验证码');
           },

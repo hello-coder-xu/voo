@@ -1,107 +1,140 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:voo/color/index.dart';
 
-enum VooButtonTheme { normal, accent, capsule, text }
+enum VooButtonTheme { normal, accent, capsule }
+
+enum VooButtonSize { large, small, mini }
 
 ///按钮视图
 class VooButton extends StatelessWidget {
-  final Text child;
+  final String child;
+  final TextStyle textStyle;
+  final Color bgColor;
   final VooButtonTheme theme;
+  final VooButtonSize size;
   final double elevation;
   final VoidCallback onPressed;
-  final bool enable;
 
   VooButton({
     @required this.child,
+    this.textStyle,
+    this.bgColor,
     this.theme = VooButtonTheme.normal,
+    this.size = VooButtonSize.large,
     this.elevation = 0.0,
     this.onPressed,
-    this.enable = true,
   });
 
   @override
   Widget build(BuildContext context) {
     ShapeBorder shapeBorder;
-    Widget childView;
+    TextStyle tempTextStyle;
+    Color tempBgColor = bgColor ?? Color(0xff25c489);
+    if (onPressed == null) {
+      tempBgColor = tempBgColor.withOpacity(0.7);
+    }
     switch (theme) {
       case VooButtonTheme.normal:
         shapeBorder = RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(3.0)),
+          borderRadius:
+              BorderRadius.all(Radius.circular(ScreenUtil().setWidth(10))),
         );
-        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12, color: Colors.white));
-        return SizedBox(
-          width: double.infinity,
-          child: RaisedButton(
-            shape: shapeBorder,
-            child: childView,
-            color: VooColors.accentColor,
-            disabledColor: VooColors.accentColor.withOpacity(0.3),
-            textColor: Colors.white,
-            disabledTextColor: Colors.white.withOpacity(0.5),
-            elevation: elevation,
-            disabledElevation: elevation,
-            onPressed: enable ? onPressed : null,
+        tempTextStyle = textStyle ??
+            TextStyle(fontSize: getTextFontSize(), color: Colors.white);
+        return Container(
+          constraints: getButtonConstraints(),
+          child: ElevatedButton(
+            style: ButtonStyle(
+              shape: ButtonStyleButton.allOrNull(shapeBorder),
+              backgroundColor: ButtonStyleButton.allOrNull(tempBgColor),
+              elevation: ButtonStyleButton.allOrNull(elevation),
+            ),
+            child: Text(child, style: tempTextStyle),
+            onPressed: onPressed,
           ),
         );
       case VooButtonTheme.accent:
         shapeBorder = RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(3.0)),
-          side: BorderSide(
-            color: onPressed != null ? VooColors.accentColor : VooColors.accentColor.withOpacity(0.3),
-            width: 1,
-          ),
+          borderRadius:
+              BorderRadius.all(Radius.circular(ScreenUtil().setWidth(10))),
         );
-        childView = DefaultTextStyle(
-          child: child,
-          style: TextStyle(
-            fontSize: 12,
-            color: onPressed != null ? VooColors.accentColor : VooColors.accentColor.withOpacity(0.3),
-          ),
-        );
-        return SizedBox(
-          width: double.infinity,
-          child: RaisedButton(
+        tempTextStyle = textStyle ??
+            TextStyle(fontSize: getTextFontSize(), color: tempBgColor);
+        return Container(
+          constraints: getButtonConstraints(),
+          child: OutlineButton(
+            child: Text(child, style: tempTextStyle),
+            borderSide: BorderSide(color: tempBgColor, width: 1),
             shape: shapeBorder,
-            child: childView,
-            color: Colors.white,
-            disabledColor: Colors.white.withOpacity(0.3),
-            textColor: VooColors.accentColor,
-            disabledTextColor: VooColors.accentColor.withOpacity(0.5),
-            elevation: elevation,
-            disabledElevation: elevation,
-            onPressed: enable ? onPressed : null,
+            disabledBorderColor: tempBgColor,
+            onPressed: onPressed,
           ),
         );
-      case VooButtonTheme.capsule:
+      case VooButtonTheme.capsule: //胶囊类型
         shapeBorder = RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(18)),
+          borderRadius: BorderRadius.all(Radius.circular(27)),
         );
-        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12, color: Colors.white));
-        return SizedBox(
-          width: double.infinity,
-          child: RaisedButton(
-            shape: shapeBorder,
-            child: childView,
-            color: VooColors.accentColor,
-            disabledColor: VooColors.accentColor.withOpacity(0.3),
-            textColor: Colors.white,
-            disabledTextColor: Colors.white.withOpacity(0.5),
-            elevation: elevation,
-            disabledElevation: elevation,
-            onPressed: enable ? onPressed : null,
-          ),
-        );
-      case VooButtonTheme.text:
-        childView = DefaultTextStyle(child: child, style: TextStyle(fontSize: 12, color: Colors.black));
-        return SizedBox(
-          width: double.infinity,
-          child: FlatButton(
-            onPressed: enable ? onPressed : null,
-            child: childView,
+        tempTextStyle = textStyle ??
+            TextStyle(fontSize: getTextFontSize(), color: Colors.white);
+        return Container(
+          constraints: getButtonConstraints(),
+          child: ElevatedButton(
+            style: ButtonStyle(
+              shape: ButtonStyleButton.allOrNull(shapeBorder),
+              backgroundColor: ButtonStyleButton.allOrNull(tempBgColor),
+              elevation: ButtonStyleButton.allOrNull(elevation),
+            ),
+            child: Text(child, style: tempTextStyle),
+            onPressed: onPressed,
           ),
         );
       default:
         return SizedBox.shrink();
     }
+  }
+
+  BoxConstraints getButtonConstraints() {
+    BoxConstraints boxConstraints = BoxConstraints(
+      minWidth: ScreenUtil().setWidth(152),
+      minHeight: ScreenUtil().setWidth(54),
+    );
+    switch (size) {
+      case VooButtonSize.large:
+        boxConstraints = boxConstraints = BoxConstraints(
+          minWidth: ScreenUtil().setWidth(686),
+          minHeight: ScreenUtil().setHeight(96),
+        );
+        break;
+      case VooButtonSize.small:
+        boxConstraints = boxConstraints = BoxConstraints(
+          minWidth: ScreenUtil().setWidth(332),
+          minHeight: ScreenUtil().setHeight(96),
+        );
+        break;
+      case VooButtonSize.mini:
+        boxConstraints = boxConstraints = BoxConstraints(
+          minWidth: ScreenUtil().setWidth(152),
+          minHeight: ScreenUtil().setHeight(54),
+        );
+        break;
+    }
+    return boxConstraints;
+  }
+
+  double getTextFontSize() {
+    double fontSize = ScreenUtil().setSp(32);
+    switch (size) {
+      case VooButtonSize.large:
+        fontSize = ScreenUtil().setSp(32);
+        break;
+      case VooButtonSize.small:
+        fontSize = ScreenUtil().setSp(32);
+        break;
+      case VooButtonSize.mini:
+        fontSize = ScreenUtil().setSp(24);
+        break;
+    }
+    return fontSize;
   }
 }
