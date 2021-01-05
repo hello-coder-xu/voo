@@ -72,14 +72,15 @@ class TermsPageState extends State<TermsPage> {
             checked2 ? () => VooToast.showToast(context, msg: '点击确认') : null,
       ),
     ));
-    children.add(Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
-      alignment: Alignment.centerLeft,
-      child: VooButton(
-        child: '清除',
-        onPressed: () {
-          VooToast.showToast(context, msg: '点击清除');
-        },
+    children.add(GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        VooToast.showToast(context, msg: '点击清除');
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 16,vertical: 16),
+        alignment: Alignment.center,
+        child: Text('清除', style: TextStyle(fontSize: 16, color: Colors.red)),
       ),
     ));
 
