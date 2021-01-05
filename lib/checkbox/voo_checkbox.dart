@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:voo/checkbox/voo_checkbox_icon.dart';
-import 'package:voo/color/index.dart';
 
 ///复选框
 class VooCheckBox extends StatelessWidget {
