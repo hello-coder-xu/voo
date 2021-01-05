@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 //显示位置控制
 enum VooToastPosition { top, center, bottom }
@@ -18,19 +19,17 @@ class VooToast {
     String msg,
     int showTime = 2000,
     Color bgColor,
-    Color textColor,
-    double textSize = 14,
+    TextStyle textStyle,
     VooToastPosition position = VooToastPosition.bottom,
-    double pdHorizontal = 20,
-    double pdVertical = 10,
+    double pdHorizontal,
+    double pdVertical,
   }) {
     return _showToast(
       context,
       msg: msg,
       showTime: showTime,
       bgColor: bgColor,
-      textColor: textColor,
-      textSize: textSize,
+      textStyle: textStyle,
       position: position,
       pdHorizontal: pdHorizontal,
       pdVertical: pdVertical,
@@ -42,17 +41,15 @@ class VooToast {
     BuildContext context, {
     String msg,
     Color bgColor,
-    Color textColor,
-    double pdHorizontal = 20,
-    double pdVertical = 10,
-    double textSize = 14,
+    TextStyle textStyle,
+    double pdHorizontal,
+    double pdVertical,
   }) {
     return _showToast(
       context,
       msg: msg,
       bgColor: bgColor,
-      textColor: textColor,
-      textSize: textSize,
+      textStyle: textStyle,
       pdHorizontal: pdHorizontal,
       pdVertical: pdVertical,
       type: VooToastType.loading,
@@ -63,18 +60,16 @@ class VooToast {
     BuildContext context, {
     String msg,
     Color bgColor,
-    Color textColor,
-    double pdHorizontal = 20,
-    double pdVertical = 10,
-    double textSize = 14,
+    TextStyle textStyle,
+    double pdHorizontal,
+    double pdVertical,
     VooToastResult result = VooToastResult.success,
   }) {
     return _showToast(
       context,
       msg: msg,
       bgColor: bgColor,
-      textColor: textColor,
-      textSize: textSize,
+      textStyle: textStyle,
       pdHorizontal: pdHorizontal,
       pdVertical: pdVertical,
       type: VooToastType.result,
@@ -88,8 +83,7 @@ Function _showToast(
   String msg,
   int showTime = 1000,
   Color bgColor,
-  Color textColor,
-  double textSize,
+  TextStyle textStyle,
   VooToastPosition position = VooToastPosition.center,
   double pdHorizontal,
   double pdVertical,
@@ -106,8 +100,7 @@ Function _showToast(
             msg,
             key: key,
             bgColor: bgColor,
-            textColor: textColor,
-            textSize: textSize,
+            textStyle: textStyle,
             toastPosition: position,
             pdHorizontal: pdHorizontal,
             pdVertical: pdVertical,
@@ -138,10 +131,7 @@ class _FToastView extends StatefulWidget {
   final Color bgColor;
 
   // 文本颜色
-  final Color textColor;
-
-  // 文字大小
-  final double textSize;
+  final TextStyle textStyle;
 
   // 显示位置
   final VooToastPosition toastPosition;
@@ -164,8 +154,7 @@ class _FToastView extends StatefulWidget {
     this.msg, {
     Key key,
     this.bgColor,
-    this.textColor,
-    this.textSize,
+    this.textStyle,
     this.toastPosition,
     this.pdHorizontal,
     this.pdVertical,
@@ -178,7 +167,8 @@ class _FToastView extends StatefulWidget {
   _FToastViewState createState() => new _FToastViewState();
 }
 
-class _FToastViewState extends State<_FToastView> with SingleTickerProviderStateMixin {
+class _FToastViewState extends State<_FToastView>
+    with SingleTickerProviderStateMixin {
   static const Duration _fadeInDuration = Duration(milliseconds: 150);
   static const Duration _fadeOutDuration = Duration(milliseconds: 75);
   AnimationController _controller;
@@ -205,7 +195,8 @@ class _FToastViewState extends State<_FToastView> with SingleTickerProviderState
         child: _buildToastWidget(),
       ),
     );
-    if (widget.toastPosition == VooToastPosition.center || widget.type == VooToastType.loading) {
+    if (widget.toastPosition == VooToastPosition.center ||
+        widget.type == VooToastType.loading) {
       return toastView;
     }
     return Positioned(
@@ -216,43 +207,52 @@ class _FToastViewState extends State<_FToastView> with SingleTickerProviderState
 
   //toast绘制
   _buildToastWidget() {
+    Color tempBgColor = widget.bgColor ?? Color(0x70000000);
+    TextStyle tempStyle = widget.textStyle ??
+        TextStyle(color: Colors.white, fontSize: ScreenUtil().setWidth(28));
+    BorderRadius tempBorderRadius = BorderRadius.horizontal(
+      left: Radius.circular(ScreenUtil().setWidth(20)),
+      right: Radius.circular(ScreenUtil().setWidth(20)),
+    );
     if (widget.type == VooToastType.text) {
-      return Center(
-        child: Card(
-          color: widget.bgColor ?? Theme.of(context).textTheme.headline6.color,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: widget.pdHorizontal,
-              vertical: widget.pdVertical,
-            ),
-            child: Text(
-              widget.msg,
-              style: TextStyle(fontSize: widget.textSize, color: widget.textColor ?? Colors.white),
-            ),
+      return Card(
+        color: tempBgColor,
+        shape: RoundedRectangleBorder(borderRadius: tempBorderRadius),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: ScreenUtil().setWidth(46),
+            vertical: ScreenUtil().setWidth(22),
           ),
+          child: Text(widget.msg, style: tempStyle),
         ),
       );
     } else if (widget.type == VooToastType.loading) {
       List<Widget> children = [];
-      children.add(CircularProgressIndicator(
-        strokeWidth: 3.0,
-        valueColor: AlwaysStoppedAnimation(Colors.white),
+      children.add(SizedBox(
+        width: ScreenUtil().setWidth(64),
+        height: ScreenUtil().setWidth(64),
+        child: CircularProgressIndicator(
+          strokeWidth: 3.0,
+          valueColor: AlwaysStoppedAnimation(Colors.white),
+        ),
       ));
-      children.add(SizedBox(height: 8));
-      children.add(Text(
-        widget.msg,
-        style: TextStyle(fontSize: widget.textSize, color: widget.textColor ?? Colors.white),
-      ));
-      return Center(
-        child: Card(
-          color: widget.bgColor ?? Theme.of(context).textTheme.headline6.color,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: widget.pdHorizontal, vertical: widget.pdVertical),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: children,
-            ),
+      children.add(SizedBox(height: ScreenUtil().setWidth(28)));
+      children.add(Text(widget.msg, style: tempStyle));
+      return Card(
+        color: tempBgColor,
+        shape: RoundedRectangleBorder(borderRadius: tempBorderRadius),
+        child: Container(
+          width: ScreenUtil().setWidth(240),
+          height: ScreenUtil().setWidth(240),
+          alignment: Alignment.center,
+          padding: EdgeInsets.symmetric(
+            horizontal: ScreenUtil().setWidth(46),
+            vertical: ScreenUtil().setWidth(46),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: children,
           ),
         ),
       );
@@ -261,26 +261,41 @@ class _FToastViewState extends State<_FToastView> with SingleTickerProviderState
       Widget iconView;
       switch (widget.result) {
         case VooToastResult.success:
-          iconView = Icon(Icons.check_circle_outline, color: Colors.white, size: 24);
+          iconView = Icon(
+            Icons.check_circle_outline,
+            color: Colors.white,
+            size: ScreenUtil().setWidth(64),
+          );
           break;
         case VooToastResult.fail:
-          iconView = Icon(Icons.highlight_off, color: Colors.white, size: 24);
+          iconView = Icon(
+            Icons.highlight_off,
+            color: Colors.white,
+            size: ScreenUtil().setWidth(64),
+          );
           break;
         case VooToastResult.warn:
-          iconView = Icon(Icons.info_outline, color: Colors.white, size: 24);
+          iconView = Icon(
+            Icons.info_outline,
+            color: Colors.white,
+            size: ScreenUtil().setWidth(64),
+          );
           break;
       }
       children.add(iconView);
-      children.add(SizedBox(height: 8));
-      children.add(Text(
-        widget.msg,
-        style: TextStyle(fontSize: widget.textSize, color: widget.textColor ?? Colors.white),
-      ));
+      children.add(SizedBox(height: ScreenUtil().setWidth(28)));
+      children.add(Text(widget.msg, style: tempStyle));
       return Center(
         child: Card(
-          color: widget.bgColor ?? Theme.of(context).textTheme.headline6.color,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: widget.pdHorizontal, vertical: widget.pdVertical),
+          color: tempBgColor,
+          child: Container(
+            width: ScreenUtil().setWidth(240),
+            height: ScreenUtil().setWidth(240),
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(
+              horizontal: ScreenUtil().setWidth(46),
+              vertical: ScreenUtil().setWidth(46),
+            ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -296,11 +311,11 @@ class _FToastViewState extends State<_FToastView> with SingleTickerProviderState
   buildToastPosition(context) {
     var backResult;
     if (widget.toastPosition == VooToastPosition.top) {
-      backResult = MediaQuery.of(context).size.height * 1 / 4;
+      backResult = ScreenUtil().screenHeight * 1 / 4;
     } else if (widget.toastPosition == VooToastPosition.center) {
-      backResult = MediaQuery.of(context).size.height * 1 / 2;
+      backResult = ScreenUtil().screenHeight * 1 / 2;
     } else {
-      backResult = MediaQuery.of(context).size.height * 3 / 4;
+      backResult = ScreenUtil().screenHeight * 3 / 4;
     }
     return backResult;
   }
