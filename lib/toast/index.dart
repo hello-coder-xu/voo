@@ -21,8 +21,6 @@ class VooToast {
     Color bgColor,
     TextStyle textStyle,
     VooToastPosition position = VooToastPosition.bottom,
-    double pdHorizontal,
-    double pdVertical,
   }) {
     return _showToast(
       context,
@@ -31,8 +29,6 @@ class VooToast {
       bgColor: bgColor,
       textStyle: textStyle,
       position: position,
-      pdHorizontal: pdHorizontal,
-      pdVertical: pdVertical,
       type: VooToastType.text,
     );
   }
@@ -42,16 +38,12 @@ class VooToast {
     String msg,
     Color bgColor,
     TextStyle textStyle,
-    double pdHorizontal,
-    double pdVertical,
   }) {
     return _showToast(
       context,
       msg: msg,
       bgColor: bgColor,
       textStyle: textStyle,
-      pdHorizontal: pdHorizontal,
-      pdVertical: pdVertical,
       type: VooToastType.loading,
     );
   }
@@ -61,8 +53,6 @@ class VooToast {
     String msg,
     Color bgColor,
     TextStyle textStyle,
-    double pdHorizontal,
-    double pdVertical,
     VooToastResult result = VooToastResult.success,
   }) {
     return _showToast(
@@ -70,8 +60,6 @@ class VooToast {
       msg: msg,
       bgColor: bgColor,
       textStyle: textStyle,
-      pdHorizontal: pdHorizontal,
-      pdVertical: pdVertical,
       type: VooToastType.result,
       result: result,
     );
@@ -85,8 +73,6 @@ Function _showToast(
   Color bgColor,
   TextStyle textStyle,
   VooToastPosition position = VooToastPosition.center,
-  double pdHorizontal,
-  double pdVertical,
   VooToastType type = VooToastType.text,
   VooToastResult result = VooToastResult.success,
 }) {
@@ -102,8 +88,6 @@ Function _showToast(
             bgColor: bgColor,
             textStyle: textStyle,
             toastPosition: position,
-            pdHorizontal: pdHorizontal,
-            pdVertical: pdVertical,
             type: type,
             result: result,
           ));
@@ -136,12 +120,6 @@ class _FToastView extends StatefulWidget {
   // 显示位置
   final VooToastPosition toastPosition;
 
-  // 左右边距
-  final double pdHorizontal;
-
-  // 上下边距
-  final double pdVertical;
-
   //显示类型
   final VooToastType type;
 
@@ -156,8 +134,6 @@ class _FToastView extends StatefulWidget {
     this.bgColor,
     this.textStyle,
     this.toastPosition,
-    this.pdHorizontal,
-    this.pdVertical,
     this.type,
     this.result,
     this.close,

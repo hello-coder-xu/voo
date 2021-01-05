@@ -43,7 +43,8 @@ class ToastPage extends StatelessWidget {
       child: VooButton(
         child: Text('操作成功'),
         onPressed: () {
-          Function close = VooToast.showResult(context, msg: '操作成功', result: VooToastResult.success);
+          Function close = VooToast.showResult(context,
+              msg: '操作成功', result: VooToastResult.success);
           Future.delayed(Duration(seconds: 2), () {
             close();
           });
@@ -55,7 +56,8 @@ class ToastPage extends StatelessWidget {
       child: VooButton(
         child: Text('失败提示'),
         onPressed: () {
-          Function close = VooToast.showResult(context, msg: '失败提示', result: VooToastResult.fail);
+          Function close = VooToast.showResult(context,
+              msg: '失败提示', result: VooToastResult.fail);
           Future.delayed(Duration(seconds: 2), () {
             close();
           });
@@ -67,7 +69,8 @@ class ToastPage extends StatelessWidget {
       child: VooButton(
         child: Text('警告信息'),
         onPressed: () {
-          Function close = VooToast.showResult(context, msg: '警告信息', result: VooToastResult.warn);
+          Function close = VooToast.showResult(context,
+              msg: '警告信息', result: VooToastResult.warn);
           Future.delayed(Duration(seconds: 2), () {
             close();
           });
