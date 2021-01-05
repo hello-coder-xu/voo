@@ -109,23 +109,37 @@ class VooAvatar extends StatelessWidget {
     double size = ScreenUtil().setSp(40);
     switch (theme) {
       case VooAvatarTheme.mini:
-        size = ScreenUtil().setSp(16);
+        size = ScreenUtil().setSp(22);
         break;
       case VooAvatarTheme.small:
-        size = ScreenUtil().setSp(32);
+        size = ScreenUtil().setSp(28);
         break;
       case VooAvatarTheme.normal:
-        size = ScreenUtil().setSp(40);
+        size = ScreenUtil().setSp(32);
         break;
       case VooAvatarTheme.large:
-        size = ScreenUtil().setSp(48);
+        size = ScreenUtil().setSp(40);
         break;
     }
     return size;
   }
 
   double getSubTitleFontSize() {
-    double size = getFontSize();
-    return size - ScreenUtil().setSp(12);
+    double size = ScreenUtil().setSp(32);
+    switch (theme) {
+      case VooAvatarTheme.mini:
+        size = ScreenUtil().setSp(14);
+        break;
+      case VooAvatarTheme.small:
+        size = ScreenUtil().setSp(20);
+        break;
+      case VooAvatarTheme.normal:
+        size = ScreenUtil().setSp(24);
+        break;
+      case VooAvatarTheme.large:
+        size = ScreenUtil().setSp(28);
+        break;
+    }
+    return size;
   }
 }
