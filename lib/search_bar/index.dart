@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:voo/field/index.dart';
 
 ///搜索栏
 class VooSearchBar extends StatelessWidget {
   final Widget leading;
-  final Widget child;
+  final String hintText;
+  final TextStyle hintStyle;
+  final TextStyle style;
+  final TextAlign align;
+  final TextEditingController controller;
+  final ValueChanged<String> onChanged;
+  final VoidCallback onEditingComplete;
+  final ValueChanged<String> onSubmitted;
+  final bool showClear;
+  final bool readOnly;
   final Widget trailing;
   final Widget contentIcon;
   final Color bgColor;
@@ -11,7 +22,16 @@ class VooSearchBar extends StatelessWidget {
 
   VooSearchBar({
     this.leading,
-    @required this.child,
+    this.hintText,
+    this.hintStyle,
+    this.style,
+    this.align=TextAlign.left,
+    this.controller,
+    this.onChanged,
+    this.onEditingComplete,
+    this.onSubmitted,
+    this.showClear,
+    this.readOnly=false,
     this.contentIcon,
     this.trailing,
     this.bgColor,
@@ -24,22 +44,48 @@ class VooSearchBar extends StatelessWidget {
     if (contentIcon != null) {
       children.add(contentIcon);
     } else {
-      children.add(Icon(Icons.search, color: Colors.grey));
+      children.add(Icon(
+        Icons.search,
+        color: Color(0xffbfbfbf),
+        size: ScreenUtil().setWidth(36),
+      ));
     }
 
+    children.add(SizedBox(width: ScreenUtil().setWidth(24)));
     children.add(Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(left: 8),
-        child: child,
+      child: VooField(
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: hintText,
+          hintStyle: hintStyle ??
+              TextStyle(
+                fontSize: ScreenUtil().setSp(32),
+                color: Color(0xffb6b6b6),
+              ),
+          isCollapsed: true,
+        ),
+        style: style ??
+            TextStyle(
+              fontSize: ScreenUtil().setSp(32),
+              color: Color(0xff333333),
+            ),
+        textAlign: align,
+        maxLines: 1,
+        showClear: showClear,
+        onChanged: onChanged,
+        onSubmitted: onSubmitted,
+        onEditingComplete: onEditingComplete,
+        readOnly: readOnly,
+        controller: controller,
       ),
     ));
 
     return Container(
-      height: 40,
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      height:ScreenUtil().setWidth(64),
+      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: roundBgColor ?? Colors.grey[100],
+        borderRadius: BorderRadius.circular(ScreenUtil().setWidth(32)),
+        color: roundBgColor ?? Color(0xfff6f6f6),
       ),
       child: Row(children: children, mainAxisSize: MainAxisSize.min),
     );
@@ -50,8 +96,8 @@ class VooSearchBar extends StatelessWidget {
     List<Widget> children = [];
     if (leading != null) {
       children.add(Container(
-        constraints: BoxConstraints(minHeight: 56),
-        margin: EdgeInsets.only(right: 8),
+        constraints: BoxConstraints(maxHeight: ScreenUtil().setWidth(96)),
+        margin: EdgeInsets.only(right: ScreenUtil().setWidth(16)),
         child: leading,
         alignment: Alignment.center,
       ));
@@ -61,19 +107,20 @@ class VooSearchBar extends StatelessWidget {
 
     if (trailing != null) {
       children.add(Container(
-        height: 56,
-        margin: EdgeInsets.only(left: 8),
+        constraints: BoxConstraints(maxHeight: ScreenUtil().setWidth(96)),
+        margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
         child: trailing,
         alignment: Alignment.center,
       ));
     }
 
     return Container(
-      height: 56,
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      height: ScreenUtil().setWidth(96),
+      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
       alignment: Alignment.center,
       color: bgColor ?? Colors.white,
-      child: Row(children: children, crossAxisAlignment: CrossAxisAlignment.center),
+      child: Row(
+          children: children, crossAxisAlignment: CrossAxisAlignment.center),
     );
   }
 }

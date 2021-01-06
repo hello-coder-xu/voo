@@ -1,8 +1,5 @@
-import 'package:voo/field/index.dart';
 import 'package:voo/icon/index.dart';
-
 import 'package:voo/search_bar/index.dart';
-
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
 
@@ -11,102 +8,55 @@ class SearchBarPage extends StatelessWidget {
   //内容
   Widget contentView() {
     List<Widget> children = [];
-    children.add(UiComponent.getListTile(title: '基础样式'));
-
-    VooSearchBar(
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入搜索内容',
-          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
-          isCollapsed: true,
-        ),
-        showClear: true,
-      ),
-    );
+    children.add(SizedBox(height: 32));
 
     children.add(VooSearchBar(
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入搜索内容',
-          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
-          isCollapsed: true,
-        ),
-        showClear: true,
-      ),
+      hintText: '请输入搜索内容',
+      showClear: true,
     ));
 
-    children.add(UiComponent.getListTile(title: '反白搜索'));
+    children.add(SizedBox(height: 32));
     children.add(VooSearchBar(
       bgColor: Colors.black,
       roundBgColor: Colors.grey[700],
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入搜索内容',
-          hintStyle: TextStyle(color: Colors.white),
-          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
-          isCollapsed: true,
-        ),
-        style: TextStyle(color: Colors.white),
-        showClear: true,
-      ),
+      hintText: '请输入搜索内容',
+      hintStyle: TextStyle(color: Colors.white),
+      style: TextStyle(color: Colors.white),
+      showClear: true,
       contentIcon: Icon(Icons.search, color: Colors.white),
     ));
 
-    children.add(UiComponent.getListTile(title: '右侧单图标'));
+    children.add(SizedBox(height: 32));
     children.add(VooSearchBar(
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入搜索内容',
-          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
-          isCollapsed: true,
-        ),
-        showClear: true,
-      ),
-      trailing: Icon(VooIcon.avatar),
+      hintText: '请输入搜索内容',
+      showClear: true,
+      trailing: Icon(VooIcon.avatar, size: 20),
     ));
 
-    children.add(UiComponent.getListTile(title: '右侧双图标'));
+    children.add(SizedBox(height: 32));
     children.add(VooSearchBar(
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入搜索内容',
-          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
-          isCollapsed: true,
-        ),
-        showClear: true,
-      ),
+      hintText: '请输入搜索内容',
+      showClear: true,
       trailing: Row(
         children: [
-          Icon(VooIcon.avatar),
+          Icon(VooIcon.avatar, size: 20),
           SizedBox(width: 8),
-          Icon(VooIcon.more),
+          Icon(VooIcon.more, size: 20),
         ],
       ),
     ));
 
-    children.add(UiComponent.getListTile(title: '左右两边文字/图标'));
+    children.add(SizedBox(height: 32));
     children.add(VooSearchBar(
       leading: Row(
         children: [
-          Text('台北'),
-          Icon(Icons.keyboard_arrow_down, color: Colors.grey),
+          Text('台北',style: TextStyle(color: Colors.black87,fontSize: 16)),
+          Icon(Icons.keyboard_arrow_down, color: Colors.black87),
         ],
       ),
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入搜索内容',
-          contentPadding: const EdgeInsets.symmetric(vertical: 4.0),
-          isCollapsed: true,
-        ),
-        showClear: true,
-      ),
-      trailing: Icon(VooIcon.avatar),
+      hintText: '请输入搜索内容',
+      showClear: true,
+      trailing: Icon(VooIcon.avatar, size: 20),
     ));
 
     return SingleChildScrollView(
@@ -120,6 +70,7 @@ class SearchBarPage extends StatelessWidget {
     return Scaffold(
       appBar: UiComponent.getTitleBar(title: 'SearchBarPreview'),
       body: contentView(),
+      backgroundColor: Colors.grey[200],
     );
   }
 }

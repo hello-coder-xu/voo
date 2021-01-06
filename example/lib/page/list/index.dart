@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:voo/cell/index.dart';
 import 'package:voo/cell/voo_cell_field.dart';
 import 'package:voo/color/index.dart';
-import 'package:voo/field/index.dart';
 import 'package:voo/icon/index.dart';
 import 'package:voo/picker/picker_bean.dart';
 import 'package:voo/picker/voo_picker.dart';
@@ -97,76 +96,64 @@ class ListPageState extends State<ListPage> {
 
     children.add(UiComponent.getListTile(title: '输入组合'));
     children.add(VooCellField(
-      title: Text('昵称', style: TextStyle(fontSize: 16)),
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入昵称',
-        ),
-      ),
+      title: '昵称',
+      border: InputBorder.none,
+      hintText: '请输入昵称',
       paddingWidth: 48,
     ));
     children.add(Divider(height: 1));
     children.add(VooCellField(
-      title: Text('联系方式', style: TextStyle(fontSize: 16)),
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入手机号码',
-        ),
-      ),
+      title: '联系方式',
+      border: InputBorder.none,
+      hintText: '请输入手机号码',
       paddingWidth: 16,
     ));
 
     children.add(UiComponent.getListTile(title: '输入与弹出或跳转组合'));
     children.add(VooCellField(
-      title: Text('房屋面积', style: TextStyle(fontSize: 16)),
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: '请输入您要设计的房屋坪数',
-        ),
-      ),
+      title: '房屋面积',
+      border: InputBorder.none,
+      hintText: '请输入您要设计的房屋坪数',
       paddingWidth: 16,
     ));
 
     bool hasSelect = cityValue.length != 0;
     children.add(Divider(height: 1));
-    children.add(VooCellField(
-      title: Text('所在城市', style: TextStyle(fontSize: 16)),
-      child: GestureDetector(
-        onTap: showCityMenu,
-        behavior: HitTestBehavior.translucent,
-        child: Container(
-          width: double.infinity,
-          child: Text(
-            hasSelect ? cityValue : '点击选择所在城市',
-            style: TextStyle(
-              color: hasSelect ? Colors.black87 : Colors.grey,
-            ),
-          ),
-        ),
-      ),
-    ));
+    // children.add(VooCellField(
+    //   title: '所在城市',
+    //   child: GestureDetector(
+    //     onTap: showCityMenu,
+    //     behavior: HitTestBehavior.translucent,
+    //     child: Container(
+    //       width: double.infinity,
+    //       child: Text(
+    //         hasSelect ? cityValue : '点击选择所在城市',
+    //         style: TextStyle(
+    //           color: hasSelect ? Colors.black87 : Colors.grey,
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // ));
 
     bool hasHouseSelect = houseValue.length != 0;
     children.add(Divider(height: 1));
-    children.add(VooCellField(
-      title: Text('房屋格局', style: TextStyle(fontSize: 16)),
-      child: GestureDetector(
-        onTap: showHouseMenu,
-        behavior: HitTestBehavior.translucent,
-        child: Container(
-          width: double.infinity,
-          child: Text(
-            hasHouseSelect ? houseValue : '点击选择房屋格局、屋况',
-            style: TextStyle(
-              color: hasHouseSelect ? Colors.black87 : Colors.grey,
-            ),
-          ),
-        ),
-      ),
-    ));
+    // children.add(VooCellField(
+    //   title:'房屋格局',
+    //   child: GestureDetector(
+    //     onTap: showHouseMenu,
+    //     behavior: HitTestBehavior.translucent,
+    //     child: Container(
+    //       width: double.infinity,
+    //       child: Text(
+    //         hasHouseSelect ? houseValue : '点击选择房屋格局、屋况',
+    //         style: TextStyle(
+    //           color: hasHouseSelect ? Colors.black87 : Colors.grey,
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // ));
 
     children.add(UiComponent.getListTile(title: '图标+标题组合'));
     children.add(VooCell(

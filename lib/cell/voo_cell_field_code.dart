@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:voo/field/index.dart';
 
-///
-class VooCellField extends StatelessWidget {
+///验证码
+class VooCellFieldCode extends StatelessWidget {
   final String title;
   final TextStyle titleStyle;
   final double titleWidth;
@@ -13,8 +13,6 @@ class VooCellField extends StatelessWidget {
   final TextInputType keyboardType;
   final List<TextInputFormatter> inputFormatters;
   final InputBorder border;
-  final String errorText;
-  final TextStyle errorStyle;
   final int maxLength;
   final int minLines;
   final int maxLines;
@@ -25,13 +23,10 @@ class VooCellField extends StatelessWidget {
   final ValueChanged<String> onSubmitted;
   final String trailing;
   final TextStyle trailingStyle;
+  final VoidCallback onTrailing;
   final double paddingWidth;
-  final bool showPwd;
-  final bool showClear;
-  final bool readOnly;
-  final bool enabled;
 
-  VooCellField({
+  VooCellFieldCode({
     @required this.title,
     this.titleStyle,
     this.titleWidth,
@@ -40,26 +35,47 @@ class VooCellField extends StatelessWidget {
     this.keyboardType,
     this.inputFormatters,
     this.border,
-    this.errorText,
-    this.errorStyle,
     this.maxLength,
     this.minLines,
     this.maxLines = 1,
-    this.align = TextAlign.end,
+    this.align = TextAlign.start,
     this.controller,
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
     this.trailing,
     this.trailingStyle,
+    this.onTrailing,
     this.paddingWidth,
-    this.showPwd = false,
-    this.showClear = false,
-    this.readOnly = false,
-    this.enabled = true,
   });
 
-  Widget topView() {
+  Widget trailingView() {
+    List<Widget> children = [];
+    children.add(Container(
+      margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
+      height: ScreenUtil().setHeight(40),
+      width: 1,
+      color: Color(0xffe5e5e5),
+    ));
+    children.add(Container(
+      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
+      margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
+      alignment: Alignment.center,
+      child: Text(
+        trailing,
+        style: trailingStyle ??
+            TextStyle(
+                fontSize: ScreenUtil().setSp(32), color: Color(0xff25c489)),
+      ),
+    ));
+    return GestureDetector(
+      onTap: onTrailing,
+      child: Row(children: children),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     List<Widget> children = [];
 
     children.add(Container(
@@ -104,63 +120,22 @@ class VooCellField extends StatelessWidget {
           onChanged: onChanged,
           onEditingComplete: onEditingComplete,
           onSubmitted: onSubmitted,
-          showClear: showClear,
-          showPwd: showPwd,
-          readOnly: readOnly,
-          enabled: enabled,
         ),
       ),
     ));
 
     if (trailing != null) {
-      children.add(Container(
-        constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
-        margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
-        alignment: Alignment.center,
-        child: Text(
-          trailing,
-          style: trailingStyle ??
-              TextStyle(
-                  fontSize: ScreenUtil().setSp(32), color: Color(0xff333333)),
-        ),
-      ));
+      children.add(trailingView());
     }
-    return Row(
-      children: children,
-      crossAxisAlignment: CrossAxisAlignment.start,
-    );
-  }
 
-  Widget bottomView() {
-    return Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(80)),
-      margin: EdgeInsets.only(left: paddingWidth ?? ScreenUtil().setWidth(56)),
-      alignment: Alignment.centerRight,
-      child: Text(
-        errorText,
-        style: errorStyle ??
-            TextStyle(
-              fontSize: ScreenUtil().setSp(32),
-              color: Colors.red,
-            ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Widget child = topView();
-    if (errorText != null) {
-      List<Widget> children = [];
-      children.add(topView());
-      children.add(bottomView());
-      child = Column(children: children);
-    }
     return Container(
       color: Colors.white,
       constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
       padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
-      child: child,
+      child: Row(
+        children: children,
+        crossAxisAlignment: CrossAxisAlignment.start,
+      ),
     );
   }
 }

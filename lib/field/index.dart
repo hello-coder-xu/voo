@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:voo/icon/index.dart';
 
 ///输入框
@@ -49,7 +50,6 @@ class VooField extends StatefulWidget {
   final EdgeInsets scrollPadding;
   final bool enableInteractiveSelection;
   final DragStartBehavior dragStartBehavior;
-
   bool get selectionEnabled => enableInteractiveSelection;
   final GestureTapCallback onTap;
   final MouseCursor mouseCursor;
@@ -72,7 +72,7 @@ class VooField extends StatefulWidget {
     this.textCapitalization = TextCapitalization.none,
     this.style,
     this.strutStyle,
-    this.textAlign = TextAlign.start,
+    this.textAlign = TextAlign.end,
     this.textAlignVertical,
     this.textDirection,
     this.readOnly = false,
@@ -116,8 +116,10 @@ class VooField extends StatefulWidget {
         assert(obscuringCharacter != null && obscuringCharacter.length == 1),
         assert(obscureText != null),
         assert(autocorrect != null),
-        smartDashesType = smartDashesType ?? (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
-        smartQuotesType = smartQuotesType ?? (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
+        smartDashesType = smartDashesType ??
+            (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
+        smartQuotesType = smartQuotesType ??
+            (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
         assert(enableSuggestions != null),
         assert(enableInteractiveSelection != null),
         assert(maxLengthEnforced != null),
@@ -136,18 +138,23 @@ class VooField extends StatefulWidget {
           !expands || (maxLines == null && minLines == null),
           'minLines and maxLines must be null when expands is true.',
         ),
-        assert(!obscureText || maxLines == 1, 'Obscured fields cannot be multiline.'),
-        assert(maxLength == null || maxLength == TextField.noMaxLength || maxLength > 0),
+        assert(!obscureText || maxLines == 1,
+            'Obscured fields cannot be multiline.'),
+        assert(maxLength == null ||
+            maxLength == TextField.noMaxLength ||
+            maxLength > 0),
         assert(
             !identical(textInputAction, TextInputAction.newline) ||
                 maxLines == 1 ||
                 !identical(keyboardType, TextInputType.text),
             'Use keyboardType TextInputType.multiline when using TextInputAction.newline on a multiline TextField.'),
-        keyboardType = keyboardType ?? (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
+        keyboardType = keyboardType ??
+            (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
         toolbarOptions = toolbarOptions ??
             (obscureText
                 ? const ToolbarOptions(selectAll: true, paste: true)
-                : const ToolbarOptions(copy: true, cut: true, selectAll: true, paste: true)),
+                : const ToolbarOptions(
+                    copy: true, cut: true, selectAll: true, paste: true)),
         super(key: key);
 
   @override
@@ -196,7 +203,8 @@ class VooFieldState extends State<VooField> {
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       textCapitalization: widget.textCapitalization,
-      style: widget.style,
+      style: widget.style ??
+          TextStyle(fontSize: ScreenUtil().setSp(32), color: Color(0xff333333)),
       strutStyle: widget.strutStyle,
       textAlign: widget.textAlign,
       textAlignVertical: widget.textAlignVertical,
@@ -242,9 +250,13 @@ class VooFieldState extends State<VooField> {
     if (widget.showClear && show && hasFocus) {
       children.add(GestureDetector(
         onTap: onClear,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
-          child: Icon(Icons.cancel, size: 18, color: Colors.grey),
+        child: Container(
+          margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
+          child: Icon(
+            Icons.cancel,
+            size: ScreenUtil().setWidth(36),
+            color: Colors.grey,
+          ),
         ),
       ));
     }
@@ -252,9 +264,13 @@ class VooFieldState extends State<VooField> {
     if (widget.showPwd && show && hasFocus) {
       children.add(GestureDetector(
         onTap: onChangePwd,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
-          child: Icon(textField.obscureText ? VooIcon.view : VooIcon.close_eye, size: 18, color: Colors.grey),
+        child: Container(
+          margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
+          child: Icon(
+            textField.obscureText ? VooIcon.view : VooIcon.close_eye,
+            size: ScreenUtil().setWidth(36),
+            color: Color(0xff333333),
+          ),
         ),
       ));
     }

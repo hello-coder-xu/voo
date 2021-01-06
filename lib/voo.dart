@@ -14,6 +14,7 @@ export 'picker/voo_linkage_picker.dart';
 export 'toast/index.dart';
 export 'cell/index.dart';
 export 'cell/voo_cell_field.dart';
+export 'cell/voo_cell_field_code.dart';
 export 'bottom_sheet/index.dart';
 export 'avatar/index.dart';
 export 'result/index.dart';

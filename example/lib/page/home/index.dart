@@ -71,10 +71,7 @@ class HomePageState extends State<HomePage> {
         '输入框 Field': '/FieldPage',
         '选择器 Picker': '/PickerPage',
         '单选框 Radio': '/RadioPage',
-        '密码输输入框 PasswordCell': '/PasswordCellPage',
-        '验证码输入框 CodeCell': '/CodeCellPage',
         '折叠面板 Collapse': '/CollapsePage',
-        '表单 From': '/FormPage',
       },
       '导航组件': {
         '导航栏 NavBar': '/NavBarPage',

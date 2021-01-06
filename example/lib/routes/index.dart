@@ -6,14 +6,11 @@ import 'package:example/page/badge/index.dart';
 import 'package:example/page/bubble/index.dart';
 import 'package:example/page/bubble/index2.dart';
 import 'package:example/page/button/index2.dart';
-import 'package:example/page/cell_code/index.dart';
-import 'package:example/page/cell_password/index.dart';
 import 'package:example/page/collapse/index.dart';
 import 'package:example/page/dialog/index.dart';
 import 'package:example/page/error/index.dart';
 import 'package:example/page/field/index.dart';
 import 'package:example/page/filter/index.dart';
-import 'package:example/page/form/index.dart';
 import 'package:example/page/guide/index.dart';
 import 'package:example/page/icon/index.dart';
 import 'package:example/page/list/index.dart';
@@ -45,7 +42,6 @@ Map<String, WidgetBuilder> routs = {
   '/IconPage': (context) => IconPage(),
   '/NavBarPage': (context) => NavBarPage(),
   '/ButtonPage': (context) => ButtonPage(),
-  '/FormPage': (context) => FormPage(),
   '/TermsPage': (context) => TermsPage(),
   '/FilterPage': (context) => FilterPage(),
   '/PickerPage': (context) => PickerPage(),
@@ -74,8 +70,6 @@ Map<String, WidgetBuilder> routs = {
   '/DateTimePickerPage': (context) => DateTimePickerPage(),
   '/FieldPage': (context) => FieldPage(),
   '/RadioPage': (context) => RadioPage(),
-  '/PasswordCellPage': (context) => PasswordCellPage(),
-  '/CodeCellPage': (context) => CodeCellPage(),
   '/StateSwitcherPage': (context) => StateSwitcherPage(),
   '/TabBarPage': (context) => TabBarPage(),
   '/LabelPage': (context) => LabelPage(),
