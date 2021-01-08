@@ -67,9 +67,7 @@ class HomePageState extends State<HomePage> {
       },
       '表单组件': {
         '复选框 Checkbox': '/CheckBoxPage',
-        '时间选择 DatetimePicker': '/DateTimePickerPage',
         '输入框 Field': '/FieldPage',
-        '选择器 Picker': '/PickerPage',
         '单选框 Radio': '/RadioPage',
         '折叠面板 Collapse': '/CollapsePage',
       },

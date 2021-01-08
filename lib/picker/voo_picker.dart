@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/picker/picker_bean.dart';
 
+///选择器
 class VooPicker extends StatefulWidget {
   final String title;
   final String cancelTxt;
@@ -79,19 +80,23 @@ class VooPickerState extends State<VooPicker> {
   Widget titleView() {
     List<Widget> children = [];
 
-    children.add(Container(
-      alignment: Alignment.center,
-      child: Text(
-        widget.cancelTxt ?? '取消',
-        style: widget.cancelStyle ??
-            TextStyle(
-              fontSize: ScreenUtil().setSp(32),
-              color: Color(0xff999999),
-            ),
+    children.add(Expanded(
+      flex: 1,
+      child: Container(
+        alignment: Alignment.center,
+        child: Text(
+          widget.cancelTxt ?? '取消',
+          style: widget.cancelStyle ??
+              TextStyle(
+                fontSize: ScreenUtil().setSp(32),
+                color: Color(0xff999999),
+              ),
+        ),
       ),
     ));
 
     children.add(Expanded(
+      flex: 6,
       child: Container(
         alignment: Alignment.center,
         child: Text(
@@ -105,17 +110,20 @@ class VooPickerState extends State<VooPicker> {
       ),
     ));
 
-    children.add(GestureDetector(
-      onTap: onConfirm,
-      child: Container(
-        alignment: Alignment.center,
-        child: Text(
-          widget.confirmTxt ?? '確認',
-          style: widget.confirmStyle ??
-              TextStyle(
-                fontSize: ScreenUtil().setSp(32),
-                color: Color(0xff25c489),
-              ),
+    children.add(Expanded(
+      flex: 1,
+      child: GestureDetector(
+        onTap: onConfirm,
+        child: Container(
+          alignment: Alignment.center,
+          child: Text(
+            widget.confirmTxt ?? '確認',
+            style: widget.confirmStyle ??
+                TextStyle(
+                  fontSize: ScreenUtil().setSp(32),
+                  color: Color(0xff25c489),
+                ),
+          ),
         ),
       ),
     ));

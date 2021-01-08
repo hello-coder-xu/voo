@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:voo/picker/picker_bean.dart';
+import 'package:voo/picker/picker_linkage_bean.dart';
+import 'package:voo/picker/voo_linkage_picker.dart';
+import 'package:voo/picker/voo_picker.dart';
 
 class VooBottomGridBean {
   Widget icon;
@@ -146,6 +150,103 @@ class VooBottomSheet {
       enableDrag: enableDrag,
       routeSettings: routeSettings,
     );
+  }
+
+  static Future showPicker({
+    @required BuildContext context,
+    String title,
+    String cancelTxt,
+    String confirmTxt,
+    TextStyle style,
+    TextStyle confirmStyle,
+    TextStyle cancelStyle,
+    List<PickerBean> list,
+    VoidCallback onCancel,
+    Function(String value) onConfirm,
+    Color backgroundColor,
+    double elevation,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    Color barrierColor,
+    bool isScrollControlled = false,
+    bool useRootNavigator = false,
+    bool isDismissible = true,
+    bool enableDrag = true,
+    RouteSettings routeSettings,
+  }) {
+    WidgetBuilder builder = (context) => VooPicker(
+          title: title,
+          cancelTxt: cancelTxt,
+          confirmTxt: confirmTxt,
+          style: style,
+          confirmStyle: confirmStyle,
+          cancelStyle: cancelStyle,
+          list: list,
+          onCancel: onCancel,
+          onConfirm: onConfirm,
+        );
+    return _show(
+      context: context,
+      builder: builder,
+      backgroundColor: backgroundColor,
+      elevation: elevation,
+      clipBehavior: clipBehavior,
+      barrierColor: barrierColor,
+      isScrollControlled: isScrollControlled,
+      useRootNavigator: useRootNavigator,
+      isDismissible: isDismissible,
+      enableDrag: enableDrag,
+      routeSettings: routeSettings,
+    );
+  }
+
+  static Future showLinkagePicker({
+    @required BuildContext context,
+    String title,
+    String cancelTxt,
+    String confirmTxt,
+    TextStyle style,
+    TextStyle confirmStyle,
+    TextStyle cancelStyle,
+    PickerLinkageBean bean,
+    VoidCallback onCancel,
+    Function(String value) onConfirm,
+    Color backgroundColor,
+    double elevation,
+    ShapeBorder shape,
+    Clip clipBehavior,
+    Color barrierColor,
+    bool isScrollControlled = false,
+    bool useRootNavigator = false,
+    bool isDismissible = true,
+    bool enableDrag = true,
+    RouteSettings routeSettings,
+  }) {
+    WidgetBuilder builder = (context) => VooLinkagePicker(
+      title: title,
+      cancelTxt: cancelTxt,
+      confirmTxt: confirmTxt,
+      style: style,
+      confirmStyle: confirmStyle,
+      cancelStyle: cancelStyle,
+      bean: bean,
+      onCancel: onCancel,
+      onConfirm: onConfirm,
+    );
+    return _show(
+      context: context,
+      builder: builder,
+      backgroundColor: backgroundColor,
+      elevation: elevation,
+      clipBehavior: clipBehavior,
+      barrierColor: barrierColor,
+      isScrollControlled: isScrollControlled,
+      useRootNavigator: useRootNavigator,
+      isDismissible: isDismissible,
+      enableDrag: enableDrag,
+      routeSettings: routeSettings,
+    );
+
   }
 
   static Future _show({

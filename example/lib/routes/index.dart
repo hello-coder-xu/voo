@@ -29,7 +29,6 @@ import 'package:example/page/checkbox/index.dart';
 import 'package:example/page/color/index.dart';
 import 'package:example/page/layout/index.dart';
 import 'package:example/page/loading/index.dart';
-import 'package:example/page/picker/date_time_picker.dart';
 import 'package:example/page/nav_bar/index.dart';
 import 'package:example/page/picker/picker.dart';
 import 'package:example/page/popup/index.dart';
@@ -67,7 +66,6 @@ Map<String, WidgetBuilder> routs = {
   '/LoadingPage': (context) => LoadingPage(),
   '/NotifyPage': (context) => NotifyPage(),
   '/CheckBoxPage': (context) => CheckBoxPage(),
-  '/DateTimePickerPage': (context) => DateTimePickerPage(),
   '/FieldPage': (context) => FieldPage(),
   '/RadioPage': (context) => RadioPage(),
   '/StateSwitcherPage': (context) => StateSwitcherPage(),

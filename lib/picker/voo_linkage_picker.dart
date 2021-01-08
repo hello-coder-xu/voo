@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:voo/color/index.dart';
 import 'package:voo/picker/picker_linkage_bean.dart';
 
@@ -8,6 +9,9 @@ class VooLinkagePicker extends StatefulWidget {
   final String title;
   final String cancelTxt;
   final String confirmTxt;
+  final TextStyle style;
+  final TextStyle confirmStyle;
+  final TextStyle cancelStyle;
   final PickerLinkageBean bean;
   final Function onCancel;
   final Function(String value) onConfirm;
@@ -17,6 +21,9 @@ class VooLinkagePicker extends StatefulWidget {
     this.title,
     this.cancelTxt,
     this.confirmTxt,
+    this.style,
+    this.confirmStyle,
+    this.cancelStyle,
     this.onCancel,
     this.onConfirm,
   }) : assert(bean != null);
@@ -42,15 +49,22 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
     bean.child?.forEach((element) {
       children.add(Container(
         alignment: Alignment.center,
-        child: Text(element.title, style: TextStyle(fontSize: 14, color: VooColors.titleColor)),
+        child: Text(
+          element.title,
+          style: TextStyle(
+            fontSize: ScreenUtil().setSp(36),
+            color: Color(0xff333333),
+          ),
+        ),
       ));
     });
 
     return Expanded(
       child: CupertinoPicker(
-        itemExtent: 40,
+        itemExtent: ScreenUtil().setHeight(96),
         scrollController: scrolls[index],
-        onSelectedItemChanged: (position) => onSelectedItemChanged(index, position, bean),
+        onSelectedItemChanged: (position) =>
+            onSelectedItemChanged(index, position, bean),
         children: children,
       ),
     );
@@ -64,7 +78,14 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
       flex: 1,
       child: Container(
         alignment: Alignment.center,
-        child: Text(widget.cancelTxt ?? '取消', style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)),
+        child: Text(
+          widget.cancelTxt ?? '取消',
+          style: widget.cancelStyle ??
+              TextStyle(
+                fontSize: ScreenUtil().setSp(32),
+                color: Color(0xff999999),
+              ),
+        ),
       ),
     ));
 
@@ -72,7 +93,14 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
       flex: 6,
       child: Container(
         alignment: Alignment.center,
-        child: Text(widget.title ?? '', style: TextStyle(fontSize: 16, color: VooColors.titleColor)),
+        child: Text(
+          widget.title ?? '',
+          style: widget.style ??
+              TextStyle(
+                fontSize: ScreenUtil().setSp(32),
+                color: Color(0xff333333),
+              ),
+        ),
       ),
     ));
 
@@ -82,13 +110,20 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
         onTap: onConfirm,
         child: Container(
           alignment: Alignment.center,
-          child: Text(widget.confirmTxt ?? '確認', style: TextStyle(fontSize: 14, color: VooColors.accentColor)),
+          child: Text(
+            widget.confirmTxt ?? '確認',
+            style: TextStyle(
+              fontSize: ScreenUtil().setSp(32),
+              color: Color(0xff25c489),
+            ),
+          ),
         ),
       ),
     ));
 
     return Container(
-      height: 40,
+      height: ScreenUtil().setHeight(96),
+      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(40)),
       color: Colors.white,
       child: Row(children: children),
     );
@@ -98,7 +133,8 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
     List<Widget> children = [];
     if (bean.child != null && bean.child.length > 0) {
       children.add(cupertinoPickerItem(index, bean));
-      children.addAll(getCupertinoPickerChildren(++index, bean.child[bean.select]));
+      children
+          .addAll(getCupertinoPickerChildren(++index, bean.child[bean.select]));
     }
     return children;
   }
@@ -106,7 +142,7 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
   Widget contentCupertinoPickerView() {
     List<Widget> children = getCupertinoPickerChildren(0, currentBean);
     return Container(
-      height: 200,
+      height: ScreenUtil().setHeight(386),
       color: Colors.white,
       child: Row(children: children),
     );
