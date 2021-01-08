@@ -36,7 +36,8 @@ class VooGroupCollapseState extends State<VooGroupCollapse> {
       int tempIndex = widget.children.indexOf(element);
       children.add(VooCollapse(
         initiallyExpanded: element.initiallyExpanded,
-        title: element.title,
+        title: element.title.data,
+        style: element.title.style,
         child: element.child,
         key: keyChildren[tempIndex],
         onExpansionChanged: (value) => onExpansionChanged(tempIndex, value),

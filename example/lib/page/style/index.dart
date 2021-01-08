@@ -94,37 +94,27 @@ class StylePageState extends State<StylePage> with SingleTickerProviderStateMixi
 
     children.add(UiComponent.getListTile(title: '动画'));
     children.add(VooCell(
-      title: Text('Fade'),
-      trailing: Icon(Icons.chevron_right),
-      alignment: CrossAxisAlignment.center,
+      title: 'Fade',
       onTap: onFade,
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('Slide Up'),
-      trailing: Icon(Icons.chevron_right),
-      alignment: CrossAxisAlignment.center,
+      title: 'Slide Up',
       onTap: onSlideUp,
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('Slide Down'),
-      trailing: Icon(Icons.chevron_right),
-      alignment: CrossAxisAlignment.center,
+      title: 'Slide Down',
       onTap: onSlideDown,
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('Slide Left'),
-      trailing: Icon(Icons.chevron_right),
-      alignment: CrossAxisAlignment.center,
+      title: 'Slide Left',
       onTap: onSlideLeft,
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('Slide Right'),
-      trailing: Icon(Icons.chevron_right),
-      alignment: CrossAxisAlignment.center,
+      title: 'Slide Right',
       onTap: onSlideRight,
     ));
 

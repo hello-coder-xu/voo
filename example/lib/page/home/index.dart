@@ -21,7 +21,7 @@ class HomePageState extends State<HomePage> {
       },
       '信息输入': {
         '按钮 Button': '/ButtonPage',
-        '表单 Form': '/FormPage',
+        '输入框 Field': '/FieldPage',
         '协议 Terms': '/TermsPage',
         '下拉菜单 DropdownMenu': '/FilterPage',
         '选择器 Picker': '/PickerPage',
@@ -77,7 +77,6 @@ class HomePageState extends State<HomePage> {
         '导航栏 NavBar': '/NavBarPage',
         '下拉菜单 DropdownMenu': '/FilterPage',
         '搜索框 SearchBar': '/SearchBarPage',
-        '协议 Terms': '/TermsPage',
         '蒙层引导 DemoGuide': '/GuidePage',
         '页面状态切换 StateSwitcher': '/StateSwitcherPage',
         '导航栏 指示器 TabBar indicator': '/TabBarPage',

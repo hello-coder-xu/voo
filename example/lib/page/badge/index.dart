@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/cell/index.dart';
 import 'package:voo/color/index.dart';
-import 'package:voo/icon/index.dart';
 import 'package:voo/voo.dart';
 
 import '../../comm/ui_component.dart';
@@ -49,47 +47,26 @@ class BadgePage extends StatelessWidget {
           color: VooColors.subTitleColor,
         ),
       ),
-      title: Text('我看过的'),
-      trailing: Icon(
-        VooIcon.arrow_right,
-        size: 16,
-        color: VooColors.subTitleColor,
-      ),
+      title: '我看过的',
     ));
     children.add(Divider(height: 1));
-    children.add(VooCell(
-      leading: Padding(
-        padding: EdgeInsets.only(right: 8),
-        child: Icon(Icons.message, size: 18, color: VooColors.subTitleColor),
-      ),
-      title: Text('我的消息'),
-      value: VooBadge(
+    children.add(VooCellExtension(
+      leading: Icon(Icons.message, size: 18, color: VooColors.subTitleColor),
+      title: '我的消息',
+      content: VooBadge(
         child: '10',
         theme: VooBadgeTheme.number,
       ),
-      trailing:
-          Icon(VooIcon.arrow_right, size: 16, color: VooColors.subTitleColor),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      leading: Padding(
-        padding: EdgeInsets.only(right: 8),
-        child: Icon(
-          Icons.feedback,
-          size: 18,
-          color: VooColors.subTitleColor,
-        ),
-      ),
-      title: Text('意见反馈'),
-      value: Text(
-        '5.3.7',
-        style: TextStyle(fontSize: 14, color: Colors.grey),
-      ),
-      trailing: Icon(
-        VooIcon.arrow_right,
-        size: 16,
+      leading: Icon(
+        Icons.feedback,
+        size: 18,
         color: VooColors.subTitleColor,
       ),
+      title: '意见反馈',
+      content:'5.3.7',
     ));
     return SingleChildScrollView(
       padding: EdgeInsets.only(bottom: 32),

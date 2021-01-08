@@ -11,53 +11,45 @@ class NotifyPage extends StatelessWidget {
     List<Widget> children = [];
     children.add(UiComponent.getListTile(title: '基础用法'));
     children.add(VooCell(
-      title: Text('基础用法', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      trailing: Icon(Icons.chevron_right),
+      title: '基础用法',
       onTap: () => showNotify(context, type: 'base'),
     ));
 
     children.add(UiComponent.getListTile(title: '通知类型'));
     children.add(VooCell(
-      title: Text('主要通知', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      trailing: Icon(Icons.chevron_right),
+      title: '主要通知',
       onTap: () => showNotify(context, type: 'primary'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('成功通知', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      trailing: Icon(Icons.chevron_right),
+      title: '成功通知',
       onTap: () => showNotify(context, type: 'success'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('危险通知', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      trailing: Icon(Icons.chevron_right),
+      title: '危险通知',
       onTap: () => showNotify(context, type: 'fail'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('警告通知', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      trailing: Icon(Icons.chevron_right),
+      title: '警告通知',
       onTap: () => showNotify(context, type: 'warn'),
     ));
 
     children.add(UiComponent.getListTile(title: '自定配置'));
     children.add(VooCell(
-      title: Text('自定义颜色', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      trailing: Icon(Icons.chevron_right),
+      title: '自定义颜色',
       onTap: () => showNotify(context, type: 'custom_color'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('自定义时长', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      trailing: Icon(Icons.chevron_right),
+      title: '自定义时长',
       onTap: () => showNotify(context, type: 'custom_time'),
     ));
 
     children.add(UiComponent.getListTile(title: '自行关闭'));
     children.add(VooCell(
-      title: Text('自行关闭', style: TextStyle(fontSize: 16, color: Colors.black87)),
-      trailing: Icon(Icons.chevron_right),
+      title: '自行关闭',
       onTap: () => showNotify(context, type: 'async'),
     ));
 

@@ -12,66 +12,56 @@ class PopupPage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '基础用法'));
     children.add(VooCell(
-      title: Text('展示弹出层'),
-      trailing: Icon(Icons.chevron_right),
+      title: '展示弹出层',
       onTap: () => showPopup(context, 'base'),
     ));
 
     children.add(UiComponent.getListTile(title: '弹出位置'));
     children.add(VooCell(
-      title: Text('顶部弹出'),
-      trailing: Icon(Icons.chevron_right),
+      title: '顶部弹出',
       onTap: () => showPopup(context, 'top'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('底部弹出'),
-      trailing: Icon(Icons.chevron_right),
+      title: '底部弹出',
       onTap: () => showPopup(context, 'bottom'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('左侧弹出'),
-      trailing: Icon(Icons.chevron_right),
+      title: '左侧弹出',
       onTap: () => showPopup(context, 'left'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('右侧弹出'),
-      trailing: Icon(Icons.chevron_right),
+      title: '右侧弹出',
       onTap: () => showPopup(context, 'right'),
     ));
 
     children.add(UiComponent.getListTile(title: '关闭图标'));
     children.add(VooCell(
-      title: Text('关闭图标'),
-      trailing: Icon(Icons.chevron_right),
+      title: '关闭图标',
       onTap: () => showPopup(context, 'closeIcon'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('自定义图标'),
-      trailing: Icon(Icons.chevron_right),
+      title: '自定义图标',
       onTap: () => showPopup(context, 'customIcon'),
     ));
     children.add(Divider(height: 1));
     children.add(VooCell(
-      title: Text('图标位置'),
-      trailing: Icon(Icons.chevron_right),
+      title: '图标位置',
       onTap: () => showPopup(context, 'iconLocal'),
     ));
 
     children.add(UiComponent.getListTile(title: '圆角弹窗'));
     children.add(VooCell(
-      title: Text('圆角弹窗'),
-      trailing: Icon(Icons.chevron_right),
+      title: '圆角弹窗',
       onTap: () => showPopup(context, 'round'),
     ));
 
     children.add(UiComponent.getListTile(title: '自定义挂载'));
     children.add(VooCell(
-      title: Text('指定挂载节点'),
-      trailing: Icon(Icons.chevron_right),
+      title: '指定挂载节点',
       onTap: () => showPopup(context, 'custom'),
     ));
 

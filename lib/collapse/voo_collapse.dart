@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:voo/cell/index.dart';
+import 'package:voo/cell/voo_cell_extension.dart';
 
 ///折叠视图
 class VooCollapse extends StatefulWidget {
   final bool initiallyExpanded;
   final ValueChanged<bool> onExpansionChanged;
-  final Text title;
+  final String title;
+  final TextStyle style;
   final Widget child;
 
   VooCollapse({
     GlobalKey key,
     @required this.title,
     @required this.child,
+    this.style,
     this.initiallyExpanded = false,
     this.onExpansionChanged,
   }) : super(key: key);
@@ -40,9 +42,9 @@ class VooCollapseState extends State<VooCollapse> with SingleTickerProviderState
 
   Widget _buildChildren(BuildContext context, Widget child) {
     List<Widget> children = [];
-    children.add(VooCell(
-      title: widget.title ?? Text(''),
-      alignment: CrossAxisAlignment.center,
+    children.add(VooCellExtension(
+      title: widget.title ?? '',
+      style: widget.style,
       trailing: RotationTransition(
         turns: _iconTurns,
         child: const Icon(Icons.arrow_drop_down),

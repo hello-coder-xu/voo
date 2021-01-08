@@ -1,6 +1,5 @@
 import 'package:voo/bottom_sheet/index.dart';
 import 'package:voo/cell/index.dart';
-import 'package:voo/color/index.dart';
 import 'package:voo/icon/index.dart';
 import 'package:voo/toast/index.dart';
 
@@ -14,20 +13,17 @@ class BottomSheetPage extends StatelessWidget {
     List<Widget> children = [];
     children.add(UiComponent.getListTile(title: '列表面板'));
     children.add(VooCell(
-      title: Text('列表面板'),
-      trailing: Icon(VooIcon.arrow_right, size: 16, color: VooColors.subTitleColor),
+      title: '列表面板',
       onTap: () => listPanel(context),
     ));
     children.add(UiComponent.getListTile(title: '文字说明操作'));
     children.add(VooCell(
-      title: Text('文字说明操作'),
-      trailing: Icon(VooIcon.arrow_right, size: 16, color: VooColors.subTitleColor),
+      title: '文字说明操作',
       onTap: () => textOperation(context),
     ));
     children.add(UiComponent.getListTile(title: '自定义视图'));
     children.add(VooCell(
-      title: Text('自定义视图'),
-      trailing: Icon(VooIcon.arrow_right, size: 16, color: VooColors.subTitleColor),
+      title: '自定义视图',
       onTap: () => customOperation(context),
     ));
     return SingleChildScrollView(child: Column(children: children));

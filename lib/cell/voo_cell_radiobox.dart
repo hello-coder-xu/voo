@@ -2,34 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:voo/checkbox/voo_checkbox_icon.dart';
 
-///单选框
-class VooRadio extends StatelessWidget {
-  final dynamic value;
-  final dynamic group;
-  final Function(dynamic value) onChanged;
+/// 单元-多选
+class VooCellRadioBox extends StatelessWidget {
+  final bool checked;
   final Icon selectIcon;
   final Icon unSelectIcon;
-  final String child;
+  final String title;
   final TextStyle style;
-  final bool enable;
+  final VoidCallback onTap;
 
-  VooRadio({
-    @required this.value,
-    @required this.group,
-    this.onChanged,
+  VooCellRadioBox({
+    this.checked = false,
+    this.onTap,
     this.selectIcon,
     this.unSelectIcon,
-    this.child,
+    this.title,
     this.style,
-    this.enable = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    assert(value != null);
     Widget currentChild;
-    Widget checkBoxIcon = VooCheckBoxIcon(selectIcon: selectIcon, unSelectIcon: unSelectIcon, value: value == group);
-    if (child == null) {
+    Widget checkBoxIcon = VooCheckBoxIcon(
+        selectIcon: selectIcon, unSelectIcon: unSelectIcon, value: checked);
+    if (title == null) {
       currentChild = checkBoxIcon;
     } else {
       List<InlineSpan> children = [];
@@ -43,11 +39,12 @@ class VooRadio extends StatelessWidget {
       children.add(WidgetSpan(
         alignment: PlaceholderAlignment.middle,
         child: Text(
-          child,
-          style: style??TextStyle(
-            color: Color(0xff333333),
-            fontSize: ScreenUtil().setSp(32),
-          ),
+          title,
+          style: style ??
+              TextStyle(
+                color: Color(0xff333333),
+                fontSize: ScreenUtil().setSp(32),
+              ),
         ),
       ));
       currentChild = Text.rich(
@@ -55,14 +52,21 @@ class VooRadio extends StatelessWidget {
         textAlign: TextAlign.center,
       );
     }
-    if (!enable) return Opacity(opacity: 0.5, child: currentChild);
-    return GestureDetector(
-      onTap: _onChanged,
+
+    currentChild = Container(
+      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
+      color: Colors.white,
+      alignment: Alignment.centerLeft,
+      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
       child: currentChild,
     );
-  }
 
-  void _onChanged() {
-    if (onChanged != null) onChanged(value);
+    if (onTap != null) {
+      currentChild = GestureDetector(
+        onTap: onTap,
+        child: currentChild,
+      );
+    }
+    return currentChild;
   }
 }

@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/screenutil.dart';
+import 'package:voo/switch/index.dart';
 
-///单元格
-class VooCell extends StatelessWidget {
+///单元-开关
+class VooCellSwitch extends StatelessWidget {
   final String title;
   final TextStyle style;
   final Widget leading;
-  final bool showRightIcon;
-  final String content;
-  final TextStyle contentStyle;
-  final VoidCallback onTap;
+  final bool checked;
+  final Function(bool value) onChanged;
+  final Color activeColor;
+  final Color trackColor;
 
-  VooCell({
+  VooCellSwitch({
     this.title = '',
     this.style,
     this.leading,
-    this.showRightIcon = true,
-    this.content = '',
-    this.contentStyle,
-    this.onTap,
+    this.checked = false,
+    this.onChanged,
+    this.activeColor,
+    this.trackColor,
   });
 
   ///前面视图
@@ -43,34 +44,6 @@ class VooCell extends StatelessWidget {
     return titleView;
   }
 
-  ///后面视图
-  Widget trailingView() {
-    Widget valueView = Text(
-      content,
-      style: contentStyle ??
-          TextStyle(
-            fontSize: ScreenUtil().setSp(32),
-            color: Color(0xffb6b6b6),
-          ),
-    );
-    List<Widget> children = [];
-    children.add(valueView);
-    if (showRightIcon) {
-      children.add(SizedBox(width: ScreenUtil().setWidth(16)));
-      children.add(Icon(
-        Icons.keyboard_arrow_right,
-        size: ScreenUtil().setWidth(40),
-        color: Color(0xffb6b6b6),
-      ));
-    }
-    return Row(
-      children: children,
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     List<Widget> children = [];
@@ -78,7 +51,12 @@ class VooCell extends StatelessWidget {
     children.add(Expanded(
       child: Container(
         alignment: Alignment.centerRight,
-        child: trailingView(),
+        child: VooSwitch(
+          value: checked,
+          activeColor: activeColor,
+          trackColor: trackColor,
+          onChanged: onChanged,
+        ),
       ),
     ));
     Widget child = Container(
@@ -92,9 +70,6 @@ class VooCell extends StatelessWidget {
       ),
     );
 
-    if (onTap != null) {
-      child = GestureDetector(onTap: onTap, child: child);
-    }
     return child;
   }
 }

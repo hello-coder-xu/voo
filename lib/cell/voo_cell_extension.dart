@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 ///单元格
-class VooCell extends StatelessWidget {
+class VooCellExtension extends StatelessWidget {
   final String title;
   final TextStyle style;
   final Widget leading;
+  final Widget trailing;
+  final Widget content;
   final bool showRightIcon;
-  final String content;
-  final TextStyle contentStyle;
   final VoidCallback onTap;
 
-  VooCell({
+  VooCellExtension({
     this.title = '',
     this.style,
     this.leading,
-    this.showRightIcon = true,
-    this.content = '',
-    this.contentStyle,
+    this.trailing,
+    this.content,
+    this.showRightIcon=true,
     this.onTap,
   });
 
@@ -37,25 +37,23 @@ class VooCell extends StatelessWidget {
       children.add(leading);
       children.add(SizedBox(width: ScreenUtil().setWidth(24)));
       children.add(titleView);
-      return Row(
-          children: children, crossAxisAlignment: CrossAxisAlignment.center);
+      return Row(children: children);
     }
     return titleView;
   }
 
   ///后面视图
   Widget trailingView() {
-    Widget valueView = Text(
-      content,
-      style: contentStyle ??
-          TextStyle(
-            fontSize: ScreenUtil().setSp(32),
-            color: Color(0xffb6b6b6),
-          ),
+    Widget valueView = DefaultTextStyle(
+      style: TextStyle(fontSize: ScreenUtil().setSp(32), color: Color(0xffb6b6b6)),
+      child: content ?? Text(''),
     );
     List<Widget> children = [];
     children.add(valueView);
-    if (showRightIcon) {
+    if (trailing != null) {
+      children.add(SizedBox(width: ScreenUtil().setWidth(32)));
+      children.add(trailing);
+    }else if(showRightIcon){
       children.add(SizedBox(width: ScreenUtil().setWidth(16)));
       children.add(Icon(
         Icons.keyboard_arrow_right,
@@ -66,7 +64,6 @@ class VooCell extends StatelessWidget {
     return Row(
       children: children,
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
     );
   }
