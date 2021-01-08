@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:voo/color/index.dart';
 import 'package:voo/picker/picker_linkage_bean.dart';
 
 ///联动picker
