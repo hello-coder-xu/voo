@@ -59,8 +59,10 @@ class DialogPage extends StatelessWidget {
         runSpacing: 10,
         spacing: 10,
         children: [
-          itemView(title: '运营活动弹窗-小', onTap: () => smallOperatingDialog(context)),
-          itemView(title: '运营活动弹窗-大', onTap: () => largeOperatingDialog(context)),
+          itemView(
+              title: '运营活动弹窗-小', onTap: () => smallOperatingDialog(context)),
+          itemView(
+              title: '运营活动弹窗-大', onTap: () => largeOperatingDialog(context)),
         ],
       ),
     ));
@@ -83,7 +85,7 @@ class DialogPage extends StatelessWidget {
       fit: false,
       icon: Icon(VooIcon.company),
       content: Text('说明文案，言简意赅最好不超过2行'),
-      confirm: Text('主操作'),
+      confirm: '主操作',
       onConfirm: () {
         VooToast.showToast(context, msg: '点击主操作');
       },
@@ -101,7 +103,7 @@ class DialogPage extends StatelessWidget {
       fit: false,
       icon: Image.asset('assets/icon/100.png', width: 120, height: 120),
       content: Text('说明文案，言简意赅最好不超过2行'),
-      confirm: Text('主操作'),
+      confirm: '主操作',
       onConfirm: () {
         VooToast.showToast(context, msg: '点击主操作');
       },
@@ -120,7 +122,7 @@ class DialogPage extends StatelessWidget {
       icon: Image.asset('assets/comm/banner.webp'),
       closeIcon: Icon(Icons.close, color: Colors.white),
       content: Text('说明文案，言简意赅最好不超过2行'),
-      confirm: Text('主操作'),
+      confirm: '主操作',
       onConfirm: () {
         VooToast.showToast(context, msg: '点击主操作');
       },
@@ -135,8 +137,8 @@ class DialogPage extends StatelessWidget {
     VooDialog.showTextDialog(
       context: context,
       content: Text('说明文案，言简意赅最好不超过2行'),
-      cancel: Text('辅助操作'),
-      confirm: Text('主操作'),
+      cancel: '辅助操作',
+      confirm: '主操作',
       onCancel: () {
         VooToast.showToast(context, msg: '辅助操作');
       },
@@ -152,7 +154,7 @@ class DialogPage extends StatelessWidget {
       context: context,
       title: '标题',
       content: Text('说明文案，言简意赅最好不超过2行'),
-      confirm: Text('主操作'),
+      confirm: '主操作',
       onConfirm: () {
         VooToast.showToast(context, msg: '点击主操作');
       },
@@ -165,8 +167,8 @@ class DialogPage extends StatelessWidget {
       context: context,
       title: '标题',
       content: Text('说明文案，言简意赅最好不超过2行'),
-      cancel: Text('辅助操作'),
-      confirm: Text('主操作'),
+      cancel: '辅助操作',
+      confirm: '主操作',
       onCancel: () {
         VooToast.showToast(context, msg: '点击辅助操作');
       },
@@ -182,8 +184,8 @@ class DialogPage extends StatelessWidget {
       context: context,
       title: '标题',
       content: Text('说明文案，言简意赅最好不超过2行'),
-      cancel: Text('辅助操作'),
-      confirm: Text('主操作'),
+      cancel: '辅助操作',
+      confirm: '主操作',
       horizontal: false,
       onCancel: () {
         VooToast.showToast(context, msg: '点击辅助操作');
@@ -200,9 +202,9 @@ class DialogPage extends StatelessWidget {
       context: context,
       title: '标题',
       content: Text('说明文案，言简意赅最好不超过2行'),
-      confirm: Text('主操作'),
-      middle: Text('更多'),
-      cancel: Text('辅助操作'),
+      confirm: '主操作',
+      middle: '更多',
+      cancel: '辅助操作',
       horizontal: false,
       onCancel: () {
         VooToast.showToast(context, msg: '点击辅助操作');
