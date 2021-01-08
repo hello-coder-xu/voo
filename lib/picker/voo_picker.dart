@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:voo/color/index.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/picker/picker_bean.dart';
 
 class VooPicker extends StatefulWidget {
   final String title;
   final String cancelTxt;
   final String confirmTxt;
+  final TextStyle style;
+  final TextStyle confirmStyle;
+  final TextStyle cancelStyle;
   final List<PickerBean> list;
   final Function onCancel;
   final Function(String value) onConfirm;
@@ -18,6 +21,9 @@ class VooPicker extends StatefulWidget {
     this.confirmTxt,
     this.onCancel,
     this.onConfirm,
+    this.style,
+    this.confirmStyle,
+    this.cancelStyle,
   });
 
   @override
@@ -47,13 +53,19 @@ class VooPickerState extends State<VooPicker> {
     list.forEach((element) {
       children.add(Container(
         alignment: Alignment.center,
-        child: Text(element, style: TextStyle(fontSize: 14, color: VooColors.titleColor)),
+        child: Text(
+          element,
+          style: TextStyle(
+            fontSize: ScreenUtil().setSp(36),
+            color: Color(0xff333333),
+          ),
+        ),
       ));
     });
 
     return Expanded(
       child: CupertinoPicker(
-        itemExtent: 40,
+        itemExtent: ScreenUtil().setHeight(96),
         scrollController: scrolls[index],
         onSelectedItemChanged: (position) {
           value[index] = list[position];
@@ -67,36 +79,51 @@ class VooPickerState extends State<VooPicker> {
   Widget titleView() {
     List<Widget> children = [];
 
-    children.add(Expanded(
-      flex: 1,
-      child: Container(
-        alignment: Alignment.center,
-        child: Text(widget.cancelTxt ?? '取消', style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)),
+    children.add(Container(
+      alignment: Alignment.center,
+      child: Text(
+        widget.cancelTxt ?? '取消',
+        style: widget.cancelStyle ??
+            TextStyle(
+              fontSize: ScreenUtil().setSp(32),
+              color: Color(0xff999999),
+            ),
       ),
     ));
 
     children.add(Expanded(
-      flex: 6,
       child: Container(
         alignment: Alignment.center,
-        child: Text(widget.title ?? '', style: TextStyle(fontSize: 16, color: VooColors.titleColor)),
+        child: Text(
+          widget.title ?? '',
+          style: widget.style ??
+              TextStyle(
+                fontSize: ScreenUtil().setSp(32),
+                color: Color(0xff333333),
+              ),
+        ),
       ),
     ));
 
-    children.add(Expanded(
-      flex: 1,
-      child: GestureDetector(
-        onTap: onConfirm,
-        child: Container(
-          alignment: Alignment.center,
-          child: Text(widget.confirmTxt ?? '確認', style: TextStyle(fontSize: 14, color: VooColors.accentColor)),
+    children.add(GestureDetector(
+      onTap: onConfirm,
+      child: Container(
+        alignment: Alignment.center,
+        child: Text(
+          widget.confirmTxt ?? '確認',
+          style: widget.confirmStyle ??
+              TextStyle(
+                fontSize: ScreenUtil().setSp(32),
+                color: Color(0xff25c489),
+              ),
         ),
       ),
     ));
 
     return Container(
-      height: 40,
+      height: ScreenUtil().setHeight(96),
       color: Colors.white,
+      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(40)),
       child: Row(children: children),
     );
   }
@@ -107,7 +134,7 @@ class VooPickerState extends State<VooPicker> {
       children.add(cupertinoPickerItem(index));
     });
     return Container(
-      height: 200,
+      height: ScreenUtil().setHeight(386),
       color: Colors.white,
       child: Row(children: children),
     );
