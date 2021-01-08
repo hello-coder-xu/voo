@@ -1,8 +1,6 @@
 import 'package:voo/bottom_sheet/index.dart';
 import 'package:voo/cell/index.dart';
-import 'package:voo/icon/index.dart';
 import 'package:voo/toast/index.dart';
-
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +19,10 @@ class BottomSheetPage extends StatelessWidget {
       title: '文字说明操作',
       onTap: () => textOperation(context),
     ));
-    children.add(UiComponent.getListTile(title: '自定义视图'));
+    children.add(UiComponent.getListTile(title: '宫格视图'));
     children.add(VooCell(
-      title: '自定义视图',
-      onTap: () => customOperation(context),
+      title: '宫格视图',
+      onTap: () => gridOperation(context),
     ));
     return SingleChildScrollView(child: Column(children: children));
   }
@@ -55,10 +53,7 @@ class BottomSheetPage extends StatelessWidget {
   void textOperation(BuildContext context) {
     VooBottomSheet.showDescribeView(
       context: context,
-      child: Container(
-        padding: EdgeInsets.all(16),
-        child: Text('这是一个不可逆转的操作，用户需谨慎考虑再做出选择，这里是一个再次确认提醒。'),
-      ),
+      child: Text('这是一个不可逆转的操作，用户需谨慎考虑再做出选择，这里是一个再次确认提醒。'),
       onDelete: () {
         VooToast.showToast(context, msg: '点击删除');
       },
@@ -69,25 +64,16 @@ class BottomSheetPage extends StatelessWidget {
   }
 
   //
-  void customOperation(BuildContext context) {
-    VooBottomSheet.showCustomView(
+  void gridOperation(BuildContext context) {
+    VooBottomSheet.showGridView(
       context: context,
-      child: Container(
-        height: 300,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(VooIcon.company, size: 30),
-                Icon(VooIcon.image_select, size: 30),
-              ],
-            ),
-            Text('自定义视图，可任意需改视图'),
-          ],
-        ),
-      ),
+      list: [
+        VooBottomGridBean(icon: Container(color: Colors.grey), title: '致电咨询'),
+        VooBottomGridBean(icon: Container(color: Colors.grey), title: '发送简讯'),
+      ],
+      onSelect: (int index) {
+        VooToast.showToast(context, msg: '点击第$index个');
+      },
     );
   }
 }
