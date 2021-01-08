@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../voo.dart';
 
@@ -7,6 +8,8 @@ import '../voo.dart';
 class VooNavBar extends StatelessWidget {
   final String title;
   final String subTitle;
+  final TextStyle style;
+  final TextStyle subStyle;
   final Icon titleIconLeft;
   final Icon titleIconRight;
   final List<Widget> actions;
@@ -16,6 +19,8 @@ class VooNavBar extends StatelessWidget {
   VooNavBar({
     this.title = '',
     this.subTitle,
+    this.style,
+    this.subStyle,
     this.titleIconLeft,
     this.titleIconRight,
     this.actions,
@@ -26,9 +31,23 @@ class VooNavBar extends StatelessWidget {
   //标题视图-文案
   Widget titleTextView(BuildContext context) {
     List<Widget> children = [];
-    children.add(Text(title, style: TextStyle(fontSize: 18)));
+    children.add(Text(
+      title,
+      style: style ??
+          TextStyle(
+            fontSize: ScreenUtil().setSp(36),
+            color: Color(0xff333333),
+          ),
+    ));
     if (subTitle != null) {
-      children.add(Text(subTitle, style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)));
+      children.add(Text(
+        subTitle,
+        style: subStyle ??
+            TextStyle(
+              fontSize: ScreenUtil().setSp(24),
+              color: Color(0xff333333),
+            ),
+      ));
     }
     return Column(children: children, mainAxisSize: MainAxisSize.min);
   }
@@ -38,12 +57,12 @@ class VooNavBar extends StatelessWidget {
     List<Widget> children = [];
     if (titleIconLeft != null) {
       children.add(titleIconLeft);
-      children.add(SizedBox(width: 4));
+      children.add(SizedBox(width: ScreenUtil().setWidth(14)));
     }
     children.add(titleTextView(context));
 
     if (titleIconRight != null) {
-      children.add(SizedBox(width: 4));
+      children.add(SizedBox(width: ScreenUtil().setWidth(14)));
       children.add(titleIconRight);
     }
     return Row(
@@ -56,7 +75,7 @@ class VooNavBar extends StatelessWidget {
   List<Widget> actionsView() {
     List<Widget> children = actions;
     if (children != null) {
-      children.add(SizedBox(width: 16));
+      children.add(SizedBox(width: ScreenUtil().setWidth(32)));
     }
     return children;
   }
@@ -66,7 +85,7 @@ class VooNavBar extends StatelessWidget {
     return AppBar(
       title: titleView(context),
       centerTitle: true,
-      backgroundColor: backgroundColor ?? AppBarTheme.of(context).color,
+      backgroundColor: backgroundColor ?? Colors.white,
       leading: Icon(VooIcon.arrow_left),
       elevation: elevation,
       actions: actionsView(),
