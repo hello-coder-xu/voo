@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///单元格-list
 class VooCellList extends StatelessWidget {
@@ -30,19 +30,19 @@ class VooCellList extends StatelessWidget {
         title,
         style: style ??
             TextStyle(
-              fontSize: ScreenUtil().setSp(32),
+              fontSize: 32.sp,
               color: Color(0xff333333),
             ),
       ),
     ));
-    children.add(SizedBox(height: ScreenUtil().setHeight(48)));
+    children.add(SizedBox(height: 48.h));
     children.add(Container(
       alignment: Alignment.centerLeft,
       child: Text(
         subTitle,
         style: subStyle ??
             TextStyle(
-              fontSize: ScreenUtil().setSp(24),
+              fontSize: 24.sp,
               color: Color(0xff999999),
             ),
       ),
@@ -53,8 +53,8 @@ class VooCellList extends StatelessWidget {
   ///右边视图
   Widget rightView() {
     return Container(
-      width: ScreenUtil().setHeight(288),
-      height: ScreenUtil().setHeight(162),
+      width: 288.w,
+      height: 162.h,
       alignment: Alignment.center,
       child: image,
     );
@@ -65,18 +65,17 @@ class VooCellList extends StatelessWidget {
     List<Widget> children = [];
     children.add(Expanded(child: leftView()));
     if (image != null) {
-      children.add(SizedBox(width: paddingWidth ?? ScreenUtil().setWidth(46)));
+      children.add(SizedBox(width: paddingWidth ?? 46.w));
       children.add(rightView());
     }
     Widget child = Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(234)),
+      constraints: BoxConstraints(minHeight: 234.h),
       color: Colors.white,
       padding: EdgeInsets.symmetric(
-        horizontal: ScreenUtil().setWidth(32),
-        vertical: ScreenUtil().setHeight(28),
+        horizontal: 32.w,
+        vertical: 28.h,
       ),
-      child:
-          Row(children: children, mainAxisAlignment: MainAxisAlignment.center),
+      child: Row(children: children, mainAxisAlignment: MainAxisAlignment.center),
     );
     if (onTap != null) {
       child = GestureDetector(onTap: onTap, child: child);

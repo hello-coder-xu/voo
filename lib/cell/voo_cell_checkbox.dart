@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///单元-单选择
 class VooCellCheckBox extends StatelessWidget {
@@ -25,7 +25,7 @@ class VooCellCheckBox extends StatelessWidget {
       title,
       style: style ??
           TextStyle(
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
             color: Color(0xff333333),
           ),
     );
@@ -33,10 +33,9 @@ class VooCellCheckBox extends StatelessWidget {
     if (leading != null) {
       List<Widget> children = [];
       children.add(leading);
-      children.add(SizedBox(width: ScreenUtil().setWidth(24)));
+      children.add(SizedBox(width: 24.w));
       children.add(titleView);
-      return Row(
-          children: children, crossAxisAlignment: CrossAxisAlignment.center);
+      return Row(children: children, crossAxisAlignment: CrossAxisAlignment.center);
     }
     return titleView;
   }
@@ -46,7 +45,7 @@ class VooCellCheckBox extends StatelessWidget {
     return checkView ??
         Icon(
           Icons.check,
-          size: ScreenUtil().setWidth(48),
+          size: 48.w,
           color: Color(0xff25c489),
         );
   }
@@ -64,10 +63,10 @@ class VooCellCheckBox extends StatelessWidget {
       ));
     }
     Widget child = Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
+      constraints: BoxConstraints(minHeight: 100.h),
       color: Colors.white,
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
       child: Row(
         children: children,
         crossAxisAlignment: CrossAxisAlignment.center,

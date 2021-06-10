@@ -185,10 +185,10 @@ class _FToastViewState extends State<_FToastView>
   _buildToastWidget() {
     Color tempBgColor = widget.bgColor ?? Color(0x70000000);
     TextStyle tempStyle = widget.textStyle ??
-        TextStyle(color: Colors.white, fontSize: ScreenUtil().setWidth(28));
+        TextStyle(color: Colors.white, fontSize: 28.w);
     BorderRadius tempBorderRadius = BorderRadius.horizontal(
-      left: Radius.circular(ScreenUtil().setWidth(20)),
-      right: Radius.circular(ScreenUtil().setWidth(20)),
+      left: Radius.circular(20.w),
+      right: Radius.circular(20.w),
     );
     if (widget.type == VooToastType.text) {
       return Card(
@@ -196,8 +196,8 @@ class _FToastViewState extends State<_FToastView>
         shape: RoundedRectangleBorder(borderRadius: tempBorderRadius),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: ScreenUtil().setWidth(46),
-            vertical: ScreenUtil().setWidth(22),
+            horizontal: 46.w,
+            vertical: 22.w,
           ),
           child: Text(widget.msg, style: tempStyle),
         ),
@@ -205,25 +205,25 @@ class _FToastViewState extends State<_FToastView>
     } else if (widget.type == VooToastType.loading) {
       List<Widget> children = [];
       children.add(SizedBox(
-        width: ScreenUtil().setWidth(64),
-        height: ScreenUtil().setWidth(64),
+        width: 64.w,
+        height: 64.w,
         child: CircularProgressIndicator(
           strokeWidth: 3.0,
           valueColor: AlwaysStoppedAnimation(Colors.white),
         ),
       ));
-      children.add(SizedBox(height: ScreenUtil().setWidth(28)));
+      children.add(SizedBox(height: 28.w));
       children.add(Text(widget.msg, style: tempStyle));
       return Card(
         color: tempBgColor,
         shape: RoundedRectangleBorder(borderRadius: tempBorderRadius),
         child: Container(
-          width: ScreenUtil().setWidth(240),
-          height: ScreenUtil().setWidth(240),
+          width: 240.w,
+          height: 240.w,
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(
-            horizontal: ScreenUtil().setWidth(46),
-            vertical: ScreenUtil().setWidth(46),
+            horizontal: 46.w,
+            vertical: 46.w,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -240,37 +240,37 @@ class _FToastViewState extends State<_FToastView>
           iconView = Icon(
             Icons.check_circle_outline,
             color: Colors.white,
-            size: ScreenUtil().setWidth(64),
+            size: 64.w,
           );
           break;
         case VooToastResult.fail:
           iconView = Icon(
             Icons.highlight_off,
             color: Colors.white,
-            size: ScreenUtil().setWidth(64),
+            size:64.w,
           );
           break;
         case VooToastResult.warn:
           iconView = Icon(
             Icons.info_outline,
             color: Colors.white,
-            size: ScreenUtil().setWidth(64),
+            size: 64.w,
           );
           break;
       }
       children.add(iconView);
-      children.add(SizedBox(height: ScreenUtil().setWidth(28)));
+      children.add(SizedBox(height: 28.w));
       children.add(Text(widget.msg, style: tempStyle));
       return Center(
         child: Card(
           color: tempBgColor,
           child: Container(
-            width: ScreenUtil().setWidth(240),
-            height: ScreenUtil().setWidth(240),
+            width: 240.w,
+            height: 240.w,
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(
-              horizontal: ScreenUtil().setWidth(46),
-              vertical: ScreenUtil().setWidth(46),
+              horizontal: 46.w,
+              vertical: 46.w,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,

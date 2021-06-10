@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/checkbox/voo_checkbox_icon.dart';
 
 /// 单元-多选
@@ -23,8 +23,7 @@ class VooCellRadioBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget currentChild;
-    Widget checkBoxIcon = VooCheckBoxIcon(
-        selectIcon: selectIcon, unSelectIcon: unSelectIcon, value: checked);
+    Widget checkBoxIcon = VooCheckBoxIcon(selectIcon: selectIcon, unSelectIcon: unSelectIcon, value: checked);
     if (title == null) {
       currentChild = checkBoxIcon;
     } else {
@@ -34,7 +33,7 @@ class VooCellRadioBox extends StatelessWidget {
         alignment: PlaceholderAlignment.middle,
       ));
       children.add(WidgetSpan(
-        child: SizedBox(width: ScreenUtil().setWidth(22)),
+        child: SizedBox(width: 22.w),
       ));
       children.add(WidgetSpan(
         alignment: PlaceholderAlignment.middle,
@@ -43,7 +42,7 @@ class VooCellRadioBox extends StatelessWidget {
           style: style ??
               TextStyle(
                 color: Color(0xff333333),
-                fontSize: ScreenUtil().setSp(32),
+                fontSize: 32.sp,
               ),
         ),
       ));
@@ -54,10 +53,10 @@ class VooCellRadioBox extends StatelessWidget {
     }
 
     currentChild = Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
+      constraints: BoxConstraints(minHeight: 100.h),
       color: Colors.white,
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
       child: currentChild,
     );
 

@@ -19,8 +19,8 @@ class VooSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ScreenUtil().setWidth(100),
-      height: ScreenUtil().setHeight(64),
+      width: 100.w,
+      height: 64.h,
       child: CupertinoSwitch(
         value: value,
         onChanged: onChanged,

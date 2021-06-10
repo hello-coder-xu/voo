@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///单元格
 class VooCellExtension extends StatelessWidget {
@@ -17,7 +17,7 @@ class VooCellExtension extends StatelessWidget {
     this.leading,
     this.trailing,
     this.content,
-    this.showRightIcon=true,
+    this.showRightIcon = true,
     this.onTap,
   });
 
@@ -27,7 +27,7 @@ class VooCellExtension extends StatelessWidget {
       title,
       style: style ??
           TextStyle(
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
             color: Color(0xff333333),
           ),
     );
@@ -35,7 +35,7 @@ class VooCellExtension extends StatelessWidget {
     if (leading != null) {
       List<Widget> children = [];
       children.add(leading);
-      children.add(SizedBox(width: ScreenUtil().setWidth(24)));
+      children.add(SizedBox(width: 24.w));
       children.add(titleView);
       return Row(children: children);
     }
@@ -45,19 +45,19 @@ class VooCellExtension extends StatelessWidget {
   ///后面视图
   Widget trailingView() {
     Widget valueView = DefaultTextStyle(
-      style: TextStyle(fontSize: ScreenUtil().setSp(32), color: Color(0xffb6b6b6)),
+      style: TextStyle(fontSize: 32.sp, color: Color(0xffb6b6b6)),
       child: content ?? Text(''),
     );
     List<Widget> children = [];
     children.add(valueView);
     if (trailing != null) {
-      children.add(SizedBox(width: ScreenUtil().setWidth(32)));
+      children.add(SizedBox(width: 32.w));
       children.add(trailing);
-    }else if(showRightIcon){
-      children.add(SizedBox(width: ScreenUtil().setWidth(16)));
+    } else if (showRightIcon) {
+      children.add(SizedBox(width: 16.w));
       children.add(Icon(
         Icons.keyboard_arrow_right,
-        size: ScreenUtil().setWidth(40),
+        size: 40.w,
         color: Color(0xffb6b6b6),
       ));
     }
@@ -79,10 +79,10 @@ class VooCellExtension extends StatelessWidget {
       ),
     ));
     Widget child = Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
+      constraints: BoxConstraints(minHeight: 100.h),
       color: Colors.white,
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
       child: Row(
         children: children,
         crossAxisAlignment: CrossAxisAlignment.center,

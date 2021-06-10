@@ -11,9 +11,9 @@ class BubbleBoxPage2 extends StatelessWidget {
         title: Text("BubbleBox Demo"),
       ),
       body: Center(
-        child: FlatButton(
+        child: TextButton(
           onPressed: () => showBubbleDialog(context),
-          color: Colors.blue,
+          style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.blue)),
           child: Text(
             "点击",
             style: TextStyle(color: Colors.white),
@@ -64,7 +64,7 @@ class BubbleBoxPage2 extends StatelessWidget {
           child: Column(children: [
             SizedBox(
               height: 40,
-              child: FlatButton(
+              child: TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -76,7 +76,7 @@ class BubbleBoxPage2 extends StatelessWidget {
             ),
             SizedBox(
               height: 40,
-              child: FlatButton(
+              child: TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
@@ -97,8 +97,7 @@ class BubbleDialog extends Dialog {
   @override
   Widget build(BuildContext context) {
     return AnimatedPadding(
-      padding: MediaQuery.of(context).viewInsets +
-          const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
+      padding: MediaQuery.of(context).viewInsets + const EdgeInsets.symmetric(horizontal: 40.0, vertical: 24.0),
       duration: insetAnimationDuration,
       curve: insetAnimationCurve,
       child: MediaQuery.removeViewInsets(
@@ -120,7 +119,7 @@ class BubbleDialog extends Dialog {
             child: Column(children: [
               SizedBox(
                 height: 40,
-                child: FlatButton(
+                child: TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },
@@ -132,7 +131,7 @@ class BubbleDialog extends Dialog {
               ),
               SizedBox(
                 height: 40,
-                child: FlatButton(
+                child: TextButton(
                   onPressed: () {
                     Navigator.pop(context);
                   },

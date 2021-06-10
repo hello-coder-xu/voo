@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///指示器
 class VooInstructions extends StatelessWidget {
@@ -24,25 +24,24 @@ class VooInstructions extends StatelessWidget {
 
     List.generate(total, (value) {
       children.add(Container(
-        width: ScreenUtil().setWidth(14),
-        height: ScreenUtil().setWidth(14),
+        width: 14.w,
+        height: 14.w,
         decoration: BoxDecoration(
-          borderRadius:
-              BorderRadius.all(Radius.circular(ScreenUtil().setWidth(14))),
+          borderRadius: BorderRadius.all(Radius.circular(14.w)),
           color: value == index ? activeColor : trackColor,
         ),
-        margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(14)),
+        margin: EdgeInsets.symmetric(horizontal: 14.w),
       ));
     });
     return ClipRRect(
       borderRadius: BorderRadius.horizontal(
-        left: Radius.circular(ScreenUtil().setWidth(32)),
-        right: Radius.circular(ScreenUtil().setWidth(32)),
+        left: Radius.circular(32.w),
+        right: Radius.circular(32.w),
       ),
       child: Container(
         color: bgColor,
-        height: ScreenUtil().setHeight(32),
-        padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(14)),
+        height: 32.h,
+        padding: EdgeInsets.symmetric(horizontal: 14.w),
         child: Row(children: children, mainAxisSize: MainAxisSize.min),
       ),
     );

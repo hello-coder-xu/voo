@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum VooAvatarTheme { mini, small, normal, large }
 
@@ -10,11 +10,7 @@ class VooAvatar extends StatelessWidget {
   final String title;
   final String subTitle;
 
-  VooAvatar(
-      {this.theme = VooAvatarTheme.mini,
-      this.icon,
-      this.title = '',
-      this.subTitle});
+  VooAvatar({this.theme = VooAvatarTheme.mini, this.icon, this.title = '', this.subTitle});
 
   ///图标
   Widget iconView() {
@@ -87,57 +83,57 @@ class VooAvatar extends StatelessWidget {
   }
 
   double getSize() {
-    double size = ScreenUtil().setWidth(80);
+    double size = 80.w;
     switch (theme) {
       case VooAvatarTheme.mini:
-        size = ScreenUtil().setWidth(32);
+        size = 32.w;
         break;
       case VooAvatarTheme.small:
-        size = ScreenUtil().setWidth(64);
+        size = 64.w;
         break;
       case VooAvatarTheme.normal:
-        size = ScreenUtil().setWidth(80);
+        size = 80.w;
         break;
       case VooAvatarTheme.large:
-        size = ScreenUtil().setWidth(96);
+        size = 96.w;
         break;
     }
     return size;
   }
 
   double getFontSize() {
-    double size = ScreenUtil().setSp(40);
+    double size = 40.sp;
     switch (theme) {
       case VooAvatarTheme.mini:
-        size = ScreenUtil().setSp(22);
+        size = 22.sp;
         break;
       case VooAvatarTheme.small:
-        size = ScreenUtil().setSp(28);
+        size = 28.sp;
         break;
       case VooAvatarTheme.normal:
-        size = ScreenUtil().setSp(32);
+        size = 32.sp;
         break;
       case VooAvatarTheme.large:
-        size = ScreenUtil().setSp(40);
+        size = 40.sp;
         break;
     }
     return size;
   }
 
   double getSubTitleFontSize() {
-    double size = ScreenUtil().setSp(32);
+    double size = 32.sp;
     switch (theme) {
       case VooAvatarTheme.mini:
-        size = ScreenUtil().setSp(14);
+        size = 14.sp;
         break;
       case VooAvatarTheme.small:
-        size = ScreenUtil().setSp(20);
+        size = 20.sp;
         break;
       case VooAvatarTheme.normal:
-        size = ScreenUtil().setSp(24);
+        size = 24.sp;
         break;
       case VooAvatarTheme.large:
-        size = ScreenUtil().setSp(28);
+        size = 28.sp;
         break;
     }
     return size;

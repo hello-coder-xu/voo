@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum VooButtonTheme { normal, accent, capsule }
 
@@ -36,11 +36,9 @@ class VooButton extends StatelessWidget {
     switch (theme) {
       case VooButtonTheme.normal:
         shapeBorder = RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.all(Radius.circular(ScreenUtil().setWidth(10))),
+          borderRadius: BorderRadius.all(Radius.circular(10.w)),
         );
-        tempTextStyle = textStyle ??
-            TextStyle(fontSize: getTextFontSize(), color: Colors.white);
+        tempTextStyle = textStyle ?? TextStyle(fontSize: getTextFontSize(), color: Colors.white);
         return Container(
           constraints: getButtonConstraints(),
           child: ElevatedButton(
@@ -55,18 +53,17 @@ class VooButton extends StatelessWidget {
         );
       case VooButtonTheme.accent:
         shapeBorder = RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.all(Radius.circular(ScreenUtil().setWidth(10))),
+          borderRadius: BorderRadius.all(Radius.circular(10.w)),
         );
-        tempTextStyle = textStyle ??
-            TextStyle(fontSize: getTextFontSize(), color: tempBgColor);
+        tempTextStyle = textStyle ?? TextStyle(fontSize: getTextFontSize(), color: tempBgColor);
         return Container(
           constraints: getButtonConstraints(),
-          child: OutlineButton(
+          child: OutlinedButton(
             child: Text(child, style: tempTextStyle),
-            borderSide: BorderSide(color: tempBgColor, width: 1),
-            shape: shapeBorder,
-            disabledBorderColor: tempBgColor,
+            style: ButtonStyle(
+              shape: ButtonStyleButton.allOrNull(shapeBorder),
+              side: MaterialStateProperty.all(BorderSide(color: tempBgColor, width: 1)),
+            ),
             onPressed: onPressed,
           ),
         );
@@ -74,8 +71,7 @@ class VooButton extends StatelessWidget {
         shapeBorder = RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(27)),
         );
-        tempTextStyle = textStyle ??
-            TextStyle(fontSize: getTextFontSize(), color: Colors.white);
+        tempTextStyle = textStyle ?? TextStyle(fontSize: getTextFontSize(), color: Colors.white);
         return Container(
           constraints: getButtonConstraints(),
           child: ElevatedButton(
@@ -95,26 +91,26 @@ class VooButton extends StatelessWidget {
 
   BoxConstraints getButtonConstraints() {
     BoxConstraints boxConstraints = BoxConstraints(
-      minWidth: ScreenUtil().setWidth(152),
-      minHeight: ScreenUtil().setWidth(54),
+      minWidth: 152.w,
+      minHeight: 54.w,
     );
     switch (size) {
       case VooButtonSize.large:
         boxConstraints = boxConstraints = BoxConstraints(
-          minWidth: ScreenUtil().setWidth(686),
-          minHeight: ScreenUtil().setHeight(96),
+          minWidth: 686.w,
+          minHeight: 96.w,
         );
         break;
       case VooButtonSize.small:
         boxConstraints = boxConstraints = BoxConstraints(
-          minWidth: ScreenUtil().setWidth(332),
-          minHeight: ScreenUtil().setHeight(96),
+          minWidth: 332.w,
+          minHeight: 96.w,
         );
         break;
       case VooButtonSize.mini:
         boxConstraints = boxConstraints = BoxConstraints(
-          minWidth: ScreenUtil().setWidth(152),
-          minHeight: ScreenUtil().setHeight(54),
+          minWidth: 152.w,
+          minHeight: 54.w,
         );
         break;
     }
@@ -122,16 +118,16 @@ class VooButton extends StatelessWidget {
   }
 
   double getTextFontSize() {
-    double fontSize = ScreenUtil().setSp(32);
+    double fontSize = 32.sp;
     switch (size) {
       case VooButtonSize.large:
-        fontSize = ScreenUtil().setSp(32);
+        fontSize = 32.sp;
         break;
       case VooButtonSize.small:
-        fontSize = ScreenUtil().setSp(32);
+        fontSize = 32.sp;
         break;
       case VooButtonSize.mini:
-        fontSize = ScreenUtil().setSp(24);
+        fontSize = 24.sp;
         break;
     }
     return fontSize;

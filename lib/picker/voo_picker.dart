@@ -57,7 +57,7 @@ class VooPickerState extends State<VooPicker> {
         child: Text(
           element,
           style: TextStyle(
-            fontSize: ScreenUtil().setSp(36),
+            fontSize: 36.sp,
             color: Color(0xff333333),
           ),
         ),
@@ -66,7 +66,7 @@ class VooPickerState extends State<VooPicker> {
 
     return Expanded(
       child: CupertinoPicker(
-        itemExtent: ScreenUtil().setHeight(96),
+        itemExtent: 96.h,
         scrollController: scrolls[index],
         onSelectedItemChanged: (position) {
           value[index] = list[position];
@@ -88,7 +88,7 @@ class VooPickerState extends State<VooPicker> {
           widget.cancelTxt ?? '取消',
           style: widget.cancelStyle ??
               TextStyle(
-                fontSize: ScreenUtil().setSp(32),
+                fontSize: 32.sp,
                 color: Color(0xff999999),
               ),
         ),
@@ -103,7 +103,7 @@ class VooPickerState extends State<VooPicker> {
           widget.title ?? '',
           style: widget.style ??
               TextStyle(
-                fontSize: ScreenUtil().setSp(32),
+                fontSize: 32.sp,
                 color: Color(0xff333333),
               ),
         ),
@@ -120,7 +120,7 @@ class VooPickerState extends State<VooPicker> {
             widget.confirmTxt ?? '確認',
             style: widget.confirmStyle ??
                 TextStyle(
-                  fontSize: ScreenUtil().setSp(32),
+                  fontSize: 32.sp,
                   color: Color(0xff25c489),
                 ),
           ),
@@ -129,9 +129,9 @@ class VooPickerState extends State<VooPicker> {
     ));
 
     return Container(
-      height: ScreenUtil().setHeight(96),
+      height: 96.h,
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(40)),
+      padding: EdgeInsets.symmetric(horizontal: 40.w),
       child: Row(children: children),
     );
   }
@@ -142,7 +142,7 @@ class VooPickerState extends State<VooPicker> {
       children.add(cupertinoPickerItem(index));
     });
     return Container(
-      height: ScreenUtil().setHeight(386),
+      height: 386.h,
       color: Colors.white,
       child: Row(children: children),
     );

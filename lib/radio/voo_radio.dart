@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/checkbox/voo_checkbox_icon.dart';
 
 ///单选框
@@ -38,16 +38,17 @@ class VooRadio extends StatelessWidget {
         alignment: PlaceholderAlignment.middle,
       ));
       children.add(WidgetSpan(
-        child: SizedBox(width: ScreenUtil().setWidth(22)),
+        child: SizedBox(width: 22.w),
       ));
       children.add(WidgetSpan(
         alignment: PlaceholderAlignment.middle,
         child: Text(
           child,
-          style: style??TextStyle(
-            color: Color(0xff333333),
-            fontSize: ScreenUtil().setSp(32),
-          ),
+          style: style ??
+              TextStyle(
+                color: Color(0xff333333),
+                fontSize: 32.sp,
+              ),
         ),
       ));
       currentChild = Text.rich(

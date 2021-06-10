@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/icon/index.dart';
 
 ///输入框
@@ -35,7 +35,7 @@ class VooField extends StatefulWidget {
   final bool showCursor;
   static const int noMaxLength = -1;
   final int maxLength;
-  final bool maxLengthEnforced;
+  final MaxLengthEnforcement maxLengthEnforcement;
   final ValueChanged<String> onChanged;
   final VoidCallback onEditingComplete;
   final ValueChanged<String> onSubmitted;
@@ -50,6 +50,7 @@ class VooField extends StatefulWidget {
   final EdgeInsets scrollPadding;
   final bool enableInteractiveSelection;
   final DragStartBehavior dragStartBehavior;
+
   bool get selectionEnabled => enableInteractiveSelection;
   final GestureTapCallback onTap;
   final MouseCursor mouseCursor;
@@ -89,7 +90,7 @@ class VooField extends StatefulWidget {
     this.minLines,
     this.expands = false,
     this.maxLength,
-    this.maxLengthEnforced = true,
+    this.maxLengthEnforcement,
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
@@ -116,13 +117,10 @@ class VooField extends StatefulWidget {
         assert(obscuringCharacter != null && obscuringCharacter.length == 1),
         assert(obscureText != null),
         assert(autocorrect != null),
-        smartDashesType = smartDashesType ??
-            (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
-        smartQuotesType = smartQuotesType ??
-            (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
+        smartDashesType = smartDashesType ?? (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
+        smartQuotesType = smartQuotesType ?? (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
         assert(enableSuggestions != null),
         assert(enableInteractiveSelection != null),
-        assert(maxLengthEnforced != null),
         assert(scrollPadding != null),
         assert(dragStartBehavior != null),
         assert(selectionHeightStyle != null),
@@ -138,23 +136,18 @@ class VooField extends StatefulWidget {
           !expands || (maxLines == null && minLines == null),
           'minLines and maxLines must be null when expands is true.',
         ),
-        assert(!obscureText || maxLines == 1,
-            'Obscured fields cannot be multiline.'),
-        assert(maxLength == null ||
-            maxLength == TextField.noMaxLength ||
-            maxLength > 0),
+        assert(!obscureText || maxLines == 1, 'Obscured fields cannot be multiline.'),
+        assert(maxLength == null || maxLength == TextField.noMaxLength || maxLength > 0),
         assert(
             !identical(textInputAction, TextInputAction.newline) ||
                 maxLines == 1 ||
                 !identical(keyboardType, TextInputType.text),
             'Use keyboardType TextInputType.multiline when using TextInputAction.newline on a multiline TextField.'),
-        keyboardType = keyboardType ??
-            (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
+        keyboardType = keyboardType ?? (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
         toolbarOptions = toolbarOptions ??
             (obscureText
                 ? const ToolbarOptions(selectAll: true, paste: true)
-                : const ToolbarOptions(
-                    copy: true, cut: true, selectAll: true, paste: true)),
+                : const ToolbarOptions(copy: true, cut: true, selectAll: true, paste: true)),
         super(key: key);
 
   @override
@@ -172,6 +165,7 @@ class VooFieldState extends State<VooField> {
     super.initState();
     obscureText = (widget.obscureText ?? false) || (widget.showPwd ?? false);
     controller = widget.controller ?? TextEditingController();
+    print('test controller=${widget.controller == null}');
     controller.addListener(() {
       bool tempContentNotEmpty = controller.text.toString().length != 0;
       if (show != tempContentNotEmpty) {
@@ -203,8 +197,7 @@ class VooFieldState extends State<VooField> {
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       textCapitalization: widget.textCapitalization,
-      style: widget.style ??
-          TextStyle(fontSize: ScreenUtil().setSp(32), color: Color(0xff333333)),
+      style: widget.style ?? TextStyle(fontSize: 32.sp, color: Color(0xff333333)),
       strutStyle: widget.strutStyle,
       textAlign: widget.textAlign,
       textAlignVertical: widget.textAlignVertical,
@@ -223,7 +216,7 @@ class VooFieldState extends State<VooField> {
       minLines: widget.minLines,
       expands: widget.expands,
       maxLength: widget.maxLength,
-      maxLengthEnforced: widget.maxLengthEnforced,
+      maxLengthEnforcement: widget.maxLengthEnforcement,
       onChanged: widget.onChanged,
       onEditingComplete: widget.onEditingComplete,
       onSubmitted: widget.onSubmitted,
@@ -251,10 +244,10 @@ class VooFieldState extends State<VooField> {
       children.add(GestureDetector(
         onTap: onClear,
         child: Container(
-          margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
+          margin: EdgeInsets.only(left: 16.w),
           child: Icon(
             Icons.cancel,
-            size: ScreenUtil().setWidth(36),
+            size: 36.w,
             color: Colors.grey,
           ),
         ),
@@ -265,10 +258,10 @@ class VooFieldState extends State<VooField> {
       children.add(GestureDetector(
         onTap: onChangePwd,
         child: Container(
-          margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
+          margin: EdgeInsets.only(left: 16.w),
           child: Icon(
             textField.obscureText ? VooIcon.view : VooIcon.close_eye,
-            size: ScreenUtil().setWidth(36),
+            size: 36.w,
             color: Color(0xff333333),
           ),
         ),
@@ -295,7 +288,6 @@ class VooFieldState extends State<VooField> {
 
   @override
   void dispose() {
-    controller?.dispose();
     focusNode?.dispose();
     super.dispose();
   }

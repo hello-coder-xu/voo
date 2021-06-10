@@ -228,16 +228,16 @@ class VooImageDialog extends StatelessWidget {
   Widget topView(BuildContext context) {
     List<Widget> children = [];
     children.add(Container(
-      margin: EdgeInsets.only(top: fit ? 0 : ScreenUtil().setWidth(40)),
+      margin: EdgeInsets.only(top: fit ? 0 : 40.w),
       alignment: Alignment.center,
       child: icon,
     ));
     children.add(Positioned(
-      top: ScreenUtil().setWidth(16),
-      right: ScreenUtil().setWidth(16),
+      top: 16.w,
+      right: 16.w,
       child: GestureDetector(
         onTap: () => onCloseTap(context),
-        child: closeIcon ?? Icon(Icons.close, size: ScreenUtil().setWidth(40)),
+        child: closeIcon ?? Icon(Icons.close, size: 40.w),
       ),
     ));
     return Stack(fit: StackFit.passthrough, children: children);
@@ -300,18 +300,18 @@ class VooOperatingDialog extends StatelessWidget {
     children.add(Card(
       clipBehavior: Clip.antiAlias,
       child: Container(
-        constraints: BoxConstraints(maxWidth: ScreenUtil().setWidth(638)),
+        constraints: BoxConstraints(maxWidth: 638.w),
         child: child,
       ),
       elevation: 0,
     ));
-    children.add(SizedBox(height: ScreenUtil().setHeight(26)));
+    children.add(SizedBox(height: 26.h));
     children.add(GestureDetector(
       onTap: () => onCloseTap(context),
       child: Icon(
         Icons.clear_rounded,
         color: Colors.white,
-        size: ScreenUtil().setWidth(64),
+        size: 64.w,
       ),
     ));
 
@@ -367,8 +367,7 @@ class _VooDialog extends StatelessWidget {
     if (tempHorizontal) {
       return Container(width: 0.5, height: 40, color: Colors.grey[200]);
     } else {
-      return Container(
-          width: double.infinity, height: 0.5, color: Colors.grey[200]);
+      return Container(width: double.infinity, height: 0.5, color: Colors.grey[200]);
     }
   }
 
@@ -380,22 +379,22 @@ class _VooDialog extends StatelessWidget {
         title,
         style: titleStyle ??
             TextStyle(
-              fontSize: ScreenUtil().setSp(36),
+              fontSize: 36.sp,
               color: Color(0xff333333),
             ),
       ));
-      children.add(SizedBox(height: ScreenUtil().setHeight(24)));
+      children.add(SizedBox(height:24.h));
     }
 
     children.add(DefaultTextStyle(
       child: content,
       style: TextStyle(
-        fontSize: ScreenUtil().setSp(28),
+        fontSize: 28.sp,
         color: title == null ? Color(0xff333333) : Color(0xff999999),
       ),
     ));
     return Container(
-      padding: EdgeInsets.all(ScreenUtil().setWidth(40)),
+      padding: EdgeInsets.all(40.w),
       alignment: Alignment.center,
       child: Column(children: children),
     );
@@ -411,13 +410,13 @@ class _VooDialog extends StatelessWidget {
           onTap: () => onCancelTap(context),
           behavior: HitTestBehavior.opaque,
           child: Container(
-            height: ScreenUtil().setHeight(90),
+            height: 90.h,
             alignment: Alignment.center,
             child: Text(
               cancel,
               style: cancelStyle ??
                   TextStyle(
-                    fontSize: ScreenUtil().setSp(32),
+                    fontSize: 32.sp,
                     color: Color(0xff999999),
                   ),
             ),
@@ -433,13 +432,13 @@ class _VooDialog extends StatelessWidget {
           onTap: () => onMiddleTap(context),
           behavior: HitTestBehavior.opaque,
           child: Container(
-            height: ScreenUtil().setHeight(90),
+            height: 90.h,
             alignment: Alignment.center,
             child: Text(
               middle,
               style: middleStyle ??
                   TextStyle(
-                    fontSize: ScreenUtil().setSp(32),
+                    fontSize: 32.sp,
                     color: Color(0xff999999),
                   ),
             ),
@@ -455,13 +454,13 @@ class _VooDialog extends StatelessWidget {
         onTap: () => onConfirmTap(context),
         behavior: HitTestBehavior.opaque,
         child: Container(
-          height: ScreenUtil().setHeight(90),
+          height: 90.h,
           alignment: Alignment.center,
           child: Text(
             confirm,
             style: middleStyle ??
                 TextStyle(
-                  fontSize: ScreenUtil().setSp(32),
+                  fontSize: 32.sp,
                   color: Color(0xff25c489),
                 ),
           ),
@@ -485,7 +484,7 @@ class _VooDialog extends StatelessWidget {
     children.add(dividerView(tempHorizontal: false));
     children.add(bottomView(context));
     return Container(
-      width: ScreenUtil().setWidth(560),
+      width: 560.w,
       child: Column(children: children),
     );
   }

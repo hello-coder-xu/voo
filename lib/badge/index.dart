@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 enum VooBadgeTheme { point, number }
 
@@ -15,35 +15,34 @@ class VooBadge extends StatelessWidget {
     this.theme,
     this.style,
     this.bgColor,
-  }) ;
+  });
 
   @override
   Widget build(BuildContext context) {
     VooBadgeTheme tempTheme = theme ?? VooBadgeTheme.point;
-    TextStyle tempTextStyle = style ??
-        TextStyle(fontSize: ScreenUtil().setSp(22), color: Colors.white);
+    TextStyle tempTextStyle = style ?? TextStyle(fontSize: 22.sp, color: Colors.white);
     Color tempBgColor = bgColor ?? Colors.red;
     if (tempTheme == VooBadgeTheme.point) {
       return ClipOval(
         child: Container(
-          width: ScreenUtil().setWidth(16),
-          height: ScreenUtil().setWidth(16),
+          width: 16.w,
+          height: 16.w,
           color: bgColor,
         ),
       );
     } else {
       return ClipRRect(
         borderRadius: BorderRadius.horizontal(
-          left: Radius.circular(ScreenUtil().setWidth(16)),
-          right: Radius.circular(ScreenUtil().setWidth(16)),
+          left: Radius.circular(16.w),
+          right: Radius.circular(16.w),
         ),
         child: Container(
           alignment: Alignment.center,
           color: tempBgColor,
-          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(12)),
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
           constraints: BoxConstraints(
-            minWidth: ScreenUtil().setWidth(32),
-            minHeight: ScreenUtil().setWidth(32),
+            minWidth: 32.w,
+            minHeight: 32.w,
           ),
           child: Text('$child', style: tempTextStyle),
         ),

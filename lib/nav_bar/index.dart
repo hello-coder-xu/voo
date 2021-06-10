@@ -35,7 +35,7 @@ class VooNavBar extends StatelessWidget {
       title,
       style: style ??
           TextStyle(
-            fontSize: ScreenUtil().setSp(36),
+            fontSize: 36.sp,
             color: Color(0xff333333),
           ),
     ));
@@ -44,7 +44,7 @@ class VooNavBar extends StatelessWidget {
         subTitle,
         style: subStyle ??
             TextStyle(
-              fontSize: ScreenUtil().setSp(24),
+              fontSize: 24.sp,
               color: Color(0xff333333),
             ),
       ));
@@ -57,12 +57,12 @@ class VooNavBar extends StatelessWidget {
     List<Widget> children = [];
     if (titleIconLeft != null) {
       children.add(titleIconLeft);
-      children.add(SizedBox(width: ScreenUtil().setWidth(14)));
+      children.add(SizedBox(width: 14.w));
     }
     children.add(titleTextView(context));
 
     if (titleIconRight != null) {
-      children.add(SizedBox(width: ScreenUtil().setWidth(14)));
+      children.add(SizedBox(width: 14.w));
       children.add(titleIconRight);
     }
     return Row(
@@ -75,7 +75,7 @@ class VooNavBar extends StatelessWidget {
   List<Widget> actionsView() {
     List<Widget> children = actions;
     if (children != null) {
-      children.add(SizedBox(width: ScreenUtil().setWidth(32)));
+      children.add(SizedBox(width: 32.w));
     }
     return children;
   }

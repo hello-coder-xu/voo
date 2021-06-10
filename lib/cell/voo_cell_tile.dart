@@ -25,8 +25,8 @@ class VooCellTile extends StatelessWidget {
   Widget leftView() {
     return Container(
       constraints: BoxConstraints(
-        maxHeight: ScreenUtil().setHeight(80),
-        maxWidth: ScreenUtil().setHeight(80),
+        maxHeight: 80.h,
+        maxWidth: 80.h,
       ),
       alignment: Alignment.center,
       child: image,
@@ -42,19 +42,19 @@ class VooCellTile extends StatelessWidget {
         title,
         style: style ??
             TextStyle(
-              fontSize: ScreenUtil().setSp(32),
+              fontSize: 32.sp,
               color: Color(0xff333333),
             ),
       ),
     ));
-    children.add(SizedBox(height: ScreenUtil().setHeight(8)));
+    children.add(SizedBox(height: 8.h));
     children.add(Container(
       alignment: Alignment.centerLeft,
       child: Text(
         subTitle,
         style: subStyle ??
             TextStyle(
-              fontSize: ScreenUtil().setSp(24),
+              fontSize: 24.sp,
               color: Color(0xff999999),
             ),
       ),
@@ -67,17 +67,17 @@ class VooCellTile extends StatelessWidget {
     List<Widget> children = [];
     if (image != null) {
       children.add(leftView());
-      children.add(SizedBox(width: paddingWidth ?? ScreenUtil().setWidth(24)));
+      children.add(SizedBox(width: paddingWidth ?? 24.w));
     }
     children.add(Expanded(child: rightView()));
     Widget child = Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(136)),
+      constraints: BoxConstraints(minHeight: 136.h),
       color: Colors.white,
       padding: EdgeInsets.symmetric(
-        horizontal: ScreenUtil().setWidth(32),
-        vertical: ScreenUtil().setHeight(28),
+        horizontal: 32.w,
+        vertical: 28.h,
       ),
-      child: Row(children: children,mainAxisAlignment: MainAxisAlignment.center),
+      child: Row(children: children, mainAxisAlignment: MainAxisAlignment.center),
     );
     if (onTap != null) {
       child = GestureDetector(onTap: onTap, child: child);

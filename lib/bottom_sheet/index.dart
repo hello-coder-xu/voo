@@ -45,7 +45,7 @@ class VooBottomSheet {
       shape: shape ?? isTopRound
           ? RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
-                top: Radius.circular(ScreenUtil().setWidth(25)),
+                top: Radius.circular(25.w),
               ),
             )
           : null,
@@ -89,7 +89,7 @@ class VooBottomSheet {
       shape: shape ?? isTopRound
           ? RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
-                top: Radius.circular(ScreenUtil().setWidth(25)),
+                top: Radius.circular(25.w),
               ),
             )
           : null,
@@ -138,7 +138,7 @@ class VooBottomSheet {
       shape: shape ?? isTopRound
           ? RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
-                top: Radius.circular(ScreenUtil().setWidth(25)),
+                top: Radius.circular(25.w),
               ),
             )
           : null,
@@ -223,16 +223,16 @@ class VooBottomSheet {
     RouteSettings routeSettings,
   }) {
     WidgetBuilder builder = (context) => VooLinkagePicker(
-      title: title,
-      cancelTxt: cancelTxt,
-      confirmTxt: confirmTxt,
-      style: style,
-      confirmStyle: confirmStyle,
-      cancelStyle: cancelStyle,
-      bean: bean,
-      onCancel: onCancel,
-      onConfirm: onConfirm,
-    );
+          title: title,
+          cancelTxt: cancelTxt,
+          confirmTxt: confirmTxt,
+          style: style,
+          confirmStyle: confirmStyle,
+          cancelStyle: cancelStyle,
+          bean: bean,
+          onCancel: onCancel,
+          onConfirm: onConfirm,
+        );
     return _show(
       context: context,
       builder: builder,
@@ -246,7 +246,6 @@ class VooBottomSheet {
       enableDrag: enableDrag,
       routeSettings: routeSettings,
     );
-
   }
 
   static Future _show({
@@ -319,12 +318,12 @@ class VBottomSheetOptionView extends StatelessWidget {
         onTap: () => onItemClick(context, it),
         behavior: HitTestBehavior.translucent,
         child: Container(
-          height: ScreenUtil().setHeight(96),
+          height: 96.h,
           alignment: Alignment.center,
           child: Text(
             it,
             style: TextStyle(
-              fontSize: ScreenUtil().setSp(36),
+              fontSize: 36.sp,
               color: Color(0xff333333),
             ),
           ),
@@ -346,20 +345,20 @@ class VBottomSheetOptionView extends StatelessWidget {
   Widget bottomView(BuildContext context) {
     List<Widget> children = [];
     children.add(Container(
-      height: ScreenUtil().setHeight(24),
+      height: 24.h,
       color: Color(0xffE5E5E5),
     ));
 
     children.add(GestureDetector(
       onTap: () => onCancelTap(context),
       child: Container(
-        height: ScreenUtil().setHeight(96),
+        height: 96.h,
         alignment: Alignment.center,
         color: Colors.white,
         child: Text(
           '取消',
           style: TextStyle(
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
             color: Color(0xff333333),
           ),
         ),
@@ -410,13 +409,13 @@ class VBottomSheetTextView extends StatelessWidget {
 
     children.add(Container(
       padding: EdgeInsets.symmetric(
-        vertical: ScreenUtil().setHeight(40),
-        horizontal: ScreenUtil().setWidth(32),
+        vertical: 40.w,
+        horizontal: 32.w,
       ),
       color: Colors.white,
       child: DefaultTextStyle(
         style: TextStyle(
-          fontSize: ScreenUtil().setSp(32),
+          fontSize: 32.sp,
           color: Color(0xff333333),
         ),
         child: child,
@@ -426,13 +425,13 @@ class VBottomSheetTextView extends StatelessWidget {
     children.add(GestureDetector(
       onTap: () => onDeleteTap(context),
       child: Container(
-        height: ScreenUtil().setHeight(96),
+        height: 96.w,
         alignment: Alignment.center,
         color: Colors.white,
         child: Text(
           '刪除',
           style: TextStyle(
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
             color: Colors.red,
           ),
         ),
@@ -440,20 +439,20 @@ class VBottomSheetTextView extends StatelessWidget {
     ));
 
     children.add(Container(
-      height: ScreenUtil().setHeight(24),
+      height: 24.h,
       color: Color(0xffE5E5E5),
     ));
 
     children.add(GestureDetector(
       onTap: () => onCancelTap(context),
       child: Container(
-        height: ScreenUtil().setHeight(96),
+        height: 96.h,
         alignment: Alignment.center,
         color: Colors.white,
         child: Text(
           '取消',
           style: TextStyle(
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
             color: Color(0xff333333),
           ),
         ),
@@ -520,17 +519,17 @@ class VBottomSheetGridView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: ScreenUtil().setWidth(112),
-                height: ScreenUtil().setWidth(112),
+                width: 112.w,
+                height: 112.w,
                 child: element.icon,
                 alignment: Alignment.center,
               ),
-              SizedBox(height: ScreenUtil().setHeight(24)),
+              SizedBox(height: 24.h),
               Text(
                 element.title,
                 style: element.style ??
                     TextStyle(
-                      fontSize: ScreenUtil().setSp(28),
+                      fontSize: 28.sp,
                       color: Color(0xff333333),
                     ),
               ),
@@ -541,14 +540,14 @@ class VBottomSheetGridView extends StatelessWidget {
     });
 
     return Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(258)),
-      padding: EdgeInsets.all(ScreenUtil().setHeight(40)),
+      constraints: BoxConstraints(minHeight: 258.h),
+      padding: EdgeInsets.all(40.h),
       color: Colors.white,
       alignment: alignment ?? Alignment.bottomLeft,
       child: Wrap(
         children: children,
-        spacing: spacing ?? ScreenUtil().setWidth(40),
-        runSpacing: runSpacing ?? ScreenUtil().setWidth(40),
+        spacing: spacing ?? 40.w,
+        runSpacing: runSpacing ?? 40.w,
       ),
     );
   }
@@ -560,20 +559,20 @@ class VBottomSheetGridView extends StatelessWidget {
     children.add(gridView(context));
 
     children.add(Container(
-      height: ScreenUtil().setHeight(24),
+      height: 24.h,
       color: Color(0xffE5E5E5),
     ));
 
     children.add(GestureDetector(
       onTap: () => onCancelTap(context),
       child: Container(
-        height: ScreenUtil().setHeight(96),
+        height: 96.h,
         alignment: Alignment.center,
         color: Colors.white,
         child: Text(
           '取消',
           style: TextStyle(
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
             color: Color(0xff333333),
           ),
         ),

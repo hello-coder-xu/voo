@@ -21,14 +21,14 @@ class VooCheckBoxIcon extends StatelessWidget {
       child = selectIcon ??
           Icon(
             Icons.check_circle,
-            size: ScreenUtil().setWidth(44),
+            size: 44.w,
             color: Color(0xff25c489),
           );
     } else {
       child = unSelectIcon ??
           Icon(
             Icons.radio_button_unchecked,
-            size: ScreenUtil().setWidth(44),
+            size: 44.w,
             color: Color(0xffb6b6b6),
           );
     }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/checkbox/voo_checkbox_icon.dart';
 
 ///复选框
@@ -38,7 +38,7 @@ class VooCheckBox extends StatelessWidget {
         alignment: PlaceholderAlignment.middle,
       ));
       children.add(WidgetSpan(
-        child: SizedBox(width: ScreenUtil().setWidth(22)),
+        child: SizedBox(width: 22.w),
       ));
       children.add(WidgetSpan(
         alignment: PlaceholderAlignment.middle,
@@ -46,7 +46,7 @@ class VooCheckBox extends StatelessWidget {
           child,
           style: TextStyle(
             color: Color(0xff333333),
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
           ),
         ),
       ));
@@ -89,8 +89,7 @@ class VooCheckBoxRule extends StatelessWidget {
   Widget build(BuildContext context) {
     assert(value != null);
     Widget currentChild;
-    Widget checkBoxIcon = VooCheckBoxIcon(
-        selectIcon: selectIcon, unSelectIcon: unSelectIcon, value: value);
+    Widget checkBoxIcon = VooCheckBoxIcon(selectIcon: selectIcon, unSelectIcon: unSelectIcon, value: value);
     if (child == null) {
       currentChild = checkBoxIcon;
     } else {
@@ -100,7 +99,7 @@ class VooCheckBoxRule extends StatelessWidget {
         alignment: PlaceholderAlignment.middle,
       ));
       children.add(WidgetSpan(
-        child: SizedBox(width: ScreenUtil().setWidth(22)),
+        child: SizedBox(width: 22.w),
       ));
       children.add(child);
       currentChild = Text.rich(
@@ -108,7 +107,7 @@ class VooCheckBoxRule extends StatelessWidget {
             children: children,
             style: TextStyle(
               color: Color(0xff333333),
-              fontSize: ScreenUtil().setSp(32),
+              fontSize: 32.sp,
             )),
         textAlign: TextAlign.left,
       );

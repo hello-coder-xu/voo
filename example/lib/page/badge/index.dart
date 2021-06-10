@@ -39,13 +39,10 @@ class BadgePage extends StatelessWidget {
 
     children.add(UiComponent.getListTile(title: '其他样式'));
     children.add(VooCell(
-      leading: Padding(
-        padding: EdgeInsets.only(right: 8),
-        child: Icon(
-          Icons.settings,
-          size: 18,
-          color: VooColors.subTitleColor,
-        ),
+      leading: Icon(
+        Icons.settings,
+        size: 18,
+        color: VooColors.subTitleColor,
       ),
       title: '我看过的',
     ));

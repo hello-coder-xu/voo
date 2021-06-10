@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/field/index.dart';
 
 ///验证码
@@ -52,20 +52,18 @@ class VooCellFieldCode extends StatelessWidget {
   Widget trailingView() {
     List<Widget> children = [];
     children.add(Container(
-      margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
-      height: ScreenUtil().setHeight(40),
+      margin: EdgeInsets.only(left: 16.w),
+      height: 40.h,
       width: 1,
       color: Color(0xffe5e5e5),
     ));
     children.add(Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
-      margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
+      constraints: BoxConstraints(minHeight: 100.h),
+      margin: EdgeInsets.only(left: 16.w),
       alignment: Alignment.center,
       child: Text(
         trailing,
-        style: trailingStyle ??
-            TextStyle(
-                fontSize: ScreenUtil().setSp(32), color: Color(0xff25c489)),
+        style: trailingStyle ?? TextStyle(fontSize: 32.sp, color: Color(0xff25c489)),
       ),
     ));
     return GestureDetector(
@@ -80,30 +78,30 @@ class VooCellFieldCode extends StatelessWidget {
 
     children.add(Container(
       alignment: Alignment.centerLeft,
-      width: titleWidth ?? ScreenUtil().setWidth(128),
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
+      width: titleWidth ?? 128.w,
+      constraints: BoxConstraints(minHeight: 100.h),
       child: Text(
         title,
         style: titleStyle ??
             TextStyle(
-              fontSize: ScreenUtil().setSp(32),
+              fontSize: 32.sp,
               color: Color(0xff333333),
             ),
       ),
     ));
 
-    children.add(SizedBox(width: paddingWidth ?? ScreenUtil().setWidth(56)));
+    children.add(SizedBox(width: paddingWidth ?? 56.w));
 
     children.add(Expanded(
       child: Container(
-        constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
+        constraints: BoxConstraints(minHeight: 100.h),
         alignment: Alignment.centerLeft,
         child: VooField(
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: hintStyle ??
                 TextStyle(
-                  fontSize: ScreenUtil().setSp(32),
+                  fontSize: 32.sp,
                   color: Color(0xffb6b6b6),
                 ),
             border: border ?? InputBorder.none,
@@ -130,8 +128,8 @@ class VooCellFieldCode extends StatelessWidget {
 
     return Container(
       color: Colors.white,
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
-      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
+      constraints: BoxConstraints(minHeight: 100.h),
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
       child: Row(
         children: children,
         crossAxisAlignment: CrossAxisAlignment.start,

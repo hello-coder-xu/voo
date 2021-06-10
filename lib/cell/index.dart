@@ -27,7 +27,7 @@ class VooCell extends StatelessWidget {
       title,
       style: style ??
           TextStyle(
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
             color: Color(0xff333333),
           ),
     );
@@ -35,10 +35,9 @@ class VooCell extends StatelessWidget {
     if (leading != null) {
       List<Widget> children = [];
       children.add(leading);
-      children.add(SizedBox(width: ScreenUtil().setWidth(24)));
+      children.add(SizedBox(width: 24.w));
       children.add(titleView);
-      return Row(
-          children: children, crossAxisAlignment: CrossAxisAlignment.center);
+      return Row(children: children, crossAxisAlignment: CrossAxisAlignment.center);
     }
     return titleView;
   }
@@ -49,17 +48,17 @@ class VooCell extends StatelessWidget {
       content,
       style: contentStyle ??
           TextStyle(
-            fontSize: ScreenUtil().setSp(32),
+            fontSize: 32.sp,
             color: Color(0xffb6b6b6),
           ),
     );
     List<Widget> children = [];
     children.add(valueView);
     if (showRightIcon) {
-      children.add(SizedBox(width: ScreenUtil().setWidth(16)));
+      children.add(SizedBox(width: 16.w));
       children.add(Icon(
         Icons.keyboard_arrow_right,
-        size: ScreenUtil().setWidth(40),
+        size: 40.w,
         color: Color(0xffb6b6b6),
       ));
     }
@@ -82,10 +81,10 @@ class VooCell extends StatelessWidget {
       ),
     ));
     Widget child = Container(
-      constraints: BoxConstraints(minHeight: ScreenUtil().setHeight(100)),
+      constraints: BoxConstraints(minHeight: 100.h),
       color: Colors.white,
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
       child: Row(
         children: children,
         crossAxisAlignment: CrossAxisAlignment.center,

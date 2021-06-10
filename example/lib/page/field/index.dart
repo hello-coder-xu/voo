@@ -13,6 +13,7 @@ class FieldPage extends StatefulWidget {
 
 class FieldPageState extends State<FieldPage> {
   TextEditingController controller1 = TextEditingController(text: '100室内设计');
+  TextEditingController controller2 = TextEditingController(text: '100室内设计');
 
   //内容视图
   Widget contentView() {
@@ -68,7 +69,7 @@ class FieldPageState extends State<FieldPage> {
       border: InputBorder.none,
       hintText: '请输入昵称',
       errorText: '请输入错误提示',
-      controller: controller1,
+      // controller: controller2,
     ));
 
     children.add(SizedBox(height: 32));

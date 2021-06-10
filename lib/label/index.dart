@@ -21,21 +21,20 @@ class VooLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     VooLabelTheme tempTheme = theme ?? VooLabelTheme.rect;
     Color tempBgColor = bgColor ?? const Color(0xff333333);
-    TextStyle tempTextStyle = style ??
-        TextStyle(fontSize: ScreenUtil().setSp(20), color: Colors.white);
+    TextStyle tempTextStyle = style ?? TextStyle(fontSize: 20.sp, color: Colors.white);
     BorderRadius tempBorderRadius;
     EdgeInsets tempPadding = EdgeInsets.symmetric(
-        horizontal: ScreenUtil().setWidth(12),
-        vertical: ScreenUtil().setHeight(4));
+      horizontal: 12.w,
+      vertical: 4.h,
+    );
     if (tempTheme == VooLabelTheme.rect) {
-      tempBorderRadius =
-          BorderRadius.all(Radius.circular(ScreenUtil().setWidth(4)));
+      tempBorderRadius = BorderRadius.all(Radius.circular(4.w));
     } else {
       tempBorderRadius = BorderRadius.only(
-        topLeft: Radius.circular(ScreenUtil().setWidth(12)),
-        bottomRight: Radius.circular(ScreenUtil().setWidth(12)),
-        topRight: Radius.circular(ScreenUtil().setWidth(4)),
-        bottomLeft: Radius.circular(ScreenUtil().setWidth(4)),
+        topLeft: Radius.circular(12.w),
+        bottomRight: Radius.circular(12.w),
+        topRight: Radius.circular(4.w),
+        bottomLeft: Radius.circular(4.w),
       );
     }
     return Container(

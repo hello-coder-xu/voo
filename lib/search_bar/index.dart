@@ -25,13 +25,13 @@ class VooSearchBar extends StatelessWidget {
     this.hintText,
     this.hintStyle,
     this.style,
-    this.align=TextAlign.left,
+    this.align = TextAlign.left,
     this.controller,
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
     this.showClear,
-    this.readOnly=false,
+    this.readOnly = false,
     this.contentIcon,
     this.trailing,
     this.bgColor,
@@ -47,11 +47,11 @@ class VooSearchBar extends StatelessWidget {
       children.add(Icon(
         Icons.search,
         color: Color(0xffbfbfbf),
-        size: ScreenUtil().setWidth(36),
+        size: 36.w,
       ));
     }
 
-    children.add(SizedBox(width: ScreenUtil().setWidth(24)));
+    children.add(SizedBox(width:24.w));
     children.add(Expanded(
       child: VooField(
         decoration: InputDecoration(
@@ -59,14 +59,14 @@ class VooSearchBar extends StatelessWidget {
           hintText: hintText,
           hintStyle: hintStyle ??
               TextStyle(
-                fontSize: ScreenUtil().setSp(32),
+                fontSize: 32.sp,
                 color: Color(0xffb6b6b6),
               ),
           isCollapsed: true,
         ),
         style: style ??
             TextStyle(
-              fontSize: ScreenUtil().setSp(32),
+              fontSize: 32.sp,
               color: Color(0xff333333),
             ),
         textAlign: align,
@@ -81,10 +81,10 @@ class VooSearchBar extends StatelessWidget {
     ));
 
     return Container(
-      height:ScreenUtil().setWidth(64),
-      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
+      height: 64.w,
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(ScreenUtil().setWidth(32)),
+        borderRadius: BorderRadius.circular(32.w),
         color: roundBgColor ?? Color(0xfff6f6f6),
       ),
       child: Row(children: children, mainAxisSize: MainAxisSize.min),
@@ -96,8 +96,8 @@ class VooSearchBar extends StatelessWidget {
     List<Widget> children = [];
     if (leading != null) {
       children.add(Container(
-        constraints: BoxConstraints(maxHeight: ScreenUtil().setWidth(96)),
-        margin: EdgeInsets.only(right: ScreenUtil().setWidth(16)),
+        constraints: BoxConstraints(maxHeight: 96.w),
+        margin: EdgeInsets.only(right: 16.w),
         child: leading,
         alignment: Alignment.center,
       ));
@@ -107,20 +107,19 @@ class VooSearchBar extends StatelessWidget {
 
     if (trailing != null) {
       children.add(Container(
-        constraints: BoxConstraints(maxHeight: ScreenUtil().setWidth(96)),
-        margin: EdgeInsets.only(left: ScreenUtil().setWidth(16)),
+        constraints: BoxConstraints(maxHeight: 96.w),
+        margin: EdgeInsets.only(left: 16.w),
         child: trailing,
         alignment: Alignment.center,
       ));
     }
 
     return Container(
-      height: ScreenUtil().setWidth(96),
-      padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(32)),
+      height: 96.w,
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
       alignment: Alignment.center,
       color: bgColor ?? Colors.white,
-      child: Row(
-          children: children, crossAxisAlignment: CrossAxisAlignment.center),
+      child: Row(children: children, crossAxisAlignment: CrossAxisAlignment.center),
     );
   }
 }
