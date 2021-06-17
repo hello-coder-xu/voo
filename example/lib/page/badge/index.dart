@@ -8,10 +8,11 @@ import '../../comm/ui_component.dart';
 ///微标视图
 class BadgePage extends StatelessWidget {
   //微标-item
-  Widget badgeItemView(
-      {String title,
-      VooBadgeTheme theme = VooBadgeTheme.point,
-      String number}) {
+  Widget badgeItemView({
+    String title,
+    VooBadgeTheme theme = VooBadgeTheme.point,
+    String number,
+  }) {
     List<Widget> children = [];
     children.add(VooBadgeView(
       child: Icon(Icons.mail_outline, size: 48),
@@ -19,7 +20,10 @@ class BadgePage extends StatelessWidget {
       theme: theme,
       right: 0,
     ));
-    children.add(Text(title, style: TextStyle(color: Colors.blue)));
+    children.add(Text(
+      title,
+      style: TextStyle(color: Colors.blue),
+    ));
     return Column(children: children);
   }
 
@@ -63,7 +67,7 @@ class BadgePage extends StatelessWidget {
         color: VooColors.subTitleColor,
       ),
       title: '意见反馈',
-      content:'5.3.7',
+      content: '5.3.7',
     ));
     return SingleChildScrollView(
       padding: EdgeInsets.only(bottom: 32),
