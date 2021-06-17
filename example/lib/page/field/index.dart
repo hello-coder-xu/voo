@@ -22,7 +22,6 @@ class FieldPageState extends State<FieldPage> {
     children.add(SizedBox(height: 32));
     children.add(VooCellField(
       title: '昵称',
-      border: InputBorder.none,
       hintText: '请输入昵称',
       showClear: true,
     ));
@@ -30,7 +29,6 @@ class FieldPageState extends State<FieldPage> {
     children.add(SizedBox(height: 32));
     children.add(VooCellField(
       title: '坪数',
-      border: InputBorder.none,
       hintText: '请输入坪数',
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'\d+'))],
@@ -40,7 +38,6 @@ class FieldPageState extends State<FieldPage> {
     children.add(SizedBox(height: 32));
     children.add(VooCellField(
       title: '整数',
-      border: InputBorder.none,
       hintText: '请输入整数',
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'\d+'))],
@@ -66,7 +63,6 @@ class FieldPageState extends State<FieldPage> {
     children.add(SizedBox(height: 32));
     children.add(VooCellField(
       title: '昵称',
-      border: InputBorder.none,
       hintText: '请输入昵称',
       errorText: '请输入错误提示',
       // controller: controller2,
@@ -75,16 +71,15 @@ class FieldPageState extends State<FieldPage> {
     children.add(SizedBox(height: 32));
     children.add(VooCellField(
       title: '密码',
-      border: InputBorder.none,
       hintText: '请输入密码',
-      align: TextAlign.start,
+      textAlign: TextAlign.start,
       showPwd: true,
     ));
 
     children.add(SizedBox(height: 32));
+
     children.add(VooCellFieldCode(
       title: '验证简讯',
-      border: InputBorder.none,
       hintText: '请输入简讯',
       trailing: '发送',
       onTrailing: () {
@@ -95,7 +90,6 @@ class FieldPageState extends State<FieldPage> {
     children.add(SizedBox(height: 32));
     children.add(VooCellField(
       title: '补充信息',
-      border: InputBorder.none,
       hintText: '(选填)您的额个人喜好和其他详细信息',
       minLines: 3,
       maxLines: 10,

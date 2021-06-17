@@ -14,14 +14,14 @@ class ListPage extends StatelessWidget {
     children.add(SizedBox(height: 32));
     children.add(VooCellField(
       title: '昵称',
-      align: TextAlign.left,
+      textAlign: TextAlign.left,
       hintText: '请输入昵称',
     ));
     children.add(Divider(height: 1));
     children.add(VooCellField(
       title: '密码',
       showPwd: true,
-      align: TextAlign.left,
+      textAlign: TextAlign.left,
       hintText: '请输入密码',
     ));
 

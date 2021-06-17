@@ -1,294 +1,196 @@
-import 'dart:ui';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/icon/index.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-///输入框
-class VooField extends StatefulWidget {
-  final TextEditingController controller;
-  final FocusNode focusNode;
-  final InputDecoration decoration;
-  final TextInputType keyboardType;
-  final TextInputAction textInputAction;
-  final TextCapitalization textCapitalization;
+enum TextFieldTheme { none, border }
+
+///
+class VooTextField extends StatefulWidget {
+  final TextFieldTheme textFieldTheme;
+  final Widget prefixIcon;
+  final String hintText;
+  final Widget suffixIcon;
+
   final TextStyle style;
-  final StrutStyle strutStyle;
+  final TextStyle hintStyle;
   final TextAlign textAlign;
   final TextAlignVertical textAlignVertical;
-  final TextDirection textDirection;
-  final bool autofocus;
-  final String obscuringCharacter;
-  final bool obscureText;
-  final bool autocorrect;
-  final SmartDashesType smartDashesType;
-  final SmartQuotesType smartQuotesType;
-  final bool enableSuggestions;
+
+  final bool filled;
+  final Color fillColor;
+  final Color borderColor;
+  final double borderWidth;
+  final BorderRadius borderRadius;
+
+  final bool showPwd;
+  final bool showClear;
+
   final int maxLines;
   final int minLines;
-  final bool expands;
-  final bool readOnly;
-  final ToolbarOptions toolbarOptions;
-  final bool showCursor;
-  static const int noMaxLength = -1;
   final int maxLength;
-  final MaxLengthEnforcement maxLengthEnforcement;
+  final bool readOnly;
+  final bool enabled;
+
   final ValueChanged<String> onChanged;
   final VoidCallback onEditingComplete;
   final ValueChanged<String> onSubmitted;
   final List<TextInputFormatter> inputFormatters;
-  final bool enabled;
-  final double cursorWidth;
-  final Radius cursorRadius;
-  final Color cursorColor;
-  final BoxHeightStyle selectionHeightStyle;
-  final BoxWidthStyle selectionWidthStyle;
-  final Brightness keyboardAppearance;
-  final EdgeInsets scrollPadding;
-  final bool enableInteractiveSelection;
-  final DragStartBehavior dragStartBehavior;
+  final TextInputType keyboardType;
+  final TextInputAction textInputAction;
+  final TextEditingController controller;
 
-  bool get selectionEnabled => enableInteractiveSelection;
-  final GestureTapCallback onTap;
-  final MouseCursor mouseCursor;
-  final InputCounterWidgetBuilder buildCounter;
-  final ScrollPhysics scrollPhysics;
-  final ScrollController scrollController;
-  final Iterable<String> autofillHints;
-  final bool showClear;
-  final bool showPwd;
-
-  VooField({
-    Key key,
-    this.showClear = false,
-    this.showPwd = false,
-    this.controller,
-    this.focusNode,
-    this.decoration = const InputDecoration(),
-    TextInputType keyboardType,
-    this.textInputAction,
-    this.textCapitalization = TextCapitalization.none,
-    this.style,
-    this.strutStyle,
-    this.textAlign = TextAlign.end,
-    this.textAlignVertical,
-    this.textDirection,
-    this.readOnly = false,
-    ToolbarOptions toolbarOptions,
-    this.showCursor,
-    this.autofocus = false,
-    this.obscuringCharacter = '•',
-    this.obscureText = false,
-    this.autocorrect = true,
-    SmartDashesType smartDashesType,
-    SmartQuotesType smartQuotesType,
-    this.enableSuggestions = true,
+  VooTextField({
+    this.textFieldTheme = TextFieldTheme.none,
+    this.prefixIcon,
+    this.hintText,
+    this.suffixIcon,
+    this.style = const TextStyle(fontSize: 14, color: Colors.black87),
+    this.hintStyle = const TextStyle(fontSize: 14, color: Colors.black54),
+    this.textAlign = TextAlign.left,
+    this.textAlignVertical = TextAlignVertical.center,
+    this.maxLength,
     this.maxLines = 1,
     this.minLines,
-    this.expands = false,
-    this.maxLength,
-    this.maxLengthEnforcement,
+    this.readOnly = false,
+    this.enabled = true,
+    this.filled = false,
+    this.fillColor = const Color(0xFFF5F5F5),
+    this.borderColor = const Color(0xFFEEEEEE),
+    this.borderWidth = 1,
+    this.borderRadius = const BorderRadius.all(Radius.circular(4)),
+    this.showPwd = false,
+    this.showClear = false,
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
     this.inputFormatters,
-    this.enabled,
-    this.cursorWidth = 2.0,
-    this.cursorRadius,
-    this.cursorColor,
-    this.selectionHeightStyle = BoxHeightStyle.tight,
-    this.selectionWidthStyle = BoxWidthStyle.tight,
-    this.keyboardAppearance,
-    this.scrollPadding = const EdgeInsets.all(20.0),
-    this.dragStartBehavior = DragStartBehavior.start,
-    this.enableInteractiveSelection = true,
-    this.onTap,
-    this.mouseCursor,
-    this.buildCounter,
-    this.scrollController,
-    this.scrollPhysics,
-    this.autofillHints,
-  })  : assert(textAlign != null),
-        assert(readOnly != null),
-        assert(autofocus != null),
-        assert(obscuringCharacter != null && obscuringCharacter.length == 1),
-        assert(obscureText != null),
-        assert(autocorrect != null),
-        smartDashesType = smartDashesType ?? (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
-        smartQuotesType = smartQuotesType ?? (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
-        assert(enableSuggestions != null),
-        assert(enableInteractiveSelection != null),
-        assert(scrollPadding != null),
-        assert(dragStartBehavior != null),
-        assert(selectionHeightStyle != null),
-        assert(selectionWidthStyle != null),
-        assert(maxLines == null || maxLines > 0),
-        assert(minLines == null || minLines > 0),
-        assert(
-          (maxLines == null) || (minLines == null) || (maxLines >= minLines),
-          "minLines can't be greater than maxLines",
-        ),
-        assert(expands != null),
-        assert(
-          !expands || (maxLines == null && minLines == null),
-          'minLines and maxLines must be null when expands is true.',
-        ),
-        assert(!obscureText || maxLines == 1, 'Obscured fields cannot be multiline.'),
-        assert(maxLength == null || maxLength == TextField.noMaxLength || maxLength > 0),
-        assert(
-            !identical(textInputAction, TextInputAction.newline) ||
-                maxLines == 1 ||
-                !identical(keyboardType, TextInputType.text),
-            'Use keyboardType TextInputType.multiline when using TextInputAction.newline on a multiline TextField.'),
-        keyboardType = keyboardType ?? (maxLines == 1 ? TextInputType.text : TextInputType.multiline),
-        toolbarOptions = toolbarOptions ??
-            (obscureText
-                ? const ToolbarOptions(selectAll: true, paste: true)
-                : const ToolbarOptions(copy: true, cut: true, selectAll: true, paste: true)),
-        super(key: key);
+    this.keyboardType,
+    this.textInputAction,
+    this.controller,
+  });
 
   @override
-  VooFieldState createState() => VooFieldState();
+  VooTextFieldState createState() => VooTextFieldState();
 }
 
-class VooFieldState extends State<VooField> {
-  bool show = false;
-  bool hasFocus = false;
-  bool obscureText;
+class VooTextFieldState extends State<VooTextField> {
   TextEditingController controller;
-  FocusNode focusNode;
+  bool obscureText;
 
+  @override
   void initState() {
     super.initState();
-    obscureText = (widget.obscureText ?? false) || (widget.showPwd ?? false);
     controller = widget.controller ?? TextEditingController();
-    print('test controller=${widget.controller == null}');
-    controller.addListener(() {
-      bool tempContentNotEmpty = controller.text.toString().length != 0;
-      if (show != tempContentNotEmpty) {
-        show = tempContentNotEmpty;
-        notify();
-      } else {
-        show = tempContentNotEmpty;
-      }
-    });
+    obscureText = widget.showPwd;
+  }
 
-    focusNode = widget.focusNode ?? FocusNode();
-    focusNode.addListener(() {
-      bool tempHasFocus = focusNode.hasFocus;
-      if (hasFocus != tempHasFocus) {
-        hasFocus = tempHasFocus;
-        notify();
-      } else {
-        hasFocus = tempHasFocus;
-      }
-    });
+  /// 获取装饰
+  InputDecoration getDecoration() {
+    InputBorder border;
+    switch (widget.textFieldTheme) {
+      case TextFieldTheme.none:
+        border = OutlineInputBorder(
+          borderRadius: BorderRadius.zero,
+          borderSide: BorderSide(
+            color: Colors.transparent,
+            width: 0,
+          ),
+        );
+        break;
+      case TextFieldTheme.border:
+        border = OutlineInputBorder(
+          borderRadius: widget.borderRadius,
+          borderSide: BorderSide(
+            color: widget.borderColor,
+            width: widget.borderWidth,
+          ),
+        );
+        break;
+    }
+
+    //前缀与后缀视图
+    Widget prefixIcon = widget.prefixIcon;
+    Widget suffixIcon;
+    Widget suffix;
+    if (widget.showPwd) {
+      //显示 密码隐藏可见按钮
+      suffixIcon = GestureDetector(
+        onTap: toggleShowPwd,
+        child: Icon(
+          obscureText ? VooIcon.view : VooIcon.close_eye,
+          size: 32.w,
+          color: Color(0xff333333),
+        ),
+      );
+    } else if (widget.showClear && !widget.readOnly && widget.enabled) {
+      //显示 清理按钮
+      suffix = GestureDetector(
+        onTap: onClear,
+        child: Icon(
+          Icons.cancel,
+          size: 32.w,
+          color: Colors.grey,
+        ),
+      );
+    }
+
+    InputDecoration inputDecoration = InputDecoration(
+      filled: widget.filled,
+      fillColor: widget.fillColor,
+      border: border,
+      enabledBorder: border,
+      focusedBorder: border,
+      disabledBorder: border,
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+      suffix: suffix,
+      contentPadding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 0),
+      hintText: widget.hintText,
+      hintStyle: widget.hintStyle,
+      //不显示字数限制
+      counterText: '',
+      isCollapsed: true,
+    );
+    return inputDecoration;
   }
 
   @override
   Widget build(BuildContext context) {
-    TextField textField = TextField(
-      controller: controller,
-      focusNode: focusNode,
-      decoration: widget.decoration,
-      keyboardType: widget.keyboardType,
-      textInputAction: widget.textInputAction,
-      textCapitalization: widget.textCapitalization,
-      style: widget.style ?? TextStyle(fontSize: 32.sp, color: Color(0xff333333)),
-      strutStyle: widget.strutStyle,
-      textAlign: widget.textAlign,
+    InputDecoration inputDecoration = getDecoration();
+    return TextField(
+      decoration: inputDecoration,
       textAlignVertical: widget.textAlignVertical,
-      textDirection: widget.textDirection,
-      readOnly: widget.readOnly,
-      toolbarOptions: widget.toolbarOptions,
-      showCursor: widget.showCursor,
-      autofocus: widget.autofocus,
-      obscuringCharacter: widget.obscuringCharacter,
-      obscureText: obscureText,
-      autocorrect: widget.autocorrect,
-      smartDashesType: widget.smartDashesType,
-      smartQuotesType: widget.smartQuotesType,
-      enableSuggestions: widget.enableSuggestions,
-      maxLines: widget.maxLines,
-      minLines: widget.minLines,
-      expands: widget.expands,
       maxLength: widget.maxLength,
-      maxLengthEnforcement: widget.maxLengthEnforcement,
+      minLines: widget.minLines,
+      maxLines: widget.maxLines,
+      textAlign: widget.textAlign,
+      obscureText: obscureText,
+      readOnly: widget.readOnly,
+      enabled: widget.enabled,
+      controller: controller,
       onChanged: widget.onChanged,
       onEditingComplete: widget.onEditingComplete,
       onSubmitted: widget.onSubmitted,
       inputFormatters: widget.inputFormatters,
-      enabled: widget.enabled,
-      cursorWidth: widget.cursorWidth,
-      cursorRadius: widget.cursorRadius,
-      cursorColor: widget.cursorColor,
-      selectionHeightStyle: widget.selectionHeightStyle,
-      selectionWidthStyle: widget.selectionWidthStyle,
-      keyboardAppearance: widget.keyboardAppearance,
-      scrollPadding: widget.scrollPadding,
-      dragStartBehavior: widget.dragStartBehavior,
-      enableInteractiveSelection: widget.enableInteractiveSelection,
-      onTap: widget.onTap,
-      mouseCursor: widget.mouseCursor,
-      buildCounter: widget.buildCounter,
-      scrollController: widget.scrollController,
-      scrollPhysics: widget.scrollPhysics,
-      autofillHints: widget.autofillHints,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
     );
-    List<Widget> children = [];
-    children.add(Flexible(child: textField));
-    if (widget.showClear && show && hasFocus) {
-      children.add(GestureDetector(
-        onTap: onClear,
-        child: Container(
-          margin: EdgeInsets.only(left: 16.w),
-          child: Icon(
-            Icons.cancel,
-            size: 36.w,
-            color: Colors.grey,
-          ),
-        ),
-      ));
-    }
-
-    if (widget.showPwd && show && hasFocus) {
-      children.add(GestureDetector(
-        onTap: onChangePwd,
-        child: Container(
-          margin: EdgeInsets.only(left: 16.w),
-          child: Icon(
-            textField.obscureText ? VooIcon.view : VooIcon.close_eye,
-            size: 36.w,
-            color: Color(0xff333333),
-          ),
-        ),
-      ));
-    }
-
-    return Row(children: children);
   }
 
+  //清除内容
   void onClear() {
-    controller.clear();
+    controller?.clear();
+    if (widget.onChanged != null) {
+      widget.onChanged('');
+    }
   }
 
-  void onChangePwd() {
+  //密码显示切换
+  void toggleShowPwd() {
     obscureText = !obscureText;
-    if (mounted) setState(() {});
-  }
-
-  void notify() {
-    if (widget.showClear || widget.showPwd && show || hasFocus && mounted) {
+    if (mounted) {
       setState(() {});
     }
-  }
-
-  @override
-  void dispose() {
-    focusNode?.dispose();
-    super.dispose();
   }
 }

@@ -1,7 +1,8 @@
+import 'package:example/comm/ui_component.dart';
 import 'package:voo/icon/index.dart';
 import 'package:voo/search_bar/index.dart';
-import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
+import 'package:voo/voo.dart';
 
 ///搜索栏
 class SearchBarPage extends StatelessWidget {
@@ -18,12 +19,12 @@ class SearchBarPage extends StatelessWidget {
     children.add(SizedBox(height: 32));
     children.add(VooSearchBar(
       bgColor: Colors.black,
-      roundBgColor: Colors.grey[700],
+      fillColor: Colors.grey[700],
       hintText: '请输入搜索内容',
       hintStyle: TextStyle(color: Colors.white),
       style: TextStyle(color: Colors.white),
       showClear: true,
-      contentIcon: Icon(Icons.search, color: Colors.white),
+      prefixIcon: Icon(Icons.search, color: Colors.white),
     ));
 
     children.add(SizedBox(height: 32));
@@ -50,7 +51,7 @@ class SearchBarPage extends StatelessWidget {
     children.add(VooSearchBar(
       leading: Row(
         children: [
-          Text('台北',style: TextStyle(color: Colors.black87,fontSize: 16)),
+          Text('台北', style: TextStyle(color: Colors.black87, fontSize: 16)),
           Icon(Icons.keyboard_arrow_down, color: Colors.black87),
         ],
       ),

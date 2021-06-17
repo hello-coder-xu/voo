@@ -1,95 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/field/index.dart';
 
 ///搜索栏
 class VooSearchBar extends StatelessWidget {
   final Widget leading;
+  final Widget trailing;
+  final Color bgColor;
+
+  //输入框属性
+  final TextFieldTheme textFieldTheme;
+  final Widget prefixIcon;
   final String hintText;
-  final TextStyle hintStyle;
+  final Widget suffixIcon;
+
   final TextStyle style;
-  final TextAlign align;
-  final TextEditingController controller;
+  final TextStyle hintStyle;
+  final TextAlign textAlign;
+  final TextAlignVertical textAlignVertical;
+
+  final bool filled;
+  final Color fillColor;
+  final Color borderColor;
+  final double borderWidth;
+  final BorderRadius borderRadius;
+
+  final bool showPwd;
+  final bool showClear;
+
+  final int maxLines;
+  final int minLines;
+  final int maxLength;
+  final bool readOnly;
+  final bool enabled;
+
   final ValueChanged<String> onChanged;
   final VoidCallback onEditingComplete;
   final ValueChanged<String> onSubmitted;
-  final bool showClear;
-  final bool readOnly;
-  final Widget trailing;
-  final Widget contentIcon;
-  final Color bgColor;
-  final Color roundBgColor;
+  final List<TextInputFormatter> inputFormatters;
+  final TextInputType keyboardType;
+  final TextInputAction textInputAction;
+  final TextEditingController controller;
 
   VooSearchBar({
     this.leading,
+    this.trailing,
+    this.bgColor,
+    this.textFieldTheme = TextFieldTheme.none,
+    this.prefixIcon,
     this.hintText,
-    this.hintStyle,
-    this.style,
-    this.align = TextAlign.left,
-    this.controller,
+    this.suffixIcon,
+    this.style = const TextStyle(fontSize: 14, color: Colors.black87),
+    this.hintStyle = const TextStyle(fontSize: 14, color: Colors.black54),
+    this.textAlign = TextAlign.left,
+    this.textAlignVertical = TextAlignVertical.center,
+    this.maxLength,
+    this.maxLines = 1,
+    this.minLines,
+    this.readOnly = false,
+    this.enabled = true,
+    this.filled = false,
+    this.fillColor = const Color(0xFFF5F5F5),
+    this.borderColor = const Color(0xFFEEEEEE),
+    this.borderWidth = 1,
+    this.borderRadius = const BorderRadius.all(Radius.circular(4)),
+    this.showPwd = false,
+    this.showClear = false,
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
-    this.showClear,
-    this.readOnly = false,
-    this.contentIcon,
-    this.trailing,
-    this.bgColor,
-    this.roundBgColor,
+    this.inputFormatters,
+    this.keyboardType,
+    this.textInputAction,
+    this.controller,
   });
-
-  //中间视图
-  Widget contentView() {
-    List<Widget> children = [];
-    if (contentIcon != null) {
-      children.add(contentIcon);
-    } else {
-      children.add(Icon(
-        Icons.search,
-        color: Color(0xffbfbfbf),
-        size: 36.w,
-      ));
-    }
-
-    children.add(SizedBox(width:24.w));
-    children.add(Expanded(
-      child: VooField(
-        decoration: InputDecoration(
-          border: InputBorder.none,
-          hintText: hintText,
-          hintStyle: hintStyle ??
-              TextStyle(
-                fontSize: 32.sp,
-                color: Color(0xffb6b6b6),
-              ),
-          isCollapsed: true,
-        ),
-        style: style ??
-            TextStyle(
-              fontSize: 32.sp,
-              color: Color(0xff333333),
-            ),
-        textAlign: align,
-        maxLines: 1,
-        showClear: showClear,
-        onChanged: onChanged,
-        onSubmitted: onSubmitted,
-        onEditingComplete: onEditingComplete,
-        readOnly: readOnly,
-        controller: controller,
-      ),
-    ));
-
-    return Container(
-      height: 64.w,
-      padding: EdgeInsets.symmetric(horizontal: 32.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(32.w),
-        color: roundBgColor ?? Color(0xfff6f6f6),
-      ),
-      child: Row(children: children, mainAxisSize: MainAxisSize.min),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,7 +88,42 @@ class VooSearchBar extends StatelessWidget {
       ));
     }
 
-    children.add(Expanded(child: contentView()));
+    children.add(Expanded(
+      child: Container(
+        height: 64.w,
+        child: VooTextField(
+          textFieldTheme: TextFieldTheme.border,
+          borderColor: borderColor,
+          borderWidth: 1,
+          borderRadius: BorderRadius.all(Radius.circular(32.w)),
+          fillColor: fillColor ?? Color(0xfff6f6f6),
+          filled: true,
+          prefixIcon: prefixIcon ??
+              Icon(
+                Icons.search,
+                color: Color(0xffbfbfbf),
+                size: 36.w,
+              ),
+          hintText: hintText,
+          hintStyle: hintStyle,
+          style: style,
+          textAlign: textAlign,
+          maxLength: maxLength,
+          maxLines: 1,
+          enabled: true,
+          showPwd: false,
+          showClear: showClear,
+          onChanged: onChanged,
+          onSubmitted: onSubmitted,
+          onEditingComplete: onEditingComplete,
+          inputFormatters: inputFormatters,
+          keyboardType: keyboardType,
+          textInputAction: textInputAction,
+          readOnly: readOnly,
+          controller: controller,
+        ),
+      ),
+    ));
 
     if (trailing != null) {
       children.add(Container(
