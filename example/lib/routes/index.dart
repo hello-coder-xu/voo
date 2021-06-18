@@ -1,4 +1,5 @@
 import 'package:example/page/home/index.dart';
+import 'package:example/page/hot_label/index.dart';
 import 'package:example/page/label/index.dart';
 import 'package:flutter/material.dart';
 import 'package:example/page/avatar/index.dart';
@@ -71,4 +72,5 @@ Map<String, WidgetBuilder> routs = {
   '/StateSwitcherPage': (context) => StateSwitcherPage(),
   '/TabBarPage': (context) => TabBarPage(),
   '/LabelPage': (context) => LabelPage(),
+  '/HotLabelView': (context) => HotLabelView(),
 };

@@ -32,6 +32,7 @@ class HomePageState extends State<HomePage> {
         '头像 Avatar': '/AvatarPage',
         '搜索框 SearchBar': '/SearchBarPage',
         '标签 Label': '/LabelPage',
+        '热门 Label': '/HotLabelView',
       },
       '反馈': {
         '微标 Badge': '/BadgePage',

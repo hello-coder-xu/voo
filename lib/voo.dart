@@ -45,6 +45,8 @@ export 'notify/index.dart';
 export 'switch/index.dart';
 export 'instructions/index.dart';
 export 'label/index.dart';
+export 'hot_label/index.dart';
+
 
 //工具类
 export 'util/index.dart';
