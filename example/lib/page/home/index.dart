@@ -33,6 +33,7 @@ class HomePageState extends State<HomePage> {
         '搜索框 SearchBar': '/SearchBarPage',
         '标签 Label': '/LabelPage',
         '热门 Label': '/HotLabelView',
+        '轮播图': '/SwipeView',
       },
       '反馈': {
         '微标 Badge': '/BadgePage',
