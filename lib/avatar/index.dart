@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum VooAvatarTheme { mini, small, normal, large }
+//迷你  小  普通  大
+enum VooAvatarStyle { mini, small, normal, large }
 
 ///头像
 class VooAvatar extends StatelessWidget {
-  final VooAvatarTheme theme;
+  //显示样式
+  final VooAvatarStyle style;
+
+  //头像
   final Widget icon;
+
+  //标题
   final String title;
+
+  //副标题
   final String subTitle;
 
-  VooAvatar({this.theme = VooAvatarTheme.mini, this.icon, this.title = '', this.subTitle});
+  VooAvatar({
+    this.style = VooAvatarStyle.mini,
+    this.icon,
+    this.title = '',
+    this.subTitle,
+  });
 
-  ///图标
+  ///头像视图
   Widget iconView() {
     return Container(
       height: getSize(),
@@ -82,57 +95,60 @@ class VooAvatar extends StatelessWidget {
     );
   }
 
+  //样式
   double getSize() {
     double size = 80.w;
-    switch (theme) {
-      case VooAvatarTheme.mini:
+    switch (style) {
+      case VooAvatarStyle.mini:
         size = 32.w;
         break;
-      case VooAvatarTheme.small:
+      case VooAvatarStyle.small:
         size = 64.w;
         break;
-      case VooAvatarTheme.normal:
+      case VooAvatarStyle.normal:
         size = 80.w;
         break;
-      case VooAvatarTheme.large:
+      case VooAvatarStyle.large:
         size = 96.w;
         break;
     }
     return size;
   }
 
+  //标题字体大小
   double getFontSize() {
     double size = 40.sp;
-    switch (theme) {
-      case VooAvatarTheme.mini:
+    switch (style) {
+      case VooAvatarStyle.mini:
         size = 22.sp;
         break;
-      case VooAvatarTheme.small:
+      case VooAvatarStyle.small:
         size = 28.sp;
         break;
-      case VooAvatarTheme.normal:
+      case VooAvatarStyle.normal:
         size = 32.sp;
         break;
-      case VooAvatarTheme.large:
+      case VooAvatarStyle.large:
         size = 40.sp;
         break;
     }
     return size;
   }
 
+  //副标题大小
   double getSubTitleFontSize() {
     double size = 32.sp;
-    switch (theme) {
-      case VooAvatarTheme.mini:
+    switch (style) {
+      case VooAvatarStyle.mini:
         size = 14.sp;
         break;
-      case VooAvatarTheme.small:
+      case VooAvatarStyle.small:
         size = 20.sp;
         break;
-      case VooAvatarTheme.normal:
+      case VooAvatarStyle.normal:
         size = 24.sp;
         break;
-      case VooAvatarTheme.large:
+      case VooAvatarStyle.large:
         size = 28.sp;
         break;
     }

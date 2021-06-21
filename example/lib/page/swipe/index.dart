@@ -73,7 +73,7 @@ class SwipeView extends StatelessWidget {
     children.add(SizedBox(height: 16));
     children.add(VooButton(
       child: '外部控制',
-      onPressed: () {
+      onTap: () {
         (swipeKey.currentState as VooSwipeState).setIndex(2);
       },
     ));

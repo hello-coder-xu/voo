@@ -1,33 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum VooLabelTheme { rect, half_circle }
+enum VooLabelStyle { rect, half_circle }
 
 ///标签视图
 class VooLabel extends StatelessWidget {
+  //内容文本
   final String value;
+
+  //背景颜色
   final Color bgColor;
-  final TextStyle style;
-  final VooLabelTheme theme;
+
+  //字体样式
+  final TextStyle textStyle;
+
+  //显示模式
+  final VooLabelStyle style;
 
   VooLabel({
     @required this.value,
     this.bgColor,
+    this.textStyle,
     this.style,
-    this.theme,
   });
 
   @override
   Widget build(BuildContext context) {
-    VooLabelTheme tempTheme = theme ?? VooLabelTheme.rect;
+    VooLabelStyle tempTheme = style ?? VooLabelStyle.rect;
     Color tempBgColor = bgColor ?? const Color(0xff333333);
-    TextStyle tempTextStyle = style ?? TextStyle(fontSize: 20.sp, color: Colors.white);
+    TextStyle tempTextStyle = textStyle ?? TextStyle(fontSize: 20.sp, color: Colors.white);
     BorderRadius tempBorderRadius;
     EdgeInsets tempPadding = EdgeInsets.symmetric(
       horizontal: 12.w,
       vertical: 4.h,
     );
-    if (tempTheme == VooLabelTheme.rect) {
+    if (tempTheme == VooLabelStyle.rect) {
       tempBorderRadius = BorderRadius.all(Radius.circular(4.w));
     } else {
       tempBorderRadius = BorderRadius.only(

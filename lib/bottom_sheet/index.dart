@@ -14,7 +14,7 @@ class VooBottomGridBean {
 }
 
 class VooBottomSheet {
-  //底部菜单-列表
+  ///底部菜单-列表
   static Future showListView({
     @required BuildContext context,
     List<String> list,
@@ -59,6 +59,7 @@ class VooBottomSheet {
     );
   }
 
+  ///底部菜单-描述
   static Future showDescribeView({
     @required BuildContext context,
     @required Widget child,
@@ -103,6 +104,7 @@ class VooBottomSheet {
     );
   }
 
+  ///底部菜单-宫格
   static Future showGridView({
     @required BuildContext context,
     @required List<VooBottomGridBean> list,
@@ -152,6 +154,7 @@ class VooBottomSheet {
     );
   }
 
+  ///底部菜单-picker
   static Future showPicker({
     @required BuildContext context,
     String title,
@@ -200,6 +203,7 @@ class VooBottomSheet {
     );
   }
 
+  ///底部菜单-联动picker
   static Future showLinkagePicker({
     @required BuildContext context,
     String title,
@@ -281,11 +285,22 @@ class VooBottomSheet {
 
 ///列表选择视图
 class VBottomSheetOptionView extends StatelessWidget {
+  //列表数组
   final List<String> list;
+
+  //初始值
   final String initData;
+
+  //最大高度
   final double maxHeight;
+
+  //最小高度
   final double minHeight;
+
+  //选择事件
   final Function(String value) onSelect;
+
+  //取消事件
   final Function onCancel;
 
   VBottomSheetOptionView({
@@ -368,6 +383,7 @@ class VBottomSheetOptionView extends StatelessWidget {
     return Column(children: children);
   }
 
+  //item选中事件
   void onItemClick(BuildContext context, String value) {
     if (onSelect != null) {
       onSelect(value);
@@ -375,6 +391,7 @@ class VBottomSheetOptionView extends StatelessWidget {
     close(context);
   }
 
+  //取消事件
   void onCancelTap(BuildContext context) {
     if (onCancel != null) {
       onCancel();
@@ -382,6 +399,7 @@ class VBottomSheetOptionView extends StatelessWidget {
     close(context);
   }
 
+  //关闭弹框
   void close(BuildContext context) {
     Navigator.pop(context);
   }
@@ -389,10 +407,19 @@ class VBottomSheetOptionView extends StatelessWidget {
 
 ///文本视图
 class VBottomSheetTextView extends StatelessWidget {
+  //显示内容
   final Widget child;
+
+  //最大高度
   final double maxHeight;
+
+  //最小高度
   final double minHeight;
+
+  //删除事件
   final VoidCallback onDelete;
+
+  //取消事件
   final VoidCallback onCancel;
 
   VBottomSheetTextView({
@@ -468,6 +495,7 @@ class VBottomSheetTextView extends StatelessWidget {
     );
   }
 
+  //删除事件
   void onDeleteTap(BuildContext context) {
     if (onDelete != null) {
       onDelete();
@@ -475,6 +503,7 @@ class VBottomSheetTextView extends StatelessWidget {
     close(context);
   }
 
+  //取消事件
   void onCancelTap(BuildContext context) {
     if (onCancel != null) {
       onCancel();
@@ -482,6 +511,7 @@ class VBottomSheetTextView extends StatelessWidget {
     close(context);
   }
 
+  //关闭弹框
   void close(BuildContext context) {
     Navigator.pop(context);
   }
@@ -489,13 +519,28 @@ class VBottomSheetTextView extends StatelessWidget {
 
 ///自定义视图
 class VBottomSheetGridView extends StatelessWidget {
+  //内容数组
   final List<VooBottomGridBean> list;
+
+  //最大高度
   final double maxHeight;
+
+  //最小高度
   final double minHeight;
+
+  //水平间隔
   final double spacing;
+
+  //垂直间隔
   final double runSpacing;
+
+  //对齐方式
   final Alignment alignment;
+
+  //取消事件
   final VoidCallback onCancel;
+
+  //选择事件
   final Function(int index) onSelect;
 
   VBottomSheetGridView({

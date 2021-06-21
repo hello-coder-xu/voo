@@ -14,7 +14,7 @@ class VooCellFieldCode extends StatelessWidget {
   final double paddingWidth;
 
   //输入框属性
-  final TextFieldTheme textFieldTheme;
+  final TextFieldStyle textFieldTheme;
   final Widget prefixIcon;
   final String hintText;
   final Widget suffixIcon;
@@ -54,7 +54,7 @@ class VooCellFieldCode extends StatelessWidget {
     this.trailingStyle,
     this.onTrailing,
     this.paddingWidth,
-    this.textFieldTheme = TextFieldTheme.none,
+    this.textFieldTheme = TextFieldStyle.none,
     this.prefixIcon,
     this.hintText,
     this.suffixIcon,
@@ -131,11 +131,11 @@ class VooCellFieldCode extends StatelessWidget {
         alignment: Alignment.center,
         constraints: BoxConstraints(minHeight: 76.h),
         child: VooTextField(
-          textFieldTheme: textFieldTheme,
+          style: textFieldTheme,
           prefixIcon: prefixIcon,
           hintText: hintText,
           suffixIcon: suffixIcon,
-          style: style,
+          textStyle: style,
           hintStyle: hintStyle,
           textAlign: textAlign,
           textAlignVertical: textAlignVertical,

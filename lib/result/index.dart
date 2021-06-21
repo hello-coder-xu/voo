@@ -4,13 +4,21 @@ import 'package:voo/color/index.dart';
 
 ///结果视图
 class VooResult extends StatelessWidget {
+  //icon视图
   final Widget icon;
+  //标题
   final String title;
+  //副标题
   final String subTitle;
+  //确定文本
   final String confirm;
+  //取消文本
   final String cancel;
+  //是否显示取消
   final bool showCancel;
+  //确定事件
   final VoidCallback onConfirm;
+  //取消事件
   final VoidCallback onCancel;
 
   VooResult({
@@ -59,15 +67,15 @@ class VooResult extends StatelessWidget {
     List<Widget> children = [];
     children.add(VooButton(
       child: confirm ?? '',
-      onPressed: onConfirm,
+      onTap: onConfirm,
     ));
 
     if (showCancel) {
       children.add(SizedBox(height: 8));
       children.add(VooButton(
         child: cancel ?? '',
-        theme: VooButtonTheme.accent,
-        onPressed: onCancel,
+        style: VooButtonStyle.accent,
+        onTap: onCancel,
       ));
     }
 

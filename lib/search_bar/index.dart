@@ -5,12 +5,15 @@ import 'package:voo/field/index.dart';
 
 ///搜索栏
 class VooSearchBar extends StatelessWidget {
+  //前缀视图
   final Widget leading;
+  //后缀视图
   final Widget trailing;
+  //背景颜色
   final Color bgColor;
 
-  //输入框属性
-  final TextFieldTheme textFieldTheme;
+  //-------输入框属性 详情看VooTextFiled------
+  final TextFieldStyle textFieldTheme;
   final Widget prefixIcon;
   final String hintText;
   final Widget suffixIcon;
@@ -47,7 +50,7 @@ class VooSearchBar extends StatelessWidget {
     this.leading,
     this.trailing,
     this.bgColor,
-    this.textFieldTheme = TextFieldTheme.none,
+    this.textFieldTheme = TextFieldStyle.none,
     this.prefixIcon,
     this.hintText,
     this.suffixIcon,
@@ -92,7 +95,7 @@ class VooSearchBar extends StatelessWidget {
       child: Container(
         height: 64.w,
         child: VooTextField(
-          textFieldTheme: TextFieldTheme.border,
+          style: TextFieldStyle.border,
           borderColor: borderColor,
           borderWidth: 1,
           borderRadius: BorderRadius.all(Radius.circular(32.w)),
@@ -106,7 +109,7 @@ class VooSearchBar extends StatelessWidget {
               ),
           hintText: hintText,
           hintStyle: hintStyle,
-          style: style,
+          textStyle: style,
           textAlign: textAlign,
           maxLength: maxLength,
           maxLines: 1,

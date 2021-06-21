@@ -3,9 +3,13 @@ import 'package:voo/color/index.dart';
 
 ///加载
 class VooLoading extends StatelessWidget {
+  //显示大小
   final double size;
+  //颜色
   final Color color;
+  //标题
   final String title;
+  //是否水平
   final bool horizontal;
 
   VooLoading({

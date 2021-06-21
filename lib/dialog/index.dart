@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VooDialog {
+  ///对话框-文本
   static Future showTextDialog({
     @required BuildContext context,
     bool barrierDismissible = true,
-    Color barrierColor,
+    Color barrierColor = Colors.black54,
     bool useSafeArea = true,
     bool useRootNavigator = true,
     RouteSettings routeSettings,
@@ -47,10 +48,11 @@ class VooDialog {
     );
   }
 
+  ///对话框-图片
   static Future showImageDialog({
     @required BuildContext context,
     bool barrierDismissible = true,
-    Color barrierColor,
+    Color barrierColor = Colors.black54,
     bool useSafeArea = true,
     bool useRootNavigator = true,
     RouteSettings routeSettings,
@@ -100,10 +102,11 @@ class VooDialog {
     );
   }
 
+  ///对话框-运营
   static Future showOperationDialog({
     @required BuildContext context,
     bool barrierDismissible = true,
-    Color barrierColor,
+    Color barrierColor = Colors.black54,
     bool useSafeArea = true,
     bool useRootNavigator = true,
     RouteSettings routeSettings,
@@ -130,18 +133,43 @@ class VooDialog {
 
 ///文本对话框
 class VooTextDialog extends StatelessWidget {
+  //标题
   final String title;
+
+  //标题文本字体样式
   final TextStyle titleStyle;
+
+  //内容视图
   final Widget content;
+
+  //确定文本
   final String confirm;
+
+  //确定字体样式
   final TextStyle confirmStyle;
+
+  //中间按钮文本
   final String middle;
+
+  //中间文本字体样式
   final TextStyle middleStyle;
+
+  //取消文本
   final String cancel;
+
+  //取消字体样式
   final TextStyle cancelStyle;
+
+  //确定事件
   final VoidCallback onConfirm;
+
+  //中间按钮事件
   final VoidCallback onMiddle;
+
+  //取消事件
   final VoidCallback onCancel;
+
+  //是否水平显示
   final bool horizontal;
 
   VooTextDialog({
@@ -187,22 +215,55 @@ class VooTextDialog extends StatelessWidget {
 
 ///图片对话框
 class VooImageDialog extends StatelessWidget {
+  //标题
   final String title;
+
+  //标题字体样式
   final TextStyle titleStyle;
+
+  //内容视图
   final Widget content;
+
+  //确定按钮文本
   final String confirm;
+
+  //确定字体样式
   final TextStyle confirmStyle;
+
+  //中间按钮文本
   final String middle;
+
+  //中间字体样式
   final TextStyle middleStyle;
+
+  //取消按钮文本
   final String cancel;
+
+  //取消字体样式
   final TextStyle cancelStyle;
+
+  //确定事件
   final VoidCallback onConfirm;
+
+  //中间按钮事件
   final VoidCallback onMiddle;
+
+  //取消事件
   final VoidCallback onCancel;
+
+  //是否水平显示
   final bool horizontal;
+
+  //内容中图标视图
   final Widget icon;
+
+  //是否全部填充
   final bool fit;
+
+  //关闭按钮
   final Widget closeIcon;
+
+  //关闭按钮事件
   final VoidCallback close;
 
   VooImageDialog({
@@ -283,8 +344,13 @@ class VooImageDialog extends StatelessWidget {
 
 ///运营对话框
 class VooOperatingDialog extends StatelessWidget {
+  //内容视图
   final Widget child;
+
+  //关闭事件
   final VoidCallback close;
+
+  //内部间距
   final EdgeInsets insetPadding;
 
   VooOperatingDialog({
@@ -383,7 +449,7 @@ class _VooDialog extends StatelessWidget {
               color: Color(0xff333333),
             ),
       ));
-      children.add(SizedBox(height:24.h));
+      children.add(SizedBox(height: 24.h));
     }
 
     children.add(DefaultTextStyle(

@@ -41,7 +41,7 @@ class BubbleBoxPage extends StatelessWidget {
             arrowOffset: 4,
             constraints: BoxConstraints(maxWidth: 200),
             child: Text(
-              "121213213s2sdfsds233d51",
+              "121213213s2sdfsds233d51121213213s2sdfsds233d51121213213s2sdfsds233d51121213213s2sdfsds233d51",
               style: TextStyle(color: Colors.white),
             ),
           ),

@@ -3,17 +3,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///单元格
 class VooCell extends StatelessWidget {
-  final String title;
-  final TextStyle style;
+  //前缀视图
   final Widget leading;
+
+  //左边文本内容
+  final String title;
+
+  //左边文本字体样式
+  final TextStyle textStyle;
+
+  //是否显示向右图标
   final bool showRightIcon;
+
+  //右边文本内容
   final String content;
+
+  //右边文本字体样式
   final TextStyle contentStyle;
+
+  //点击事件
   final VoidCallback onTap;
 
   VooCell({
     this.title = '',
-    this.style,
+    this.textStyle,
     this.leading,
     this.showRightIcon = true,
     this.content = '',
@@ -25,7 +38,7 @@ class VooCell extends StatelessWidget {
   Widget leadingView() {
     Widget titleView = Text(
       title,
-      style: style ??
+      style: textStyle ??
           TextStyle(
             fontSize: 32.sp,
             color: Color(0xff333333),

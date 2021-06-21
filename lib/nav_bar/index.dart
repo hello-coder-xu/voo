@@ -6,14 +6,23 @@ import '../voo.dart';
 
 ///导航栏
 class VooNavBar extends StatelessWidget {
+  //标题
   final String title;
+  //副标题
   final String subTitle;
+  //标题字体样式
   final TextStyle style;
+  //副标题字体样式
   final TextStyle subStyle;
+  //左边icon
   final Icon titleIconLeft;
+  //右边icon
   final Icon titleIconRight;
+  //更多
   final List<Widget> actions;
+  //阴影
   final double elevation;
+  //背景颜色
   final Color backgroundColor;
 
   VooNavBar({

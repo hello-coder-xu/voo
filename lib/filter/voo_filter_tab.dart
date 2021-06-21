@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:voo/filter/voo_filter_bean.dart';
 
-///
+///菜单tab
 class VooFilterTab extends StatelessWidget {
+  //内容数组
   final List<VooFilterBean> list;
+  //选中事件
   final Function(int index) onSelect;
 
   VooFilterTab({@required this.list, this.onSelect});

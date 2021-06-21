@@ -3,18 +3,31 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///热门标签
 class VooHotLabel extends StatelessWidget {
+  //标题
   final String title;
+  //副标题
   final String subTitle;
+  //标题字体样式
   final TextStyle titleStyle;
+  //副标题字体样式
   final TextStyle subTitleStyle;
+  //内容数组
   final List<String> list;
+  //item 是否固定宽高
   final bool itemFixed;
+  //item 宽度
   final double itemWidth;
+  //item 高度
   final double itemHeight;
+  //item 背景颜色
   final Color itemBgColor;
+  //item 边框圆角
   final double itemBorderRadius;
+  //item 字体样式
   final TextStyle itemStyle;
+  //item 水平间距
   final double itemSpacing;
+  //item 垂直间距
   final double itemRunSpacing;
 
   VooHotLabel({

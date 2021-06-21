@@ -190,7 +190,7 @@ class VooSwipeState extends State<VooSwipe> {
           vertical: pointPaddingVertical,
         ),
         child: VooBadge(
-          theme: VooBadgeTheme.point,
+          style: VooBadgeStyle.point,
           bgColor: index == position % widget.itemCount ? widget.selectIndicatorColor : widget.unSelectIndicatorColor,
         ),
       ));

@@ -10,14 +10,14 @@ class BadgePage extends StatelessWidget {
   //微标-item
   Widget badgeItemView({
     String title,
-    VooBadgeTheme theme = VooBadgeTheme.point,
+    VooBadgeStyle theme = VooBadgeStyle.point,
     String number,
   }) {
     List<Widget> children = [];
     children.add(VooBadgeView(
       child: Icon(Icons.mail_outline, size: 48),
       number: number,
-      theme: theme,
+      style: theme,
       right: 0,
     ));
     children.add(Text(
@@ -35,9 +35,9 @@ class BadgePage extends StatelessWidget {
     children.add(Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        badgeItemView(title: '红点提醒', theme: VooBadgeTheme.point),
-        badgeItemView(title: '数字提醒', theme: VooBadgeTheme.number, number: '8'),
-        badgeItemView(title: '文字提示', theme: VooBadgeTheme.number, number: '99+')
+        badgeItemView(title: '红点提醒', theme: VooBadgeStyle.point),
+        badgeItemView(title: '数字提醒', theme: VooBadgeStyle.text, number: '8'),
+        badgeItemView(title: '文字提示', theme: VooBadgeStyle.text, number: '99+')
       ],
     ));
 
@@ -56,7 +56,7 @@ class BadgePage extends StatelessWidget {
       title: '我的消息',
       content: VooBadge(
         child: '10',
-        theme: VooBadgeTheme.number,
+        style: VooBadgeStyle.text,
       ),
     ));
     children.add(Divider(height: 1));

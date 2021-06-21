@@ -3,19 +3,27 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:voo/field/index.dart';
 
-///
+///文本输入单元格
 class VooCellField extends StatelessWidget {
+  //标题
   final String title;
+  //标题字体样式
   final TextStyle titleStyle;
+  //标题显示长度
   final double titleWidth;
+  //错误文本
   final String errorText;
+  //错误文本字体样式
   final TextStyle errorStyle;
+  //后缀文本
   final String trailing;
+  //后缀文本字体样式
   final TextStyle trailingStyle;
+  //标题与输入框之间距离
   final double paddingWidth;
 
-  //输入框属性
-  final TextFieldTheme textFieldTheme;
+  //----------输入框属性 详情见VooTextField-----------
+  final TextFieldStyle textFieldTheme;
   final Widget prefixIcon;
   final String hintText;
   final Widget suffixIcon;
@@ -56,7 +64,7 @@ class VooCellField extends StatelessWidget {
     this.trailing,
     this.trailingStyle,
     this.paddingWidth,
-    this.textFieldTheme = TextFieldTheme.none,
+    this.textFieldTheme = TextFieldStyle.none,
     this.prefixIcon,
     this.hintText,
     this.suffixIcon,
@@ -109,11 +117,11 @@ class VooCellField extends StatelessWidget {
         alignment: Alignment.center,
         constraints: BoxConstraints(minHeight: 76.h),
         child: VooTextField(
-          textFieldTheme: textFieldTheme,
+          style: textFieldTheme,
           prefixIcon: prefixIcon,
           hintText: hintText,
           suffixIcon: suffixIcon,
-          style: style,
+          textStyle: style,
           hintStyle: hintStyle,
           textAlign: textAlign,
           textAlignVertical: textAlignVertical,

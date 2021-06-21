@@ -19,8 +19,10 @@ class TermsPageState extends State<TermsPage> {
   TextSpan getSpanView() {
     List<TextSpan> children = [];
     children.add(TextSpan(text: '我已仔細閱讀並同意'));
-    children
-        .add(TextSpan(text: '[服務條款]', style: TextStyle(color: Colors.blue)));
+    children.add(TextSpan(
+      text: '[服務條款]',
+      style: TextStyle(color: Colors.blue),
+    ));
     return TextSpan(children: children);
   }
 
@@ -45,8 +47,7 @@ class TermsPageState extends State<TermsPage> {
       alignment: Alignment.centerLeft,
       child: VooButton(
         child: '确认',
-        onPressed:
-            checked1 ? () => VooToast.showToast(context, msg: '点击确认') : null,
+        onTap: checked1 ? () => VooToast.showToast(context, msg: '点击确认') : null,
       ),
     ));
 
@@ -68,8 +69,7 @@ class TermsPageState extends State<TermsPage> {
       alignment: Alignment.centerLeft,
       child: VooButton(
         child: '确认',
-        onPressed:
-            checked2 ? () => VooToast.showToast(context, msg: '点击确认') : null,
+        onTap: checked2 ? () => VooToast.showToast(context, msg: '点击确认') : null,
       ),
     ));
     children.add(GestureDetector(
@@ -78,7 +78,7 @@ class TermsPageState extends State<TermsPage> {
         VooToast.showToast(context, msg: '点击清除');
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 16,vertical: 16),
+        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         alignment: Alignment.center,
         child: Text('清除', style: TextStyle(fontSize: 16, color: Colors.red)),
       ),
@@ -91,7 +91,7 @@ class TermsPageState extends State<TermsPage> {
       alignment: Alignment.centerLeft,
       child: VooButton(
         child: '确认',
-        onPressed: () {
+        onTap: () {
           VooToast.showToast(context, msg: '点击确认');
         },
       ),
@@ -102,7 +102,9 @@ class TermsPageState extends State<TermsPage> {
       child: Text.rich(getSpanView()),
     ));
 
-    return SingleChildScrollView(child: Column(children: children));
+    return SingleChildScrollView(
+      child: Column(children: children),
+    );
   }
 
   @override

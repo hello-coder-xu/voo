@@ -7,7 +7,6 @@ import 'package:voo/filter/voo_filter_tab.dart';
 import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
 
-
 ///筛选页面
 class FilterPage extends StatefulWidget {
   @override
@@ -170,7 +169,9 @@ class FilterPageState extends State<FilterPage> {
       onSelect: onSelectTabTap2,
     ));
 
-    return SingleChildScrollView(child: Column(children: children));
+    return SingleChildScrollView(
+      child: Column(children: children),
+    );
   }
 
   //筛选视图
@@ -332,4 +333,3 @@ class FilterPageState extends State<FilterPage> {
     setState(() {});
   }
 }
-

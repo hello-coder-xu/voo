@@ -12,41 +12,41 @@ class ButtonPage extends StatelessWidget {
 
     children.add(VooButton(
       child: '大按钮-可用',
-      theme: VooButtonTheme.normal,
-      onPressed: () {},
+      style: VooButtonStyle.normal,
+      onTap: () {},
     ));
 
     children.add(SizedBox(height: 16));
     children.add(VooButton(
       child: '大按钮-不可用',
-      theme: VooButtonTheme.normal,
-      onPressed: null,
+      style: VooButtonStyle.normal,
+      onTap: null,
     ));
 
     children.add(SizedBox(height: 16));
     children.add(VooButton(
       child: '边框按钮-可用',
-      theme: VooButtonTheme.accent,
-      onPressed: () {},
+      style: VooButtonStyle.accent,
+      onTap: () {},
     ));
 
     children.add(SizedBox(height: 16));
     children.add(VooButton(
       child: '边框按钮-不可用',
-      theme: VooButtonTheme.accent,
+      style: VooButtonStyle.accent,
     ));
 
     children.add(SizedBox(height: 16));
     children.add(VooButton(
       child: '胶囊按钮-可用',
-      theme: VooButtonTheme.capsule,
-      onPressed: () {},
+      style: VooButtonStyle.capsule,
+      onTap: () {},
     ));
 
     children.add(SizedBox(height: 16));
     children.add(VooButton(
       child: '胶囊按钮-不可用',
-      theme: VooButtonTheme.capsule,
+      style: VooButtonStyle.capsule,
     ));
 
     children.add(SizedBox(height: 16));
@@ -55,15 +55,15 @@ class ButtonPage extends StatelessWidget {
       children: [
         VooButton(
           child: '辅助按钮',
-          theme: VooButtonTheme.accent,
+          style: VooButtonStyle.accent,
           size: VooButtonSize.small,
-          onPressed: () {},
+          onTap: () {},
         ),
         VooButton(
           child: '辅助按钮',
-          theme: VooButtonTheme.normal,
+          style: VooButtonStyle.normal,
           size: VooButtonSize.small,
-          onPressed: () {},
+          onTap: () {},
         )
       ],
     ));
@@ -74,21 +74,21 @@ class ButtonPage extends StatelessWidget {
       children: [
         VooButton(
           child: '小按钮',
-          theme: VooButtonTheme.normal,
+          style: VooButtonStyle.normal,
           size: VooButtonSize.mini,
-          onPressed: (){},
+          onTap: (){},
         ),
         VooButton(
           child: '小按钮',
-          theme: VooButtonTheme.accent,
+          style: VooButtonStyle.accent,
           size: VooButtonSize.mini,
-          onPressed: (){},
+          onTap: (){},
         ),
         VooButton(
           child: '小按钮',
-          theme: VooButtonTheme.capsule,
+          style: VooButtonStyle.capsule,
           size: VooButtonSize.mini,
-          onPressed: (){},
+          onTap: (){},
         )
       ],
     ));

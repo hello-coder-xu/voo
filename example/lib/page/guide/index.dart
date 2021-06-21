@@ -69,7 +69,7 @@ class GuidePageState extends State<GuidePage> {
             key: key1,
             child: VooButton(
               child: '显示Demo',
-              onPressed: showDemoMask1,
+              onTap: showDemoMask1,
             ),
           ),
           SizedBox(width: 16),
@@ -79,7 +79,7 @@ class GuidePageState extends State<GuidePage> {
             key: key2,
             child: VooButton(
               child: '显示Demo2',
-              onPressed: showDemoMask2,
+              onTap: showDemoMask2,
             ),
           ),
         ],
@@ -97,7 +97,7 @@ class GuidePageState extends State<GuidePage> {
             key: key3,
             child: VooButton(
               child: '显示Demo3',
-              onPressed: () => showDemoMaskMore(type: 1),
+              onTap: () => showDemoMaskMore(type: 1),
             ),
           ),
           SizedBox(width: 16),
@@ -107,7 +107,7 @@ class GuidePageState extends State<GuidePage> {
             key: key4,
             child: VooButton(
               child: '显示Demo4',
-              onPressed: () => showDemoMaskMore(type: 2),
+              onTap: () => showDemoMaskMore(type: 2),
             ),
           ),
         ],
@@ -122,7 +122,7 @@ class GuidePageState extends State<GuidePage> {
       margin: EdgeInsets.symmetric(horizontal: 16),
       child: VooButton(
         child: '手势引导',
-        onPressed: showGuideMask,
+        onTap: showGuideMask,
       ),
     ));
 

@@ -4,8 +4,11 @@ import 'package:voo/collapse/voo_collapse_bean.dart';
 
 ///折叠组
 class VooGroupCollapse extends StatefulWidget {
+  //内容数组
   final List<VooCollapseBean> children;
+  //是否手风琴
   final bool isAccordion;
+  //选择变化事件
   final Function(int index, bool expansion) onExpansionChanged;
 
   VooGroupCollapse({

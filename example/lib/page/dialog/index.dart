@@ -60,9 +60,13 @@ class DialogPage extends StatelessWidget {
         spacing: 10,
         children: [
           itemView(
-              title: '运营活动弹窗-小', onTap: () => smallOperatingDialog(context)),
+            title: '运营活动弹窗-小',
+            onTap: () => smallOperatingDialog(context),
+          ),
           itemView(
-              title: '运营活动弹窗-大', onTap: () => largeOperatingDialog(context)),
+            title: '运营活动弹窗-大',
+            onTap: () => largeOperatingDialog(context),
+          ),
         ],
       ),
     ));

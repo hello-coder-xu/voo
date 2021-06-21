@@ -6,13 +6,13 @@ import 'package:voo/voo.dart';
 class LabelPage extends StatelessWidget {
   Widget contentView() {
     List<Widget> children = [];
-    children.add(VooLabel(value: '作品', theme: VooLabelTheme.half_circle));
-    children.add(VooLabel(value: '文章', theme: VooLabelTheme.half_circle));
-    children.add(VooLabel(value: '音影', theme: VooLabelTheme.half_circle));
-    children.add(VooLabel(value: '公司', theme: VooLabelTheme.half_circle));
+    children.add(VooLabel(value: '作品', style: VooLabelStyle.half_circle));
+    children.add(VooLabel(value: '文章', style: VooLabelStyle.half_circle));
+    children.add(VooLabel(value: '音影', style: VooLabelStyle.half_circle));
+    children.add(VooLabel(value: '公司', style: VooLabelStyle.half_circle));
     children.add(VooLabel(
       value: '最新',
-      theme: VooLabelTheme.rect,
+      style: VooLabelStyle.rect,
       bgColor: Colors.green,
     ));
 

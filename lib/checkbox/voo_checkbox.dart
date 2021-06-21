@@ -4,11 +4,22 @@ import 'package:voo/checkbox/voo_checkbox_icon.dart';
 
 ///复选框
 class VooCheckBox extends StatelessWidget {
+  //选中图标
   final Icon selectIcon;
+
+  //未选中图标
   final Icon unSelectIcon;
+
+  //显示文案
   final String child;
+
+  //是否选中
   final bool value;
+
+  //选中变化事件
   final Function(bool value) onChanged;
+
+  //是否可用
   final bool enable;
 
   VooCheckBox({

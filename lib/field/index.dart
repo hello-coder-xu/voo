@@ -3,49 +3,74 @@ import 'package:flutter/services.dart';
 import 'package:voo/icon/index.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum TextFieldTheme { none, border }
+enum TextFieldStyle {
+  none,//无边框
+  border,//有边框
+}
 
-///
+///输入框
 class VooTextField extends StatefulWidget {
-  final TextFieldTheme textFieldTheme;
+  //显示样式
+  final TextFieldStyle style;
+  //前缀视图
   final Widget prefixIcon;
+  //提示文本
   final String hintText;
+  //后缀视图
   final Widget suffixIcon;
-
-  final TextStyle style;
+  //文本字体样式
+  final TextStyle textStyle;
+  //提示文本字体样式
   final TextStyle hintStyle;
+  //对齐方式
   final TextAlign textAlign;
+  //垂直对齐方式
   final TextAlignVertical textAlignVertical;
-
+  //是否填充
   final bool filled;
+  //填充样式
   final Color fillColor;
+  //边框颜色
   final Color borderColor;
+  //边框宽度
   final double borderWidth;
+  //边框圆角
   final BorderRadius borderRadius;
-
+  //是否密码
   final bool showPwd;
+  //是否显示清理按钮
   final bool showClear;
-
+  //最大行数
   final int maxLines;
+  //最小行数
   final int minLines;
+  //最大字数
   final int maxLength;
+  //是否只读
   final bool readOnly;
+  //是否可用
   final bool enabled;
-
+  //文本变化事件
   final ValueChanged<String> onChanged;
+  //软键盘完成事件
   final VoidCallback onEditingComplete;
+  //软键盘提交事件
   final ValueChanged<String> onSubmitted;
+  //输入框内容限制
   final List<TextInputFormatter> inputFormatters;
+  //软键盘显示样式
   final TextInputType keyboardType;
+  //软键盘按钮
   final TextInputAction textInputAction;
+  //控制器
   final TextEditingController controller;
 
   VooTextField({
-    this.textFieldTheme = TextFieldTheme.none,
+    this.style = TextFieldStyle.none,
     this.prefixIcon,
     this.hintText,
     this.suffixIcon,
-    this.style = const TextStyle(fontSize: 14, color: Colors.black87),
+    this.textStyle = const TextStyle(fontSize: 14, color: Colors.black87),
     this.hintStyle = const TextStyle(fontSize: 14, color: Colors.black54),
     this.textAlign = TextAlign.left,
     this.textAlignVertical = TextAlignVertical.center,
@@ -88,8 +113,8 @@ class VooTextFieldState extends State<VooTextField> {
   /// 获取装饰
   InputDecoration getDecoration() {
     InputBorder border;
-    switch (widget.textFieldTheme) {
-      case TextFieldTheme.none:
+    switch (widget.style) {
+      case TextFieldStyle.none:
         border = OutlineInputBorder(
           borderRadius: BorderRadius.zero,
           borderSide: BorderSide(
@@ -98,7 +123,7 @@ class VooTextFieldState extends State<VooTextField> {
           ),
         );
         break;
-      case TextFieldTheme.border:
+      case TextFieldStyle.border:
         border = OutlineInputBorder(
           borderRadius: widget.borderRadius,
           borderSide: BorderSide(

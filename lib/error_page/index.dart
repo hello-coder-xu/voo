@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 
-enum VooErrorType { empty_comment, empty_data, net_error, sys_error }
+enum VooErrorType {
+  empty_comment, //空评论
+  empty_data, //空数据
+  net_error, //网络错误
+  sys_error, //系统错误
+}
 
 ///异常页面
 class VooError extends StatelessWidget {
+  //显示样式
   final VooErrorType type;
+
+  //标题
   final Widget title;
+
+  //内容
   final Widget child;
 
   VooError({this.type = VooErrorType.empty_data, this.title, this.child});

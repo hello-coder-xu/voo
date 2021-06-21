@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum VooButtonTheme { normal, accent, capsule }
+enum VooButtonStyle { normal, accent, capsule }
 
 enum VooButtonSize { large, small, mini }
 
 ///按钮视图
 class VooButton extends StatelessWidget {
+  //文本内容
   final String child;
+
+  //文本字体样式
   final TextStyle textStyle;
+
+  //背景颜色
   final Color bgColor;
-  final VooButtonTheme theme;
+
+  //显示样式
+  final VooButtonStyle style;
+
+  //显示大小
   final VooButtonSize size;
+
+  //阴影大小
   final double elevation;
-  final VoidCallback onPressed;
+
+  //点击事件
+  final VoidCallback onTap;
 
   VooButton({
     @required this.child,
     this.textStyle,
     this.bgColor,
-    this.theme = VooButtonTheme.normal,
+    this.style = VooButtonStyle.normal,
     this.size = VooButtonSize.large,
     this.elevation = 0.0,
-    this.onPressed,
+    this.onTap,
   });
 
   @override
@@ -30,11 +43,11 @@ class VooButton extends StatelessWidget {
     ShapeBorder shapeBorder;
     TextStyle tempTextStyle;
     Color tempBgColor = bgColor ?? Color(0xff25c489);
-    if (onPressed == null) {
+    if (onTap == null) {
       tempBgColor = tempBgColor.withOpacity(0.7);
     }
-    switch (theme) {
-      case VooButtonTheme.normal:
+    switch (style) {
+      case VooButtonStyle.normal:
         shapeBorder = RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.w)),
         );
@@ -48,10 +61,10 @@ class VooButton extends StatelessWidget {
               elevation: ButtonStyleButton.allOrNull(elevation),
             ),
             child: Text(child, style: tempTextStyle),
-            onPressed: onPressed,
+            onPressed: onTap,
           ),
         );
-      case VooButtonTheme.accent:
+      case VooButtonStyle.accent:
         shapeBorder = RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.w)),
         );
@@ -64,10 +77,10 @@ class VooButton extends StatelessWidget {
               shape: ButtonStyleButton.allOrNull(shapeBorder),
               side: MaterialStateProperty.all(BorderSide(color: tempBgColor, width: 1)),
             ),
-            onPressed: onPressed,
+            onPressed: onTap,
           ),
         );
-      case VooButtonTheme.capsule: //胶囊类型
+      case VooButtonStyle.capsule: //胶囊类型
         shapeBorder = RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(27)),
         );
@@ -81,7 +94,7 @@ class VooButton extends StatelessWidget {
               elevation: ButtonStyleButton.allOrNull(elevation),
             ),
             child: Text(child, style: tempTextStyle),
-            onPressed: onPressed,
+            onPressed: onTap,
           ),
         );
       default:

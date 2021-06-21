@@ -4,13 +4,21 @@ import 'package:voo/checkbox/voo_checkbox_icon.dart';
 
 ///单选框
 class VooRadio extends StatelessWidget {
+  //当前值
   final dynamic value;
+  //组的值
   final dynamic group;
+  //选中变化事件
   final Function(dynamic value) onChanged;
+  //选中图标
   final Icon selectIcon;
+  //未选中图标
   final Icon unSelectIcon;
+  //内容
   final String child;
+  //内容字体样式
   final TextStyle style;
+  //是否可用
   final bool enable;
 
   VooRadio({

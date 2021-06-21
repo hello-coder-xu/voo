@@ -3,21 +3,32 @@ import 'package:voo/badge/index.dart';
 
 ///微标+视图
 class VooBadgeView extends StatelessWidget {
+  //被加微标的视图
   final Widget child;
+
+  //微标内容
   final String number;
-  final TextStyle style;
-  final VooBadgeTheme theme;
+
+  //微标字体样式
+  final TextStyle textStyle;
+
+  //微标显示模式
+  final VooBadgeStyle style;
+
+  //微标背景颜色
   final Color bgColor;
+
+  //微标显示位置
   final double left;
   final double top;
   final double right;
   final double bottom;
 
   VooBadgeView({
-    this.child,
+    @required this.child,
     this.number,
-    this.theme,
     this.style,
+    this.textStyle,
     this.bgColor,
     this.left,
     this.top,
@@ -36,8 +47,8 @@ class VooBadgeView extends StatelessWidget {
       bottom: bottom,
       child: VooBadge(
         child: number,
-        theme: theme,
         style: style,
+        textStyle: textStyle,
         bgColor: bgColor,
       ),
     ));

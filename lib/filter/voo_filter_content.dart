@@ -5,11 +5,17 @@ enum VooFilterContentType { warp, warp_button, list }
 
 ///筛选内容
 class VooFilterContent extends StatelessWidget {
+  //内容数组
   final List<VooFilterBean> filterContentList;
+  //取消事件
   final VoidCallback onCancel;
+  //提交事件
   final Function() onSubmit;
+  //选中事件
   final Function(String value) onSelect;
+  //显示样式
   final VooFilterContentType type;
+  //最大高度
   final double maxHeight;
 
   VooFilterContent({

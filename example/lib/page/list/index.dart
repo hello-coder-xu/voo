@@ -45,7 +45,7 @@ class ListPage extends StatelessWidget {
       title: '我的消息',
       content: VooBadge(
         child: '10',
-        theme: VooBadgeTheme.number,
+        style: VooBadgeStyle.text,
       ),
     ));
     children.add(Divider(height: 1));

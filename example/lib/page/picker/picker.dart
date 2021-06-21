@@ -18,11 +18,12 @@ class PickerPage extends StatelessWidget {
     children.add(UiComponent.getListTile(title: '底部弹出'));
     children.add(VooButton(
       child: '非联机',
-      onPressed: () => showPicker1(context),
+      onTap: () => showPicker1(context),
     ));
+    children.add(SizedBox(height: 8));
     children.add(VooButton(
       child: '联机',
-      onPressed: () => showPicker2(context),
+      onTap: () => showPicker2(context),
     ));
 
     children.add(UiComponent.getListTile(title: '单项选择器'));
@@ -158,15 +159,11 @@ class PickerPage extends StatelessWidget {
           select: 0,
         ),
         PickerBean(
-          list: List.generate(
-                  12, (index) => index < 9 ? '0${index + 1}' : '${index + 1}')
-              .toList(),
+          list: List.generate(12, (index) => index < 9 ? '0${index + 1}' : '${index + 1}').toList(),
           select: 1,
         ),
         PickerBean(
-          list: List.generate(
-                  30, (index) => index < 9 ? '0${index + 1}' : '${index + 1}')
-              .toList(),
+          list: List.generate(30, (index) => index < 9 ? '0${index + 1}' : '${index + 1}').toList(),
           select: 1,
         ),
       ],
@@ -183,9 +180,7 @@ class PickerPage extends StatelessWidget {
           select: 2,
         ),
         PickerBean(
-          list: List.generate(
-                  12, (index) => index < 9 ? '0${index + 1}月' : '${index + 1}月')
-              .toList(),
+          list: List.generate(12, (index) => index < 9 ? '0${index + 1}月' : '${index + 1}月').toList(),
           select: 1,
         ),
       ],
@@ -202,9 +197,7 @@ class PickerPage extends StatelessWidget {
           select: 2,
         ),
         PickerBean(
-          list: List.generate(
-                  59, (index) => index < 9 ? '0${index + 1}' : '${index + 1}')
-              .toList(),
+          list: List.generate(59, (index) => index < 9 ? '0${index + 1}' : '${index + 1}').toList(),
           select: 1,
         ),
       ],
@@ -221,22 +214,16 @@ class PickerPage extends StatelessWidget {
           list: List.generate(5, (index) => '${index + 2020}').toList(),
         ),
         PickerBean(
-          list: List.generate(
-                  12, (index) => index < 9 ? '0${index + 1}' : '${index + 1}')
-              .toList(),
+          list: List.generate(12, (index) => index < 9 ? '0${index + 1}' : '${index + 1}').toList(),
         ),
         PickerBean(
-          list: List.generate(
-                  30, (index) => index < 9 ? '0${index + 1}' : '${index + 1}')
-              .toList(),
+          list: List.generate(30, (index) => index < 9 ? '0${index + 1}' : '${index + 1}').toList(),
         ),
         PickerBean(
           list: List.generate(10, (index) => '${index + 10}').toList(),
         ),
         PickerBean(
-          list: List.generate(
-                  59, (index) => index < 9 ? '0${index + 1}' : '${index + 1}')
-              .toList(),
+          list: List.generate(59, (index) => index < 9 ? '0${index + 1}' : '${index + 1}').toList(),
         ),
       ],
       onConfirm: (String value) {
@@ -253,9 +240,7 @@ class PickerPage extends StatelessWidget {
           select: 2,
         ),
         PickerBean(
-          list: List.generate(
-                  59, (index) => index < 9 ? '0${index + 1}只' : '${index + 1}只')
-              .toList(),
+          list: List.generate(59, (index) => index < 9 ? '0${index + 1}只' : '${index + 1}只').toList(),
           select: 1,
         ),
       ],

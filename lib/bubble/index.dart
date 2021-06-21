@@ -3,48 +3,36 @@ import 'package:flutter/material.dart';
 
 const double DEFAULT_OFFSET = 4;
 
-/// A bubble widget and it's similar to Container.
-/// It can wrap any other widgets which are supported by Container.
-///
-/// ## Example:
-///
-/// This example shows how to show a text in BubbleBox.
-/// ```dart
-/// BubbleBox(
-///   width: 200,
-///   child: Text(
-///     "121213213s2sdfsds233d51",
-///     style: TextStyle(color: Colors.white),
-///   ),
-/// )
-/// ```
+///气泡视图
 class BubbleBox extends StatelessWidget {
-  /// The color to paint behind the [child].
+  //背景颜色
   final Color color;
 
+  //气泡圆角
   final Radius radius;
 
+  //内部间距
   final EdgeInsetsGeometry padding;
 
-  /// It indicate the arrow will be show on which side.
+  //三角形显示位置
   final ArrowDirection arrowDirection;
 
-  /// Align the arrow within the BubbleBox.
+  //三角形与内容对齐方式
   final ArrowAlignment arrowAlignment;
 
-  /// Set the arrow size in the BubbleBox.
+  //三角形大小
   final double arrowSize;
 
-  /// Set the arrow offset according to [arrowAlignment].
+  //三角形偏移量
   final double arrowOffset;
 
+  //阴影大小
   final double elevation;
 
-  /// Additional constraints to apply to the child.
-  ///
-  /// The constructor `width` and `height` arguments are combined with the
-  /// `constraints` argument to set this property.
+  //内容大小装饰器
   final BoxConstraints constraints;
+
+  //内容
   final Widget child;
 
   BubbleBox({
