@@ -25,6 +25,9 @@ class VooButton extends StatelessWidget {
   //阴影大小
   final double elevation;
 
+  //按钮是否可用
+  final bool enable;
+
   //点击事件
   final VoidCallback onTap;
 
@@ -35,6 +38,7 @@ class VooButton extends StatelessWidget {
     this.style = VooButtonStyle.normal,
     this.size = VooButtonSize.large,
     this.elevation = 0.0,
+    this.enable = true,
     this.onTap,
   });
 
@@ -43,7 +47,7 @@ class VooButton extends StatelessWidget {
     ShapeBorder shapeBorder;
     TextStyle tempTextStyle;
     Color tempBgColor = bgColor ?? Color(0xff25c489);
-    if (onTap == null) {
+    if (!enable) {
       tempBgColor = tempBgColor.withOpacity(0.7);
     }
     switch (style) {

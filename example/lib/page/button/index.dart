@@ -20,7 +20,7 @@ class ButtonPage extends StatelessWidget {
     children.add(VooButton(
       child: '大按钮-不可用',
       style: VooButtonStyle.normal,
-      onTap: null,
+      enable: false,
     ));
 
     children.add(SizedBox(height: 16));
@@ -34,6 +34,7 @@ class ButtonPage extends StatelessWidget {
     children.add(VooButton(
       child: '边框按钮-不可用',
       style: VooButtonStyle.accent,
+      enable: false,
     ));
 
     children.add(SizedBox(height: 16));
@@ -47,6 +48,7 @@ class ButtonPage extends StatelessWidget {
     children.add(VooButton(
       child: '胶囊按钮-不可用',
       style: VooButtonStyle.capsule,
+      enable: false,
     ));
 
     children.add(SizedBox(height: 16));
