@@ -20,20 +20,21 @@ class ButtonPage extends StatelessWidget {
     children.add(VooButton(
       child: '大按钮-不可用',
       style: VooButtonStyle.normal,
-      onTap: null,
+      enable: false,
     ));
 
     children.add(SizedBox(height: 16));
     children.add(VooButton(
       child: '边框按钮-可用',
-      style: VooButtonStyle.accent,
+      hollow: true,
       onTap: () {},
     ));
 
     children.add(SizedBox(height: 16));
     children.add(VooButton(
       child: '边框按钮-不可用',
-      style: VooButtonStyle.accent,
+      hollow: true,
+      enable: false,
     ));
 
     children.add(SizedBox(height: 16));
@@ -47,6 +48,25 @@ class ButtonPage extends StatelessWidget {
     children.add(VooButton(
       child: '胶囊按钮-不可用',
       style: VooButtonStyle.capsule,
+      enable: false,
+      onTap: () {},
+    ));
+
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '胶囊按钮-可用',
+      style: VooButtonStyle.capsule,
+      hollow: true,
+      onTap: () {},
+    ));
+
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '胶囊按钮-不可用',
+      style: VooButtonStyle.capsule,
+      enable: false,
+      hollow: true,
+      onTap: () {},
     ));
 
     children.add(SizedBox(height: 16));
@@ -55,7 +75,7 @@ class ButtonPage extends StatelessWidget {
       children: [
         VooButton(
           child: '辅助按钮',
-          style: VooButtonStyle.accent,
+          hollow: true,
           size: VooButtonSize.small,
           onTap: () {},
         ),
@@ -76,19 +96,26 @@ class ButtonPage extends StatelessWidget {
           child: '小按钮',
           style: VooButtonStyle.normal,
           size: VooButtonSize.mini,
-          onTap: (){},
+          onTap: () {},
         ),
         VooButton(
           child: '小按钮',
-          style: VooButtonStyle.accent,
+          hollow: true,
           size: VooButtonSize.mini,
-          onTap: (){},
+          onTap: () {},
+        ),
+        VooButton(
+          child: '小按钮',
+          hollow: true,
+          size: VooButtonSize.mini,
+          style: VooButtonStyle.capsule,
+          onTap: () {},
         ),
         VooButton(
           child: '小按钮',
           style: VooButtonStyle.capsule,
           size: VooButtonSize.mini,
-          onTap: (){},
+          onTap: () {},
         )
       ],
     ));

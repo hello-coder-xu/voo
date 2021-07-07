@@ -74,7 +74,7 @@ class VooResult extends StatelessWidget {
       children.add(SizedBox(height: 8));
       children.add(VooButton(
         child: cancel ?? '',
-        style: VooButtonStyle.accent,
+        hollow: true,
         onTap: onCancel,
       ));
     }
