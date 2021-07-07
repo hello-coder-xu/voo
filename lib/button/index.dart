@@ -63,8 +63,8 @@ class VooButton extends StatelessWidget {
 
     Color tempBgColor = getBackgroundColor();
     Color tempBorderColor = borderColor ?? Color(0xff25c489);
-    VoidCallback onPressed;
-    if (enable) onPressed = onTap;
+    VoidCallback onPressed = onTap;
+    // if (enable) onPressed = onTap;
     Widget btnView;
     switch (style) {
       case VooButtonStyle.normal:
