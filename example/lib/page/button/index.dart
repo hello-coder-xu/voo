@@ -2,6 +2,7 @@ import '../../comm/ui_component.dart';
 import 'package:flutter/material.dart';
 
 import 'package:voo/button/index.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///按钮页面
 class ButtonPage extends StatelessWidget {
@@ -20,6 +21,22 @@ class ButtonPage extends StatelessWidget {
     children.add(VooButton(
       child: '大按钮-不可用',
       style: VooButtonStyle.normal,
+      enable: false,
+    ));
+
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '有图标-可用',
+      style: VooButtonStyle.normal,
+      icon: Icon(Icons.email),
+      onTap: () {},
+    ));
+
+    children.add(SizedBox(height: 16));
+    children.add(VooButton(
+      child: '有图标-不可用',
+      style: VooButtonStyle.normal,
+      icon: Icon(Icons.email),
       enable: false,
     ));
 
@@ -77,20 +94,23 @@ class ButtonPage extends StatelessWidget {
           child: '辅助按钮',
           hollow: true,
           size: VooButtonSize.small,
+          icon: Icon(Icons.email),
           onTap: () {},
         ),
         VooButton(
           child: '辅助按钮',
           style: VooButtonStyle.normal,
           size: VooButtonSize.small,
+          icon: Icon(Icons.email),
           onTap: () {},
         )
       ],
     ));
 
     children.add(SizedBox(height: 16));
-    children.add(Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children.add(Wrap(
+      runSpacing: 16.w,
+      spacing: 16.w,
       children: [
         VooButton(
           child: '小按钮',
@@ -115,6 +135,43 @@ class ButtonPage extends StatelessWidget {
           child: '小按钮',
           style: VooButtonStyle.capsule,
           size: VooButtonSize.mini,
+          onTap: () {},
+        )
+      ],
+    ));
+
+    children.add(SizedBox(height: 16));
+    children.add(Wrap(
+      runSpacing: 16.w,
+      spacing: 16.w,
+      children: [
+        VooButton(
+          child: '小按钮',
+          style: VooButtonStyle.normal,
+          size: VooButtonSize.mini,
+          icon: Icon(Icons.email, size: 20, color: Colors.white),
+          onTap: () {},
+        ),
+        VooButton(
+          child: '小按钮',
+          hollow: true,
+          size: VooButtonSize.mini,
+          icon: Icon(Icons.email, size: 20, color: Color(0xff25c489)),
+          onTap: () {},
+        ),
+        VooButton(
+          child: '小按钮',
+          hollow: true,
+          size: VooButtonSize.mini,
+          style: VooButtonStyle.capsule,
+          icon: Icon(Icons.email, size: 20, color: Color(0xff25c489)),
+          onTap: () {},
+        ),
+        VooButton(
+          child: '小按钮',
+          style: VooButtonStyle.capsule,
+          size: VooButtonSize.mini,
+          icon: Icon(Icons.email, size: 20, color: Colors.white),
           onTap: () {},
         )
       ],

@@ -62,7 +62,7 @@ class VooButton extends StatelessWidget {
     ShapeBorder shapeBorder;
 
     Color tempBgColor = getBackgroundColor();
-    Color tempBorderColor =borderColor ?? Color(0xff25c489);
+    Color tempBorderColor = borderColor ?? Color(0xff25c489);
     VoidCallback onPressed;
     if (enable) onPressed = onTap;
     Widget btnView;
@@ -81,7 +81,7 @@ class VooButton extends StatelessWidget {
                 : null,
             elevation: ButtonStyleButton.allOrNull(elevation),
           ),
-          child: textView(),
+          child: btnContentView(),
           onPressed: onPressed,
         );
         break;
@@ -99,7 +99,7 @@ class VooButton extends StatelessWidget {
                 : null,
             elevation: ButtonStyleButton.allOrNull(elevation),
           ),
-          child: textView(),
+          child: btnContentView(),
           onPressed: onPressed,
         );
         break;
@@ -173,6 +173,23 @@ class VooButton extends StatelessWidget {
     return fontSize;
   }
 
+  ///图标大小
+  double getIconPadding() {
+    double iconPadding = 16.w;
+    switch (size) {
+      case VooButtonSize.large:
+        iconPadding = 16.w;
+        break;
+      case VooButtonSize.small:
+        iconPadding = 16.w;
+        break;
+      case VooButtonSize.mini:
+        iconPadding = 8.w;
+        break;
+    }
+    return iconPadding;
+  }
+
   ///字体颜色
   Color getTextColor() {
     Color tempTextColor;
@@ -193,6 +210,17 @@ class VooButton extends StatelessWidget {
     return Text(child, style: textStyle ?? tempTextStyle);
   }
 
-
-
+  ///按钮视图
+  Widget btnContentView() {
+    if (icon == null) return textView();
+    List<Widget> children = [];
+    children.add(icon);
+    children.add(SizedBox(width: getIconPadding()));
+    children.add(Flexible(child: textView()));
+    return Row(
+      children: children,
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+    );
+  }
 }
