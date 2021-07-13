@@ -71,7 +71,7 @@ class VooButton extends StatelessWidget {
         shapeBorder = RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(10.w)),
         );
-        btnView = ElevatedButton(
+        btnView = TextButton(
           style: ButtonStyle(
             shape: ButtonStyleButton.allOrNull(shapeBorder),
             backgroundColor: ButtonStyleButton.allOrNull(tempBgColor),
@@ -89,7 +89,7 @@ class VooButton extends StatelessWidget {
         shapeBorder = RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(27)),
         );
-        btnView = ElevatedButton(
+        btnView = TextButton(
           style: ButtonStyle(
             shape: ButtonStyleButton.allOrNull(shapeBorder),
             backgroundColor: ButtonStyleButton.allOrNull(tempBgColor),
