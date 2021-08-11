@@ -72,8 +72,8 @@ class VooButton extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(10.w)),
         );
         btnView = TextButton(
-          padding: ButtonStyleButton.allOrNull(EdgeInsets.zero),
           style: ButtonStyle(
+            padding: ButtonStyleButton.allOrNull(EdgeInsets.zero),
             shape: ButtonStyleButton.allOrNull(shapeBorder),
             backgroundColor: ButtonStyleButton.allOrNull(tempBgColor),
             side: hollow
