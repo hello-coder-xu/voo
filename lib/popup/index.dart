@@ -14,19 +14,16 @@ class VooPopup {
     RouteSettings? routeSettings,
     VooPopupType type = VooPopupType.none,
   }) {
-    assert(builder != null);
-    assert(barrierDismissible != null);
-    assert(useSafeArea != null);
-    assert(useRootNavigator != null);
     assert(debugCheckHasMaterialLocalizations(context));
 
     final ThemeData theme = Theme.of(context);
     return showGeneralDialog(
       context: context,
-      pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
+      pageBuilder: (BuildContext buildContext, Animation<double> animation,
+          Animation<double> secondaryAnimation) {
         final Widget pageChild = Builder(builder: builder);
         Widget dialog = Builder(builder: (BuildContext context) {
-          return theme != null ? Theme(data: theme, child: pageChild) : pageChild;
+          return Theme(data: theme, child: pageChild);
         });
 
         AlignmentGeometry alignment;
@@ -72,21 +69,27 @@ class VooPopup {
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       barrierColor: barrierColor ?? Colors.black54,
       transitionDuration: const Duration(milliseconds: 400),
-      transitionBuilder: (BuildContext context, Animation<double> primaryRouteAnimation,
-          Animation<double> secondaryRouteAnimation, Widget child) {
+      transitionBuilder: (BuildContext context,
+          Animation<double> primaryRouteAnimation,
+          Animation<double> secondaryRouteAnimation,
+          Widget child) {
         Tween tween;
         switch (type) {
           case VooPopupType.left:
-            tween = Tween<Offset>(begin: Offset(-1.0, 0.0), end: Offset(0.0, 0.0));
+            tween =
+                Tween<Offset>(begin: Offset(-1.0, 0.0), end: Offset(0.0, 0.0));
             break;
           case VooPopupType.top:
-            tween = Tween<Offset>(begin: Offset(0.0, -1), end: Offset(0.0, 0.0));
+            tween =
+                Tween<Offset>(begin: Offset(0.0, -1), end: Offset(0.0, 0.0));
             break;
           case VooPopupType.right:
-            tween = Tween<Offset>(begin: Offset(1.0, 0.0), end: Offset(0.0, 0.0));
+            tween =
+                Tween<Offset>(begin: Offset(1.0, 0.0), end: Offset(0.0, 0.0));
             break;
           case VooPopupType.bottom:
-            tween = Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset(0.0, 0.0));
+            tween =
+                Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset(0.0, 0.0));
             break;
           default:
             tween = Tween<double>(begin: 0.5, end: 1.0);
@@ -97,9 +100,12 @@ class VooPopup {
           curve: Curves.linearToEaseOut,
         ));
         if (type == VooPopupType.none) {
-          return FadeTransition(opacity: animation as Animation<double>, child: ScaleTransition(scale: animation, child: child));
+          return FadeTransition(
+              opacity: animation as Animation<double>,
+              child: ScaleTransition(scale: animation, child: child));
         } else {
-          return SlideTransition(position: animation as Animation<Offset>, child: child);
+          return SlideTransition(
+              position: animation as Animation<Offset>, child: child);
         }
       },
       useRootNavigator: useRootNavigator,

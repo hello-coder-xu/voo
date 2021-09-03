@@ -99,7 +99,7 @@ class VooSearchBar extends StatelessWidget {
           borderColor: borderColor,
           borderWidth: 1,
           borderRadius: BorderRadius.all(Radius.circular(32.w)),
-          fillColor: fillColor ?? Color(0xfff6f6f6),
+          fillColor: fillColor,
           filled: true,
           prefixIcon: prefixIcon ??
               Icon(

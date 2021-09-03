@@ -13,7 +13,7 @@ class VooAvatar extends StatelessWidget {
   final Widget? icon;
 
   //标题
-  final String title;
+  final String? title;
 
   //副标题
   final String? subTitle;
@@ -21,7 +21,7 @@ class VooAvatar extends StatelessWidget {
   VooAvatar({
     this.style = VooAvatarStyle.mini,
     this.icon,
-    this.title = '',
+    this.title,
     this.subTitle,
   });
 
@@ -44,7 +44,7 @@ class VooAvatar extends StatelessWidget {
       child: Container(
         alignment: Alignment.centerLeft,
         child: Text(
-          title,
+          title ?? "",
           style: TextStyle(
             color: Color(0xff333333),
             fontSize: getFontSize(),

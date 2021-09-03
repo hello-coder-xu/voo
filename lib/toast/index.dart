@@ -124,7 +124,7 @@ class _FToastView extends StatefulWidget {
   final VooToastType? type;
 
   //结果类型
-  final VooToastResult? result;
+  final VooToastResult result;
 
   final VoidCallback? close;
 
@@ -135,7 +135,7 @@ class _FToastView extends StatefulWidget {
     this.textStyle,
     this.toastPosition,
     this.type,
-    this.result,
+    this.result = VooToastResult.success,
     this.close,
   }) : super(key: key);
 
@@ -184,8 +184,8 @@ class _FToastViewState extends State<_FToastView>
   //toast绘制
   _buildToastWidget() {
     Color tempBgColor = widget.bgColor ?? Color(0x70000000);
-    TextStyle tempStyle = widget.textStyle ??
-        TextStyle(color: Colors.white, fontSize: 28.w);
+    TextStyle tempStyle =
+        widget.textStyle ?? TextStyle(color: Colors.white, fontSize: 28.w);
     BorderRadius tempBorderRadius = BorderRadius.horizontal(
       left: Radius.circular(20.w),
       right: Radius.circular(20.w),
@@ -247,7 +247,7 @@ class _FToastViewState extends State<_FToastView>
           iconView = Icon(
             Icons.highlight_off,
             color: Colors.white,
-            size:64.w,
+            size: 64.w,
           );
           break;
         case VooToastResult.warn:

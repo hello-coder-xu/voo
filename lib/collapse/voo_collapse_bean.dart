@@ -10,7 +10,9 @@ class VooCollapseBean {
   //内容
   Widget child;
 
-  VooCollapseBean({this.initiallyExpanded = false, required this.title, required this.child})
-      : assert(title != null),
-        assert(child != null);
+  VooCollapseBean({
+    this.initiallyExpanded = false,
+    required this.title,
+    required this.child,
+  });
 }

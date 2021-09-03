@@ -15,7 +15,7 @@ class VooGroupCollapse extends StatefulWidget {
     required this.children,
     this.isAccordion = false,
     this.onExpansionChanged,
-  }) : assert(children != null);
+  });
 
   @override
   VooGroupCollapseState createState() => VooGroupCollapseState();

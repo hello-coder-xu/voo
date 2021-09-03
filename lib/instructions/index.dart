@@ -15,8 +15,8 @@ class VooInstructions extends StatelessWidget {
     this.bgColor = const Color(0xff25C489),
     this.activeColor = const Color(0xff000000),
     this.trackColor = const Color(0x50FFFFFF),
-  })  : assert(total != null && total > 0),
-        assert(index != null && index >= 0 && index < total);
+  })  : assert(total > 0),
+        assert(index >= 0 && index < total);
 
   @override
   Widget build(BuildContext context) {

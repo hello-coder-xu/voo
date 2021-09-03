@@ -25,7 +25,7 @@ class VooLinkagePicker extends StatefulWidget {
     this.cancelStyle,
     this.onCancel,
     this.onConfirm,
-  }) : assert(bean != null);
+  });
 
   @override
   VooLinkagePickerState createState() => VooLinkagePickerState();

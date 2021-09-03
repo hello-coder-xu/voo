@@ -90,15 +90,14 @@ class BubbleBox extends StatelessWidget {
       case ArrowDirection.bottom:
         return EdgeInsets.only(bottom: arrowSize);
     }
-    return EdgeInsets.only(left: arrowSize);
   }
 }
 
 class BubblePainter extends CustomPainter {
   final Color? color;
   final Radius? radius;
-  final ArrowDirection? arrowDirection;
-  final ArrowAlignment? arrowAlignment;
+  final ArrowDirection arrowDirection;
+  final ArrowAlignment arrowAlignment;
   final double? arrowSize;
   final double? arrowOffset;
   final double? elevation;
@@ -106,8 +105,8 @@ class BubblePainter extends CustomPainter {
   const BubblePainter({
     this.color,
     this.radius,
-    this.arrowDirection,
-    this.arrowAlignment,
+    this.arrowDirection = ArrowDirection.left,
+    this.arrowAlignment = ArrowAlignment.start,
     this.arrowSize,
     this.arrowOffset,
     this.elevation,

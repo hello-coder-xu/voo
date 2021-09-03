@@ -33,7 +33,6 @@ class VooCheckBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    assert(value != null);
     Widget currentChild;
     Widget checkBoxIcon = VooCheckBoxIcon(
       selectIcon: selectIcon,
@@ -98,9 +97,9 @@ class VooCheckBoxRule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    assert(value != null);
     Widget currentChild;
-    Widget checkBoxIcon = VooCheckBoxIcon(selectIcon: selectIcon, unSelectIcon: unSelectIcon, value: value);
+    Widget checkBoxIcon = VooCheckBoxIcon(
+        selectIcon: selectIcon, unSelectIcon: unSelectIcon, value: value);
     if (child == null) {
       currentChild = checkBoxIcon;
     } else {

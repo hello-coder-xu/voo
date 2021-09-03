@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class VooFilterBean {
   //文本
   String title;

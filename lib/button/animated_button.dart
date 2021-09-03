@@ -44,8 +44,7 @@ class AnimatedTextButton extends StatefulWidget {
     this.orientation: WidgetOrientation.Horizontal,
     this.onTap,
     this.buttonBuilder,
-  })  : assert(size != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _AnimatedTextButtonState createState() => _AnimatedTextButtonState();
@@ -132,14 +131,14 @@ class AnimatedButton extends StatefulWidget {
     this.duration = const Duration(milliseconds: 1000),
     this.onTap,
     this.buttonBuilder,
-  })  : assert(size != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _AnimatedButtonState createState() => _AnimatedButtonState();
 }
 
-class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStateMixin {
+class _AnimatedButtonState extends State<AnimatedButton>
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
   late Animation<double> _opacityAnimation;
@@ -163,7 +162,8 @@ class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStat
       super.didUpdateWidget(oldWidget);
     }
     // 绑定控制器
-    if (widget.controller != null) widget.controller!._bindAnimatedButtonState(this);
+    if (widget.controller != null)
+      widget.controller!._bindAnimatedButtonState(this);
   }
 
   @override
@@ -184,8 +184,8 @@ class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStat
     return AnimatedBuilder(
       animation: _controller,
       builder: (c, w) {
-        var buttonWidget =
-            widget.buttonBuilder?.call((_switchOn ?? true)) ?? _defaultWidgetBuilder((_switchOn ?? true), widget.size);
+        var buttonWidget = widget.buttonBuilder?.call((_switchOn)) ??
+            _defaultWidgetBuilder((_switchOn), widget.size);
         return Stack(
           clipBehavior: Clip.antiAlias,
           children: <Widget>[
@@ -194,9 +194,13 @@ class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStat
               height: widget.size,
               alignment: Alignment.center,
               child: Transform.scale(
-                scale: (_switchOn && _controller.isAnimating) ? _scaleAnimation.value : 1.0,
+                scale: (_switchOn && _controller.isAnimating)
+                    ? _scaleAnimation.value
+                    : 1.0,
                 child: Opacity(
-                  opacity: (_switchOn && _controller.isAnimating) ? _opacityAnimation.value : 1,
+                  opacity: (_switchOn && _controller.isAnimating)
+                      ? _opacityAnimation.value
+                      : 1,
                   child: SizedBox(
                     child: buttonWidget,
                     height: widget.size,
@@ -223,7 +227,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStat
     if (_controller.isAnimating) return;
 
     if (widget.onTap != null) widget.onTap!(_switchOn);
-    _handleSwitchChanged(_switchOn ?? true);
+    _handleSwitchChanged(_switchOn);
   }
 
   bool _switchState() {

@@ -15,7 +15,6 @@ class VooCheckBoxIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    assert(value != null);
     Widget child;
     if (value) {
       child = selectIcon ??

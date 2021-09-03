@@ -36,16 +36,12 @@ class VooResult extends StatelessWidget {
   Widget topView() {
     List<Widget> children = [];
 
-    if (icon != null) {
-      children.add(icon);
-    }
+    children.add(icon);
 
-    if (title != null) {
-      if (children.length > 0) {
-        children.add(SizedBox(height: 8));
-      }
-      children.add(Text(title, style: TextStyle(fontSize: 16, color: VooColors.titleColor)));
+    if (children.length > 0) {
+      children.add(SizedBox(height: 8));
     }
+    children.add(Text(title, style: TextStyle(fontSize: 16, color: VooColors.titleColor)));
 
     if (subTitle != null) {
       if (children.length > 1) {
