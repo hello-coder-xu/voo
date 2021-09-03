@@ -4,23 +4,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class VooDialog {
   ///对话框-文本
   static Future showTextDialog({
-    @required BuildContext context,
+    required BuildContext context,
     bool barrierDismissible = true,
     Color barrierColor = Colors.black54,
     bool useSafeArea = true,
     bool useRootNavigator = true,
-    RouteSettings routeSettings,
-    String title,
-    Widget content,
-    String confirm,
-    String middle,
-    String cancel,
-    TextStyle confirmStyle,
-    TextStyle middleStyle,
-    TextStyle cancelStyle,
-    VoidCallback onConfirm,
-    VoidCallback onMiddle,
-    VoidCallback onCancel,
+    RouteSettings? routeSettings,
+    String? title,
+    Widget? content,
+    String? confirm,
+    String? middle,
+    String? cancel,
+    TextStyle? confirmStyle,
+    TextStyle? middleStyle,
+    TextStyle? cancelStyle,
+    VoidCallback? onConfirm,
+    VoidCallback? onMiddle,
+    VoidCallback? onCancel,
     bool horizontal = true,
   }) {
     WidgetBuilder builder = (context) => VooTextDialog(
@@ -50,28 +50,28 @@ class VooDialog {
 
   ///对话框-图片
   static Future showImageDialog({
-    @required BuildContext context,
+    required BuildContext context,
     bool barrierDismissible = true,
     Color barrierColor = Colors.black54,
     bool useSafeArea = true,
     bool useRootNavigator = true,
-    RouteSettings routeSettings,
-    String title,
-    Widget content,
-    String confirm,
-    String middle,
-    String cancel,
-    TextStyle confirmStyle,
-    TextStyle middleStyle,
-    TextStyle cancelStyle,
-    VoidCallback onConfirm,
-    VoidCallback onMiddle,
-    VoidCallback onCancel,
+    RouteSettings? routeSettings,
+    String? title,
+    Widget? content,
+    String? confirm,
+    String? middle,
+    String? cancel,
+    TextStyle? confirmStyle,
+    TextStyle? middleStyle,
+    TextStyle? cancelStyle,
+    VoidCallback? onConfirm,
+    VoidCallback? onMiddle,
+    VoidCallback? onCancel,
     bool horizontal = true,
-    Widget icon,
+    Widget? icon,
     bool fit = false,
-    Widget closeIcon,
-    VoidCallback close,
+    Widget? closeIcon,
+    VoidCallback? close,
   }) {
     WidgetBuilder builder = (context) => VooImageDialog(
           title: title,
@@ -104,15 +104,15 @@ class VooDialog {
 
   ///对话框-运营
   static Future showOperationDialog({
-    @required BuildContext context,
+    required BuildContext context,
     bool barrierDismissible = true,
     Color barrierColor = Colors.black54,
     bool useSafeArea = true,
     bool useRootNavigator = true,
-    RouteSettings routeSettings,
-    Widget child,
-    VoidCallback close,
-    EdgeInsets insetPadding,
+    RouteSettings? routeSettings,
+    Widget? child,
+    VoidCallback? close,
+    EdgeInsets? insetPadding,
   }) {
     WidgetBuilder builder = (context) => VooOperatingDialog(
           child: child,
@@ -134,40 +134,40 @@ class VooDialog {
 ///文本对话框
 class VooTextDialog extends StatelessWidget {
   //标题
-  final String title;
+  final String? title;
 
   //标题文本字体样式
-  final TextStyle titleStyle;
+  final TextStyle? titleStyle;
 
   //内容视图
-  final Widget content;
+  final Widget? content;
 
   //确定文本
-  final String confirm;
+  final String? confirm;
 
   //确定字体样式
-  final TextStyle confirmStyle;
+  final TextStyle? confirmStyle;
 
   //中间按钮文本
-  final String middle;
+  final String? middle;
 
   //中间文本字体样式
-  final TextStyle middleStyle;
+  final TextStyle? middleStyle;
 
   //取消文本
-  final String cancel;
+  final String? cancel;
 
   //取消字体样式
-  final TextStyle cancelStyle;
+  final TextStyle? cancelStyle;
 
   //确定事件
-  final VoidCallback onConfirm;
+  final VoidCallback? onConfirm;
 
   //中间按钮事件
-  final VoidCallback onMiddle;
+  final VoidCallback? onMiddle;
 
   //取消事件
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
 
   //是否水平显示
   final bool horizontal;
@@ -175,7 +175,7 @@ class VooTextDialog extends StatelessWidget {
   VooTextDialog({
     this.title,
     this.titleStyle,
-    @required this.content,
+    required this.content,
     this.confirm,
     this.middle,
     this.cancel,
@@ -216,59 +216,59 @@ class VooTextDialog extends StatelessWidget {
 ///图片对话框
 class VooImageDialog extends StatelessWidget {
   //标题
-  final String title;
+  final String? title;
 
   //标题字体样式
-  final TextStyle titleStyle;
+  final TextStyle? titleStyle;
 
   //内容视图
-  final Widget content;
+  final Widget? content;
 
   //确定按钮文本
-  final String confirm;
+  final String? confirm;
 
   //确定字体样式
-  final TextStyle confirmStyle;
+  final TextStyle? confirmStyle;
 
   //中间按钮文本
-  final String middle;
+  final String? middle;
 
   //中间字体样式
-  final TextStyle middleStyle;
+  final TextStyle? middleStyle;
 
   //取消按钮文本
-  final String cancel;
+  final String? cancel;
 
   //取消字体样式
-  final TextStyle cancelStyle;
+  final TextStyle? cancelStyle;
 
   //确定事件
-  final VoidCallback onConfirm;
+  final VoidCallback? onConfirm;
 
   //中间按钮事件
-  final VoidCallback onMiddle;
+  final VoidCallback? onMiddle;
 
   //取消事件
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
 
   //是否水平显示
   final bool horizontal;
 
   //内容中图标视图
-  final Widget icon;
+  final Widget? icon;
 
   //是否全部填充
   final bool fit;
 
   //关闭按钮
-  final Widget closeIcon;
+  final Widget? closeIcon;
 
   //关闭按钮事件
-  final VoidCallback close;
+  final VoidCallback? close;
 
   VooImageDialog({
-    @required this.content,
-    @required this.icon,
+    required this.content,
+    required this.icon,
     this.title,
     this.titleStyle,
     this.confirm,
@@ -338,23 +338,23 @@ class VooImageDialog extends StatelessWidget {
 
   void onCloseTap(BuildContext context) {
     Navigator.pop(context);
-    if (close != null) close();
+    if (close != null) close!();
   }
 }
 
 ///运营对话框
 class VooOperatingDialog extends StatelessWidget {
   //内容视图
-  final Widget child;
+  final Widget? child;
 
   //关闭事件
-  final VoidCallback close;
+  final VoidCallback? close;
 
   //内部间距
-  final EdgeInsets insetPadding;
+  final EdgeInsets? insetPadding;
 
   VooOperatingDialog({
-    @required this.child,
+    required this.child,
     this.close,
     this.insetPadding,
   });
@@ -393,29 +393,29 @@ class VooOperatingDialog extends StatelessWidget {
 
   void onCloseTap(BuildContext context) {
     Navigator.pop(context);
-    if (close != null) close();
+    if (close != null) close!();
   }
 }
 
 class _VooDialog extends StatelessWidget {
-  final String title;
-  final TextStyle titleStyle;
-  final Widget content;
-  final String confirm;
-  final TextStyle confirmStyle;
-  final String middle;
-  final TextStyle middleStyle;
-  final String cancel;
-  final TextStyle cancelStyle;
-  final VoidCallback onConfirm;
-  final VoidCallback onMiddle;
-  final VoidCallback onCancel;
+  final String? title;
+  final TextStyle? titleStyle;
+  final Widget? content;
+  final String? confirm;
+  final TextStyle? confirmStyle;
+  final String? middle;
+  final TextStyle? middleStyle;
+  final String? cancel;
+  final TextStyle? cancelStyle;
+  final VoidCallback? onConfirm;
+  final VoidCallback? onMiddle;
+  final VoidCallback? onCancel;
   final bool horizontal;
 
   _VooDialog({
     this.title,
     this.titleStyle,
-    @required this.content,
+    required this.content,
     this.confirm,
     this.middle,
     this.cancel,
@@ -442,7 +442,7 @@ class _VooDialog extends StatelessWidget {
     List<Widget> children = [];
     if (title != null) {
       children.add(Text(
-        title,
+        title!,
         style: titleStyle ??
             TextStyle(
               fontSize: 36.sp,
@@ -453,7 +453,7 @@ class _VooDialog extends StatelessWidget {
     }
 
     children.add(DefaultTextStyle(
-      child: content,
+      child: content!,
       style: TextStyle(
         fontSize: 28.sp,
         color: title == null ? Color(0xff333333) : Color(0xff999999),
@@ -479,7 +479,7 @@ class _VooDialog extends StatelessWidget {
             height: 90.h,
             alignment: Alignment.center,
             child: Text(
-              cancel,
+              cancel!,
               style: cancelStyle ??
                   TextStyle(
                     fontSize: 32.sp,
@@ -501,7 +501,7 @@ class _VooDialog extends StatelessWidget {
             height: 90.h,
             alignment: Alignment.center,
             child: Text(
-              middle,
+              middle!,
               style: middleStyle ??
                   TextStyle(
                     fontSize: 32.sp,
@@ -523,7 +523,7 @@ class _VooDialog extends StatelessWidget {
           height: 90.h,
           alignment: Alignment.center,
           child: Text(
-            confirm,
+            confirm!,
             style: middleStyle ??
                 TextStyle(
                   fontSize: 32.sp,
@@ -557,16 +557,16 @@ class _VooDialog extends StatelessWidget {
 
   void onCancelTap(BuildContext context) {
     Navigator.pop(context);
-    if (onCancel != null) onCancel();
+    if (onCancel != null) onCancel!();
   }
 
   void onMiddleTap(BuildContext context) {
     Navigator.pop(context);
-    if (onMiddle != null) onMiddle();
+    if (onMiddle != null) onMiddle!();
   }
 
   void onConfirmTap(BuildContext context) {
     Navigator.pop(context);
-    if (onConfirm != null) onConfirm();
+    if (onConfirm != null) onConfirm!();
   }
 }

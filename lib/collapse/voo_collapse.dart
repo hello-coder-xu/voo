@@ -4,15 +4,15 @@ import 'package:voo/cell/voo_cell_extension.dart';
 ///折叠视图
 class VooCollapse extends StatefulWidget {
   final bool initiallyExpanded;
-  final ValueChanged<bool> onExpansionChanged;
-  final String title;
-  final TextStyle style;
+  final ValueChanged<bool>? onExpansionChanged;
+  final String? title;
+  final TextStyle? style;
   final Widget child;
 
   VooCollapse({
-    GlobalKey key,
-    @required this.title,
-    @required this.child,
+    GlobalKey? key,
+    required this.title,
+    required this.child,
     this.style,
     this.initiallyExpanded = false,
     this.onExpansionChanged,
@@ -25,9 +25,9 @@ class VooCollapse extends StatefulWidget {
 class VooCollapseState extends State<VooCollapse> with SingleTickerProviderStateMixin {
   static final Animatable<double> _easeInTween = CurveTween(curve: Curves.easeIn);
   static final Animatable<double> _halfTween = Tween<double>(begin: 0.0, end: 0.5);
-  AnimationController _controller;
-  Animation<double> _iconTurns;
-  Animation<double> _heightFactor;
+  late AnimationController _controller;
+  late Animation<double> _iconTurns;
+  late Animation<double> _heightFactor;
 
   bool isExpanded = false;
 
@@ -36,11 +36,11 @@ class VooCollapseState extends State<VooCollapse> with SingleTickerProviderState
     _controller = AnimationController(duration: Duration(milliseconds: 200), vsync: this);
     _heightFactor = _controller.drive(_easeInTween);
     _iconTurns = _controller.drive(_halfTween.chain(_easeInTween));
-    isExpanded = PageStorage.of(context)?.readState(context) as bool ?? widget.initiallyExpanded;
+    isExpanded = PageStorage.of(context)?.readState(context) as bool? ?? widget.initiallyExpanded;
     if (isExpanded) _controller.value = 1.0;
   }
 
-  Widget _buildChildren(BuildContext context, Widget child) {
+  Widget _buildChildren(BuildContext context, Widget? child) {
     List<Widget> children = [];
     children.add(VooCellExtension(
       title: widget.title ?? '',
@@ -95,7 +95,7 @@ class VooCollapseState extends State<VooCollapse> with SingleTickerProviderState
       }
       PageStorage.of(context)?.writeState(context, isExpanded);
     });
-    if (widget.onExpansionChanged != null) widget.onExpansionChanged(isExpanded);
+    if (widget.onExpansionChanged != null) widget.onExpansionChanged!(isExpanded);
   }
 
   //来自父控件的通知

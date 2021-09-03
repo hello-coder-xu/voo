@@ -6,9 +6,9 @@ import 'package:voo/picker/voo_linkage_picker.dart';
 import 'package:voo/picker/voo_picker.dart';
 
 class VooBottomGridBean {
-  Widget icon;
-  String title;
-  TextStyle style;
+  Widget? icon;
+  String? title;
+  TextStyle? style;
 
   VooBottomGridBean({this.icon, this.title, this.style});
 }
@@ -16,39 +16,41 @@ class VooBottomGridBean {
 class VooBottomSheet {
   ///底部菜单-列表
   static Future showListView({
-    @required BuildContext context,
-    List<String> list,
-    Color backgroundColor,
-    double elevation,
-    ShapeBorder shape,
-    Clip clipBehavior,
-    Color barrierColor,
+    required BuildContext context,
+    List<String>? list,
+    Color? backgroundColor,
+    double? elevation,
+    ShapeBorder? shape,
+    Clip? clipBehavior,
+    Color? barrierColor,
     bool isScrollControlled = false,
     bool useRootNavigator = false,
     bool isDismissible = true,
     bool enableDrag = true,
-    RouteSettings routeSettings,
+    RouteSettings? routeSettings,
     bool isTopRound = false,
-    Function(String value) onSelect,
-    VoidCallback onCancel,
+    Function(String value)? onSelect,
+    VoidCallback? onCancel,
   }) {
     WidgetBuilder builder = (context) => VBottomSheetOptionView(
           list: list,
           onSelect: onSelect,
           onCancel: onCancel,
         );
+    ShapeBorder? shape;
+    if (isTopRound) {
+      shape = RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.w),
+        ),
+      );
+    }
     return _show(
       context: context,
       builder: builder,
       backgroundColor: backgroundColor,
       elevation: elevation,
-      shape: shape ?? isTopRound
-          ? RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(25.w),
-              ),
-            )
-          : null,
+      shape: shape,
       clipBehavior: clipBehavior,
       barrierColor: barrierColor,
       isScrollControlled: isScrollControlled,
@@ -61,39 +63,41 @@ class VooBottomSheet {
 
   ///底部菜单-描述
   static Future showDescribeView({
-    @required BuildContext context,
-    @required Widget child,
-    Color backgroundColor,
-    double elevation,
-    ShapeBorder shape,
-    Clip clipBehavior,
-    Color barrierColor,
+    required BuildContext context,
+    required Widget child,
+    Color? backgroundColor,
+    double? elevation,
+    ShapeBorder? shape,
+    Clip? clipBehavior,
+    Color? barrierColor,
     bool isScrollControlled = false,
     bool useRootNavigator = false,
     bool isDismissible = true,
     bool enableDrag = true,
-    RouteSettings routeSettings,
+    RouteSettings? routeSettings,
     bool isTopRound = false,
-    VoidCallback onDelete,
-    VoidCallback onCancel,
+    VoidCallback? onDelete,
+    VoidCallback? onCancel,
   }) {
     WidgetBuilder builder = (context) => VBottomSheetTextView(
           child: child,
           onDelete: onDelete,
           onCancel: onCancel,
         );
+    ShapeBorder? shape;
+    if (isTopRound) {
+      shape = RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.w),
+        ),
+      );
+    }
     return _show(
       context: context,
       builder: builder,
       backgroundColor: backgroundColor,
       elevation: elevation,
-      shape: shape ?? isTopRound
-          ? RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(25.w),
-              ),
-            )
-          : null,
+      shape: shape,
       clipBehavior: clipBehavior,
       barrierColor: barrierColor,
       isScrollControlled: isScrollControlled,
@@ -106,24 +110,24 @@ class VooBottomSheet {
 
   ///底部菜单-宫格
   static Future showGridView({
-    @required BuildContext context,
-    @required List<VooBottomGridBean> list,
-    double spacing,
-    double runSpacing,
-    Alignment alignment,
-    Color backgroundColor,
-    double elevation,
-    ShapeBorder shape,
-    Clip clipBehavior,
-    Color barrierColor,
+    required BuildContext context,
+    required List<VooBottomGridBean> list,
+    double? spacing,
+    double? runSpacing,
+    Alignment? alignment,
+    Color? backgroundColor,
+    double? elevation,
+    ShapeBorder? shape,
+    Clip? clipBehavior,
+    Color? barrierColor,
     bool isScrollControlled = false,
     bool useRootNavigator = false,
     bool isDismissible = true,
     bool enableDrag = true,
-    RouteSettings routeSettings,
+    RouteSettings? routeSettings,
     bool isTopRound = false,
-    Function(int index) onSelect,
-    VoidCallback onCancel,
+    Function(int index)? onSelect,
+    VoidCallback? onCancel,
   }) {
     WidgetBuilder builder = (context) => VBottomSheetGridView(
           list: list,
@@ -132,18 +136,20 @@ class VooBottomSheet {
           onSelect: onSelect,
           alignment: alignment,
         );
+    ShapeBorder? shape;
+    if (isTopRound) {
+      shape = RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.w),
+        ),
+      );
+    }
     return _show(
       context: context,
       builder: builder,
       backgroundColor: backgroundColor,
       elevation: elevation,
-      shape: shape ?? isTopRound
-          ? RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(25.w),
-              ),
-            )
-          : null,
+      shape: shape,
       clipBehavior: clipBehavior,
       barrierColor: barrierColor,
       isScrollControlled: isScrollControlled,
@@ -156,26 +162,26 @@ class VooBottomSheet {
 
   ///底部菜单-picker
   static Future showPicker({
-    @required BuildContext context,
-    String title,
-    String cancelTxt,
-    String confirmTxt,
-    TextStyle style,
-    TextStyle confirmStyle,
-    TextStyle cancelStyle,
-    List<PickerBean> list,
-    VoidCallback onCancel,
-    Function(String value) onConfirm,
-    Color backgroundColor,
-    double elevation,
-    ShapeBorder shape,
-    Clip clipBehavior,
-    Color barrierColor,
+    required BuildContext context,
+    String? title,
+    String? cancelTxt,
+    String? confirmTxt,
+    TextStyle? style,
+    TextStyle? confirmStyle,
+    TextStyle? cancelStyle,
+    List<PickerBean>? list,
+    VoidCallback? onCancel,
+    Function(String value)? onConfirm,
+    Color? backgroundColor,
+    double? elevation,
+    ShapeBorder? shape,
+    Clip? clipBehavior,
+    Color? barrierColor,
     bool isScrollControlled = false,
     bool useRootNavigator = false,
     bool isDismissible = true,
     bool enableDrag = true,
-    RouteSettings routeSettings,
+    RouteSettings? routeSettings,
   }) {
     WidgetBuilder builder = (context) => VooPicker(
           title: title,
@@ -205,26 +211,26 @@ class VooBottomSheet {
 
   ///底部菜单-联动picker
   static Future showLinkagePicker({
-    @required BuildContext context,
-    String title,
-    String cancelTxt,
-    String confirmTxt,
-    TextStyle style,
-    TextStyle confirmStyle,
-    TextStyle cancelStyle,
-    PickerLinkageBean bean,
-    VoidCallback onCancel,
-    Function(String value) onConfirm,
-    Color backgroundColor,
-    double elevation,
-    ShapeBorder shape,
-    Clip clipBehavior,
-    Color barrierColor,
+    required BuildContext context,
+    String? title,
+    String? cancelTxt,
+    String? confirmTxt,
+    TextStyle? style,
+    TextStyle? confirmStyle,
+    TextStyle? cancelStyle,
+    PickerLinkageBean? bean,
+    VoidCallback? onCancel,
+    Function(String value)? onConfirm,
+    Color? backgroundColor,
+    double? elevation,
+    ShapeBorder? shape,
+    Clip? clipBehavior,
+    Color? barrierColor,
     bool isScrollControlled = false,
     bool useRootNavigator = false,
     bool isDismissible = true,
     bool enableDrag = true,
-    RouteSettings routeSettings,
+    RouteSettings? routeSettings,
   }) {
     WidgetBuilder builder = (context) => VooLinkagePicker(
           title: title,
@@ -233,7 +239,7 @@ class VooBottomSheet {
           style: style,
           confirmStyle: confirmStyle,
           cancelStyle: cancelStyle,
-          bean: bean,
+          bean: bean!,
           onCancel: onCancel,
           onConfirm: onConfirm,
         );
@@ -253,18 +259,18 @@ class VooBottomSheet {
   }
 
   static Future _show({
-    @required BuildContext context,
-    WidgetBuilder builder,
-    Color backgroundColor,
-    double elevation,
-    ShapeBorder shape,
-    Clip clipBehavior,
-    Color barrierColor,
+    required BuildContext context,
+    required WidgetBuilder builder,
+    Color? backgroundColor,
+    double? elevation,
+    ShapeBorder? shape,
+    Clip? clipBehavior,
+    Color? barrierColor,
     bool isScrollControlled = false,
     bool useRootNavigator = false,
     bool isDismissible = true,
     bool enableDrag = true,
-    RouteSettings routeSettings,
+    RouteSettings? routeSettings,
   }) {
     return showModalBottomSheet(
       context: context,
@@ -286,10 +292,10 @@ class VooBottomSheet {
 ///列表选择视图
 class VBottomSheetOptionView extends StatelessWidget {
   //列表数组
-  final List<String> list;
+  final List<String>? list;
 
   //初始值
-  final String initData;
+  final String? initData;
 
   //最大高度
   final double maxHeight;
@@ -298,10 +304,10 @@ class VBottomSheetOptionView extends StatelessWidget {
   final double minHeight;
 
   //选择事件
-  final Function(String value) onSelect;
+  final Function(String value)? onSelect;
 
   //取消事件
-  final Function onCancel;
+  final Function? onCancel;
 
   VBottomSheetOptionView({
     this.list,
@@ -324,11 +330,11 @@ class VBottomSheetOptionView extends StatelessWidget {
   Widget contentView(BuildContext context) {
     List<Widget> children = [];
 
-    for (int i = 0; i < list.length; i++) {
+    for (int i = 0; i < list!.length; i++) {
       if (children.length > 0) {
         children.add(Divider(height: 1));
       }
-      String it = list[i];
+      String it = list![i];
       children.add(GestureDetector(
         onTap: () => onItemClick(context, it),
         behavior: HitTestBehavior.translucent,
@@ -386,7 +392,7 @@ class VBottomSheetOptionView extends StatelessWidget {
   //item选中事件
   void onItemClick(BuildContext context, String value) {
     if (onSelect != null) {
-      onSelect(value);
+      onSelect!(value);
     }
     close(context);
   }
@@ -394,7 +400,7 @@ class VBottomSheetOptionView extends StatelessWidget {
   //取消事件
   void onCancelTap(BuildContext context) {
     if (onCancel != null) {
-      onCancel();
+      onCancel!();
     }
     close(context);
   }
@@ -408,7 +414,7 @@ class VBottomSheetOptionView extends StatelessWidget {
 ///文本视图
 class VBottomSheetTextView extends StatelessWidget {
   //显示内容
-  final Widget child;
+  final Widget? child;
 
   //最大高度
   final double maxHeight;
@@ -417,10 +423,10 @@ class VBottomSheetTextView extends StatelessWidget {
   final double minHeight;
 
   //删除事件
-  final VoidCallback onDelete;
+  final VoidCallback? onDelete;
 
   //取消事件
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
 
   VBottomSheetTextView({
     this.child,
@@ -445,7 +451,7 @@ class VBottomSheetTextView extends StatelessWidget {
           fontSize: 32.sp,
           color: Color(0xff333333),
         ),
-        child: child,
+        child: child!,
       ),
     ));
     children.add(Divider(height: 1));
@@ -498,7 +504,7 @@ class VBottomSheetTextView extends StatelessWidget {
   //删除事件
   void onDeleteTap(BuildContext context) {
     if (onDelete != null) {
-      onDelete();
+      onDelete!();
     }
     close(context);
   }
@@ -506,7 +512,7 @@ class VBottomSheetTextView extends StatelessWidget {
   //取消事件
   void onCancelTap(BuildContext context) {
     if (onCancel != null) {
-      onCancel();
+      onCancel!();
     }
     close(context);
   }
@@ -520,7 +526,7 @@ class VBottomSheetTextView extends StatelessWidget {
 ///自定义视图
 class VBottomSheetGridView extends StatelessWidget {
   //内容数组
-  final List<VooBottomGridBean> list;
+  final List<VooBottomGridBean>? list;
 
   //最大高度
   final double maxHeight;
@@ -529,19 +535,19 @@ class VBottomSheetGridView extends StatelessWidget {
   final double minHeight;
 
   //水平间隔
-  final double spacing;
+  final double? spacing;
 
   //垂直间隔
-  final double runSpacing;
+  final double? runSpacing;
 
   //对齐方式
-  final Alignment alignment;
+  final Alignment? alignment;
 
   //取消事件
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
 
   //选择事件
-  final Function(int index) onSelect;
+  final Function(int index)? onSelect;
 
   VBottomSheetGridView({
     this.list,
@@ -556,9 +562,9 @@ class VBottomSheetGridView extends StatelessWidget {
 
   Widget gridView(BuildContext context) {
     List<Widget> children = [];
-    list.forEach((element) {
+    list!.forEach((element) {
       children.add(GestureDetector(
-        onTap: () => onSelectTap(context, list.indexOf(element)),
+        onTap: () => onSelectTap(context, list!.indexOf(element)),
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -571,7 +577,7 @@ class VBottomSheetGridView extends StatelessWidget {
               ),
               SizedBox(height: 24.h),
               Text(
-                element.title,
+                element.title!,
                 style: element.style ??
                     TextStyle(
                       fontSize: 28.sp,
@@ -635,14 +641,14 @@ class VBottomSheetGridView extends StatelessWidget {
 
   void onCancelTap(BuildContext context) {
     if (onCancel != null) {
-      onCancel();
+      onCancel!();
     }
     close(context);
   }
 
   void onSelectTap(BuildContext context, int index) {
     if (onSelect != null) {
-      onSelect(index);
+      onSelect!(index);
     }
     close(context);
   }

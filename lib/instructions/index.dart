@@ -10,8 +10,8 @@ class VooInstructions extends StatelessWidget {
   final Color trackColor;
 
   VooInstructions({
-    @required this.total,
-    @required this.index,
+    required this.total,
+    required this.index,
     this.bgColor = const Color(0xff25C489),
     this.activeColor = const Color(0xff000000),
     this.trackColor = const Color(0x50FFFFFF),

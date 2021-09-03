@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class VooUtil {
   static Future showTransparentPage(
     BuildContext context, {
-    Widget child,
+    Widget? child,
   }) {
     return Navigator.push(
       context,
       PageRouteBuilder(
         opaque: false,
-        pageBuilder: (context, animation, secondaryAnimation) => child,
+        pageBuilder: (context, animation, secondaryAnimation) => child!,
       ),
     );
   }

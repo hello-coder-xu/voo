@@ -15,25 +15,25 @@ enum PageState {
 
 class StateSwitcher extends StatefulWidget {
   /// 页面状态
-  final PageState pageState;
+  final PageState? pageState;
 
   /// 重试回调
-  final OnRetry onRetry;
+  final OnRetry? onRetry;
 
   /// 骨架屏
-  final Widget skeleton;
+  final Widget? skeleton;
 
   /// 空页面
-  final Widget emptyView;
+  final Widget? emptyView;
 
   /// 错误页面
-  final Widget errorView;
+  final Widget? errorView;
 
   /// 子组件
-  final Widget child;
+  final Widget? child;
 
   const StateSwitcher({
-    Key key,
+    Key? key,
     this.pageState,
     this.onRetry,
     this.skeleton,
@@ -47,7 +47,7 @@ class StateSwitcher extends StatefulWidget {
 }
 
 class _StateSwitcherState extends State<StateSwitcher> {
-  PageState _pageState = PageState.none;
+  PageState? _pageState = PageState.none;
 
   @override
   void initState() {
@@ -70,7 +70,7 @@ class _StateSwitcherState extends State<StateSwitcher> {
   }
 
   /// 根据状态值渲染对应的页面
-  Widget renderStatePage(PageState pageState) {
+  Widget? renderStatePage(PageState? pageState) {
     switch (pageState) {
 
       /// 加载中...
@@ -143,7 +143,7 @@ class _StateSwitcherState extends State<StateSwitcher> {
           );
   }
 
-  Widget getStatePage({Widget image, String text}) {
+  Widget getStatePage({Widget? image, required String text}) {
     return Container(
       width: double.infinity,
       height: double.infinity,
@@ -151,7 +151,7 @@ class _StateSwitcherState extends State<StateSwitcher> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          image,
+          image!,
           SizedBox(height: 15),
           Text(
             text,

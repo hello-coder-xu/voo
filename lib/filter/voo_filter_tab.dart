@@ -6,12 +6,12 @@ class VooFilterTab extends StatelessWidget {
   //内容数组
   final List<VooFilterBean> list;
   //选中事件
-  final Function(int index) onSelect;
+  final Function(int index)? onSelect;
 
-  VooFilterTab({@required this.list, this.onSelect});
+  VooFilterTab({required this.list, this.onSelect});
 
   //item 视图
-  Widget itemTabView({VooFilterBean bean, VoidCallback onTap}) {
+  Widget itemTabView({required VooFilterBean bean, VoidCallback? onTap}) {
     List<Widget> children = [];
     children.add(Flexible(
       child: Text(
@@ -48,7 +48,7 @@ class VooFilterTab extends StatelessWidget {
       children.add(Expanded(
         child: itemTabView(
           bean: element,
-          onTap: () => onSelect(list.indexOf(element)),
+          onTap: () => onSelect!(list.indexOf(element)),
         ),
       ));
     });

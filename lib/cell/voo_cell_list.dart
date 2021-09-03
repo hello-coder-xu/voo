@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///单元格-list
 class VooCellList extends StatelessWidget {
-  final String title;
-  final TextStyle style;
-  final String subTitle;
-  final TextStyle subStyle;
-  final Widget image;
-  final double paddingWidth;
-  final VoidCallback onTap;
+  final String? title;
+  final TextStyle? style;
+  final String? subTitle;
+  final TextStyle? subStyle;
+  final Widget? image;
+  final double? paddingWidth;
+  final VoidCallback? onTap;
 
   VooCellList({
     this.title,
@@ -27,7 +27,7 @@ class VooCellList extends StatelessWidget {
     children.add(Container(
       alignment: Alignment.centerLeft,
       child: Text(
-        title,
+        title!,
         style: style ??
             TextStyle(
               fontSize: 32.sp,
@@ -39,7 +39,7 @@ class VooCellList extends StatelessWidget {
     children.add(Container(
       alignment: Alignment.centerLeft,
       child: Text(
-        subTitle,
+        subTitle!,
         style: subStyle ??
             TextStyle(
               fontSize: 24.sp,

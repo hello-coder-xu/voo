@@ -5,18 +5,18 @@ import 'package:voo/picker/picker_linkage_bean.dart';
 
 ///联动picker
 class VooLinkagePicker extends StatefulWidget {
-  final String title;
-  final String cancelTxt;
-  final String confirmTxt;
-  final TextStyle style;
-  final TextStyle confirmStyle;
-  final TextStyle cancelStyle;
+  final String? title;
+  final String? cancelTxt;
+  final String? confirmTxt;
+  final TextStyle? style;
+  final TextStyle? confirmStyle;
+  final TextStyle? cancelStyle;
   final PickerLinkageBean bean;
-  final Function onCancel;
-  final Function(String value) onConfirm;
+  final Function? onCancel;
+  final Function(String value)? onConfirm;
 
   VooLinkagePicker({
-    @required this.bean,
+    required this.bean,
     this.title,
     this.cancelTxt,
     this.confirmTxt,
@@ -32,8 +32,8 @@ class VooLinkagePicker extends StatefulWidget {
 }
 
 class VooLinkagePickerState extends State<VooLinkagePicker> {
-  List<FixedExtentScrollController> scrolls;
-  PickerLinkageBean currentBean;
+  List<FixedExtentScrollController>? scrolls;
+  late PickerLinkageBean currentBean;
 
   @override
   void initState() {
@@ -49,7 +49,7 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
       children.add(Container(
         alignment: Alignment.center,
         child: Text(
-          element.title,
+          element.title!,
           style: TextStyle(
             fontSize: 36.sp,
             color: Color(0xff333333),
@@ -61,7 +61,7 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
     return Expanded(
       child: CupertinoPicker(
         itemExtent: 96.h,
-        scrollController: scrolls[index],
+        scrollController: scrolls![index],
         onSelectedItemChanged: (position) => onSelectedItemChanged(index, position, bean),
         children: children,
       ),
@@ -129,9 +129,9 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
 
   List<Widget> getCupertinoPickerChildren(int index, PickerLinkageBean bean) {
     List<Widget> children = [];
-    if (bean.child != null && bean.child.length > 0) {
+    if (bean.child != null && bean.child!.length > 0) {
       children.add(cupertinoPickerItem(index, bean));
-      children.addAll(getCupertinoPickerChildren(++index, bean.child[bean.select]));
+      children.addAll(getCupertinoPickerChildren(++index, bean.child![bean.select]));
     }
     return children;
   }
@@ -164,7 +164,7 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
     List<FixedExtentScrollController> children = [];
     if (bean.child != null) {
       children.add(FixedExtentScrollController(initialItem: bean.select));
-      children.addAll(initScroll(bean.child[bean.select]));
+      children.addAll(initScroll(bean.child![bean.select]));
     }
     return children;
   }
@@ -181,20 +181,20 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
   void onSelectedItemChanged(int index, int position, PickerLinkageBean bean) {
     bean.select = position;
     changeChildValue(bean);
-    List.generate(scrolls.length - index - 1, (tempIndex) {
-      scrolls[tempIndex + index + 1].jumpTo(0);
+    List.generate(scrolls!.length - index - 1, (tempIndex) {
+      scrolls![tempIndex + index + 1].jumpTo(0);
     });
     if (mounted) setState(() {});
   }
 
   ///获取数据
-  List<String> getValue(PickerLinkageBean bean) {
-    List<String> children = [];
+  List<String?> getValue(PickerLinkageBean bean) {
+    List<String?> children = [];
     if (bean.title != null) {
       children.add(bean.title);
     }
     if (bean.child != null) {
-      children.addAll(getValue(bean.child[bean.select]));
+      children.addAll(getValue(bean.child![bean.select]));
     }
     return children;
   }
@@ -202,7 +202,7 @@ class VooLinkagePickerState extends State<VooLinkagePicker> {
   void onConfirm() {
     if (widget.onConfirm != null) {
       String tempValue = getValue(currentBean).join('-');
-      widget.onConfirm(tempValue);
+      widget.onConfirm!(tempValue);
     }
   }
 

@@ -7,7 +7,7 @@ enum VooSwipeIndicatorAxis { horizontal, vertical }
 
 ///轮播图
 class VooSwipe extends StatefulWidget {
-  final GlobalKey key;
+  final GlobalKey? key;
   final int itemCount;
   final Widget Function(int index) itemBuilder;
   final Axis scrollDirection;
@@ -34,7 +34,7 @@ class VooSwipe extends StatefulWidget {
   final Curve curve;
 
   // 回调
-  final Function(int index) onChanged;
+  final Function(int index)? onChanged;
 
   //是否显示指示器
   final bool displayIndicators;
@@ -59,8 +59,8 @@ class VooSwipe extends StatefulWidget {
 
   VooSwipe({
     this.key,
-    @required this.itemCount,
-    @required this.itemBuilder,
+    required this.itemCount,
+    required this.itemBuilder,
     this.scrollDirection = Axis.horizontal,
     this.height = 200,
     this.defaultIndex = 0,
@@ -86,13 +86,13 @@ class VooSwipe extends StatefulWidget {
 }
 
 class VooSwipeState extends State<VooSwipe> {
-  PageController pageController;
-  int position;
-  var currPageValue = 0.0;
-  int itemCount;
-  double pointSize;
-  double pointPaddingSpace;
-  Timer timer;
+  PageController? pageController;
+  int? position;
+  double? currPageValue = 0.0;
+  int? itemCount;
+  late double pointSize;
+  double? pointPaddingSpace;
+  Timer? timer;
 
   @override
   void initState() {
@@ -110,8 +110,8 @@ class VooSwipeState extends State<VooSwipe> {
         initialPage: widget.defaultIndex,
         viewportFraction: widget.viewportFraction,
       );
-      pageController.addListener(() {
-        currPageValue = pageController.page;
+      pageController!.addListener(() {
+        currPageValue = pageController!.page;
         if (mounted) setState(() {});
       });
     }
@@ -161,16 +161,16 @@ class VooSwipeState extends State<VooSwipe> {
     List<Widget> children = [];
 
     Widget child;
-    double pointPaddingHorizontal = 0;
-    double pointPaddingVertical = 0;
-    double paddingHorizontal;
-    double paddingVertical;
+    double? pointPaddingHorizontal = 0;
+    double? pointPaddingVertical = 0;
+    double? paddingHorizontal;
+    double? paddingVertical;
     if (widget.swipeIndicatorAxis == VooSwipeIndicatorAxis.horizontal) {
       child = Row(
         children: children,
         mainAxisSize: MainAxisSize.min,
       );
-      paddingHorizontal = pointPaddingSpace * 2;
+      paddingHorizontal = pointPaddingSpace! * 2;
       paddingVertical = pointPaddingSpace;
       pointPaddingHorizontal = pointPaddingSpace;
     } else {
@@ -179,19 +179,19 @@ class VooSwipeState extends State<VooSwipe> {
         mainAxisSize: MainAxisSize.min,
       );
       paddingHorizontal = pointPaddingSpace;
-      paddingVertical = pointPaddingSpace * 2;
+      paddingVertical = pointPaddingSpace! * 2;
       pointPaddingVertical = pointPaddingSpace;
     }
 
     List.generate(widget.itemCount, (index) {
       children.add(Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: pointPaddingHorizontal,
-          vertical: pointPaddingVertical,
+          horizontal: pointPaddingHorizontal!,
+          vertical: pointPaddingVertical!,
         ),
         child: VooBadge(
           style: VooBadgeStyle.point,
-          bgColor: index == position % widget.itemCount ? widget.selectIndicatorColor : widget.unSelectIndicatorColor,
+          bgColor: index == position! % widget.itemCount ? widget.selectIndicatorColor : widget.unSelectIndicatorColor,
         ),
       ));
     });
@@ -199,11 +199,11 @@ class VooSwipeState extends State<VooSwipe> {
     return Container(
       margin: EdgeInsets.all(widget.height / 20),
       padding: EdgeInsets.symmetric(
-        horizontal: paddingHorizontal,
-        vertical: paddingVertical,
+        horizontal: paddingHorizontal!,
+        vertical: paddingVertical!,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(pointSize + pointPaddingSpace * 2)),
+        borderRadius: BorderRadius.all(Radius.circular(pointSize + pointPaddingSpace! * 2)),
         color: Colors.black12,
       ),
       child: child,
@@ -215,24 +215,24 @@ class VooSwipeState extends State<VooSwipe> {
       return widget.itemBuilder(index % widget.itemCount);
     } else {
       Matrix4 matrix4 = Matrix4.identity();
-      var tempFloor = currPageValue.floor();
+      var tempFloor = currPageValue!.floor();
       if (index == tempFloor) {
         //当前的item
-        var currScale = 1 - (currPageValue - index) * (1 - widget.scaleFactor);
+        var currScale = 1 - (currPageValue! - index) * (1 - widget.scaleFactor);
         var currTrans = widget.height * (1 - currScale) / 2.0;
 
         matrix4 = Matrix4.diagonal3Values(1.0, currScale, 1.0);
         matrix4.setTranslationRaw(0.0, currTrans, 0.0);
       } else if (index == tempFloor + 1) {
         //右边的item
-        var currScale = widget.scaleFactor + (currPageValue - index + 1) * (1 - widget.scaleFactor);
+        var currScale = widget.scaleFactor + (currPageValue! - index + 1) * (1 - widget.scaleFactor);
         var currTrans = widget.height * (1 - currScale) / 2.0;
 
         matrix4 = Matrix4.diagonal3Values(1.0, currScale, 1.0);
         matrix4.setTranslationRaw(0.0, currTrans, 0.0);
       } else if (index == tempFloor - 1) {
         //左边
-        var currScale = 1 - (currPageValue - index) * (1 - widget.scaleFactor);
+        var currScale = 1 - (currPageValue! - index) * (1 - widget.scaleFactor);
         var currTrans = widget.height * (1 - currScale) / 2.0;
 
         matrix4 = Matrix4.diagonal3Values(1.0, currScale, 1.0);
@@ -261,13 +261,13 @@ class VooSwipeState extends State<VooSwipe> {
         position = widget.itemCount;
         //延时归为用于为循环
         Timer(Duration(milliseconds: 300), () {
-          pageController.jumpToPage(position);
+          pageController!.jumpToPage(position!);
         });
       } else if (index == widget.itemCount + 1) {
         position = 1;
         //延时归为用于为循环
         Timer(Duration(milliseconds: 300), () {
-          pageController.jumpToPage(position);
+          pageController!.jumpToPage(position!);
         });
       } else {
         position = index;
@@ -279,7 +279,7 @@ class VooSwipeState extends State<VooSwipe> {
   }
 
   void setIndex(int index) {
-    pageController.animateToPage(
+    pageController!.animateToPage(
       index,
       duration: Duration(milliseconds: widget.speed),
       curve: widget.curve,
@@ -287,14 +287,14 @@ class VooSwipeState extends State<VooSwipe> {
   }
 
   void previousPage() {
-    pageController.previousPage(
+    pageController!.previousPage(
       duration: Duration(milliseconds: widget.speed),
       curve: widget.curve,
     );
   }
 
   void nextPage() {
-    pageController.nextPage(
+    pageController!.nextPage(
       duration: Duration(milliseconds: widget.speed),
       curve: widget.curve,
     );
@@ -303,7 +303,7 @@ class VooSwipeState extends State<VooSwipe> {
   void startAutoPlay() {
     if (!widget.autoPlay) return;
     if (timer?.isActive ?? false) {
-      timer.cancel();
+      timer!.cancel();
     }
 
     timer = Timer.periodic(
@@ -330,7 +330,7 @@ class VooSwipeState extends State<VooSwipe> {
 
   void _callBackOnChange(int number) {
     if (widget.onChanged != null) {
-      widget.onChanged(number);
+      widget.onChanged!(number);
     }
   }
 

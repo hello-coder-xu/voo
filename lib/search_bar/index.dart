@@ -6,17 +6,17 @@ import 'package:voo/field/index.dart';
 ///搜索栏
 class VooSearchBar extends StatelessWidget {
   //前缀视图
-  final Widget leading;
+  final Widget? leading;
   //后缀视图
-  final Widget trailing;
+  final Widget? trailing;
   //背景颜色
-  final Color bgColor;
+  final Color? bgColor;
 
   //-------输入框属性 详情看VooTextFiled------
   final TextFieldStyle textFieldTheme;
-  final Widget prefixIcon;
-  final String hintText;
-  final Widget suffixIcon;
+  final Widget? prefixIcon;
+  final String? hintText;
+  final Widget? suffixIcon;
 
   final TextStyle style;
   final TextStyle hintStyle;
@@ -33,18 +33,18 @@ class VooSearchBar extends StatelessWidget {
   final bool showClear;
 
   final int maxLines;
-  final int minLines;
-  final int maxLength;
+  final int? minLines;
+  final int? maxLength;
   final bool readOnly;
   final bool enabled;
 
-  final ValueChanged<String> onChanged;
-  final VoidCallback onEditingComplete;
-  final ValueChanged<String> onSubmitted;
-  final List<TextInputFormatter> inputFormatters;
-  final TextInputType keyboardType;
-  final TextInputAction textInputAction;
-  final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
+  final VoidCallback? onEditingComplete;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final TextEditingController? controller;
 
   VooSearchBar({
     this.leading,

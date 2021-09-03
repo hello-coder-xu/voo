@@ -9,21 +9,21 @@ class VooRadio extends StatelessWidget {
   //组的值
   final dynamic group;
   //选中变化事件
-  final Function(dynamic value) onChanged;
+  final Function(dynamic value)? onChanged;
   //选中图标
-  final Icon selectIcon;
+  final Icon? selectIcon;
   //未选中图标
-  final Icon unSelectIcon;
+  final Icon? unSelectIcon;
   //内容
-  final String child;
+  final String? child;
   //内容字体样式
-  final TextStyle style;
+  final TextStyle? style;
   //是否可用
   final bool enable;
 
   VooRadio({
-    @required this.value,
-    @required this.group,
+    required this.value,
+    required this.group,
     this.onChanged,
     this.selectIcon,
     this.unSelectIcon,
@@ -51,7 +51,7 @@ class VooRadio extends StatelessWidget {
       children.add(WidgetSpan(
         alignment: PlaceholderAlignment.middle,
         child: Text(
-          child,
+          child!,
           style: style ??
               TextStyle(
                 color: Color(0xff333333),
@@ -72,6 +72,6 @@ class VooRadio extends StatelessWidget {
   }
 
   void _onChanged() {
-    if (onChanged != null) onChanged(value);
+    if (onChanged != null) onChanged!(value);
   }
 }

@@ -18,7 +18,7 @@ class VooCircleMask extends StatelessWidget {
   final double radius;
 
   const VooCircleMask({
-    Key key,
+    Key? key,
     this.maskColor = Colors.black12,
     this.holeColor = Colors.white,
     this.size = const Size(100, 100),
@@ -104,7 +104,7 @@ class VooRRectMask extends StatelessWidget {
   final double cornerRadius;
 
   const VooRRectMask({
-    Key key,
+    Key? key,
     this.maskColor = Colors.black12,
     this.holeColor = Colors.white,
     this.size = const Size(100, 100),

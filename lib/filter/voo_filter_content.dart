@@ -8,18 +8,18 @@ class VooFilterContent extends StatelessWidget {
   //内容数组
   final List<VooFilterBean> filterContentList;
   //取消事件
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
   //提交事件
-  final Function() onSubmit;
+  final Function()? onSubmit;
   //选中事件
-  final Function(String value) onSelect;
+  final Function(String value)? onSelect;
   //显示样式
   final VooFilterContentType type;
   //最大高度
-  final double maxHeight;
+  final double? maxHeight;
 
   VooFilterContent({
-    @required this.filterContentList,
+    required this.filterContentList,
     this.onCancel, //只有在warp_button 类型下可用
     this.onSubmit, //只有在warp_button 类型下可用
     this.onSelect,
@@ -40,7 +40,7 @@ class VooFilterContent extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.grey[200],
             borderRadius: BorderRadius.all(Radius.circular(3)),
-            border: Border.all(color: bean.select ? Colors.green : Colors.grey[200], width: 1),
+            border: Border.all(color: bean.select ? Colors.green : Colors.grey[200]!, width: 1),
           ),
           alignment: Alignment.center,
           child: Text(
@@ -194,19 +194,19 @@ class VooFilterContent extends StatelessWidget {
 
   void selectTap(String title) {
     if (onSelect != null) {
-      onSelect(title);
+      onSelect!(title);
     }
   }
 
   void closeTap() {
     if (onCancel != null) {
-      onCancel();
+      onCancel!();
     }
   }
 
   void submitTap() {
     if (onSubmit != null) {
-      onSubmit();
+      onSubmit!();
     }
   }
 }

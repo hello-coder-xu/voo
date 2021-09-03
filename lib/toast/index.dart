@@ -16,10 +16,10 @@ enum VooToastResult { success, fail, warn }
 class VooToast {
   static Function showToast(
     BuildContext context, {
-    String msg,
+    String? msg,
     int showTime = 2000,
-    Color bgColor,
-    TextStyle textStyle,
+    Color? bgColor,
+    TextStyle? textStyle,
     VooToastPosition position = VooToastPosition.bottom,
   }) {
     return _showToast(
@@ -35,9 +35,9 @@ class VooToast {
 
   static Function showLoading(
     BuildContext context, {
-    String msg,
-    Color bgColor,
-    TextStyle textStyle,
+    String? msg,
+    Color? bgColor,
+    TextStyle? textStyle,
   }) {
     return _showToast(
       context,
@@ -50,9 +50,9 @@ class VooToast {
 
   static Function showResult(
     BuildContext context, {
-    String msg,
-    Color bgColor,
-    TextStyle textStyle,
+    String? msg,
+    Color? bgColor,
+    TextStyle? textStyle,
     VooToastResult result = VooToastResult.success,
   }) {
     return _showToast(
@@ -68,16 +68,16 @@ class VooToast {
 
 Function _showToast(
   BuildContext context, {
-  String msg,
+  String? msg,
   int showTime = 1000,
-  Color bgColor,
-  TextStyle textStyle,
+  Color? bgColor,
+  TextStyle? textStyle,
   VooToastPosition position = VooToastPosition.center,
   VooToastType type = VooToastType.text,
   VooToastResult result = VooToastResult.success,
 }) {
   //获取OverlayState
-  OverlayState overlayState = Overlay.of(context);
+  OverlayState? overlayState = Overlay.of(context);
 
   GlobalKey<_FToastViewState> key = GlobalKey();
 
@@ -109,28 +109,28 @@ Function _showToast(
 
 class _FToastView extends StatefulWidget {
   // 提示内容
-  final String msg;
+  final String? msg;
 
   // 背景颜色
-  final Color bgColor;
+  final Color? bgColor;
 
   // 文本颜色
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   // 显示位置
-  final VooToastPosition toastPosition;
+  final VooToastPosition? toastPosition;
 
   //显示类型
-  final VooToastType type;
+  final VooToastType? type;
 
   //结果类型
-  final VooToastResult result;
+  final VooToastResult? result;
 
-  final VoidCallback close;
+  final VoidCallback? close;
 
   _FToastView(
     this.msg, {
-    Key key,
+    Key? key,
     this.bgColor,
     this.textStyle,
     this.toastPosition,
@@ -147,7 +147,7 @@ class _FToastViewState extends State<_FToastView>
     with SingleTickerProviderStateMixin {
   static const Duration _fadeInDuration = Duration(milliseconds: 150);
   static const Duration _fadeOutDuration = Duration(milliseconds: 75);
-  AnimationController _controller;
+  AnimationController? _controller;
 
   @override
   void initState() {
@@ -163,7 +163,7 @@ class _FToastViewState extends State<_FToastView>
   @override
   Widget build(BuildContext context) {
     Widget toastView = FadeTransition(
-      opacity: _controller,
+      opacity: _controller!,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 40),
         width: MediaQuery.of(context).size.width,
@@ -199,7 +199,7 @@ class _FToastViewState extends State<_FToastView>
             horizontal: 46.w,
             vertical: 22.w,
           ),
-          child: Text(widget.msg, style: tempStyle),
+          child: Text(widget.msg!, style: tempStyle),
         ),
       );
     } else if (widget.type == VooToastType.loading) {
@@ -213,7 +213,7 @@ class _FToastViewState extends State<_FToastView>
         ),
       ));
       children.add(SizedBox(height: 28.w));
-      children.add(Text(widget.msg, style: tempStyle));
+      children.add(Text(widget.msg!, style: tempStyle));
       return Card(
         color: tempBgColor,
         shape: RoundedRectangleBorder(borderRadius: tempBorderRadius),
@@ -233,8 +233,8 @@ class _FToastViewState extends State<_FToastView>
         ),
       );
     } else if (widget.type == VooToastType.result) {
-      List<Widget> children = [];
-      Widget iconView;
+      List<Widget?> children = [];
+      Widget? iconView;
       switch (widget.result) {
         case VooToastResult.success:
           iconView = Icon(
@@ -260,7 +260,7 @@ class _FToastViewState extends State<_FToastView>
       }
       children.add(iconView);
       children.add(SizedBox(height: 28.w));
-      children.add(Text(widget.msg, style: tempStyle));
+      children.add(Text(widget.msg!, style: tempStyle));
       return Center(
         child: Card(
           color: tempBgColor,
@@ -275,7 +275,7 @@ class _FToastViewState extends State<_FToastView>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: children,
+              children: children as List<Widget>,
             ),
           ),
         ),
@@ -309,7 +309,7 @@ class _FToastViewState extends State<_FToastView>
   @override
   void dispose() {
     _hide();
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 }

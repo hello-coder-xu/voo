@@ -3,13 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///单元-tile
 class VooCellTile extends StatelessWidget {
-  final Widget image;
+  final Widget? image;
   final String title;
-  final TextStyle style;
+  final TextStyle? style;
   final String subTitle;
-  final TextStyle subStyle;
-  final double paddingWidth;
-  final VoidCallback onTap;
+  final TextStyle? subStyle;
+  final double? paddingWidth;
+  final VoidCallback? onTap;
 
   VooCellTile({
     this.image,

@@ -10,14 +10,14 @@ enum IndicatorAlignment { top, center, bottom }
 class RoundTabIndicator extends Decoration {
   final double height;
   final double width;
-  final Color color;
-  final BorderRadius borderRadius;
-  final IndicatorAlignment alignment;
-  final OnRadiusChanged onRadiusChanged;
+  final Color? color;
+  final BorderRadius? borderRadius;
+  final IndicatorAlignment? alignment;
+  final OnRadiusChanged? onRadiusChanged;
 
   RoundTabIndicator({
-    @required this.height,
-    @required this.width,
+    required this.height,
+    required this.width,
     this.color,
     this.borderRadius,
     this.alignment,
@@ -25,7 +25,7 @@ class RoundTabIndicator extends Decoration {
   });
 
   @override
-  BoxPainter createBoxPainter([onChanged]) {
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
     return _CustomPainter(this, onChanged);
   }
 }
@@ -33,30 +33,28 @@ class RoundTabIndicator extends Decoration {
 class _CustomPainter extends BoxPainter {
   _CustomPainter(
     this.decoration,
-    VoidCallback onChanged,
-  )   : assert(decoration != null),
-        super(onChanged);
+    VoidCallback? onChanged,
+  ) : super(onChanged);
 
   final RoundTabIndicator decoration;
 
-  Color get color => decoration.color;
+  Color? get color => decoration.color;
 
   double get width => decoration.width;
 
   double get height => decoration.height;
 
-  BorderRadius get borderRadius => decoration.borderRadius;
+  BorderRadius? get borderRadius => decoration.borderRadius;
 
-  IndicatorAlignment get alignment => decoration.alignment;
+  IndicatorAlignment? get alignment => decoration.alignment;
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    assert(configuration != null);
     assert(configuration.size != null);
 
     //offset is the position from where the decoration should be drawn.
     //configuration.size tells us about the height and width of the tab.
-    final Rect rect = offset & configuration.size;
+    final Rect rect = offset & configuration.size!;
     final Paint paint = Paint();
     paint.color = color ?? Color(0xFF333333);
     paint.style = PaintingStyle.fill;
@@ -72,7 +70,7 @@ class _CustomPainter extends BoxPainter {
 
     BorderRadius pBorderRadius = borderRadius ?? BorderRadius.circular(5);
     if (decoration.onRadiusChanged != null)
-      pBorderRadius = decoration.onRadiusChanged(offset.dx / itemWidth);
+      pBorderRadius = decoration.onRadiusChanged!(offset.dx / itemWidth);
 
     canvas.drawRRect(
       RRect.fromRectAndCorners(
@@ -101,7 +99,8 @@ class _CustomPainter extends BoxPainter {
             : (itemHeight - pHeight);
       case IndicatorAlignment.bottom:
         return itemHeight - pHeight;
+      default: //
+        return itemHeight - pHeight;
     }
-    return itemHeight - pHeight;
   }
 }

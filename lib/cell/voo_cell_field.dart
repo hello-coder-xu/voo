@@ -6,27 +6,27 @@ import 'package:voo/field/index.dart';
 ///文本输入单元格
 class VooCellField extends StatelessWidget {
   //标题
-  final String title;
+  final String? title;
   //标题字体样式
-  final TextStyle titleStyle;
+  final TextStyle? titleStyle;
   //标题显示长度
-  final double titleWidth;
+  final double? titleWidth;
   //错误文本
-  final String errorText;
+  final String? errorText;
   //错误文本字体样式
-  final TextStyle errorStyle;
+  final TextStyle? errorStyle;
   //后缀文本
-  final String trailing;
+  final String? trailing;
   //后缀文本字体样式
-  final TextStyle trailingStyle;
+  final TextStyle? trailingStyle;
   //标题与输入框之间距离
-  final double paddingWidth;
+  final double? paddingWidth;
 
   //----------输入框属性 详情见VooTextField-----------
   final TextFieldStyle textFieldTheme;
-  final Widget prefixIcon;
-  final String hintText;
-  final Widget suffixIcon;
+  final Widget? prefixIcon;
+  final String? hintText;
+  final Widget? suffixIcon;
 
   final TextStyle style;
   final TextStyle hintStyle;
@@ -42,18 +42,18 @@ class VooCellField extends StatelessWidget {
   final bool showClear;
 
   final int maxLines;
-  final int minLines;
-  final int maxLength;
+  final int? minLines;
+  final int? maxLength;
   final bool readOnly;
   final bool enabled;
 
-  final ValueChanged<String> onChanged;
-  final VoidCallback onEditingComplete;
-  final ValueChanged<String> onSubmitted;
-  final List<TextInputFormatter> inputFormatters;
-  final TextInputType keyboardType;
-  final TextInputAction textInputAction;
-  final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
+  final VoidCallback? onEditingComplete;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final TextEditingController? controller;
 
   VooCellField({
     this.title,
@@ -101,7 +101,7 @@ class VooCellField extends StatelessWidget {
       width: titleWidth ?? 128.w,
       constraints: BoxConstraints(minHeight: 76.h),
       child: Text(
-        title,
+        title!,
         style: titleStyle ??
             TextStyle(
               fontSize: 32.sp,
@@ -154,7 +154,7 @@ class VooCellField extends StatelessWidget {
         margin: EdgeInsets.only(left: 16.w),
         alignment: Alignment.center,
         child: Text(
-          trailing,
+          trailing!,
           style: trailingStyle ??
               TextStyle(
                 fontSize: 32.sp,
@@ -174,7 +174,7 @@ class VooCellField extends StatelessWidget {
       margin: EdgeInsets.only(left: paddingWidth ?? 56.w),
       alignment: Alignment.centerRight,
       child: Text(
-        errorText,
+        errorText!,
         style: errorStyle ??
             TextStyle(
               fontSize: 28.sp,

@@ -5,12 +5,12 @@ import 'package:voo/switch/index.dart';
 ///单元-开关
 class VooCellSwitch extends StatelessWidget {
   final String title;
-  final TextStyle style;
-  final Widget leading;
+  final TextStyle? style;
+  final Widget? leading;
   final bool checked;
-  final Function(bool value) onChanged;
-  final Color activeColor;
-  final Color trackColor;
+  final Function(bool value)? onChanged;
+  final Color? activeColor;
+  final Color? trackColor;
 
   VooCellSwitch({
     this.title = '',
@@ -34,11 +34,11 @@ class VooCellSwitch extends StatelessWidget {
     );
 
     if (leading != null) {
-      List<Widget> children = [];
+      List<Widget?> children = [];
       children.add(leading);
       children.add(SizedBox(width: 24.w));
       children.add(titleView);
-      return Row(children: children, crossAxisAlignment: CrossAxisAlignment.center);
+      return Row(children: children as List<Widget>, crossAxisAlignment: CrossAxisAlignment.center);
     }
     return titleView;
   }

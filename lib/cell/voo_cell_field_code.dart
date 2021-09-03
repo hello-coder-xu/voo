@@ -6,18 +6,18 @@ import 'package:voo/field/index.dart';
 ///验证码
 class VooCellFieldCode extends StatelessWidget {
   final String title;
-  final TextStyle titleStyle;
-  final double titleWidth;
-  final String trailing;
-  final TextStyle trailingStyle;
-  final VoidCallback onTrailing;
-  final double paddingWidth;
+  final TextStyle? titleStyle;
+  final double? titleWidth;
+  final String? trailing;
+  final TextStyle? trailingStyle;
+  final VoidCallback? onTrailing;
+  final double? paddingWidth;
 
   //输入框属性
   final TextFieldStyle textFieldTheme;
-  final Widget prefixIcon;
-  final String hintText;
-  final Widget suffixIcon;
+  final Widget? prefixIcon;
+  final String? hintText;
+  final Widget? suffixIcon;
 
   final TextStyle style;
   final TextStyle hintStyle;
@@ -33,21 +33,21 @@ class VooCellFieldCode extends StatelessWidget {
   final bool showClear;
 
   final int maxLines;
-  final int minLines;
-  final int maxLength;
+  final int? minLines;
+  final int? maxLength;
   final bool readOnly;
   final bool enabled;
 
-  final ValueChanged<String> onChanged;
-  final VoidCallback onEditingComplete;
-  final ValueChanged<String> onSubmitted;
-  final List<TextInputFormatter> inputFormatters;
-  final TextInputType keyboardType;
-  final TextInputAction textInputAction;
-  final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
+  final VoidCallback? onEditingComplete;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final TextEditingController? controller;
 
   VooCellFieldCode({
-    @required this.title,
+    required this.title,
     this.titleStyle,
     this.titleWidth,
     this.trailing,
@@ -96,7 +96,7 @@ class VooCellFieldCode extends StatelessWidget {
       margin: EdgeInsets.only(left: 16.w),
       alignment: Alignment.center,
       child: Text(
-        trailing,
+        trailing!,
         style: trailingStyle ?? TextStyle(fontSize: 32.sp, color: Color(0xff25c489)),
       ),
     ));

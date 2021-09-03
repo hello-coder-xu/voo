@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 ///单元格
 class VooCell extends StatelessWidget {
   //前缀视图
-  final Widget leading;
+  final Widget? leading;
 
   //左边文本内容
   final String title;
 
   //左边文本字体样式
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   //是否显示向右图标
   final bool showRightIcon;
@@ -19,10 +19,10 @@ class VooCell extends StatelessWidget {
   final String content;
 
   //右边文本字体样式
-  final TextStyle contentStyle;
+  final TextStyle? contentStyle;
 
   //点击事件
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   VooCell({
     this.title = '',
@@ -46,11 +46,11 @@ class VooCell extends StatelessWidget {
     );
 
     if (leading != null) {
-      List<Widget> children = [];
+      List<Widget?> children = [];
       children.add(leading);
       children.add(SizedBox(width: 24.w));
       children.add(titleView);
-      return Row(children: children, crossAxisAlignment: CrossAxisAlignment.center);
+      return Row(children: children as List<Widget>, crossAxisAlignment: CrossAxisAlignment.center);
     }
     return titleView;
   }

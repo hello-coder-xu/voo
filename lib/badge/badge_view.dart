@@ -7,25 +7,25 @@ class VooBadgeView extends StatelessWidget {
   final Widget child;
 
   //微标内容
-  final String number;
+  final String? number;
 
   //微标字体样式
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   //微标显示模式
-  final VooBadgeStyle style;
+  final VooBadgeStyle? style;
 
   //微标背景颜色
-  final Color bgColor;
+  final Color? bgColor;
 
   //微标显示位置
-  final double left;
-  final double top;
-  final double right;
-  final double bottom;
+  final double? left;
+  final double? top;
+  final double? right;
+  final double? bottom;
 
   VooBadgeView({
-    @required this.child,
+    required this.child,
     this.number,
     this.style,
     this.textStyle,

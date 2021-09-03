@@ -5,18 +5,18 @@ import 'package:voo/picker/picker_bean.dart';
 
 ///选择器
 class VooPicker extends StatefulWidget {
-  final String title;
-  final String cancelTxt;
-  final String confirmTxt;
-  final TextStyle style;
-  final TextStyle confirmStyle;
-  final TextStyle cancelStyle;
-  final List<PickerBean> list;
-  final Function onCancel;
-  final Function(String value) onConfirm;
+  final String? title;
+  final String? cancelTxt;
+  final String? confirmTxt;
+  final TextStyle? style;
+  final TextStyle? confirmStyle;
+  final TextStyle? cancelStyle;
+  final List<PickerBean>? list;
+  final Function? onCancel;
+  final Function(String value)? onConfirm;
 
   VooPicker({
-    @required this.list,
+    required this.list,
     this.title,
     this.cancelTxt,
     this.confirmTxt,
@@ -38,16 +38,16 @@ class VooPickerState extends State<VooPicker> {
   @override
   void initState() {
     super.initState();
-    assert(widget.list != null || widget.list.length > 0);
+    assert(widget.list != null || widget.list!.length > 0);
 
-    widget.list.forEach((it) {
-      value.add(it.list[it.select]);
+    widget.list!.forEach((it) {
+      value.add(it.list![it.select]);
       scrolls.add(FixedExtentScrollController(initialItem: it.select));
     });
   }
 
   Widget cupertinoPickerItem(int index) {
-    List<String> list = widget.list[index].list;
+    List<String> list = widget.list![index].list!;
 
     List<Widget> children = [];
 
@@ -138,7 +138,7 @@ class VooPickerState extends State<VooPicker> {
 
   Widget contentCupertionPickerView() {
     List<Widget> children = [];
-    List.generate(widget.list.length, (index) {
+    List.generate(widget.list!.length, (index) {
       children.add(cupertinoPickerItem(index));
     });
     return Container(
@@ -160,7 +160,7 @@ class VooPickerState extends State<VooPicker> {
   void onConfirm() {
     if (widget.onConfirm != null) {
       String tempValue = value.join('-');
-      widget.onConfirm(tempValue);
+      widget.onConfirm!(tempValue);
     }
   }
 

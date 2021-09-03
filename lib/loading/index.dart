@@ -8,7 +8,7 @@ class VooLoading extends StatelessWidget {
   //颜色
   final Color color;
   //标题
-  final String title;
+  final String? title;
   //是否水平
   final bool horizontal;
 
@@ -34,7 +34,7 @@ class VooLoading extends StatelessWidget {
 
     if (title != null) {
       children.add(SizedBox(width: 8, height: 8));
-      children.add(Text(title, style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)));
+      children.add(Text(title!, style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)));
     }
 
     if (horizontal) {

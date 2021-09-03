@@ -13,11 +13,11 @@ class VooTextField extends StatefulWidget {
   //显示样式
   final TextFieldStyle style;
   //前缀视图
-  final Widget prefixIcon;
+  final Widget? prefixIcon;
   //提示文本
-  final String hintText;
+  final String? hintText;
   //后缀视图
-  final Widget suffixIcon;
+  final Widget? suffixIcon;
   //文本字体样式
   final TextStyle textStyle;
   //提示文本字体样式
@@ -43,27 +43,27 @@ class VooTextField extends StatefulWidget {
   //最大行数
   final int maxLines;
   //最小行数
-  final int minLines;
+  final int? minLines;
   //最大字数
-  final int maxLength;
+  final int? maxLength;
   //是否只读
   final bool readOnly;
   //是否可用
   final bool enabled;
   //文本变化事件
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
   //软键盘完成事件
-  final VoidCallback onEditingComplete;
+  final VoidCallback? onEditingComplete;
   //软键盘提交事件
-  final ValueChanged<String> onSubmitted;
+  final ValueChanged<String>? onSubmitted;
   //输入框内容限制
-  final List<TextInputFormatter> inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
   //软键盘显示样式
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
   //软键盘按钮
-  final TextInputAction textInputAction;
+  final TextInputAction? textInputAction;
   //控制器
-  final TextEditingController controller;
+  final TextEditingController? controller;
 
   VooTextField({
     this.style = TextFieldStyle.none,
@@ -100,8 +100,8 @@ class VooTextField extends StatefulWidget {
 }
 
 class VooTextFieldState extends State<VooTextField> {
-  TextEditingController controller;
-  bool obscureText;
+  TextEditingController? controller;
+  late bool obscureText;
 
   @override
   void initState() {
@@ -112,7 +112,7 @@ class VooTextFieldState extends State<VooTextField> {
 
   /// 获取装饰
   InputDecoration getDecoration() {
-    InputBorder border;
+    InputBorder? border;
     switch (widget.style) {
       case TextFieldStyle.none:
         border = OutlineInputBorder(
@@ -135,9 +135,9 @@ class VooTextFieldState extends State<VooTextField> {
     }
 
     //前缀与后缀视图
-    Widget prefixIcon = widget.prefixIcon;
-    Widget suffixIcon;
-    Widget suffix;
+    Widget? prefixIcon = widget.prefixIcon;
+    Widget? suffixIcon;
+    Widget? suffix;
     if (widget.showPwd) {
       //显示 密码隐藏可见按钮
       suffixIcon = GestureDetector(
@@ -207,7 +207,7 @@ class VooTextFieldState extends State<VooTextField> {
   void onClear() {
     controller?.clear();
     if (widget.onChanged != null) {
-      widget.onChanged('');
+      widget.onChanged!('');
     }
   }
 

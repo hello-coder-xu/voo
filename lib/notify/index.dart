@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 ///通知
 class VooNotify {
-  static VooNotifyOperation toastView;
+  static late VooNotifyOperation toastView;
   static var controller;
-  static var offsetAnim;
+  static late var offsetAnim;
 
   ///显示
   static Function show(
     BuildContext context, {
-    @required Widget child,
+    required Widget child,
     Duration duration = const Duration(seconds: 3),
     bool isAsync = false,
     bool ignoring = true,
   }) {
-    var overlayState = Overlay.of(context);
+    var overlayState = Overlay.of(context)!;
 
     _addAnimation(overlayState);
 
@@ -69,9 +69,9 @@ class VooNotify {
 }
 
 class VooNotifyOperation {
-  AnimationController controller;
-  OverlayEntry overlayEntry;
-  OverlayState overlayState;
+  AnimationController? controller;
+  OverlayEntry? overlayEntry;
+  OverlayState? overlayState;
   bool isHide = false;
   Duration duration;
   bool isAsync;
@@ -86,9 +86,9 @@ class VooNotifyOperation {
 
   /*显示 延迟3.5秒 消失*/
   show() async {
-    overlayState.insert(overlayEntry);
+    overlayState!.insert(overlayEntry!);
 
-    controller.forward();
+    controller!.forward();
     if (!isAsync) {
       await Future.delayed(duration);
       hide();
@@ -101,7 +101,7 @@ class VooNotifyOperation {
       return;
     }
     this.isHide = true;
-    await controller.reverse();
-    overlayEntry.remove();
+    await controller!.reverse();
+    overlayEntry!.remove();
   }
 }

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class VooMaskView extends StatelessWidget {
   final Size size;
   final Offset offset;
-  final Widget child;
+  final Widget? child;
 
   VooMaskView({
-    Key key,
+    Key? key,
     this.size = Size.zero,
     this.offset = Offset.zero,
     this.child,
@@ -14,7 +14,7 @@ class VooMaskView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = [];
+    List<Widget?> children = [];
     children.add(GestureDetector(
       onTap: () => close(context),
       child: Container(color: Color.fromRGBO(0, 0, 0, 0.5)),
@@ -24,7 +24,7 @@ class VooMaskView extends StatelessWidget {
     }
     return ClipPath(
       clipper: VooInvertedCircleClipper(maskSize: size, maskOffset: offset),
-      child: Stack(children: children),
+      child: Stack(children: children as List<Widget>),
     );
   }
 

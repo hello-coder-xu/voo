@@ -9,16 +9,16 @@ enum VooBadgeStyle {
 ///微标
 class VooBadge extends StatelessWidget {
   //显示文本  显示模式为text 有效
-  final String child;
+  final String? child;
 
   //文本字体样式 显示模式为text 有效
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   //显示模式
-  final VooBadgeStyle style;
+  final VooBadgeStyle? style;
 
   //微标背景颜色
-  final Color bgColor;
+  final Color? bgColor;
 
   VooBadge({
     this.child,

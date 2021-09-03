@@ -12,8 +12,8 @@ class ExpandableText extends StatefulWidget {
   final TextStyle expandTextStyle;
 
   ExpandableText({
-    Key key,
-    @required this.text,
+    Key? key,
+    required this.text,
     this.textStyle = const TextStyle(
       color: Colors.black,
       fontSize: DEFAULT_FONT_SIZE,
@@ -133,15 +133,15 @@ typedef OnButtonTap = Function(bool isExpand);
 class ExpandableIconText extends StatefulWidget {
   final String text;
   final TextStyle style;
-  final Widget expandButton;
-  final Widget collapseButton;
+  final Widget? expandButton;
+  final Widget? collapseButton;
   final int maxLines;
   final bool isExpand;
-  final OnButtonTap onButtonTap;
+  final OnButtonTap? onButtonTap;
 
   const ExpandableIconText({
-    Key key,
-    @required this.text,
+    Key? key,
+    required this.text,
     this.style = const TextStyle(),
     this.expandButton,
     this.collapseButton,
@@ -207,7 +207,7 @@ class _ExpandableIconTextState extends State<ExpandableIconText> {
       behavior: HitTestBehavior.translucent,
       onTap: () {
         setState(() => isExpand = !isExpand);
-        if (widget.onButtonTap != null) widget.onButtonTap(isExpand);
+        if (widget.onButtonTap != null) widget.onButtonTap!(isExpand);
       },
       child: isExpand ? defaultCollapseButton() : defaultExpandButton(),
     );

@@ -5,13 +5,13 @@ enum VooPopupType { top, left, right, bottom, none }
 ///popup
 class VooPopup {
   static Future showPopup({
-    @required BuildContext context,
-    WidgetBuilder builder,
+    required BuildContext context,
+    required WidgetBuilder builder,
     bool barrierDismissible = true,
-    Color barrierColor,
+    Color? barrierColor,
     bool useSafeArea = true,
     bool useRootNavigator = true,
-    RouteSettings routeSettings,
+    RouteSettings? routeSettings,
     VooPopupType type = VooPopupType.none,
   }) {
     assert(builder != null);
@@ -97,9 +97,9 @@ class VooPopup {
           curve: Curves.linearToEaseOut,
         ));
         if (type == VooPopupType.none) {
-          return FadeTransition(opacity: animation, child: ScaleTransition(scale: animation, child: child));
+          return FadeTransition(opacity: animation as Animation<double>, child: ScaleTransition(scale: animation, child: child));
         } else {
-          return SlideTransition(position: animation, child: child);
+          return SlideTransition(position: animation as Animation<Offset>, child: child);
         }
       },
       useRootNavigator: useRootNavigator,

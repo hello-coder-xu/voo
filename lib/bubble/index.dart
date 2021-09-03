@@ -12,7 +12,7 @@ class BubbleBox extends StatelessWidget {
   final Radius radius;
 
   //内部间距
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   //三角形显示位置
   final ArrowDirection arrowDirection;
@@ -30,16 +30,16 @@ class BubbleBox extends StatelessWidget {
   final double elevation;
 
   //内容大小装饰器
-  final BoxConstraints constraints;
+  final BoxConstraints? constraints;
 
   //内容
   final Widget child;
 
   BubbleBox({
-    Key key,
-    double width,
-    double height,
-    BoxConstraints constraints,
+    Key? key,
+    double? width,
+    double? height,
+    BoxConstraints? constraints,
     this.color = Colors.blue,
     this.radius = Radius.zero,
     this.padding,
@@ -48,7 +48,7 @@ class BubbleBox extends StatelessWidget {
     this.arrowSize = 6,
     this.arrowOffset = 0,
     this.elevation = 0,
-    @required this.child,
+    required this.child,
   })  : assert(constraints == null || constraints.debugAssertIsValid()),
         constraints = (width != null || height != null)
             ? constraints?.tighten(width: width, height: height) ??
@@ -95,13 +95,13 @@ class BubbleBox extends StatelessWidget {
 }
 
 class BubblePainter extends CustomPainter {
-  final Color color;
-  final Radius radius;
-  final ArrowDirection arrowDirection;
-  final ArrowAlignment arrowAlignment;
-  final double arrowSize;
-  final double arrowOffset;
-  final double elevation;
+  final Color? color;
+  final Radius? radius;
+  final ArrowDirection? arrowDirection;
+  final ArrowAlignment? arrowAlignment;
+  final double? arrowSize;
+  final double? arrowOffset;
+  final double? elevation;
 
   const BubblePainter({
     this.color,
@@ -118,7 +118,7 @@ class BubblePainter extends CustomPainter {
     Paint paint = Paint()
       ..isAntiAlias = true
       ..style = PaintingStyle.fill
-      ..color = color;
+      ..color = color!;
 
     drawBox(canvas, size, paint);
   }
@@ -141,102 +141,102 @@ class BubblePainter extends CustomPainter {
   }
 
   void drawLeft(Canvas canvas, Size size, Paint paint) {
-    Rect rect = Rect.fromLTRB(0, 0, size.width - arrowSize / 2, size.height);
-    Path path = Path()..addRect(rect.translate(arrowSize, 0));
-    canvas.drawShadow(path, Colors.grey.shade100, elevation, true);
+    Rect rect = Rect.fromLTRB(0, 0, size.width - arrowSize! / 2, size.height);
+    Path path = Path()..addRect(rect.translate(arrowSize!, 0));
+    canvas.drawShadow(path, Colors.grey.shade100, elevation!, true);
 
     canvas.drawRRect(
-      RRect.fromLTRBR(arrowSize, 0, size.width, size.height, radius),
+      RRect.fromLTRBR(arrowSize!, 0, size.width, size.height, radius!),
       paint,
     );
 
-    double offset = arrowSize + DEFAULT_OFFSET + arrowOffset;
+    double offset = arrowSize! + DEFAULT_OFFSET + arrowOffset!;
     if (arrowAlignment == ArrowAlignment.center) {
-      offset = size.height / 2 + arrowOffset;
+      offset = size.height / 2 + arrowOffset!;
     }
     if (arrowAlignment == ArrowAlignment.end) {
-      offset = size.height - arrowSize - DEFAULT_OFFSET - arrowOffset;
+      offset = size.height - arrowSize! - DEFAULT_OFFSET - arrowOffset!;
     }
 
     path = Path()
       ..moveTo(0, offset)
-      ..lineTo(arrowSize, offset - arrowSize / 3 * 2)
-      ..lineTo(arrowSize, offset + arrowSize / 3 * 2);
+      ..lineTo(arrowSize!, offset - arrowSize! / 3 * 2)
+      ..lineTo(arrowSize!, offset + arrowSize! / 3 * 2);
     canvas.drawPath(path, paint);
   }
 
   void drawRight(Canvas canvas, Size size, Paint paint) {
-    Rect rect = Rect.fromLTRB(0, 0, size.width - arrowSize / 2, size.height);
-    Path path = Path()..addRect(rect.translate(-arrowSize / 2, 0));
-    canvas.drawShadow(path, Colors.grey.shade100, elevation, true);
+    Rect rect = Rect.fromLTRB(0, 0, size.width - arrowSize! / 2, size.height);
+    Path path = Path()..addRect(rect.translate(-arrowSize! / 2, 0));
+    canvas.drawShadow(path, Colors.grey.shade100, elevation!, true);
 
     canvas.drawRRect(
-      RRect.fromLTRBR(0, 0, size.width - arrowSize, size.height, radius),
+      RRect.fromLTRBR(0, 0, size.width - arrowSize!, size.height, radius!),
       paint,
     );
 
-    double offset = arrowSize + DEFAULT_OFFSET + arrowOffset;
+    double offset = arrowSize! + DEFAULT_OFFSET + arrowOffset!;
     if (arrowAlignment == ArrowAlignment.center) {
-      offset = size.height / 2 + arrowOffset;
+      offset = size.height / 2 + arrowOffset!;
     }
     if (arrowAlignment == ArrowAlignment.end) {
-      offset = size.height - arrowSize - DEFAULT_OFFSET - arrowOffset;
+      offset = size.height - arrowSize! - DEFAULT_OFFSET - arrowOffset!;
     }
     path = Path()
       ..moveTo(size.width, offset)
-      ..lineTo(size.width - arrowSize, offset - arrowSize / 3 * 2)
-      ..lineTo(size.width - arrowSize, offset + arrowSize / 3 * 2);
+      ..lineTo(size.width - arrowSize!, offset - arrowSize! / 3 * 2)
+      ..lineTo(size.width - arrowSize!, offset + arrowSize! / 3 * 2);
     canvas.drawPath(path, paint);
   }
 
   void drawTop(Canvas canvas, Size size, Paint paint) {
-    Rect rect = Rect.fromLTRB(0, arrowSize / 2, size.width, size.height);
-    Path path = Path()..addRect(rect.translate(arrowSize / 2, 0));
-    canvas.drawShadow(path, Colors.grey.shade100, elevation, true);
+    Rect rect = Rect.fromLTRB(0, arrowSize! / 2, size.width, size.height);
+    Path path = Path()..addRect(rect.translate(arrowSize! / 2, 0));
+    canvas.drawShadow(path, Colors.grey.shade100, elevation!, true);
 
     canvas.drawRRect(
-      RRect.fromLTRBR(0, arrowSize, size.width, size.height, radius),
+      RRect.fromLTRBR(0, arrowSize!, size.width, size.height, radius!),
       paint,
     );
 
-    double offset = arrowSize + DEFAULT_OFFSET + arrowOffset;
+    double offset = arrowSize! + DEFAULT_OFFSET + arrowOffset!;
     if (arrowAlignment == ArrowAlignment.center) {
-      offset = size.width / 2 + arrowOffset;
+      offset = size.width / 2 + arrowOffset!;
     }
     if (arrowAlignment == ArrowAlignment.end) {
-      offset = size.width - arrowSize - DEFAULT_OFFSET - arrowOffset;
+      offset = size.width - arrowSize! - DEFAULT_OFFSET - arrowOffset!;
     }
 
     path = Path()
       ..moveTo(offset, 0)
-      ..lineTo(offset - arrowSize / 3 * 2, arrowOffset + arrowSize)
-      ..lineTo(offset + arrowSize / 3 * 2, arrowOffset + arrowSize);
+      ..lineTo(offset - arrowSize! / 3 * 2, arrowOffset! + arrowSize!)
+      ..lineTo(offset + arrowSize! / 3 * 2, arrowOffset! + arrowSize!);
     canvas.drawPath(path, paint);
   }
 
   void drawBottom(Canvas canvas, Size size, Paint paint) {
-    Rect rect = Rect.fromLTRB(0, 0, size.width, size.height - arrowSize);
-    Path path = Path()..addRect(rect.translate(arrowSize / 2, 0));
-    canvas.drawShadow(path, Colors.grey.shade100, elevation, true);
+    Rect rect = Rect.fromLTRB(0, 0, size.width, size.height - arrowSize!);
+    Path path = Path()..addRect(rect.translate(arrowSize! / 2, 0));
+    canvas.drawShadow(path, Colors.grey.shade100, elevation!, true);
 
     canvas.drawRRect(
-      RRect.fromLTRBR(0, 0, size.width, size.height - arrowSize, radius),
+      RRect.fromLTRBR(0, 0, size.width, size.height - arrowSize!, radius!),
       paint,
     );
 
-    double offset = arrowSize + DEFAULT_OFFSET + arrowOffset;
+    double offset = arrowSize! + DEFAULT_OFFSET + arrowOffset!;
     if (arrowAlignment == ArrowAlignment.center) {
-      offset = size.width / 2 + arrowOffset;
+      offset = size.width / 2 + arrowOffset!;
     }
     if (arrowAlignment == ArrowAlignment.end) {
-      offset = size.width - arrowSize - DEFAULT_OFFSET - arrowOffset;
+      offset = size.width - arrowSize! - DEFAULT_OFFSET - arrowOffset!;
     }
 
-    var dy = size.height - arrowOffset - arrowSize;
+    var dy = size.height - arrowOffset! - arrowSize!;
     path = Path()
       ..moveTo(offset, size.height)
-      ..lineTo(offset - arrowSize / 3 * 2, dy)
-      ..lineTo(offset + arrowSize / 3 * 2, dy);
+      ..lineTo(offset - arrowSize! / 3 * 2, dy)
+      ..lineTo(offset + arrowSize! / 3 * 2, dy);
     canvas.drawPath(path, paint);
   }
 

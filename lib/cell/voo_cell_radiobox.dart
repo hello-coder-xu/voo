@@ -5,11 +5,11 @@ import 'package:voo/checkbox/voo_checkbox_icon.dart';
 /// 单元-多选
 class VooCellRadioBox extends StatelessWidget {
   final bool checked;
-  final Icon selectIcon;
-  final Icon unSelectIcon;
-  final String title;
-  final TextStyle style;
-  final VoidCallback onTap;
+  final Icon? selectIcon;
+  final Icon? unSelectIcon;
+  final String? title;
+  final TextStyle? style;
+  final VoidCallback? onTap;
 
   VooCellRadioBox({
     this.checked = false,
@@ -38,7 +38,7 @@ class VooCellRadioBox extends StatelessWidget {
       children.add(WidgetSpan(
         alignment: PlaceholderAlignment.middle,
         child: Text(
-          title,
+          title!,
           style: style ??
               TextStyle(
                 color: Color(0xff333333),

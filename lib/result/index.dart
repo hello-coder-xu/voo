@@ -9,21 +9,21 @@ class VooResult extends StatelessWidget {
   //标题
   final String title;
   //副标题
-  final String subTitle;
+  final String? subTitle;
   //确定文本
-  final String confirm;
+  final String? confirm;
   //取消文本
-  final String cancel;
+  final String? cancel;
   //是否显示取消
   final bool showCancel;
   //确定事件
-  final VoidCallback onConfirm;
+  final VoidCallback? onConfirm;
   //取消事件
-  final VoidCallback onCancel;
+  final VoidCallback? onCancel;
 
   VooResult({
-    @required this.icon,
-    @required this.title,
+    required this.icon,
+    required this.title,
     this.subTitle,
     this.confirm,
     this.cancel,
@@ -51,7 +51,7 @@ class VooResult extends StatelessWidget {
       if (children.length > 1) {
         children.add(SizedBox(height: 8));
       }
-      children.add(Text(subTitle, style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)));
+      children.add(Text(subTitle!, style: TextStyle(fontSize: 14, color: VooColors.subTitleColor)));
     }
 
     return Container(

@@ -9,21 +9,21 @@ class VooNavBar extends StatelessWidget {
   //标题
   final String title;
   //副标题
-  final String subTitle;
+  final String? subTitle;
   //标题字体样式
-  final TextStyle style;
+  final TextStyle? style;
   //副标题字体样式
-  final TextStyle subStyle;
+  final TextStyle? subStyle;
   //左边icon
-  final Icon titleIconLeft;
+  final Icon? titleIconLeft;
   //右边icon
-  final Icon titleIconRight;
+  final Icon? titleIconRight;
   //更多
-  final List<Widget> actions;
+  final List<Widget>? actions;
   //阴影
   final double elevation;
   //背景颜色
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   VooNavBar({
     this.title = '',
@@ -50,7 +50,7 @@ class VooNavBar extends StatelessWidget {
     ));
     if (subTitle != null) {
       children.add(Text(
-        subTitle,
+        subTitle!,
         style: subStyle ??
             TextStyle(
               fontSize: 24.sp,
@@ -63,7 +63,7 @@ class VooNavBar extends StatelessWidget {
 
   //标题视图
   Widget titleView(BuildContext context) {
-    List<Widget> children = [];
+    List<Widget?> children = [];
     if (titleIconLeft != null) {
       children.add(titleIconLeft);
       children.add(SizedBox(width: 14.w));
@@ -75,14 +75,14 @@ class VooNavBar extends StatelessWidget {
       children.add(titleIconRight);
     }
     return Row(
-      children: children,
+      children: children as List<Widget>,
       mainAxisSize: MainAxisSize.min,
     );
   }
 
   //actions视图
-  List<Widget> actionsView() {
-    List<Widget> children = actions;
+  List<Widget>? actionsView() {
+    List<Widget>? children = actions;
     if (children != null) {
       children.add(SizedBox(width: 32.w));
     }

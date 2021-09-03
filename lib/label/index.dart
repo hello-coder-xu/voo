@@ -9,16 +9,16 @@ class VooLabel extends StatelessWidget {
   final String value;
 
   //背景颜色
-  final Color bgColor;
+  final Color? bgColor;
 
   //字体样式
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   //显示模式
-  final VooLabelStyle style;
+  final VooLabelStyle? style;
 
   VooLabel({
-    @required this.value,
+    required this.value,
     this.bgColor,
     this.textStyle,
     this.style,

@@ -26,17 +26,17 @@ class AnimatedTextButton extends StatefulWidget {
   final Duration duration;
 
   /// tap call back of button
-  final OnButtonSwitch onTap;
+  final OnButtonSwitch? onTap;
 
   /// builder to create button
-  final ButtonWidgetBuilder buttonBuilder;
+  final ButtonWidgetBuilder? buttonBuilder;
 
   /// Arrangement direction for button and text
   final WidgetOrientation orientation;
 
   const AnimatedTextButton({
-    Key key,
-    @required this.text,
+    Key? key,
+    required this.text,
     this.style: const TextStyle(),
     this.size: 30.0,
     this.switchOn: true,
@@ -107,7 +107,7 @@ class _AnimatedTextButtonState extends State<AnimatedTextButton> {
 
 class AnimatedButton extends StatefulWidget {
   /// use this controller to handle tap action
-  final ButtonController controller;
+  final ButtonController? controller;
 
   /// size of animated widget
   final double size;
@@ -119,13 +119,13 @@ class AnimatedButton extends StatefulWidget {
   final Duration duration;
 
   /// tap call back of button
-  final OnButtonSwitch onTap;
+  final OnButtonSwitch? onTap;
 
   /// builder to create button
-  final ButtonWidgetBuilder buttonBuilder;
+  final ButtonWidgetBuilder? buttonBuilder;
 
   const AnimatedButton({
-    Key key,
+    Key? key,
     this.controller,
     this.size: 30.0,
     this.switchOn: true,
@@ -140,9 +140,9 @@ class AnimatedButton extends StatefulWidget {
 }
 
 class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _scaleAnimation;
-  Animation<double> _opacityAnimation;
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _opacityAnimation;
   bool _switchOn = false;
 
   @override
@@ -163,7 +163,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStat
       super.didUpdateWidget(oldWidget);
     }
     // 绑定控制器
-    if (widget.controller != null) widget.controller._bindAnimatedButtonState(this);
+    if (widget.controller != null) widget.controller!._bindAnimatedButtonState(this);
   }
 
   @override
@@ -222,7 +222,7 @@ class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStat
   void _onTap() {
     if (_controller.isAnimating) return;
 
-    if (widget.onTap != null) widget.onTap(_switchOn);
+    if (widget.onTap != null) widget.onTap!(_switchOn);
     _handleSwitchChanged(_switchOn ?? true);
   }
 
@@ -294,16 +294,16 @@ class _AnimatedButtonState extends State<AnimatedButton> with TickerProviderStat
 
 class ButtonController {
   void onTap() {
-    if (this._animatedButtonState != null) this._animatedButtonState._onTap();
+    if (this._animatedButtonState != null) this._animatedButtonState!._onTap();
   }
 
   bool switchState() {
     if (this._animatedButtonState == null) return false;
-    return _animatedButtonState._switchState();
+    return _animatedButtonState!._switchState();
   }
 
   // 状态
-  _AnimatedButtonState _animatedButtonState;
+  _AnimatedButtonState? _animatedButtonState;
 
   // 绑定状态
   void _bindAnimatedButtonState(_AnimatedButtonState state) {

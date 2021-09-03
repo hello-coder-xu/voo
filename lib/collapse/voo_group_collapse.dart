@@ -9,10 +9,10 @@ class VooGroupCollapse extends StatefulWidget {
   //是否手风琴
   final bool isAccordion;
   //选择变化事件
-  final Function(int index, bool expansion) onExpansionChanged;
+  final Function(int index, bool expansion)? onExpansionChanged;
 
   VooGroupCollapse({
-    @required this.children,
+    required this.children,
     this.isAccordion = false,
     this.onExpansionChanged,
   }) : assert(children != null);
@@ -55,7 +55,7 @@ class VooGroupCollapseState extends State<VooGroupCollapse> {
 
   void onExpansionChanged(int index, bool expanded) {
     if (widget.onExpansionChanged != null) {
-      widget.onExpansionChanged(index, expanded);
+      widget.onExpansionChanged!(index, expanded);
     }
     if (widget.isAccordion) {
       List.generate(widget.children.length, (curIndex) {

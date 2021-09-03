@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class VooFilterView extends StatefulWidget {
   final Widget child;
   final Offset offset;
-  final VoidCallback close;
+  final VoidCallback? close;
 
   VooFilterView({
-    @required this.child,
+    required this.child,
     this.offset = Offset.zero,
     this.close,
   });
@@ -17,9 +17,9 @@ class VooFilterView extends StatefulWidget {
 }
 
 class VooFilterViewState extends State<VooFilterView> with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-  Animation animation;
-  Animation animationFade;
+  late AnimationController animationController;
+  late Animation animation;
+  late Animation animationFade;
 
   void initState() {
     super.initState();
@@ -38,7 +38,7 @@ class VooFilterViewState extends State<VooFilterView> with SingleTickerProviderS
       builder: (context, child) {
         return SizeTransition(
           axis: Axis.vertical,
-          sizeFactor: animation,
+          sizeFactor: animation as Animation<double>,
           child: child,
         );
       },
@@ -49,7 +49,7 @@ class VooFilterViewState extends State<VooFilterView> with SingleTickerProviderS
         animation: animationController,
         builder: (context, child) {
           return FadeTransition(
-            opacity: animationFade,
+            opacity: animationFade as Animation<double>,
             child: child,
           );
         },
@@ -73,7 +73,7 @@ class VooFilterViewState extends State<VooFilterView> with SingleTickerProviderS
   void close() async {
     await animationController.reverse();
     if (widget.close != null) {
-      widget.close();
+      widget.close!();
     }
   }
 

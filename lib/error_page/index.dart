@@ -13,16 +13,16 @@ class VooError extends StatelessWidget {
   final VooErrorType type;
 
   //标题
-  final Widget title;
+  final Widget? title;
 
   //内容
-  final Widget child;
+  final Widget? child;
 
   VooError({this.type = VooErrorType.empty_data, this.title, this.child});
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> children = [];
+    List<Widget?> children = [];
     Widget temp;
     switch (type) {
       case VooErrorType.empty_comment:
@@ -45,6 +45,6 @@ class VooError extends StatelessWidget {
     if (title != null) {
       children.add(title);
     }
-    return Column(children: children);
+    return Column(children: children as List<Widget>);
   }
 }

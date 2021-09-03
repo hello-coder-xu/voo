@@ -4,12 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 ///单元格
 class VooCellExtension extends StatelessWidget {
   final String title;
-  final TextStyle style;
-  final Widget leading;
-  final Widget trailing;
-  final Widget content;
+  final TextStyle? style;
+  final Widget? leading;
+  final Widget? trailing;
+  final Widget? content;
   final bool showRightIcon;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   VooCellExtension({
     this.title = '',
@@ -33,11 +33,11 @@ class VooCellExtension extends StatelessWidget {
     );
 
     if (leading != null) {
-      List<Widget> children = [];
+      List<Widget?> children = [];
       children.add(leading);
       children.add(SizedBox(width: 24.w));
       children.add(titleView);
-      return Row(children: children);
+      return Row(children: children as List<Widget>);
     }
     return titleView;
   }
@@ -48,7 +48,7 @@ class VooCellExtension extends StatelessWidget {
       style: TextStyle(fontSize: 32.sp, color: Color(0xffb6b6b6)),
       child: content ?? Text(''),
     );
-    List<Widget> children = [];
+    List<Widget?> children = [];
     children.add(valueView);
     if (trailing != null) {
       children.add(SizedBox(width: 32.w));
@@ -62,7 +62,7 @@ class VooCellExtension extends StatelessWidget {
       ));
     }
     return Row(
-      children: children,
+      children: children as List<Widget>,
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
     );

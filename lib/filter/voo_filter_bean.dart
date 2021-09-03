@@ -7,5 +7,5 @@ class VooFilterBean {
   //是否选中
   bool select;
 
-  VooFilterBean({@required this.title, this.select = false});
+  VooFilterBean({required this.title, this.select = false});
 }

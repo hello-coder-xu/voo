@@ -14,16 +14,16 @@ class VooButton extends StatelessWidget {
   final String child;
 
   //图标视图
-  final Widget icon;
+  final Widget? icon;
 
   //文本字体样式
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   //背景颜色
-  final Color bgColor;
+  final Color? bgColor;
 
   //边框颜色
-  final Color borderColor;
+  final Color? borderColor;
 
   //显示样式
   final VooButtonStyle style;
@@ -35,7 +35,7 @@ class VooButton extends StatelessWidget {
   final double elevation;
 
   //点击事件
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   //是否可用
   final bool enable;
@@ -44,7 +44,7 @@ class VooButton extends StatelessWidget {
   final bool hollow;
 
   VooButton({
-    @required this.child,
+    required this.child,
     this.icon,
     this.textStyle,
     this.bgColor,
@@ -63,7 +63,7 @@ class VooButton extends StatelessWidget {
 
     Color tempBgColor = getBackgroundColor();
     Color tempBorderColor = borderColor ?? Color(0xff25c489);
-    VoidCallback onPressed = onTap;
+    VoidCallback? onPressed = onTap;
     // if (enable) onPressed = onTap;
     Widget btnView;
     switch (style) {
@@ -74,7 +74,7 @@ class VooButton extends StatelessWidget {
         btnView = TextButton(
           style: ButtonStyle(
             padding: ButtonStyleButton.allOrNull(EdgeInsets.zero),
-            shape: ButtonStyleButton.allOrNull(shapeBorder),
+            shape: ButtonStyleButton.allOrNull(shapeBorder as OutlinedBorder?),
             backgroundColor: ButtonStyleButton.allOrNull(tempBgColor),
             side: hollow
                 ? MaterialStateProperty.all(
@@ -93,7 +93,7 @@ class VooButton extends StatelessWidget {
         btnView = TextButton(
           style: ButtonStyle(
             padding: ButtonStyleButton.allOrNull(EdgeInsets.zero),
-            shape: ButtonStyleButton.allOrNull(shapeBorder),
+            shape: ButtonStyleButton.allOrNull(shapeBorder as OutlinedBorder?),
             backgroundColor: ButtonStyleButton.allOrNull(tempBgColor),
             side: hollow
                 ? MaterialStateProperty.all(
@@ -215,12 +215,12 @@ class VooButton extends StatelessWidget {
   ///按钮视图
   Widget btnContentView() {
     if (icon == null) return textView();
-    List<Widget> children = [];
+    List<Widget?> children = [];
     children.add(icon);
     children.add(SizedBox(width: getIconPadding()));
     children.add(Flexible(child: textView()));
     return Row(
-      children: children,
+      children: children as List<Widget>,
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
     );

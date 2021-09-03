@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ///复选框-图标
 class VooCheckBoxIcon extends StatelessWidget {
-  final Icon selectIcon;
-  final Icon unSelectIcon;
+  final Icon? selectIcon;
+  final Icon? unSelectIcon;
   final bool value;
 
   VooCheckBoxIcon({
-    @required this.value,
+    required this.value,
     this.selectIcon,
     this.unSelectIcon,
   });

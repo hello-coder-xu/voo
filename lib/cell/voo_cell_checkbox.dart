@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 ///单元-单选择
 class VooCellCheckBox extends StatelessWidget {
   final String title;
-  final TextStyle style;
-  final Widget leading;
+  final TextStyle? style;
+  final Widget? leading;
   final bool checked;
-  final Widget checkView;
-  final VoidCallback onTap;
+  final Widget? checkView;
+  final VoidCallback? onTap;
 
   VooCellCheckBox({
     this.title = '',
@@ -31,11 +31,11 @@ class VooCellCheckBox extends StatelessWidget {
     );
 
     if (leading != null) {
-      List<Widget> children = [];
+      List<Widget?> children = [];
       children.add(leading);
       children.add(SizedBox(width: 24.w));
       children.add(titleView);
-      return Row(children: children, crossAxisAlignment: CrossAxisAlignment.center);
+      return Row(children: children as List<Widget>, crossAxisAlignment: CrossAxisAlignment.center);
     }
     return titleView;
   }
