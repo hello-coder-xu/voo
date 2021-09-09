@@ -215,12 +215,12 @@ class VooButton extends StatelessWidget {
   ///按钮视图
   Widget btnContentView() {
     if (icon == null) return textView();
-    List<Widget?> children = [];
-    children.add(icon);
+    List<Widget> children = [];
+    children.add(icon!);
     children.add(SizedBox(width: getIconPadding()));
     children.add(Flexible(child: textView()));
     return Row(
-      children: children as List<Widget>,
+      children: children,
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
     );
