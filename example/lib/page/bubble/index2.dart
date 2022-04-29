@@ -116,6 +116,7 @@ class BubbleDialog extends Dialog {
             arrowAlignment: ArrowAlignment.center,
             width: 80,
             height: 80,
+            arrowSize: 12,
             child: Column(children: [
               SizedBox(
                 height: 40,

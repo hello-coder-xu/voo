@@ -208,8 +208,8 @@ class BubblePainter extends CustomPainter {
 
     path = Path()
       ..moveTo(offset, 0)
-      ..lineTo(offset - arrowSize! / 3 * 2, arrowOffset! + arrowSize!)
-      ..lineTo(offset + arrowSize! / 3 * 2, arrowOffset! + arrowSize!);
+      ..lineTo(offset - arrowSize! / 3 * 2, arrowSize!)
+      ..lineTo(offset + arrowSize! / 3 * 2, arrowSize!);
     canvas.drawPath(path, paint);
   }
 
@@ -231,7 +231,7 @@ class BubblePainter extends CustomPainter {
       offset = size.width - arrowSize! - DEFAULT_OFFSET - arrowOffset!;
     }
 
-    var dy = size.height - arrowOffset! - arrowSize!;
+    var dy = size.height - arrowSize!;
     path = Path()
       ..moveTo(offset, size.height)
       ..lineTo(offset - arrowSize! / 3 * 2, dy)

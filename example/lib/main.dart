@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(750, 1334),
-      builder: () => MaterialApp(
+      builder: (context) => MaterialApp(
         title: 'voo Demo',
         routes: routs,
         onGenerateRoute: (settings) {
